@@ -1,0 +1,61 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 6 at 1.00 GHz (global clock 4.00 GHz)
+Core 7 at 1.00 GHz (global clock 4.00 GHz)
+Core 12 at 1.00 GHz (global clock 4.00 GHz)
+Core 13 at 1.00 GHz (global clock 4.00 GHz)
+Core 14 at 1.00 GHz (global clock 4.00 GHz)
+Core 15 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[[SIFT_[RECORDERSIFT_SRECOIRDERF] IntT] Int_ernReral exce[ECSption:Inal exceEption:FORT_DxceptiERECROR]DEoR E]n C odexcepti:Fa[ oiSACCInE Code: lF[ACT_SISCESS_nDERed tSoNEIEC_D. DENIEEtOeD.  ExcRIrDxcprEepRFiepttioinn AdnTo_t bacnk]t Addre dIracaReEnre.tess 
+Cl=[O 0x7Srf1ebcsIF7T_RECO sR4n = 0xD96c0aE.7f Ac1Rcesle]b R eDERs xType]c7496eIxn tIntec:re UenalcN epKNeOtWipcoNtxcep.tir niA[:cce[ss AnoEnxac:le0p . AdtEodicSrxoenc nceeess Is=Fs CSpto id0x7:ef:TTyp _1e8Ad7edRCEbbx8CCcEoneS : S
+OI_eCode:pU tACNKNOCRIWN. AciNcesEEsSS_ AdVdAoxLnFI:DTre_DADEDNIEEDDcRR.Es Es =Excep_tRixEon  0x7f1CcSee8e7f3ApSebb8p]d .dOIr
+tess  nti= 0x7EfR1Dtioxebc74nceo96cerpnEti oCnR 0An. oAccdedss T]ryedspse :a  = U0lN KNOWNx.C I7nfAecces1s  eeb:cAddr es7s = 04x79f61eaAct3e7oC0fdCb.ef8 exArcnc
+aC: Tool (or Pin) caused signal 11 at PC 0x7f1ebc7496c0
+ceess:  ETSySpA_Cel:I  UeNpKNNtOxiWcN.e pAVcAceLIsDs_ AADdDd[SIFT:[SIFT:6[SIFT:] Error: [SIFT:[SIFT:14] Error: 1] Error: SuccessSuccess13[TRACE:1] -- DONE --
+[TRACE:13] -- DONE --
+2] Error: 
+SuccessSuccess
+
+] Error: 
+Success
+[TRACE:6] -- DONE --
+[TRACE:14] -- DONE --
+[TRACE:2] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[SIFT:7] Error: Success
+[TRACE:7] -- DONE --
+[SIFT:3] Error: Success
+[TRACE:3] -- DONE --
+[SIFT:4] Error: Success
+[TRACE:4] -- DONE --
+[TRACE:15] -- DONE --
+[SIFT:15] Error: Broken pipe
+[SIFT:0] Error: [SIFT:[TRACE:0] -- DONE --
+Broken pipe12
+] Error: Broken pipe
+[TRACE:12] -- DONE --
+[SIFT:10] Error: [SIFT:Broken pipe[TRACE:10] -- DONE --
+
+11] Error: Broken pipe
+[TRACE:11] -- DONE --
+[SIFT:8] Error: Broken pipe
+[TRACE:8] -- DONE --
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[SIFT:5] Error: Broken pipe
+[TRACE:5] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.90 seconds
+[SNIPER] Simulated 56.5M instructions, 7.5M cycles, 7.54 IPC
+[SNIPER] Simulation speed 3793.5 KIPS (237.1 KIPS / target core - 4217.7ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 15.07 seconds

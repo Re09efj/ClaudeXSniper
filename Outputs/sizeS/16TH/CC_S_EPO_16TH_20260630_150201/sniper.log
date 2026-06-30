@@ -1,0 +1,59 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 8 at 1.00 GHz (global clock 4.00 GHz)
+Core 9 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:ExcepC: Tool (or Pin) caused signal 11 at PC 0x7f4e9c47a6c0
+tion Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f4e9c47a6c0. Access Type: UNKNOWN. Access Address = 0x7f4e6d7edbc8
+[TRACE:2] -- DONE --
+[TRACE:0] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:15] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:7] -- DONE --
+[SIFT:[SIFT:2] Error: [SIFT:0Resource temporarily unavailable
+[SIFT:4] Error: ] Error: 5Resource temporarily unavailableNo such file or directory
+
+[SIFT:15] Error: Resource temporarily unavailable
+] Error: Success
+[SIFT:6] Error: Success
+[SIFT:1] Error: Success
+[SIFT:7] Error: Success
+[SIFT:11] Error: Success
+[TRACE:11] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[TRACE:3] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:13] -- DONE --
+[SIFT:3] Error: Broken pipe
+[SIFT:10] Error: Broken pipe
+[SIFT:13] Error: Broken pipe
+[SIFT:8] Error: Broken pipe[TRACE:8] -- DONE --
+
+[SIFT:12] Error: Broken pipe
+[TRACE:12] -- DONE --
+[SIFT:14] Error: Broken pipe[TRACE:14] -- DONE --
+
+[TRACE:9] -- DONE --
+[SIFT:9] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.48 seconds
+[SNIPER] Simulated 54.9M instructions, 7.2M cycles, 7.59 IPC
+[SNIPER] Simulation speed 3792.2 KIPS (237.0 KIPS / target core - 4219.2ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.65 seconds

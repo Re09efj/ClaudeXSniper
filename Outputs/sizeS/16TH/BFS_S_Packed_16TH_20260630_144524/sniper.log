@@ -1,0 +1,64 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 6 at 1.00 GHz (global clock 4.00 GHz)
+Core 7 at 1.00 GHz (global clock 4.00 GHz)
+Core 12 at 1.00 GHz (global clock 4.00 GHz)
+Core 13 at 1.00 GHz (global clock 4.00 GHz)
+Core 14 at 1.00 GHz (global clock 4.00 GHz)
+Core 15 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Addr[essSIFT_RECORDER ]=  In0ternxal excep7ftioa51n:9954Exc6ception0 C. [AccessS IFT_RECoORDERTdyep: eACCESS_I] INVA[nLte:rS IUFInal eTNxcepti_DKon:RN[OExWSNI._AceptioD nA Code:F DACCESS_IRTNVE_C[cROcRALIEDDSCeEI_ADsEORRDs]RESS SD EFAaRFdTi_]R.lE dS. C ErOIenResExDtcedep xcEts or= Rp neptiao0]tnlx  e7xfrIai4iecn fe9Addtpo r8et6bnnsbic8so
+t = 0xne7a:fa519 cr9knAatddrreE54x6caecssepc0. tAccieolss .e  Type: 
+nxUNK CNOWocdN.=[e : Ace0pxcess A7t SddresAs =iICo 0xFnfTa51C_E7fa4eaScbcbb8SR_
+D:EC9OEENRIxDEEDc.Re pEtx9i]co nIe pnt54itoCenr noAdd6ec0ad.r e:Acc ess slTsyp e : =Ue x0cxAe7CfCaNKNOWE5N.S pSAcce_t1iIoNssV9A9 Addre5L4I6ss = cn0:0.x 7fAEca4f0xcDcee_aA9sDD8bRpESSt.si c8oTynp  
+Eex:c CUeNopKdNteO:i WAoNCn. C AAdEdcSrcSeess_sI NAs dV=dA rLe0IsxsD7 _=fA a0D5D1x9R97E5S4S6c0. A.c fcEaexs5cse p0Tt3yipo3ee:n d bAed8dUr
+NeKsNsO W=N .0 xA7cfcae5s1s 9A9d5d4r6ecs0s.  =A c0cxe7sfs aT4eyep8e7:4 UbNKcN8OW
+N. Access Address = 0x7fa4ebdcebb8
+C: Tool (or Pin) caused signal 11 at PC 0x7fa5199546c0
+[TRACE:11] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:15] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:9] -- DONE --
+[SIFT:11] Error: Success
+[SIFT:15] Error: [SIFT:Success
+6[SIFT:1] Error: Success
+] Error: [SIFT:7] Error: [SIFT:[SIFT:Success10
+] Error: Success9
+] Error: Success
+Pin app terminated abnormally due to signal 11.
+[TRACE:6] -- DONE --
+Success
+[SIFT:8] Error: Broken pipe
+[SIFT:[TRACE:8] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:14] -- DONE --
+[SIFT:2] Error: Broken pipe
+14] Error: Broken pipe
+[SIFT:13] Error: Broken pipe
+[TRACE:13] -- DONE --
+[SIFT:5] Error: Broken pipe[TRACE:5] -- DONE --
+
+[TRACE:12] -- DONE --
+[SIFT:12] Error: Broken pipe
+[SIFT:0] Error: [SIFT:4] Error: Broken pipeBroken pipe
+[TRACE:0] -- DONE --
+[TRACE:4] -- DONE --
+
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.67 seconds
+[SNIPER] Simulated 55.9M instructions, 7.5M cycles, 7.46 IPC
+[SNIPER] Simulation speed 3811.1 KIPS (238.2 KIPS / target core - 4198.2ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.84 seconds

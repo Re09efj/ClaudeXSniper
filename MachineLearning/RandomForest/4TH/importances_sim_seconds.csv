@@ -1,0 +1,10 @@
+feature,importance
+avg_ipc,0.18272940667054086
+ipc_cv,0.08612290736303659
+pe_ratio,0.0
+local_ratio,0.0
+remote_ratio,0.0
+l2_intensity,0.13817160943865894
+l3_intensity,0.16950113378684806
+mem_intensity,0.1691619947811621
+read_ratio,0.25431294795975345

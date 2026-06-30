@@ -1,0 +1,33 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 8 at 1.00 GHz (global clock 4.00 GHz)
+Core 9 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+/binary/pr: /usr/lib64/libgomp.so.1: version `GOMP_4.5' not found (required by /binary/pr)
+/binary/pr: /lib64/libc.so.6: version `GLIBC_2.38' not found (required by /binary/pr)
+/binary/pr: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /binary/pr)
+/binary/pr: /lib64/libc.so.6: version `GLIBC_2.34' not found (required by /binary/pr)
+/binary/pr: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by /binary/pr)
+/binary/pr: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.20' not found (required by /binary/pr)
+/binary/pr: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by /binary/pr)
+/binary/pr: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /binary/pr)
+/binary/pr: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.19' not found (required by /binary/pr)
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 2.36 seconds
+[SNIPER] Simulated 0.1M instructions, 0.1M cycles, 0.89 IPC
+[SNIPER] Simulation speed 40.9 KIPS (2.6 KIPS / target core - 391197.6ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 2.51 seconds

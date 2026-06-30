@@ -1,0 +1,66 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 6 at 1.00 GHz (global clock 4.00 GHz)
+Core 7 at 1.00 GHz (global clock 4.00 GHz)
+Core 12 at 1.00 GHz (global clock 4.00 GHz)
+Core 13 at 1.00 GHz (global clock 4.00 GHz)
+Core 14 at 1.00 GHz (global clock 4.00 GHz)
+Core 15 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORD[ER] InternSal excepItion:FT_RECORDEExceptio[n CodeR: ACCESS_DEN]SIED. ExIF ception InternaAddressTl  = 0x7excefpf5774256tioc0.n_ A:ccesRs Type:E UNKNOWN.E AccesCxcs Addreess = 0xpti7ff5on Co5fdc97c08O
+eR:DE ACRCES] SFa_IilNedV[A LStIFT_REo IpCORDERD_r] Intiernaln except bactioAk[ntr:aDcDReExcep.EStionISFS T
+. CoE_[RxEcCeSOpde: tRIDFiTEo_RRACECESS_DEN]nIED. ExcCeption OAR[D A EIdndd[Rrtesds = 0xrS7ff5eIs]SIF77Te4256c0.  AccFs_ess RE TCORype=DERTI] Inn_ R0EtCx:tO UReNernrKa7nrfDl exNceEOWnptiaonlf:N. Ac[Rcea s5Exc7S7e]s AddlI rpess = eI0 4xtcie2px7non 5fCod6fe55: AtCcFfdat9beCf80
+eir.xESS_nD EaolA nNeIEDT. cx_ccceee:pExcpeptitEstxoiRsn AdEdresCis o=oOn :RcTDEeyp x0x7ff5n77p425c6cee:0. Ac:ceEss EType:tR UNKNOWp t]UNNi. KxoAccesnsi Add NoreOnIsWn tsCN = 0x.e 7cff5oAe5eedbp ebbe8r:
+ncc CeAatlC siexoconsdCee pE AtSdSdCreo:dss_iIo en=: 0N VxA7LfAf:C 5A4CcEI3C9SDf_bSdA8C_EEDISNSVDA_LI
+REINxSDVcS_AALDI.DDe_pAR tDEEixocnS eCpoDtSR.E iEoSxndSc e.:Aed  AdCEpxtrCcieEsosSen  =Apdtdiroe sns  0SA=d d_x07xr7fIffef557s77sN47 V=A24 255660LxI7Dc0_ffAcD5.0 7D7R.E 4AS2A5S6cccc.c eesEss s0 T.yTpy pAec:e cU:N KexUcseNpKtNiONWoNOsn.W   NT.A yApAcccdecdesresss :  eAsdUsdAr edN=sdsr K0 eNs=x 7Os0fW Nf.5= 7A7c4x27 c0f5exf6574cf907.s eAsc fA5d4dcdbb7cfr98becs8s 
+= 
+0x7ff5eC: Tool (or Pin) caused signal 11 at PC 0x7ff5774256c0
+4sas7 fT3ybpce8: 
+UNKNOWN. Access Address = 0x7ff5487e7bc8
+[TRACE:11] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:5] -- DONE --
+[SIFT:[SIFT:11] Error: 2] Error: Success
+Success
+[SIFT:6] Error: Success
+[SIFT:4] Error: [SIFT:[SIFT:Success
+7[SIFT:] Error: 5Success[SIFT:] Error: 
+3] Error: 1Success] Error: 
+Success
+Success
+Pin app terminated abnormally due to signal 11.
+[TRACE:10] -- DONE --
+[SIFT:10] Error: Broken pipe
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:12] -- DONE --
+[SIFT:8] Error: Broken pipe
+[SIFT:12] Error: Broken pipe
+[TRACE:15] -- DONE --
+[SIFT:15] Error: Broken pipe[SIFT:
+13] Error: Broken pipe
+[TRACE:13] -- DONE --
+[SIFT:9] Error: Broken pipe[TRACE:9] -- DONE --
+
+[TRACE:14] -- DONE --
+[SIFT:14] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.83 seconds
+[SNIPER] Simulated 54.4M instructions, 7.3M cycles, 7.50 IPC
+[SNIPER] Simulation speed 3669.6 KIPS (229.4 KIPS / target core - 4360.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.99 seconds

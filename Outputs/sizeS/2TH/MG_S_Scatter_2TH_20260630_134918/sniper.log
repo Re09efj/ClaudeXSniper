@@ -1,0 +1,69 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[HOOKS] Entering ROI
+[HOOKS] Leaving ROI
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - MG Benchmark
+
+ No input file. Using compiled defaults 
+ Size:   32x  32x  32  (class S)
+ Iterations:                      4
+ Number of available threads:     2
+
+ Initialization time:           0.001 seconds
+
+  iter   1
+  iter   4
+
+ Benchmark completed 
+ VERIFICATION SUCCESSFUL 
+ L2 Norm is  0.5307707005735E-04
+ Error is    0.1662242314632E-12
+
+
+ MG Benchmark Completed.
+ Class           =                        S
+ Size            =             32x  32x  32
+ Iterations      =                        4
+ Time in seconds =                     0.00
+ Total threads   =                        2
+ Avail threads   =                        2
+ Mop/s total     =                  4651.47
+ Mop/s/thread    =                  2325.74
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = randi8
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:0] -- DONE --
+[TRACE:1] -- STOP --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 16.63 seconds
+[SNIPER] Simulated 35.1M instructions, 10.2M cycles, 3.45 IPC
+[SNIPER] Simulation speed 2108.4 KIPS (1054.2 KIPS / target core - 948.6ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 16.76 seconds
