@@ -1,481 +1,280 @@
 nohup: 入力を無視します
 
+  クラスシーケンス : ['W', 'A']
+  スレッドシーケンス: [4, 8, 16]  (逐次実行)
+
 ================================================================
   ClaudeXSniper — NUMA アフィニティ実験
   ワークロード: ['BT', 'CG', 'FT', 'IS', 'MG', 'SP', 'lavaMD', 'BFS', 'PR', 'BC', 'CC', 'SSSP', 'TC']
-  クラス=S  スレッド=8  戦略=['Packed', 'Scatter', 'HPO', 'EPO']
-  実験数=52  workers=2
+  クラス=W  スレッド=4  戦略=['Packed', 'HPO', 'Scatter', 'EPO']
+  実験数=52  同時実験数=8  (ホスト32コア)
 ================================================================
 
-[STEP] Sniper 並列実行 (52 実験, workers=2)
+[STEP] Sniper 並列実行 (52 実験, 同時実験数=8)
 
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Packed_8TH_20260630_132627/affinity_config.txt
-  [BT/Packed] 開始
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [BT/Scatter] 開始
-  [BT/Scatter] 完了  経過 02:34  [1/52]
-[profile] BT_S_8: simTime=0.011s, instructions=921,710,377, wallTime=155s (avg 772s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [BT/HPO] 開始
-  [BT/Packed] 完了  経過 02:36  [2/52]
-[profile] BT_S_8: simTime=0.041s, instructions=891,384,904, wallTime=157s (avg 364s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [BT/EPO] 開始
-  [BT/HPO] 失敗  経過 03:36  [3/52]
-[ERROR:BT/HPO] Sniper 失敗 (BT/HPO) ret=1
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Packed_8TH_20260630_132627/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_Packed_4TH_20260630_224009/affinity_config.txt
   [CG/Packed] 開始
-  [BT/EPO] 失敗  経過 03:45  [4/52]
-[ERROR:BT/EPO] Sniper 失敗 (BT/EPO) ret=1
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [CG/Scatter] 開始
-  [CG/Packed] 完了  経過 01:00  [5/52]
-[profile] CG_S_8: simTime=0.021s, instructions=351,780,157, wallTime=61s (avg 160s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [CG/HPO] 開始
-  [CG/Scatter] 完了  経過 00:50  [6/52]
-[profile] CG_S_8: simTime=0.005s, instructions=349,946,461, wallTime=51s (avg 140s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [CG/EPO] 開始
-  [CG/HPO] 完了  経過 00:51  [7/52]
-[profile] CG_S_8: simTime=0.005s, instructions=350,324,036, wallTime=52s (avg 113s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Packed_8TH_20260630_132627/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_Packed_4TH_20260630_224009/affinity_config.txt
+  [BT/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_Packed_4TH_20260630_224009/affinity_config.txt
   [FT/Packed] 開始
-  [CG/EPO] 完了  経過 00:57  [8/52]
-[profile] CG_S_8: simTime=0.020s, instructions=347,898,849, wallTime=58s (avg 86s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [FT/Scatter] 開始
-  [FT/Scatter] 完了  経過 01:46  [9/52]
-[profile] FT_S_8: simTime=0.010s, instructions=795,610,836, wallTime=107s (avg 725s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [FT/HPO] 開始
-  [FT/Packed] 完了  経過 02:26  [10/52]
-[profile] FT_S_8: simTime=0.036s, instructions=805,305,510, wallTime=147s (avg 327s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [FT/EPO] 開始
-  [FT/HPO] 失敗  経過 01:22  [11/52]
-[ERROR:FT/HPO] Sniper 失敗 (FT/HPO) ret=1
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Packed_8TH_20260630_132627/affinity_config.txt
-  [IS/Packed] 開始
-  [IS/Packed] 完了  経過 00:10  [12/52]
-[profile] IS_S_8: simTime=0.006s, instructions=41,790,984, wallTime=11s (avg 28s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [IS/Scatter] 開始
-  [IS/Scatter] 完了  経過 00:11  [13/52]
-[profile] IS_S_8: simTime=0.002s, instructions=43,156,780, wallTime=12s (avg 24s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [IS/HPO] 開始
-  [IS/HPO] 完了  経過 00:11  [14/52]
-[profile] IS_S_8: simTime=0.002s, instructions=43,161,350, wallTime=12s (avg 21s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [IS/EPO] 開始
-  [FT/EPO] 失敗  経過 01:28  [15/52]
-[ERROR:FT/EPO] Sniper 失敗 (FT/EPO) ret=1
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Packed_8TH_20260630_132627/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_Packed_4TH_20260630_224009/affinity_config.txt
   [MG/Packed] 開始
-  [IS/EPO] 完了  経過 00:13  [16/52]
-[profile] IS_S_8: simTime=0.006s, instructions=41,735,033, wallTime=14s (avg 19s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [MG/Scatter] 開始
-  [MG/Packed] 完了  経過 00:13  [17/52]
-[profile] MG_S_8: simTime=0.003s, instructions=45,406,501, wallTime=14s (avg 34s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [MG/HPO] 開始
-  [MG/Scatter] 完了  経過 00:12  [18/52]
-[profile] MG_S_8: simTime=0.001s, instructions=47,249,036, wallTime=13s (avg 28s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [MG/EPO] 開始
-  [MG/HPO] 完了  経過 00:12  [19/52]
-[profile] MG_S_8: simTime=0.001s, instructions=47,300,059, wallTime=13s (avg 25s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_Packed_8TH_20260630_132627/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_Packed_4TH_20260630_224009/affinity_config.txt
+  [IS/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SP_W_Packed_4TH_20260630_224009/affinity_config.txt
   [SP/Packed] 開始
-  [MG/EPO] 完了  経過 00:13  [20/52]
-[profile] MG_S_8: simTime=0.003s, instructions=45,151,026, wallTime=14s (avg 22s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [SP/Scatter] 開始
-  [SP/Packed] 完了  経過 01:12  [21/52]
-[profile] SP_S_8: simTime=0.024s, instructions=409,028,451, wallTime=73s (avg 434s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [SP/HPO] 開始
-  [SP/Scatter] 完了  経過 01:10  [22/52]
-[profile] SP_S_8: simTime=0.006s, instructions=434,557,733, wallTime=71s (avg 215s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [SP/EPO] 開始
-  [SP/HPO] 失敗  経過 01:11  [23/52]
-[ERROR:SP/HPO] Sniper 失敗 (SP/HPO) ret=1
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_Packed_8TH_20260630_132627/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_Packed_4TH_20260630_224009/affinity_config.txt
   [lavaMD/Packed] 開始
-  [lavaMD/Packed] 完了  経過 00:04  [24/52]
-[profile] lavaMD_S_8: simTime=0.000s, instructions=333,700, wallTime=5s (avg 6s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [lavaMD/Scatter] 開始
-  [lavaMD/Scatter] 完了  経過 00:04  [25/52]
-[profile] lavaMD_S_8: simTime=0.000s, instructions=333,766, wallTime=5s (avg 6s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [lavaMD/HPO] 開始
-  [lavaMD/HPO] 完了  経過 00:04  [26/52]
-[profile] lavaMD_S_8: simTime=0.000s, instructions=335,558, wallTime=5s (avg 6s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [lavaMD/EPO] 開始
-  [SP/EPO] 失敗  経過 01:18  [27/52]
-[ERROR:SP/EPO] Sniper 失敗 (SP/EPO) ret=1
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_Packed_8TH_20260630_132627/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_Packed_4TH_20260630_224009/affinity_config.txt
   [BFS/Packed] 開始
-  [lavaMD/EPO] 完了  経過 00:04  [28/52]
-[profile] lavaMD_S_8: simTime=0.000s, instructions=333,725, wallTime=5s (avg 5s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [BFS/Scatter] 開始
-  [BFS/Packed] 完了  経過 00:14  [29/52]
-[profile] BFS_S_8: simTime=0.008s, instructions=33,429,754, wallTime=15s (avg 30s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [BFS/HPO] 開始
-  [BFS/Scatter] 完了  経過 00:14  [30/52]
-[profile] BFS_S_8: simTime=0.002s, instructions=34,120,522, wallTime=15s (avg 27s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [BFS/EPO] 開始
-  [BFS/HPO] 完了  経過 00:14  [31/52]
-[profile] BFS_S_8: simTime=0.002s, instructions=34,220,219, wallTime=15s (avg 24s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_Packed_8TH_20260630_132627/affinity_config.txt
+  [lavaMD/Packed] 完了  経過 00:04  [1/52]
+[profile] lavaMD_W_4: simTime=0.000s, instructions=353,317, wallTime=5s (avg 5s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_Packed_4TH_20260630_224009/affinity_config.txt
   [PR/Packed] 開始
-  [BFS/EPO] 完了  経過 00:14  [32/52]
-[profile] BFS_S_8: simTime=0.008s, instructions=33,545,274, wallTime=15s (avg 21s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [PR/Scatter] 開始
-  [PR/Packed] 完了  経過 00:14  [33/52]
-[profile] PR_S_8: simTime=0.008s, instructions=33,225,063, wallTime=15s (avg 84s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [PR/HPO] 開始
-  [PR/Scatter] 完了  経過 00:14  [34/52]
-[profile] PR_S_8: simTime=0.002s, instructions=33,837,951, wallTime=15s (avg 27s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [PR/EPO] 開始
-  [PR/HPO] 完了  経過 00:14  [35/52]
-[profile] PR_S_8: simTime=0.002s, instructions=33,924,801, wallTime=15s (avg 24s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_Packed_8TH_20260630_132627/affinity_config.txt
+  [BFS/Packed] 完了  経過 00:22  [2/52]
+[profile] BFS_W_4: simTime=0.005s, instructions=38,572,992, wallTime=23s (avg 23s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_Packed_4TH_20260630_224009/affinity_config.txt
   [BC/Packed] 開始
-  [PR/EPO] 完了  経過 00:14  [36/52]
-[profile] PR_S_8: simTime=0.008s, instructions=33,380,079, wallTime=15s (avg 21s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/PR_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [BC/Scatter] 開始
-  [BC/Packed] 完了  経過 00:14  [37/52]
-[profile] BC_S_8: simTime=0.008s, instructions=33,495,395, wallTime=15s (avg 55s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [BC/HPO] 開始
-  [BC/Scatter] 完了  経過 00:14  [38/52]
-[profile] BC_S_8: simTime=0.002s, instructions=34,259,937, wallTime=15s (avg 27s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [BC/EPO] 開始
-  [BC/HPO] 完了  経過 00:14  [39/52]
-[profile] BC_S_8: simTime=0.002s, instructions=34,150,848, wallTime=15s (avg 24s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_Packed_8TH_20260630_132627/affinity_config.txt
+  [PR/Packed] 完了  経過 00:23  [3/52]
+[profile] PR_W_4: simTime=0.005s, instructions=38,353,095, wallTime=24s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_Packed_4TH_20260630_224009/affinity_config.txt
   [CC/Packed] 開始
-  [BC/EPO] 完了  経過 00:14  [40/52]
-[profile] BC_S_8: simTime=0.008s, instructions=33,523,173, wallTime=15s (avg 21s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BC_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [CC/Scatter] 開始
-  [CC/Packed] 完了  経過 00:14  [41/52]
-[profile] CC_S_8: simTime=0.008s, instructions=33,446,009, wallTime=15s (avg 63s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [CC/HPO] 開始
-  [CC/Scatter] 完了  経過 00:14  [42/52]
-[profile] CC_S_8: simTime=0.002s, instructions=34,055,235, wallTime=15s (avg 27s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [CC/EPO] 開始
-  [CC/HPO] 完了  経過 00:14  [43/52]
-[profile] CC_S_8: simTime=0.002s, instructions=33,949,822, wallTime=15s (avg 24s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_Packed_8TH_20260630_132627/affinity_config.txt
+  [BC/Packed] 完了  経過 00:23  [4/52]
+[profile] BC_W_4: simTime=0.005s, instructions=38,567,821, wallTime=24s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_Packed_4TH_20260630_224009/affinity_config.txt
   [SSSP/Packed] 開始
-  [CC/EPO] 完了  経過 00:14  [44/52]
-[profile] CC_S_8: simTime=0.008s, instructions=33,346,173, wallTime=15s (avg 21s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CC_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [SSSP/Scatter] 開始
-  [SSSP/Scatter] 完了  経過 00:06  [45/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_HPO_8TH_20260630_132627/affinity_config.txt
-  [SSSP/HPO] 開始
-  [SSSP/Packed] 完了  経過 00:11  [46/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_EPO_8TH_20260630_132627/affinity_config.txt
-  [SSSP/EPO] 開始
-  [SSSP/HPO] 完了  経過 00:10  [47/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_HPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_Packed_8TH_20260630_132627/affinity_config.txt
+  [CC/Packed] 完了  経過 00:23  [5/52]
+[profile] CC_W_4: simTime=0.005s, instructions=38,413,536, wallTime=24s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_Packed_4TH_20260630_224009/affinity_config.txt
   [TC/Packed] 開始
-  [SSSP/EPO] 完了  経過 00:10  [48/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SSSP_S_EPO_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_Scatter_8TH_20260630_132627/affinity_config.txt
-  [TC/Scatter] 開始
-  [TC/Packed] 完了  経過 00:02  [49/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_Packed_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_HPO_8TH_20260630_132627/affinity_config.txt
+  [SSSP/Packed] 完了  経過 00:30  [6/52]
+[profile] SSSP_W_4: simTime=0.005s, instructions=49,967,154, wallTime=31s (avg 31s)
+  [TC/Packed] 完了  経過 00:24  [7/52]
+[profile] TC_W_4: simTime=0.005s, instructions=38,934,880, wallTime=25s (avg 25s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [BT/HPO] 開始
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [CG/HPO] 開始
+  [IS/Packed] 完了  経過 03:19  [8/52]
+[profile] IS_W_4: simTime=0.053s, instructions=595,990,007, wallTime=200s (avg 200s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [FT/HPO] 開始
+  [FT/Packed] 完了  経過 06:59  [9/52]
+[profile] FT_W_4: simTime=0.048s, instructions=1,702,339,064, wallTime=420s (avg 420s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [IS/HPO] 開始
+  [FT/HPO] 完了  経過 07:06  [10/52]
+[profile] FT_W_4: simTime=0.048s, instructions=1,699,956,815, wallTime=427s (avg 424s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [MG/HPO] 開始
+  [IS/HPO] 完了  経過 03:33  [11/52]
+[profile] IS_W_4: simTime=0.053s, instructions=598,637,050, wallTime=214s (avg 207s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SP_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [SP/HPO] 開始
+  [MG/Packed] 完了  経過 15:43  [12/52]
+[profile] MG_W_4: simTime=0.153s, instructions=1,968,398,375, wallTime=944s (avg 944s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [lavaMD/HPO] 開始
+  [lavaMD/HPO] 完了  経過 00:04  [13/52]
+[profile] lavaMD_W_4: simTime=0.000s, instructions=353,317, wallTime=5s (avg 5s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [BFS/HPO] 開始
+  [BFS/HPO] 完了  経過 00:24  [14/52]
+[profile] BFS_W_4: simTime=0.005s, instructions=38,475,120, wallTime=25s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [PR/HPO] 開始
+  [PR/HPO] 完了  経過 00:24  [15/52]
+[profile] PR_W_4: simTime=0.005s, instructions=38,333,185, wallTime=25s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [BC/HPO] 開始
+  [BC/HPO] 完了  経過 00:24  [16/52]
+[profile] BC_W_4: simTime=0.005s, instructions=38,499,536, wallTime=25s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [CC/HPO] 開始
+  [CC/HPO] 完了  経過 00:24  [17/52]
+[profile] CC_W_4: simTime=0.005s, instructions=38,422,286, wallTime=25s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [SSSP/HPO] 開始
+  [SSSP/HPO] 完了  経過 00:31  [18/52]
+[profile] SSSP_W_4: simTime=0.005s, instructions=50,058,216, wallTime=32s (avg 32s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_HPO_4TH_20260630_224009/affinity_config.txt
   [TC/HPO] 開始
-  [TC/Scatter] 完了  経過 00:02  [50/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_Scatter_8TH_20260630_132627/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_EPO_8TH_20260630_132627/affinity_config.txt
+  [TC/HPO] 完了  経過 00:25  [19/52]
+[profile] TC_W_4: simTime=0.005s, instructions=38,842,206, wallTime=26s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [BT/Scatter] 開始
+  [CG/Packed] 完了  経過 19:09  [20/52]
+[profile] CG_W_4: simTime=0.192s, instructions=2,167,781,823, wallTime=1150s (avg 875s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [CG/Scatter] 開始
+  [CG/HPO] 完了  経過 19:22  [21/52]
+[profile] CG_W_4: simTime=0.192s, instructions=2,168,917,936, wallTime=1163s (avg 971s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [FT/Scatter] 開始
+  [MG/HPO] 完了  経過 16:07  [22/52]
+[profile] MG_W_4: simTime=0.153s, instructions=1,969,948,997, wallTime=968s (avg 956s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [IS/Scatter] 開始
+  [FT/Scatter] 完了  経過 06:51  [23/52]
+[profile] FT_W_4: simTime=0.043s, instructions=1,719,737,539, wallTime=412s (avg 420s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [MG/Scatter] 開始
+  [CG/Scatter] 完了  経過 10:07  [24/52]
+[profile] CG_W_4: simTime=0.093s, instructions=2,217,083,777, wallTime=608s (avg 880s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SP_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [SP/Scatter] 開始
+  [IS/Scatter] 完了  経過 03:15  [25/52]
+[profile] IS_W_4: simTime=0.044s, instructions=595,823,153, wallTime=196s (avg 203s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [lavaMD/Scatter] 開始
+  [lavaMD/Scatter] 完了  経過 00:04  [26/52]
+[profile] lavaMD_W_4: simTime=0.000s, instructions=353,317, wallTime=5s (avg 5s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [BFS/Scatter] 開始
+  [BFS/Scatter] 完了  経過 00:26  [27/52]
+[profile] BFS_W_4: simTime=0.005s, instructions=38,583,079, wallTime=27s (avg 25s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [PR/Scatter] 開始
+  [PR/Scatter] 完了  経過 00:26  [28/52]
+[profile] PR_W_4: simTime=0.005s, instructions=38,347,567, wallTime=27s (avg 25s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [BC/Scatter] 開始
+  [BC/Scatter] 完了  経過 00:27  [29/52]
+[profile] BC_W_4: simTime=0.005s, instructions=38,538,757, wallTime=28s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [CC/Scatter] 開始
+  [CC/Scatter] 完了  経過 00:27  [30/52]
+[profile] CC_W_4: simTime=0.005s, instructions=38,422,834, wallTime=28s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [SSSP/Scatter] 開始
+  [SSSP/Scatter] 完了  経過 00:32  [31/52]
+[profile] SSSP_W_4: simTime=0.005s, instructions=50,025,956, wallTime=33s (avg 32s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [TC/Scatter] 開始
+  [TC/Scatter] 完了  経過 00:26  [32/52]
+[profile] TC_W_4: simTime=0.005s, instructions=38,764,718, wallTime=27s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [BT/EPO] 開始
+  [MG/Scatter] 完了  経過 13:37  [33/52]
+[profile] MG_W_4: simTime=0.146s, instructions=1,942,533,149, wallTime=818s (avg 910s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_Scatter_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [CG/EPO] 開始
+  [CG/EPO] 完了  経過 21:43  [34/52]
+[profile] CG_W_4: simTime=0.560s, instructions=2,146,866,038, wallTime=1304s (avg 965s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CG_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [FT/EPO] 開始
+  [FT/EPO] 完了  経過 07:44  [35/52]
+[profile] FT_W_4: simTime=0.149s, instructions=1,685,596,643, wallTime=465s (avg 431s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/FT_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [IS/EPO] 開始
+  [IS/EPO] 完了  経過 03:51  [36/52]
+[profile] IS_W_4: simTime=0.181s, instructions=581,270,098, wallTime=232s (avg 210s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/IS_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [MG/EPO] 開始
+  [MG/EPO] 完了  経過 17:28  [37/52]
+[profile] MG_W_4: simTime=0.517s, instructions=1,904,788,064, wallTime=1049s (avg 945s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/MG_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SP_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [SP/EPO] 開始
+  [BT/Packed] 完了  経過 92:38  [38/52]
+[profile] BT_W_4: simTime=0.446s, instructions=20,335,722,827, wallTime=5559s (avg 5560s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_Packed_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [lavaMD/EPO] 開始
+  [lavaMD/EPO] 完了  経過 00:04  [39/52]
+[profile] lavaMD_W_4: simTime=0.000s, instructions=353,308, wallTime=5s (avg 5s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/lavaMD_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [BFS/EPO] 開始
+  [BFS/EPO] 完了  経過 00:25  [40/52]
+[profile] BFS_W_4: simTime=0.016s, instructions=38,175,231, wallTime=26s (avg 25s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BFS_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [PR/EPO] 開始
+  [PR/EPO] 完了  経過 00:25  [41/52]
+[profile] PR_W_4: simTime=0.016s, instructions=38,033,890, wallTime=26s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/PR_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [BC/EPO] 開始
+  [BC/EPO] 完了  経過 00:25  [42/52]
+[profile] BC_W_4: simTime=0.016s, instructions=38,137,972, wallTime=26s (avg 26s)
+  [BT/HPO] 完了  経過 92:43  [43/52]
+[profile] BT_W_4: simTime=0.446s, instructions=20,337,545,774, wallTime=5564s (avg 5562s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BC_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [CC/EPO] 開始
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_HPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_EPO_4TH_20260630_224009/affinity_config.txt
+  [SSSP/EPO] 開始
+  [CC/EPO] 完了  経過 00:25  [44/52]
+[profile] CC_W_4: simTime=0.016s, instructions=38,065,425, wallTime=26s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/CC_W_EPO_4TH_20260630_224009/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_EPO_4TH_20260630_224009/affinity_config.txt
   [TC/EPO] 開始
-  [TC/HPO] 完了  経過 00:01  [51/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_HPO_8TH_20260630_132627/metrics.csv
-  [TC/EPO] 完了  経過 00:01  [52/52]
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/TC_S_EPO_8TH_20260630_132627/metrics.csv
+  [SSSP/EPO] 完了  経過 00:31  [45/52]
+[profile] SSSP_W_4: simTime=0.018s, instructions=49,991,767, wallTime=32s (avg 32s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SSSP_W_EPO_4TH_20260630_224009/metrics.csv
+  [TC/EPO] 完了  経過 00:23  [46/52]
+[profile] TC_W_4: simTime=0.016s, instructions=38,478,680, wallTime=24s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/TC_W_EPO_4TH_20260630_224009/metrics.csv
+  [BT/Scatter] 完了  経過 90:14  [47/52]
+[profile] BT_W_4: simTime=0.446s, instructions=20,351,452,689, wallTime=5415s (avg 5513s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_Scatter_4TH_20260630_224009/metrics.csv
 
-[STEP] 結果収集
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_HPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_EPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_HPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_EPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_HPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_EPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/SP_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_HPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/lavaMD_S_EPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_Packed_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_Scatter_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_HPO_8TH_20260630_132627
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BFS_S_EPO_8TH_20260630_132627
+[TIMEOUT] SP/Packed (7201s > 7200s)
+  → 再実行 (attempt 2/2)
+  [SP/Packed] 失敗  経過 119:59  [47/52]
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SP_W_Packed_4TH_20260630_224009/affinity_config.txt
+  [SP/Packed] 開始
+  [BT/EPO] 完了  経過 91:49  [48/52]
+[profile] BT_W_4: simTime=1.773s, instructions=20,148,296,652, wallTime=5510s (avg 5512s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/BT_W_EPO_4TH_20260630_224009/metrics.csv
 
-============================================================================
-  全実験結果サマリー  (Class S, 8 threads)
-============================================================================
-  WL   Strategy         Node0       Node1   Node0%  使用コア
-  ------------------------------------------------------------------------
-  BT   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BT   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  ------------------------------------------------------------------------
-  CG   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CG   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  CG   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CG   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  FT   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  FT   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  ------------------------------------------------------------------------
-  IS   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  IS   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  IS   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  IS   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  MG   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  MG   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  MG   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  MG   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  SP   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  SP   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  ------------------------------------------------------------------------
-  lavaMD Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  lavaMD Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  lavaMD HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  lavaMD EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  BFS  Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BFS  Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  BFS  HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BFS  EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  PR   Packed          21,443           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  PR   Scatter         10,766      10,630    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  PR   HPO             10,759      10,621    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  PR   EPO             10,755      10,622    50.3%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  BC   Packed          21,476           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BC   Scatter         10,770      10,620    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  BC   HPO             10,773      10,626    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BC   EPO             10,747      10,599    50.3%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  CC   Packed          21,374           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CC   Scatter         10,678      10,556    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  CC   HPO             10,718      10,582    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CC   EPO             10,704      10,565    50.3%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  SSSP Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  SSSP Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  SSSP HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  SSSP EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  TC   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  TC   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  TC   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  TC   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-============================================================================
+[TIMEOUT] SP/HPO (7201s > 7200s)
+  → 再実行 (attempt 2/2)
+  [SP/HPO] 失敗  経過 119:59  [48/52]
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SP_W_HPO_4TH_20260630_224009/affinity_config.txt
+  [SP/HPO] 開始
 
-  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/{WL}_S_*_8TH_20260630_132627/
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               [profile] FT_S_16: simTime=0.022s, instructions=852,045,215, wallTime=676s (avg 2374s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_Packed_16TH_20260630_032234/metrics.csv
-  [IS/Packed] 失敗  経過 621:12  [52/52]
-[ERROR:IS/Packed] Sniper 失敗 (IS/Packed) ret=1
-
-[STEP] 結果収集
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SP_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SP_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SP_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SP_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/lavaMD_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/lavaMD_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/lavaMD_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/lavaMD_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BFS_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BFS_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BFS_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BFS_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/PR_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/PR_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/PR_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/PR_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BC_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BC_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BC_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BC_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CC_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CC_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CC_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CC_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SSSP_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SSSP_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SSSP_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SSSP_S_EPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/TC_S_Packed_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/TC_S_Scatter_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/TC_S_HPO_16TH_20260630_032234
-[WARN] sim.stats.sqlite3 が見つかりません: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/TC_S_EPO_16TH_20260630_032234
-
-============================================================================
-  全実験結果サマリー  (Class S, 16 threads)
-============================================================================
-  WL   Strategy         Node0       Node1   Node0%  使用コア
-  ------------------------------------------------------------------------
-  BT   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BT   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  BT   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BT   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  CG   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CG   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  CG   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CG   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  FT   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  FT   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  FT   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  FT   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  IS   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  IS   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  IS   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  MG   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  MG   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  MG   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  MG   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  SP   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  SP   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  SP   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  SP   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  lavaMD Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  lavaMD Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  lavaMD HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  lavaMD EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  BFS  Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BFS  Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  BFS  HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BFS  EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  PR   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  PR   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  PR   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  PR   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  BC   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BC   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  BC   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  BC   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  CC   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CC   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  CC   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  CC   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  SSSP Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  SSSP Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  SSSP HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  SSSP EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-  ------------------------------------------------------------------------
-  TC   Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  TC   Scatter              0           0     0.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
-  TC   HPO                  0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
-  TC   EPO                  0           0     0.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
-============================================================================
-
-  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/{WL}_S_*_16TH_20260630_032234/
+[TIMEOUT] SP/Scatter (7201s > 7200s)
+  → 再実行 (attempt 2/2)
+  [SP/Scatter] 失敗  経過 119:59  [48/52]
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/4TH/SP_W_Scatter_4TH_20260630_224009/affinity_config.txt
+  [SP/Scatter] 開始

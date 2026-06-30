@@ -30,6 +30,7 @@ def run_sniper(
     log_file,                   # open file object (writable)
     workload:       str = "",
     omp_num_threads: int | None = None,
+    proc_holder:    list | None = None,
 ) -> int:
     """
     podman run で Sniper シミュレーションを実行する。
@@ -82,4 +83,7 @@ def run_sniper(
     if binary_args:
         podman_cmd.extend(binary_args.split())
 
-    return subprocess.call(podman_cmd, stdout=log_file, stderr=log_file)
+    proc = subprocess.Popen(podman_cmd, stdout=log_file, stderr=log_file)
+    if proc_holder is not None:
+        proc_holder.append(proc)
+    return proc.wait()

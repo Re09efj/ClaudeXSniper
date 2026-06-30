@@ -32,6 +32,7 @@ from utility.stats_reader import (
     parse_numa_access,
     parse_l1d_where,
     parse_cpi_breakdown,
+    parse_sync_stats,
     dump_all_stats,
     P_CORES,
     E_CORES,
@@ -64,6 +65,10 @@ DERIVED_COLUMNS = [
     # CPI内訳フラクション
     "cpi_base_frac", "cpi_branch_frac", "cpi_l2_frac", "cpi_l3_frac",
     "cpi_dram_local_frac", "cpi_dram_remote_frac",
+    # 同期統計
+    "futex_wake_count", "futex_wait_count",
+    "mutex_lock_count", "barrier_wait_count",
+    "futex_wake_per_minst", "mutex_lock_per_minst", "barrier_wait_per_minst",
 ]
 
 
@@ -220,6 +225,8 @@ def export_csv(
         **_cache_stats(output_dir, num_threads),
         # CPI 内訳
         **_cpi_fracs(output_dir),
+        # 同期統計
+        **parse_sync_stats(output_dir),
     }
 
     # 生指標 (SQLite3 全列)

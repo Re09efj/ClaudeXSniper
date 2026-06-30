@@ -267,6 +267,53 @@ def parse_cpi_breakdown(output_dir: str) -> dict:
     return per_core
 
 
+# ─── 同期統計 ───────────────────────────────────────────────────
+
+def parse_sync_stats(output_dir: str) -> dict:
+    """
+    futex / pthread 同期カウンタを返す。
+
+    Returns: {
+        "futex_wake_count":      int,   # futex_wake 呼び出し回数 (全コア合計)
+        "futex_wait_count":      int,
+        "mutex_lock_count":      int,   # pthread_mutex_lock 回数
+        "barrier_wait_count":    int,   # pthread_barrier_wait 回数
+        "futex_wake_per_minst":  float, # wake 回数 / 100万命令
+        "mutex_lock_per_minst":  float,
+        "barrier_wait_per_minst": float,
+    }
+    """
+    conn = _db(output_dir)
+    if conn is None:
+        return {}
+
+    def _sum(obj: str, metric: str) -> int:
+        rows = _query(conn, "stop", obj, metric)
+        return sum(v for _, v in rows) if rows else 0
+
+    futex_wake   = _sum("futex",  "futex_wake_count")
+    futex_wait   = _sum("futex",  "futex_wait_count")
+    mutex_lock   = _sum("pthread","pthread_mutex_lock_count")
+    barrier_wait = _sum("pthread","pthread_barrier_wait_count")
+
+    # 命令数 (performance_model 単一値)
+    insts_rows = _query(conn, "stop", "performance_model", "instruction_count")
+    total_insts = insts_rows[0][1] if insts_rows else 0
+    conn.close()
+
+    per_m = lambda n: n / (total_insts / 1e6) if total_insts > 0 else 0.0
+
+    return {
+        "futex_wake_count":       futex_wake,
+        "futex_wait_count":       futex_wait,
+        "mutex_lock_count":       mutex_lock,
+        "barrier_wait_count":     barrier_wait,
+        "futex_wake_per_minst":   round(per_m(futex_wake),   4),
+        "mutex_lock_per_minst":   round(per_m(mutex_lock),   4),
+        "barrier_wait_per_minst": round(per_m(barrier_wait), 4),
+    }
+
+
 # ─── 全生指標ダンプ ─────────────────────────────────────────────
 
 def dump_all_stats(output_dir: str, cpu_map: list | None = None) -> dict:

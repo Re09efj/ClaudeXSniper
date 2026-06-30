@@ -1,0 +1,27 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception CC: Tool (or Pin) caused signal 11 at PC 0x7f261f17b6c0
+ode: ACCESS_DENIED. Exception Address = 0x7f261f17b6c0. Access Type: UNKNOWN. Access Address = 0x7f2607affbf8
+[SIFT:[SIFT:2] Error: 1] Error: Success
+Success[TRACE:2] -- DONE --
+[TRACE:1] -- DONE --
+
+Pin app terminated abnormally due to signal 11.
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 21.12 seconds
+[SNIPER] Simulated 38.6M instructions, 18.5M cycles, 2.09 IPC
+[SNIPER] Simulation speed 1826.3 KIPS (456.6 KIPS / target core - 2190.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 21.25 seconds

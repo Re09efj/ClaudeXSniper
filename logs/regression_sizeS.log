@@ -1,0 +1,193 @@
+
+======================================================================
+  POSM / RF分類 / SVM / RF回帰  LOO-CV 比較 (label=sim_seconds)
+  RF回帰: 各戦略の sim_seconds を予測 → argmin を選択
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  2TH  n=13  分布={'Packed': 9, 'Scatter': 4}
+  計算中 ...
+  手法               精度      性能比(x)
+  POSM          7.7%      1.0096  
+  RF分類         69.2%      1.0089  ◀◀
+  SVM          69.2%      1.0089  ◀◀
+  RF回帰         38.5%      1.0111  
+
+  RF回帰 予測詳細 (2TH):
+  Sample             True       POSM       RF分類       RF回帰      
+  BC                 Packed     HPO✗        Scatter✗    Scatter✗  
+  BFS                Scatter    HPO✗        Scatter✓    Scatter✓  
+  BT                 Packed     HPO✗        Packed✓     Packed✓   
+  CC                 Scatter    HPO✗        Scatter✓    Scatter✓  
+  CG                 Packed     HPO✗        Packed✓     Scatter✗  
+  FT                 Scatter    Scatter✓    Packed✗     HPO✗      
+  IS                 Packed     HPO✗        Packed✓     HPO✗      
+  MG                 Packed     HPO✗        Packed✓     HPO✗      
+  PR                 Packed     HPO✗        Scatter✗    Scatter✗  
+  SP                 Packed     HPO✗        Packed✓     Scatter✗  
+  SSSP               Packed     HPO✗        Scatter✗    Packed✓   
+  TC                 Scatter    HPO✗        Scatter✓    Scatter✓  
+  lavaMD             Packed     Scatter✗    Packed✓     HPO✗      
+
+──────────────────────────────────────────────────────────────────────
+  4TH  n=13  分布={'Packed': 10, 'Scatter': 3}
+  計算中 ...
+  手法               精度      性能比(x)
+  POSM          7.7%      1.0094  ◀
+  RF分類         53.8%      1.0212  
+  SVM          76.9%      1.0218  ◀
+  RF回帰         15.4%      1.0167  
+
+  RF回帰 予測詳細 (4TH):
+  Sample             True       POSM       RF分類       RF回帰      
+  BC                 Packed     HPO✗        Packed✓     Scatter✗  
+  BFS                Packed     HPO✗        Packed✓     Scatter✗  
+  BT                 Packed     HPO✗        Scatter✗    Scatter✗  
+  CC                 Packed     HPO✗        Packed✓     Scatter✗  
+  CG                 Packed     HPO✗        Scatter✗    Packed✓   
+  FT                 Scatter    Scatter✓    Packed✗     HPO✗      
+  IS                 Scatter    HPO✗        Packed✗     Scatter✓  
+  MG                 Scatter    HPO✗        Scatter✓    HPO✗      
+  PR                 Packed     HPO✗        Packed✓     Scatter✗  
+  SP                 Packed     HPO✗        Scatter✗    HPO✗      
+  SSSP               Packed     HPO✗        Packed✓     Scatter✗  
+  TC                 Packed     HPO✗        Packed✓     Scatter✗  
+  lavaMD             Packed     Scatter✗    Scatter✗    HPO✗      
+
+──────────────────────────────────────────────────────────────────────
+  8TH  n=13  分布={'Scatter': 13}
+  計算中 ...
+  手法               精度      性能比(x)
+  POSM         15.4%      1.0004  ◀
+  RF分類        100.0%      1.0005  ◀
+  SVM         100.0%      1.0005  ◀
+  RF回帰         53.8%      1.0005  
+
+  RF回帰 予測詳細 (8TH):
+  Sample             True       POSM       RF分類       RF回帰      
+  BC                 Scatter    HPO✗        Scatter✓    HPO✗      
+  BFS                Scatter    HPO✗        Scatter✓    Scatter✓  
+  BT                 Scatter    HPO✗        Scatter✓    HPO✗      
+  CC                 Scatter    HPO✗        Scatter✓    HPO✗      
+  CG                 Scatter    HPO✗        Scatter✓    Scatter✓  
+  FT                 Scatter    Scatter✓    Scatter✓    HPO✗      
+  IS                 Scatter    HPO✗        Scatter✓    Scatter✓  
+  MG                 Scatter    HPO✗        Scatter✓    HPO✗      
+  PR                 Scatter    HPO✗        Scatter✓    HPO✗      
+  SP                 Scatter    HPO✗        Scatter✓    Scatter✓  
+  SSSP               Scatter    HPO✗        Scatter✓    Scatter✓  
+  TC                 Scatter    HPO✗        Scatter✓    Scatter✓  
+  lavaMD             Scatter    Scatter✓    Scatter✓    Scatter✓  
+
+──────────────────────────────────────────────────────────────────────
+  16TH  n=13  分布={'Packed': 8, 'EPO': 5}
+  計算中 ...
+  手法               精度      性能比(x)
+  POSM          0.0%      1.0108  
+  RF分類         92.3%      1.0020  ◀◀
+  SVM          84.6%      1.0036  
+  RF回帰         53.8%      1.0042  
+
+  RF回帰 予測詳細 (16TH):
+  Sample             True       POSM       RF分類       RF回帰      
+  BC                 EPO        HPO✗        EPO✓        EPO✓      
+  BFS                Packed     HPO✗        EPO✗        EPO✗      
+  BT                 Packed     HPO✗        Packed✓     Packed✓   
+  CC                 EPO        HPO✗        EPO✓        EPO✓      
+  CG                 Packed     HPO✗        Packed✓     Packed✓   
+  FT                 Packed     Scatter✗    Packed✓     EPO✗      
+  IS                 Packed     HPO✗        Packed✓     EPO✗      
+  MG                 Packed     HPO✗        Packed✓     HPO✗      
+  PR                 EPO        HPO✗        EPO✓        EPO✓      
+  SP                 Packed     HPO✗        Packed✓     HPO✗      
+  SSSP               EPO        HPO✗        EPO✓        Scatter✗  
+  TC                 EPO        HPO✗        EPO✓        EPO✓      
+  lavaMD             Packed     Scatter✗    Packed✓     Packed✓   
+
+──────────────────────────────────────────────────────────────────────
+  ALLTH  n=52  分布={'Packed': 27, 'Scatter': 20, 'EPO': 5}
+  計算中 ...
+findfont: Failed to find font weight normal, now using 100.
+findfont: Failed to find font weight normal, now using 100.
+findfont: Failed to find font weight normal, now using 100.
+findfont: Failed to find font weight normal, now using 100.
+  手法               精度      性能比(x)
+  POSM          7.7%      1.0075  
+  RF分類         82.7%      1.0200  
+  SVM          84.6%      1.0254  ◀
+  RF回帰         28.8%      1.0039  ◀
+
+  RF回帰 予測詳細 (ALLTH):
+  Sample             True       POSM       RF分類       RF回帰      
+  BC_2TH             Packed     HPO✗        Scatter✗    Scatter✗  
+  BFS_2TH            Scatter    HPO✗        Scatter✓    Scatter✓  
+  BT_2TH             Packed     HPO✗        Packed✓     Packed✓   
+  CC_2TH             Scatter    HPO✗        Scatter✓    Scatter✓  
+  CG_2TH             Packed     HPO✗        Packed✓     HPO✗      
+  FT_2TH             Scatter    Scatter✓    Scatter✓    Scatter✓  
+  IS_2TH             Packed     HPO✗        Packed✓     HPO✗      
+  MG_2TH             Packed     HPO✗        Scatter✗    Packed✓   
+  PR_2TH             Packed     HPO✗        Packed✓     Scatter✗  
+  SP_2TH             Packed     HPO✗        Packed✓     HPO✗      
+  SSSP_2TH           Packed     HPO✗        Scatter✗    HPO✗      
+  TC_2TH             Scatter    HPO✗        Scatter✓    Scatter✓  
+  lavaMD_2TH         Packed     Scatter✗    Packed✓     Packed✓   
+  BC_4TH             Packed     HPO✗        Packed✓     Scatter✗  
+  BFS_4TH            Packed     HPO✗        Packed✓     Scatter✗  
+  BT_4TH             Packed     HPO✗        Packed✓     Scatter✗  
+  CC_4TH             Packed     HPO✗        Packed✓     Scatter✗  
+  CG_4TH             Packed     HPO✗        Scatter✗    Scatter✗  
+  FT_4TH             Scatter    Scatter✓    Scatter✓    Scatter✓  
+  IS_4TH             Scatter    HPO✗        Packed✗     HPO✗      
+  MG_4TH             Scatter    HPO✗        Packed✗     HPO✗      
+  PR_4TH             Packed     HPO✗        Packed✓     Scatter✗  
+  SP_4TH             Packed     HPO✗        Packed✓     Scatter✗  
+  SSSP_4TH           Packed     HPO✗        Packed✓     Scatter✗  
+  TC_4TH             Packed     HPO✗        Packed✓     Scatter✗  
+  lavaMD_4TH         Packed     Scatter✗    Packed✓     HPO✗      
+  BC_8TH             Scatter    HPO✗        Scatter✓    HPO✗      
+  BFS_8TH            Scatter    HPO✗        Scatter✓    HPO✗      
+  BT_8TH             Scatter    HPO✗        Scatter✓    Scatter✓  
+  CC_8TH             Scatter    HPO✗        Scatter✓    HPO✗      
+  CG_8TH             Scatter    HPO✗        Scatter✓    HPO✗      
+  FT_8TH             Scatter    Scatter✓    Scatter✓    Scatter✓  
+  IS_8TH             Scatter    HPO✗        Scatter✓    HPO✗      
+  MG_8TH             Scatter    HPO✗        Scatter✓    Scatter✓  
+  PR_8TH             Scatter    HPO✗        Scatter✓    HPO✗      
+  SP_8TH             Scatter    HPO✗        Scatter✓    HPO✗      
+  SSSP_8TH           Scatter    HPO✗        Scatter✓    HPO✗      
+  TC_8TH             Scatter    HPO✗        Scatter✓    Scatter✓  
+  lavaMD_8TH         Scatter    Scatter✓    Packed✗     HPO✗      
+  BC_16TH            EPO        HPO✗        EPO✓        HPO✗      
+  BFS_16TH           Packed     HPO✗        EPO✗        EPO✗      
+  BT_16TH            Packed     HPO✗        Packed✓     Scatter✗  
+  CC_16TH            EPO        HPO✗        EPO✓        Packed✗   
+  CG_16TH            Packed     HPO✗        Packed✓     Scatter✗  
+  FT_16TH            Packed     Scatter✗    Packed✓     Scatter✗  
+  IS_16TH            Packed     HPO✗        Packed✓     Packed✓   
+  MG_16TH            Packed     HPO✗        Packed✓     Packed✓   
+  PR_16TH            EPO        HPO✗        EPO✓        Scatter✗  
+  SP_16TH            Packed     HPO✗        Packed✓     Scatter✗  
+  SSSP_16TH          EPO        HPO✗        Packed✗     Scatter✗  
+  TC_16TH            EPO        HPO✗        EPO✓        Scatter✗  
+  lavaMD_16TH        Packed     Scatter✗    Packed✓     Packed✓   
+
+======================================================================
+  ▼ 精度サマリー
+                POSM      RF分類       SVM      RF回帰
+       2TH     7.7%    69.2%    69.2%    38.5%
+       4TH     7.7%    53.8%    76.9%    15.4%
+       8TH    15.4%   100.0%   100.0%    53.8%
+      16TH     0.0%    92.3%    84.6%    53.8%
+     ALLTH     7.7%    82.7%    84.6%    28.8%
+
+  ▼ 性能比サマリー (1.0 = oracle)
+                POSM      RF分類       SVM      RF回帰
+       2TH    1.0096    1.0089    1.0089    1.0111
+       4TH    1.0094    1.0212    1.0218    1.0167
+       8TH    1.0004    1.0005    1.0005    1.0005
+      16TH    1.0108    1.0020    1.0036    1.0042
+     ALLTH    1.0075    1.0200    1.0254    1.0039
+  [SAVE] comparison.csv
+
+  [SAVE] /home/hiragahama/ClaudeXSniper/MachineLearning/Regression/comparison_all_models.png

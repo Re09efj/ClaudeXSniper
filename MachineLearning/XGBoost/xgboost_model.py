@@ -13,6 +13,7 @@ from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
+matplotlib.rcParams["font.family"] = "Noto Sans CJK JP"
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -51,8 +52,11 @@ def train_and_evaluate(X: pd.DataFrame, y: pd.Series) -> dict:
 
     loo = LeaveOneOut()
     y_true_enc, y_pred_enc = [], []
+    n_total = len(X)
 
-    for train_idx, test_idx in loo.split(X):
+    for fold_i, (train_idx, test_idx) in enumerate(loo.split(X)):
+        wl_name = X.index[test_idx[0]]
+        print(f"  [{fold_i+1:2d}/{n_total}] {wl_name}", flush=True)
         y_train = y_enc[train_idx]
         if len(np.unique(y_train)) < 2:
             y_pred_enc.append(y_train[0])
@@ -64,20 +68,31 @@ def train_and_evaluate(X: pd.DataFrame, y: pd.Series) -> dict:
             use_label_encoder=False, eval_metric="mlogloss",
             random_state=42, verbosity=0,
         )
-        clf.fit(X.iloc[train_idx], y_train)
+        # LOO で欠落するクラスを平均特徴量の1サンプルで補完（sklearn API の検証を通すため）
+        X_tr = X.iloc[train_idx].copy()
+        y_tr = list(y_train)
+        for cls in set(range(len(STRATEGIES))) - set(np.unique(y_train)):
+            X_tr = pd.concat([X_tr, X_tr.mean().to_frame().T], ignore_index=True)
+            y_tr.append(cls)
+        clf.fit(X_tr, np.array(y_tr))
         y_pred_enc.append(clf.predict(X.iloc[test_idx])[0])
         y_true_enc.append(y_enc[test_idx[0]])
 
     y_true = le.inverse_transform(y_true_enc)
     y_pred = le.inverse_transform(y_pred_enc)
 
-    # 最終モデルで feature importance
+    # 最終モデルで feature importance（欠落クラスをダミー補完）
     clf_full = XGBClassifier(
         n_estimators=200, max_depth=4, learning_rate=0.1,
         use_label_encoder=False, eval_metric="mlogloss",
         random_state=42, verbosity=0,
     )
-    clf_full.fit(X, y_enc)
+    X_full = X.copy()
+    y_full = list(y_enc)
+    for cls in set(range(len(STRATEGIES))) - set(np.unique(y_enc)):
+        X_full = pd.concat([X_full, X_full.mean().to_frame().T], ignore_index=True)
+        y_full.append(cls)
+    clf_full.fit(X_full, np.array(y_full))
     feat_cols = FEATURE_COLS if X.shape[1] == len(FEATURE_COLS) else FEATURE_COLS_ALLTH
     imp = pd.Series(clf_full.feature_importances_, index=feat_cols)
 
@@ -126,16 +141,54 @@ def run(num_threads: int, label_by: str):
     return res
 
 
+def run_allth(label_by: str):
+    print(f"\n[XGB-ALLTH] label={label_by}")
+    X, y = _build_allth_data(label_by)
+    if X.empty or not HAS_XGBOOST:
+        return {}
+
+    res = train_and_evaluate(X, y)
+    if not res:
+        return {}
+    print(f"[XGB-ALLTH] LOO accuracy={res['accuracy']:.3f}  ({int(res['accuracy']*len(y))}/{len(y)})")
+
+    out_dir = MODEL_DIR / "ALLTH"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    tag = label_by
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    res["importances"].sort_values().plot.barh(ax=ax, color="forestgreen")
+    ax.set_title(f"XGBoost Feature Importance (ALLTH, {tag})", fontsize=13, fontweight="bold")
+    _save(fig, out_dir / f"feature_importance_{tag}.png")
+
+    plot_confusion_matrix(res["confusion"], STRATEGIES,
+                          f"XGBoost Confusion Matrix (ALLTH, {tag})",
+                          out_dir / f"confusion_matrix_{tag}.png")
+    plot_strategy_dist(y, "Best Strategy Distribution (ALLTH)",
+                       out_dir / f"strategy_dist_{tag}.png")
+
+    imp_df = res["importances"].reset_index()
+    imp_df.columns = ["feature", "importance"]
+    imp_df.to_csv(out_dir / f"importances_{tag}.csv", index=False)
+    pd.DataFrame([{"threads": "ALL", "label": label_by,
+                   "accuracy": res["accuracy"], "n_samples": len(X)}]).to_csv(
+        out_dir / f"performance_{tag}.csv", index=False)
+    return res
+
+
 def main():
     p = argparse.ArgumentParser(description="Sniper NUMA 戦略 XGBoost 分類器")
-    p.add_argument("--threads", help="スレッド数 (2/4/8/16/all)")
+    p.add_argument("--threads", help="スレッド数 (2/4/8/16/all/allth)")
     p.add_argument("--label", default="sim_seconds", choices=["sim_seconds", "energy_j"])
     p.add_argument("--all", action="store_true")
     args = p.parse_args()
 
-    if args.all or args.threads == "all":
+    if args.threads in ("allth", "ALLTH"):
+        run_allth(args.label)
+    elif args.all or args.threads == "all":
         for n in THREAD_NUMS:
             run(n, args.label)
+        run_allth(args.label)
     elif args.threads:
         run(int(args.threads), args.label)
     else:

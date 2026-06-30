@@ -1,0 +1,7 @@
+method,accuracy,perf_ratio,l1_positive,l1_kind,l1_n_est,l1_max_depth,l1_min_samples_leaf,l2_kind,l2_n_est,l2_max_depth,l2_min_samples_leaf
+DT(depth=2),0.6923076923076923,1.1921583960130628,,,,,,,,,
+DT(depth=3),0.6730769230769231,1.1855205450760335,,,,,,,,,
+DT(depth=4),0.8076923076923077,1.1296808589120584,,,,,,,,,
+DT(depth=無制限),0.7884615384615384,1.1296397172908434,,,,,,,,,
+Optuna-Hier,0.9038461538461539,1.0188113656308813,,,,,,,,,
+best_params,,,Scatter,rf,50.0,6.0,2.0,rf,300.0,6.0,1.0

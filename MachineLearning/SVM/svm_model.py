@@ -13,6 +13,7 @@ from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
+matplotlib.rcParams["font.family"] = "Noto Sans CJK JP"
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -61,13 +62,16 @@ def train_and_evaluate(X: pd.DataFrame, y: pd.Series) -> dict:
         pipe.fit(X.iloc[train_idx], y_train)
         y_pred.append(pipe.predict(X.iloc[test_idx])[0])
 
-    # 最終モデルで permutation importance
-    pipe_full = make_pipeline()
-    pipe_full.fit(X, y)
-    from sklearn.inspection import permutation_importance as pi
-    r = pi(pipe_full, X, y, n_repeats=10, random_state=42)
-    imp = pd.Series(r.importances_mean, index=FEATURE_COLS if X.shape[1] == len(FEATURE_COLS)
-                    else FEATURE_COLS_ALLTH)
+    # 最終モデルで permutation importance（全ラベルが同一クラスの場合はスキップ）
+    feat_cols = FEATURE_COLS if X.shape[1] == len(FEATURE_COLS) else FEATURE_COLS_ALLTH
+    if y.nunique() < 2:
+        imp = pd.Series(0.0, index=feat_cols)
+    else:
+        pipe_full = make_pipeline()
+        pipe_full.fit(X, y)
+        from sklearn.inspection import permutation_importance as pi
+        r = pi(pipe_full, X, y, n_repeats=10, random_state=42)
+        imp = pd.Series(r.importances_mean, index=feat_cols)
 
     acc = accuracy_score(y_true, y_pred)
     cm  = confusion_matrix(y_true, y_pred, labels=STRATEGIES)
@@ -111,15 +115,52 @@ def run(num_threads: int, label_by: str):
     return res
 
 
+def run_allth(label_by: str):
+    print(f"\n[SVM-ALLTH] label={label_by}")
+    X, y = _build_allth_data(label_by)
+    if X.empty:
+        print("[SVM-ALLTH] データなし")
+        return {}
+
+    res = train_and_evaluate(X, y)
+    print(f"[SVM-ALLTH] LOO accuracy={res['accuracy']:.3f}  ({int(res['accuracy']*len(y))}/{len(y)})")
+
+    out_dir = MODEL_DIR / "ALLTH"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    tag = label_by
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    res["importances"].sort_values().plot.barh(ax=ax, color="darkorange")
+    ax.set_title(f"SVM Permutation Importance (ALLTH, {tag})", fontsize=13, fontweight="bold")
+    _save(fig, out_dir / f"feature_importance_{tag}.png")
+
+    plot_confusion_matrix(res["confusion"], STRATEGIES,
+                          f"SVM Confusion Matrix (ALLTH, {tag})",
+                          out_dir / f"confusion_matrix_{tag}.png")
+    plot_strategy_dist(y, "Best Strategy Distribution (ALLTH)",
+                       out_dir / f"strategy_dist_{tag}.png")
+
+    imp_df = res["importances"].reset_index()
+    imp_df.columns = ["feature", "importance"]
+    imp_df.to_csv(out_dir / f"importances_{tag}.csv", index=False)
+    pd.DataFrame([{"threads": "ALL", "label": label_by,
+                   "accuracy": res["accuracy"], "n_samples": len(X)}]).to_csv(
+        out_dir / f"performance_{tag}.csv", index=False)
+    return res
+
+
 def main():
     p = argparse.ArgumentParser(description="Sniper NUMA 戦略 SVM 分類器")
-    p.add_argument("--threads", help="スレッド数 (2/4/8/16/all)")
+    p.add_argument("--threads", help="スレッド数 (2/4/8/16/all/allth)")
     p.add_argument("--label", default="sim_seconds", choices=["sim_seconds", "energy_j"])
     args = p.parse_args()
 
-    targets = THREAD_NUMS if args.threads == "all" else [int(args.threads)]
-    for n in targets:
-        run(n, args.label)
+    if args.threads in ("allth", "ALLTH"):
+        run_allth(args.label)
+    else:
+        targets = THREAD_NUMS if args.threads == "all" else [int(args.threads)]
+        for n in targets:
+            run(n, args.label)
 
 
 if __name__ == "__main__":

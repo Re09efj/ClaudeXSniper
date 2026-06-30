@@ -25,6 +25,8 @@ from utility.stats_reader import (
     parse_node_stats,
     parse_numa_access,
     parse_l1d_where,
+    parse_cpi_breakdown,
+    _db,
     P_CORES,
     E_CORES,
     NODE0_CPUS,
@@ -37,15 +39,46 @@ THREAD_NUMS  = [2, 4, 8, 16]
 OUTPUTS_DIR  = Path(__file__).parent.parent / "Outputs" / "sizeS"
 
 FEATURE_COLS = [
+    # ── IPC 系 ──────────────────────────
     "avg_ipc",
     "ipc_cv",
     "pe_ratio",
+    # ── NUMA アクセス ────────────────────
     "local_ratio",
     "remote_ratio",
+    # ── キャッシュ階層強度 ────────────────
     "l2_intensity",
     "l3_intensity",
     "mem_intensity",
     "read_ratio",
+    # ── CPI 内訳比率（メモリ待ち） ─────────
+    "cpi_l3_ratio",
+    "cpi_dram_local_ratio",
+    "cpi_dram_remote_ratio",
+    "cpi_branch_ratio",
+    "cpi_sync_ratio",
+    # ── μop 命令ミックス ──────────────────
+    "uop_load_ratio",
+    "uop_store_ratio",
+    "uop_fp_ratio",
+    # ── TLB・ブランチ ────────────────────
+    "dtlb_miss_rate",
+    "branch_mispredict_rate",
+    # ── DRAM レイテンシ ───────────────────
+    "avg_dram_latency",
+    "dram_queue_ratio",
+    # ── L1D ヒット率 ─────────────────────
+    "l1d_hit_ratio",
+    # ── 同期頻度 ─────────────────────────
+    "futex_wake_per_minst",
+    # ── メモリ帯域・Roofline ──────────────
+    "mem_bw_mbps",
+    "operational_intensity",
+    # ── TLB（命令・2段目） ────────────────
+    "itlb_miss_rate",
+    "stlb_miss_rate",
+    # ── ロード供給源 ─────────────────────
+    "load_l1_ratio",
 ]
 FEATURE_COLS_ALLTH = ["num_threads"] + FEATURE_COLS
 
@@ -118,18 +151,169 @@ def parse_stats(output_dir: Path, num_threads: int,
     dram_total   = total_reads + total_writes
     read_ratio   = total_reads / dram_total if dram_total > 0 else 0.5
 
+    # ── CPI 内訳比率 ──────────────────────────────────────────────
+    cpi_bd = parse_cpi_breakdown(out_str)  # {core: {base, branch, l2, l3, dram_local, dram_remote}}
+    cpi_sums = {"base": 0, "branch": 0, "l2": 0, "l3": 0, "dram_local": 0, "dram_remote": 0}
+    for core_d in cpi_bd.values():
+        for k in cpi_sums:
+            cpi_sums[k] += core_d.get(k, 0)
+    cpi_total = sum(cpi_sums.values()) or 1
+    cpi_l3_ratio         = cpi_sums["l3"]         / cpi_total
+    cpi_dram_local_ratio = cpi_sums["dram_local"]  / cpi_total
+    cpi_dram_remote_ratio= cpi_sums["dram_remote"] / cpi_total
+    cpi_branch_ratio     = cpi_sums["branch"]      / cpi_total
+
+    # sync stall (performance_model)
+    conn = _db(out_str)
+    cpi_sync = 0.0
+    if conn:
+        from utility.stats_reader import _query
+        sync_vals = _query(conn, "stop", "performance_model", "cpiSyncFutex") + \
+                    _query(conn, "stop", "performance_model", "cpiSyncSyscall")
+        cpi_sync = sum(v for _, v in sync_vals)
+        conn.close()
+    cpi_sync_ratio = cpi_sync / (cpi_total + cpi_sync) if (cpi_total + cpi_sync) > 0 else 0.0
+
+    # ── μop 命令ミックス ───────────────────────────────────────────
+    conn2 = _db(out_str)
+    uop_load = uop_store = uop_fp = uops_total = 0
+    if conn2:
+        from utility.stats_reader import _query
+        def _sum_metric(obj, met):
+            return sum(v for _, v in _query(conn2, "stop", obj, met))
+        uop_load   = _sum_metric("interval_timer", "uop_load")
+        uop_store  = _sum_metric("interval_timer", "uop_store")
+        uop_fp     = _sum_metric("interval_timer", "uop_fp_muldiv")
+        uops_total = _sum_metric("interval_timer", "uops_total") or 1
+        conn2.close()
+    uop_load_ratio  = uop_load  / uops_total
+    uop_store_ratio = uop_store / uops_total
+    uop_fp_ratio    = uop_fp    / uops_total
+
+    # ── TLB ミス率 ────────────────────────────────────────────────
+    conn3 = _db(out_str)
+    dtlb_miss_rate = 0.0
+    if conn3:
+        from utility.stats_reader import _query
+        dtlb_access = sum(v for _, v in _query(conn3, "stop", "dtlb", "access")) or 1
+        dtlb_miss   = sum(v for _, v in _query(conn3, "stop", "dtlb", "miss"))
+        dtlb_miss_rate = dtlb_miss / dtlb_access
+        conn3.close()
+
+    # ── ブランチ予測失敗率 ─────────────────────────────────────────
+    conn4 = _db(out_str)
+    branch_mispredict_rate = 0.0
+    if conn4:
+        from utility.stats_reader import _query
+        bp_correct   = sum(v for _, v in _query(conn4, "stop", "branch_predictor", "num-correct"))
+        bp_incorrect = sum(v for _, v in _query(conn4, "stop", "branch_predictor", "num-incorrect"))
+        bp_total = bp_correct + bp_incorrect
+        branch_mispredict_rate = bp_incorrect / bp_total if bp_total > 0 else 0.0
+        conn4.close()
+
+    # ── DRAM レイテンシ ───────────────────────────────────────────
+    conn5 = _db(out_str)
+    avg_dram_latency = dram_queue_ratio = 0.0
+    if conn5:
+        from utility.stats_reader import _query
+        dram_reads_n   = sum(v for _, v in _query(conn5, "stop", "dram", "reads")) or 1
+        dram_lat_total = sum(v for _, v in _query(conn5, "stop", "dram", "total-access-latency"))
+        dq_requests    = sum(v for _, v in _query(conn5, "stop", "dram-queue", "num-requests")) or 1
+        dq_delay       = sum(v for _, v in _query(conn5, "stop", "dram-queue", "total-queue-delay"))
+        dq_used        = sum(v for _, v in _query(conn5, "stop", "dram-queue", "total-time-used")) or 1
+        avg_dram_latency = dram_lat_total / dram_reads_n
+        dram_queue_ratio = dq_delay / dq_used
+        conn5.close()
+
+    # ── L1D ヒット率 ──────────────────────────────────────────────
+    l1d_total = l1d_hit = 0
+    for core_d in l1d_where.values():
+        hits    = core_d.get("l1", 0) + core_d.get("l1s", 0)
+        total_c = sum(core_d.values())
+        l1d_hit   += hits
+        l1d_total += total_c
+    l1d_hit_ratio = l1d_hit / l1d_total if l1d_total > 0 else 0.0
+
+    # ── 同期頻度 ──────────────────────────────────────────────────
+    from utility.stats_reader import parse_sync_stats
+    sync_s = parse_sync_stats(out_str)
+    futex_wake_per_minst = sync_s.get("futex_wake_per_minst", 0.0)
+
+    # ── メモリ帯域・Roofline ───────────────────────────────────────
+    conn_bw = _db(out_str)
+    mem_bw_mbps = operational_intensity = itlb_miss_rate = stlb_miss_rate = load_l1_ratio = 0.0
+    if conn_bw:
+        from utility.stats_reader import _query
+        def _s(obj, met):
+            return sum(v for _, v in _query(conn_bw, "stop", obj, met))
+        elapsed_fs  = max((v for _, v in _query(conn_bw, "stop", "performance_model", "elapsed_time")), default=1)
+        elapsed_s   = elapsed_fs / 1e15
+        dram_reads  = _s("dram", "reads")
+        dram_writes = _s("dram", "writes")
+        dram_bytes  = (dram_reads + dram_writes) * 64
+        mem_bw_mbps = dram_bytes / 1e6 / elapsed_s if elapsed_s > 0 else 0.0
+
+        uop_fp_add = _s("interval_timer", "uop_fp_addsub")
+        uop_fp_mul = _s("interval_timer", "uop_fp_muldiv")
+        operational_intensity = (uop_fp_add + uop_fp_mul) / dram_bytes if dram_bytes > 0 else 0.0
+
+        itlb_acc       = _s("itlb", "access") or 1
+        itlb_miss_rate = _s("itlb", "miss") / itlb_acc
+
+        stlb_acc       = _s("stlb", "access") or 1
+        stlb_miss_rate = _s("stlb", "miss") / stlb_acc
+
+        lc_l1    = _s("interval_timer", "cpContr_load_l1")
+        lc_l2    = _s("interval_timer", "cpContr_load_l2")
+        lc_l3    = _s("interval_timer", "cpContr_load_l3")
+        lc_ot    = _s("interval_timer", "cpContr_load_other")
+        lc_total = lc_l1 + lc_l2 + lc_l3 + lc_ot or 1
+        load_l1_ratio = lc_l1 / lc_total
+        conn_bw.close()
+
     return {
         "sim_seconds":  sim_seconds,
         "energy_j":     energy_j,
+        # IPC 系
         "avg_ipc":      avg_ipc,
         "ipc_cv":       ipc_cv,
         "pe_ratio":     pe_ratio,
+        # NUMA アクセス
         "local_ratio":  local_ratio,
         "remote_ratio": remote_ratio,
+        # キャッシュ階層強度
         "l2_intensity": l2_intensity,
         "l3_intensity": l3_intensity,
         "mem_intensity":mem_intensity,
         "read_ratio":   read_ratio,
+        # CPI 内訳
+        "cpi_l3_ratio":          cpi_l3_ratio,
+        "cpi_dram_local_ratio":  cpi_dram_local_ratio,
+        "cpi_dram_remote_ratio": cpi_dram_remote_ratio,
+        "cpi_branch_ratio":      cpi_branch_ratio,
+        "cpi_sync_ratio":        cpi_sync_ratio,
+        # μop 命令ミックス
+        "uop_load_ratio":  uop_load_ratio,
+        "uop_store_ratio": uop_store_ratio,
+        "uop_fp_ratio":    uop_fp_ratio,
+        # TLB・ブランチ
+        "dtlb_miss_rate":        dtlb_miss_rate,
+        "branch_mispredict_rate":branch_mispredict_rate,
+        # DRAM レイテンシ
+        "avg_dram_latency": avg_dram_latency,
+        "dram_queue_ratio": dram_queue_ratio,
+        # L1D ヒット率
+        "l1d_hit_ratio": l1d_hit_ratio,
+        # 同期頻度
+        "futex_wake_per_minst":    futex_wake_per_minst,
+        # メモリ帯域・Roofline
+        "mem_bw_mbps":             mem_bw_mbps,
+        "operational_intensity":   operational_intensity,
+        # TLB
+        "itlb_miss_rate":          itlb_miss_rate,
+        "stlb_miss_rate":          stlb_miss_rate,
+        # ロード供給源
+        "load_l1_ratio":           load_l1_ratio,
     }
 
 

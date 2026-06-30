@@ -1,0 +1,23 @@
+findfont: Failed to find font weight normal, now using 100.
+findfont: Failed to find font weight bold, now using 100.
+findfont: Failed to find font weight bold, now using 100.
+
+[SVM] 2TH  label=sim_seconds
+[SVM] LOO accuracy=0.692
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/2TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/2TH/strategy_dist_sim_seconds.png
+
+[SVM] 4TH  label=sim_seconds
+[SVM] LOO accuracy=0.692
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/4TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/4TH/strategy_dist_sim_seconds.png
+
+[SVM] 8TH  label=sim_seconds
+[SVM] LOO accuracy=1.000
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/8TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/8TH/strategy_dist_sim_seconds.png
+
+[SVM] 16TH  label=sim_seconds
+[SVM] LOO accuracy=0.923
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/16TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/SVM/16TH/strategy_dist_sim_seconds.png

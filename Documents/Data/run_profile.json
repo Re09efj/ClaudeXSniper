@@ -36,11 +36,11 @@
     ]
   },
   "lavaMD_S_4": {
-    "simTime": 0.000372,
-    "instructions": 334881,
-    "wallTime": 466.9,
+    "simTime": 0.000373,
+    "instructions": 334889,
+    "wallTime": 5.0,
     "wallTimes": [
-      1787.1,
+      5.0,
       5.0,
       5.0,
       5.0,
@@ -48,39 +48,39 @@
     ]
   },
   "BT_S_4": {
-    "simTime": 0.062822,
-    "instructions": 679601923,
-    "wallTime": 912.3,
+    "simTime": 0.01538,
+    "instructions": 682192266,
+    "wallTime": 279.3,
     "wallTimes": [
-      2321.2,
-      350.0,
-      350.0,
-      351.0,
-      370.0
+      370.0,
+      284.0,
+      285.0,
+      229.0,
+      157.0
     ]
   },
   "MG_S_4": {
-    "simTime": 0.005529,
-    "instructions": 37751087,
-    "wallTime": 69.0,
+    "simTime": 0.005534,
+    "instructions": 37781914,
+    "wallTime": 23.7,
     "wallTimes": [
-      150.5,
-      28.0,
-      30.0,
-      29.0,
-      32.0
+      32.0,
+      19.0,
+      21.0,
+      20.0,
+      21.0
     ]
   },
   "CG_S_4": {
-    "simTime": 0.036411,
-    "instructions": 324323488,
-    "wallTime": 429.2,
+    "simTime": 0.036397,
+    "instructions": 324226529,
+    "wallTime": 107.7,
     "wallTimes": [
-      1256.7,
-      141.0,
-      141.0,
-      143.0,
-      172.0
+      172.0,
+      76.0,
+      79.0,
+      84.0,
+      92.0
     ]
   },
   "lavaMD_W_16": {
@@ -404,111 +404,111 @@
     ]
   },
   "IS_S_4": {
-    "simTime": 0.002736,
-    "instructions": 38422412,
-    "wallTime": 19.2,
+    "simTime": 0.011232,
+    "instructions": 38007283,
+    "wallTime": 19.7,
     "wallTimes": [
-      13.2,
+      25.0,
+      14.0,
       20.0,
-      20.0,
-      24.0,
-      25.0
+      17.0,
+      18.0
     ]
   },
   "SP_S_4": {
-    "simTime": 0.035174,
-    "instructions": 301203047,
-    "wallTime": 441.5,
+    "simTime": 0.035205,
+    "instructions": 301871730,
+    "wallTime": 161.0,
     "wallTimes": [
-      929.6,
-      183.0,
-      185.0,
-      191.0,
-      210.0
+      210.0,
+      149.0,
+      150.0,
+      143.0,
+      123.0
     ]
   },
   "BFS_S_4": {
-    "simTime": 0.008468,
-    "instructions": 22052145,
-    "wallTime": 59.0,
+    "simTime": 0.008328,
+    "instructions": 21813914,
+    "wallTime": 21.0,
     "wallTimes": [
-      108.6,
-      23.0,
-      26.0,
-      23.0,
-      25.0
+      25.0,
+      18.0,
+      21.0,
+      18.0,
+      21.0
     ]
   },
   "FT_S_4": {
-    "simTime": 0.068348,
-    "instructions": 768366815,
-    "wallTime": 999.5,
+    "simTime": 0.067472,
+    "instructions": 764160090,
+    "wallTime": 257.2,
     "wallTimes": [
-      2654.5,
-      306.0,
-      332.0,
-      344.0,
-      351.0
+      351.0,
+      187.0,
+      242.0,
+      231.0,
+      188.0
     ]
   },
   "BC_S_4": {
-    "simTime": 0.008436,
-    "instructions": 22062241,
-    "wallTime": 66.3,
+    "simTime": 0.008267,
+    "instructions": 21829464,
+    "wallTime": 21.3,
     "wallTimes": [
-      115.3,
-      23.0,
-      23.0,
-      26.0,
-      25.0
+      25.0,
+      18.0,
+      21.0,
+      18.0,
+      20.0
     ]
   },
   "PR_S_4": {
-    "simTime": 0.008439,
-    "instructions": 21971466,
-    "wallTime": 110.4,
+    "simTime": 0.008252,
+    "instructions": 21703942,
+    "wallTime": 21.5,
     "wallTimes": [
-      206.0,
-      23.0,
-      23.0,
       26.0,
-      26.0
+      18.0,
+      20.0,
+      18.0,
+      21.0
     ]
   },
   "CC_S_4": {
-    "simTime": 0.008496,
-    "instructions": 22051356,
-    "wallTime": 73.6,
+    "simTime": 0.008386,
+    "instructions": 21730227,
+    "wallTime": 21.3,
     "wallTimes": [
-      142.5,
-      23.0,
-      23.0,
       26.0,
-      26.0
+      18.0,
+      20.0,
+      18.0,
+      20.0
     ]
   },
   "SSSP_S_4": {
-    "simTime": 0.00918,
-    "instructions": 28992303,
-    "wallTime": 76.8,
+    "simTime": 0.009045,
+    "instructions": 28845490,
+    "wallTime": 26.7,
     "wallTimes": [
-      134.1,
-      28.0,
-      27.0,
       33.0,
-      33.0
+      23.0,
+      25.0,
+      23.0,
+      23.0
     ]
   },
   "TC_S_4": {
-    "simTime": 0.008469,
-    "instructions": 22335756,
-    "wallTime": 181.0,
+    "simTime": 0.008314,
+    "instructions": 21841221,
+    "wallTime": 20.2,
     "wallTimes": [
-      604.5,
       23.0,
-      26.0,
-      22.0,
-      23.0
+      19.0,
+      20.0,
+      19.0,
+      18.0
     ]
   },
   "IS_S_16": {
@@ -653,6 +653,284 @@
       16.0,
       16.0,
       16.0
+    ]
+  },
+  "CG_W_2": {
+    "simTime": 1.176215,
+    "instructions": 2210165311,
+    "wallTime": 1585.5,
+    "wallTimes": [
+      1181.1,
+      1050.1,
+      1983.2,
+      1992.2,
+      2261.2
+    ]
+  },
+  "FT_W_2": {
+    "simTime": 0.083082,
+    "instructions": 1706617564,
+    "wallTime": 714.1,
+    "wallTimes": [
+      520.0,
+      736.1,
+      761.1,
+      770.1,
+      783.1
+    ]
+  },
+  "IS_W_2": {
+    "simTime": 0.357781,
+    "instructions": 575479842,
+    "wallTime": 358.8,
+    "wallTimes": [
+      329.0,
+      361.0,
+      362.0,
+      383.0
+    ]
+  },
+  "lavaMD_W_2": {
+    "simTime": 0.000378,
+    "instructions": 352949,
+    "wallTime": 5.2,
+    "wallTimes": [
+      5.0,
+      6.0,
+      5.0,
+      5.0
+    ]
+  },
+  "BFS_W_2": {
+    "simTime": 0.018206,
+    "instructions": 30762649,
+    "wallTime": 32.8,
+    "wallTimes": [
+      31.0,
+      35.0,
+      31.0,
+      34.0
+    ]
+  },
+  "PR_W_2": {
+    "simTime": 0.018092,
+    "instructions": 30701598,
+    "wallTime": 32.8,
+    "wallTimes": [
+      31.0,
+      35.0,
+      31.0,
+      34.0
+    ]
+  },
+  "BC_W_2": {
+    "simTime": 0.018106,
+    "instructions": 30781041,
+    "wallTime": 32.8,
+    "wallTimes": [
+      32.0,
+      35.0,
+      30.0,
+      34.0
+    ]
+  },
+  "CC_W_2": {
+    "simTime": 0.018314,
+    "instructions": 30769117,
+    "wallTime": 32.8,
+    "wallTimes": [
+      31.0,
+      35.0,
+      31.0,
+      34.0
+    ]
+  },
+  "SSSP_W_2": {
+    "simTime": 0.019574,
+    "instructions": 38094241,
+    "wallTime": 40.8,
+    "wallTimes": [
+      38.0,
+      43.0,
+      40.0,
+      42.0
+    ]
+  },
+  "TC_W_2": {
+    "simTime": 0.018304,
+    "instructions": 31079156,
+    "wallTime": 32.5,
+    "wallTimes": [
+      31.0,
+      36.0,
+      30.0,
+      33.0
+    ]
+  },
+  "MG_W_2": {
+    "simTime": 1.022253,
+    "instructions": 1864988511,
+    "wallTime": 1545.3,
+    "wallTimes": [
+      1455.1,
+      1548.1,
+      1557.1,
+      1621.1
+    ]
+  },
+  "BT_W_2": {
+    "simTime": 3.18232,
+    "instructions": 18460094804,
+    "wallTime": 6175.2,
+    "wallTimes": [
+      6088.5,
+      6097.5,
+      6109.5,
+      6405.5
+    ]
+  },
+  "SP_W_2": {
+    "simTime": 3.437665,
+    "instructions": 34882203911,
+    "wallTime": 14093.8,
+    "wallTimes": [
+      11515.0,
+      14267.3,
+      15275.5,
+      15317.5
+    ]
+  },
+  "CG_W_4": {
+    "simTime": 0.559515,
+    "instructions": 2146866038,
+    "wallTime": 965.1,
+    "wallTimes": [
+      600.0,
+      1150.1,
+      1163.1,
+      608.1,
+      1304.1
+    ]
+  },
+  "lavaMD_W_4": {
+    "simTime": 0.000379,
+    "instructions": 353308,
+    "wallTime": 5.0,
+    "wallTimes": [
+      5.0,
+      5.0,
+      5.0,
+      5.0
+    ]
+  },
+  "BFS_W_4": {
+    "simTime": 0.01633,
+    "instructions": 38175231,
+    "wallTime": 25.2,
+    "wallTimes": [
+      23.0,
+      25.0,
+      27.0,
+      26.0
+    ]
+  },
+  "PR_W_4": {
+    "simTime": 0.016234,
+    "instructions": 38033890,
+    "wallTime": 25.5,
+    "wallTimes": [
+      24.0,
+      25.0,
+      27.0,
+      26.0
+    ]
+  },
+  "BC_W_4": {
+    "simTime": 0.01623,
+    "instructions": 38137972,
+    "wallTime": 25.8,
+    "wallTimes": [
+      24.0,
+      25.0,
+      28.0,
+      26.0
+    ]
+  },
+  "CC_W_4": {
+    "simTime": 0.016451,
+    "instructions": 38065425,
+    "wallTime": 25.8,
+    "wallTimes": [
+      24.0,
+      25.0,
+      28.0,
+      26.0
+    ]
+  },
+  "SSSP_W_4": {
+    "simTime": 0.017625,
+    "instructions": 49991767,
+    "wallTime": 32.0,
+    "wallTimes": [
+      31.0,
+      32.0,
+      33.0,
+      32.0
+    ]
+  },
+  "TC_W_4": {
+    "simTime": 0.016384,
+    "instructions": 38478680,
+    "wallTime": 25.5,
+    "wallTimes": [
+      25.0,
+      26.0,
+      27.0,
+      24.0
+    ]
+  },
+  "IS_W_4": {
+    "simTime": 0.18125,
+    "instructions": 581270098,
+    "wallTime": 210.5,
+    "wallTimes": [
+      200.0,
+      214.0,
+      196.0,
+      232.0
+    ]
+  },
+  "FT_W_4": {
+    "simTime": 0.149254,
+    "instructions": 1685596643,
+    "wallTime": 431.0,
+    "wallTimes": [
+      420.0,
+      427.0,
+      412.0,
+      465.0
+    ]
+  },
+  "MG_W_4": {
+    "simTime": 0.517091,
+    "instructions": 1904788064,
+    "wallTime": 944.9,
+    "wallTimes": [
+      944.1,
+      968.1,
+      818.1,
+      1049.1
+    ]
+  },
+  "BT_W_4": {
+    "simTime": 1.77282,
+    "instructions": 20148296652,
+    "wallTime": 5512.5,
+    "wallTimes": [
+      5559.5,
+      5564.5,
+      5415.5,
+      5510.5
     ]
   }
 }

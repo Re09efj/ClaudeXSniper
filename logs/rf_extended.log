@@ -1,0 +1,177 @@
+
+[RF] 2TH  label=sim_seconds
+[RF] サンプル数=13  特徴量=9
+[RF] 戦略分布:
+best_strategy
+Packed     9
+Scatter    4
+Name: count, dtype: int64
+[RF] LOO accuracy=0.692  (9/13)
+
+  Workload   True       Pred       OK?
+  ------------------------------------------
+  BC         Packed     Scatter    ✗
+  BFS        Scatter    Scatter    ✓
+  BT         Packed     Packed     ✓
+  CC         Scatter    Scatter    ✓
+  CG         Packed     Packed     ✓
+  FT         Scatter    Packed     ✗
+  IS         Packed     Packed     ✓
+  MG         Packed     Packed     ✓
+  PR         Packed     Scatter    ✗
+  SP         Packed     Packed     ✓
+  SSSP       Packed     Scatter    ✗
+  TC         Scatter    Scatter    ✓
+  lavaMD     Packed     Packed     ✓
+[RF] 特徴量重要度: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/2TH/feature_importance_sim_seconds.png
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/2TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/2TH/strategy_dist_sim_seconds.png
+[RF] データセット保存: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/2TH/dataset_sim_seconds.csv
+
+[RF] 4TH  label=sim_seconds
+[RF] サンプル数=13  特徴量=9
+[RF] 戦略分布:
+best_strategy
+Packed     12
+Scatter     1
+Name: count, dtype: int64
+[RF] LOO accuracy=0.923  (12/13)
+
+  Workload   True       Pred       OK?
+  ------------------------------------------
+  BC         Packed     Packed     ✓
+  BFS        Packed     Packed     ✓
+  BT         Packed     Packed     ✓
+  CC         Packed     Packed     ✓
+  CG         Packed     Packed     ✓
+  FT         Scatter    Packed     ✗
+  IS         Packed     Packed     ✓
+  MG         Packed     Packed     ✓
+  PR         Packed     Packed     ✓
+  SP         Packed     Packed     ✓
+  SSSP       Packed     Packed     ✓
+  TC         Packed     Packed     ✓
+  lavaMD     Packed     Packed     ✓
+[RF] 特徴量重要度: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/4TH/feature_importance_sim_seconds.png
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/4TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/4TH/strategy_dist_sim_seconds.png
+[RF] データセット保存: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/4TH/dataset_sim_seconds.csv
+
+[RF] 8TH  label=sim_seconds
+[RF] サンプル数=13  特徴量=9
+[RF] 戦略分布:
+best_strategy
+Scatter    13
+Name: count, dtype: int64
+[RF] LOO accuracy=1.000  (13/13)
+
+  Workload   True       Pred       OK?
+  ------------------------------------------
+  BC         Scatter    Scatter    ✓
+  BFS        Scatter    Scatter    ✓
+  BT         Scatter    Scatter    ✓
+  CC         Scatter    Scatter    ✓
+  CG         Scatter    Scatter    ✓
+  FT         Scatter    Scatter    ✓
+  IS         Scatter    Scatter    ✓
+  MG         Scatter    Scatter    ✓
+  PR         Scatter    Scatter    ✓
+  SP         Scatter    Scatter    ✓
+  SSSP       Scatter    Scatter    ✓
+  TC         Scatter    Scatter    ✓
+  lavaMD     Scatter    Scatter    ✓
+[RF] 特徴量重要度: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/8TH/feature_importance_sim_seconds.png
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/8TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/8TH/strategy_dist_sim_seconds.png
+[RF] データセット保存: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/8TH/dataset_sim_seconds.csv
+
+[RF] 16TH  label=sim_seconds
+[RF] サンプル数=13  特徴量=9
+[RF] 戦略分布:
+best_strategy
+Packed    8
+EPO       5
+Name: count, dtype: int64
+[RF] LOO accuracy=0.923  (12/13)
+
+  Workload   True       Pred       OK?
+  ------------------------------------------
+  BC         EPO        EPO        ✓
+  BFS        Packed     EPO        ✗
+  BT         Packed     Packed     ✓
+  CC         EPO        EPO        ✓
+  CG         Packed     Packed     ✓
+  FT         Packed     Packed     ✓
+  IS         Packed     Packed     ✓
+  MG         Packed     Packed     ✓
+  PR         EPO        EPO        ✓
+  SP         Packed     Packed     ✓
+  SSSP       EPO        EPO        ✓
+  TC         EPO        EPO        ✓
+  lavaMD     Packed     Packed     ✓
+[RF] 特徴量重要度: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/16TH/feature_importance_sim_seconds.png
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/16TH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/16TH/strategy_dist_sim_seconds.png
+[RF] データセット保存: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/16TH/dataset_sim_seconds.csv
+
+[RF-ALLTH] label=sim_seconds
+[RF-ALLTH] サンプル数=52
+[RF-ALLTH] LOO accuracy=0.885  (46/52)
+
+  Sample             True       Pred       OK?
+  --------------------------------------------------
+  BC_2TH             Packed     Scatter    ✗
+  BFS_2TH            Scatter    Scatter    ✓
+  BT_2TH             Packed     Packed     ✓
+  CC_2TH             Scatter    Scatter    ✓
+  CG_2TH             Packed     Packed     ✓
+  FT_2TH             Scatter    Scatter    ✓
+  IS_2TH             Packed     Packed     ✓
+  MG_2TH             Packed     Packed     ✓
+  PR_2TH             Packed     Scatter    ✗
+  SP_2TH             Packed     Packed     ✓
+  SSSP_2TH           Packed     Scatter    ✗
+  TC_2TH             Scatter    Scatter    ✓
+  lavaMD_2TH         Packed     Packed     ✓
+  BC_4TH             Packed     Packed     ✓
+  BFS_4TH            Packed     Packed     ✓
+  BT_4TH             Packed     Packed     ✓
+  CC_4TH             Packed     Packed     ✓
+  CG_4TH             Packed     Packed     ✓
+  FT_4TH             Scatter    Scatter    ✓
+  IS_4TH             Packed     Packed     ✓
+  MG_4TH             Packed     Packed     ✓
+  PR_4TH             Packed     Packed     ✓
+  SP_4TH             Packed     Packed     ✓
+  SSSP_4TH           Packed     Packed     ✓
+  TC_4TH             Packed     Packed     ✓
+  lavaMD_4TH         Packed     Packed     ✓
+  BC_8TH             Scatter    Scatter    ✓
+  BFS_8TH            Scatter    Scatter    ✓
+  BT_8TH             Scatter    Scatter    ✓
+  CC_8TH             Scatter    Scatter    ✓
+  CG_8TH             Scatter    Scatter    ✓
+  FT_8TH             Scatter    Scatter    ✓
+  IS_8TH             Scatter    Scatter    ✓
+  MG_8TH             Scatter    Scatter    ✓
+  PR_8TH             Scatter    Scatter    ✓
+  SP_8TH             Scatter    Scatter    ✓
+  SSSP_8TH           Scatter    Scatter    ✓
+  TC_8TH             Scatter    Scatter    ✓
+  lavaMD_8TH         Scatter    Packed     ✗
+  BC_16TH            EPO        EPO        ✓
+  BFS_16TH           Packed     EPO        ✗
+  BT_16TH            Packed     Packed     ✓
+  CC_16TH            EPO        EPO        ✓
+  CG_16TH            Packed     Packed     ✓
+  FT_16TH            Packed     Packed     ✓
+  IS_16TH            Packed     Packed     ✓
+  MG_16TH            Packed     Packed     ✓
+  PR_16TH            EPO        EPO        ✓
+  SP_16TH            Packed     Packed     ✓
+  SSSP_16TH          EPO        Packed     ✗
+  TC_16TH            EPO        EPO        ✓
+  lavaMD_16TH        Packed     Packed     ✓
+[RF] 特徴量重要度: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/ALLTH/feature_importance_sim_seconds.png
+[RF] 混同行列: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/ALLTH/confusion_matrix_sim_seconds.png
+[RF] 戦略分布: /home/hiragahama/ClaudeXSniper/MachineLearning/RandomForest/ALLTH/strategy_dist_sim_seconds.png

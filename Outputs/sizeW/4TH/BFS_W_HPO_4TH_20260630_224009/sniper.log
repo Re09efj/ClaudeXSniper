@@ -1,0 +1,28 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:[ExScIepFtTi_oRnE COCRoDdEeR: ]A CICEnSteSr_naIlN VeAxLcIepDt_iAoDn:DRESS. ExEcxecpetpitoni onA dCdordees:s  =A C0CxE7fS2S2_aDbE7N7I1ED6.c 0E.x cAecpcteisosn  TAydpder:e sUsNK N=O 0WxN.7 fA2c2caebss77 1A6dc0d.r Acecsesss  = T0yxp7fe2:2 9U4N0KfN5bOfW8N
+. C: Tool (or Pin) caused signal 11 at PC 0x7f22ab7716c0
+Access Address = 0x7f2293207be8
+[SIFT:1[SIFT:2] Error: ] Error: SuccessSuccess[TRACE:1] -- DONE --
+[TRACE:2] -- DONE --
+
+
+[TRACE:3] -- DONE --
+[TRACE:0] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[SIFT:3] Error: Broken pipe
+[SIFT:0] Error: No such file or directory
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 23.54 seconds
+[SNIPER] Simulated 38.5M instructions, 18.5M cycles, 2.08 IPC
+[SNIPER] Simulation speed 1634.4 KIPS (408.6 KIPS / target core - 2447.5ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 23.67 seconds

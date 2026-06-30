@@ -1,0 +1,81 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[HOOKS] Entering ROI
+[HOOKS] Leaving ROI
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:   12x  12x  12
+ Iterations:   60       dt:   0.0100000
+ Number of available threads:     4
+
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for class S
+ accuracy setting for epsilon =  0.1000000000000E-07
+ Comparison of RMS-norms of residual
+           1 0.1703428370954E+00 0.1703428370954E+00 0.7185631667997E-13
+           2 0.1297525207003E-01 0.1297525207003E-01 0.3680617304070E-12
+           3 0.3252792698948E-01 0.3252792698949E-01 0.1277793524864E-12
+           4 0.2643642127515E-01 0.2643642127517E-01 0.8078973781633E-12
+           5 0.1921178413175E+00 0.1921178413174E+00 0.1352254355872E-12
+ Comparison of RMS-norms of solution error
+           1 0.4997691334580E-03 0.4997691334581E-03 0.1958973646452E-12
+           2 0.4519566678297E-04 0.4519566678296E-04 0.2415399838360E-12
+           3 0.7397376517297E-04 0.7397376517292E-04 0.6067822806636E-12
+           4 0.7382123863238E-04 0.7382123863244E-04 0.8378853441930E-12
+           5 0.8926963098749E-03 0.8926963098749E-03 0.3522123106623E-13
+ Verification Successful
+
+
+ BT Benchmark Completed.
+ Class           =                        S
+ Size            =             12x  12x  12
+ Iterations      =                       60
+ Time in seconds =                     0.01
+ Total threads   =                        4
+ Avail threads   =                        4
+ Mop/s total     =                 15683.48
+ Mop/s/thread    =                  3920.87
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = (none)
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:2] -- STOP --
+[TRACE:1] -- STOP --
+[TRACE:3] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 282.51 seconds
+[SNIPER] Simulated 681.3M instructions, 61.4M cycles, 11.09 IPC
+[SNIPER] Simulation speed 2411.4 KIPS (602.9 KIPS / target core - 1658.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 282.45 seconds

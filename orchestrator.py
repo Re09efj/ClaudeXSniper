@@ -9,6 +9,7 @@ orchestrator.py
 
 import argparse
 import os
+import shutil
 import sys
 import threading
 import time
@@ -16,7 +17,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 from utility.cpu_affinity   import get_cpu_map, binary_path, get_binary_args, save_affinity_config
-from utility.run_profile    import get_reference, update_from_run
+from utility.run_profile    import get_reference, update_from_run, estimate_walltime
 from utility.stats_reader   import parse_node_stats
 from utility.csv_exporter   import export_csv
 from utility.power_model    import estimate as estimate_power
@@ -26,17 +27,16 @@ from config.generate_config import generate_config, get_config_path
 # 実験設定（CLI 引数で上書き可能）
 # ============================================================
 WORKLOADS = [
-    "BT", "CG", "FT", "IS", "MG", "SP",
-    "lavaMD", "BFS", "PR", "BC", "CC", "SSSP", "TC",
-]
-STRATEGIES_TO_RUN  = ["Packed", "Scatter", "HPO", "EPO"]
-THREAD_COUNTS      = [4,8]
-BENCH_CLASSES      = ["W", "A"]
+    "BT", "CG", "FT", "IS", "MG", "SP","lavaMD", "BFS", "PR", "BC", "CC", "SSSP", "TC",
+]#
+STRATEGIES_TO_RUN  = ["Packed","HPO","Scatter","EPO"]#,, 
+THREAD_COUNTS      = [4,8,16]
+BENCH_CLASSES      = ["W","A"]
 
 
 
-_HOST_CORES      = os.cpu_count() or 16
-_SNIPER_OVERHEAD = 2  # ネットワーク・DRAMコントローラスレッド
+_HOST_CORES      = 32
+_SNIPER_OVERHEAD = 0
 
 
 def _calc_concurrent(num_threads: int, user_override: int | None = None) -> int:
@@ -55,6 +55,22 @@ GAPBS_DIR    = f"{BINARY_BASE}/GAPBS"
 LAVAMD_DIR   = f"{BINARY_BASE}/Rodinia/openmp/lavaMD"
 VALID_THREAD_COUNTS = {2, 4, 8, 16, 32}
 VALID_BENCH_CLASSES = {"S", "W", "A", "B", "C", "D"}
+
+TIMEOUT_LOG = os.path.join(CLAUDEXSNIPER_DIR, "logs", "timeoutwl.log")
+
+def _log_timeout(workload: str, strategy: str, bench_class: str, num_threads: int,
+                 elapsed: float, timeout_sec: float, attempt: int, max_retries: int) -> None:
+    outcome = f"retry({attempt + 2}/{max_retries + 1})" if attempt < max_retries else "FAILED"
+    line = (
+        f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  "
+        f"{workload:<8} {strategy:<8} Class={bench_class}  {num_threads}TH  "
+        f"elapsed={elapsed:.0f}s  timeout={timeout_sec:.0f}s  {outcome}\n"
+    )
+    os.makedirs(os.path.dirname(TIMEOUT_LOG), exist_ok=True)
+    with open(TIMEOUT_LOG, "a") as f:
+        f.write(line)
+    print(f"[timeout log] {TIMEOUT_LOG} に追記しました", flush=True)
+
 
 # ============================================================
 # 進捗表示（TTY でのみ ANSI 上書き）
@@ -216,55 +232,83 @@ def _run_one_thread_count(
             output_base, f"{num_threads}TH",
             f"{workload}_{bench_class}_{strategy}_{num_threads}TH_{run_id}",
         )
-        os.makedirs(out_dir, exist_ok=True)
-
-        cfg_path = get_config_path(out_dir, strategy, num_threads)
-        generate_config(strategy, num_threads, cpu_map, cfg_path)
-        save_affinity_config(out_dir, strategy, workload, bench_class,
-                             cpu_map, num_threads)
 
         ref          = get_reference(workload, bench_class, num_threads)
-        expected_sec = ref["wallTime"] if ref else None
-
-        display.add(key)
-        start    = time.time()
-        log_file = open(os.path.join(out_dir, "sniper.log"), "w")
+        expected_sec = ref["wallTime"] if ref else estimate_walltime(workload, bench_class, num_threads)
+        timeout_sec  = max(expected_sec * 3, 600) if expected_sec else 7200
 
         from sniper_sim import run_sniper
-        done_flag = [False]
-        ret_code  = [None]
 
-        def _do_run():
-            ret_code[0] = run_sniper(
-                binary_path=bin_path, binary_args=bin_args,
-                num_threads=num_threads, cpu_map=cpu_map,
-                strategy=strategy, output_dir=out_dir,
-                config_path=cfg_path, log_file=log_file,
-                workload=workload,
-            )
-            done_flag[0] = True
+        MAX_RETRIES = 1
+        for attempt in range(MAX_RETRIES + 1):
+            if attempt > 0:
+                shutil.rmtree(out_dir, ignore_errors=True)
+            os.makedirs(out_dir, exist_ok=True)
 
-        t = threading.Thread(target=_do_run, daemon=True)
-        t.start()
-        while not done_flag[0]:
+            cfg_path = get_config_path(out_dir, strategy, num_threads)
+            generate_config(strategy, num_threads, cpu_map, cfg_path)
+            save_affinity_config(out_dir, strategy, workload, bench_class,
+                                 cpu_map, num_threads)
+
+            display.add(key)
+            start    = time.time()
+            log_file = open(os.path.join(out_dir, "sniper.log"), "w")
+
+            done_flag   = [False]
+            ret_code    = [None]
+            proc_holder = []
+            timed_out   = [False]
+
+            def _do_run():
+                ret_code[0] = run_sniper(
+                    binary_path=bin_path, binary_args=bin_args,
+                    num_threads=num_threads, cpu_map=cpu_map,
+                    strategy=strategy, output_dir=out_dir,
+                    config_path=cfg_path, log_file=log_file,
+                    workload=workload, proc_holder=proc_holder,
+                )
+                done_flag[0] = True
+
+            t = threading.Thread(target=_do_run, daemon=True)
+            t.start()
+            while not done_flag[0]:
+                elapsed = time.time() - start
+                if elapsed > timeout_sec and proc_holder:
+                    timed_out[0] = True
+                    proc_holder[0].kill()
+                    break
+                if expected_sec:
+                    display.update(key, min(elapsed / expected_sec * 100, 99.0),
+                                   elapsed, max(expected_sec - elapsed, 0), known=True)
+                else:
+                    display.update(key, 0.0, elapsed, None, known=False)
+                time.sleep(1)
+            t.join()
+            log_file.close()
+
             elapsed = time.time() - start
-            if expected_sec:
-                display.update(key, min(elapsed / expected_sec * 100, 99.0),
-                               elapsed, max(expected_sec - elapsed, 0), known=True)
-            else:
-                display.update(key, 0.0, elapsed, None, known=False)
-            time.sleep(1)
-        t.join()
-        log_file.close()
 
-        elapsed = time.time() - start
-        success = (ret_code[0] == 0)
-        with done_lock:
-            done_counter[0] += 1
-        display.complete(key, success, done_counter[0], total)
+            if timed_out[0]:
+                _log_timeout(workload, strategy, bench_class, num_threads,
+                             elapsed, timeout_sec, attempt, MAX_RETRIES)
+                print(f"\n[TIMEOUT] {key} ({elapsed:.0f}s > {timeout_sec:.0f}s)", flush=True)
+                if attempt < MAX_RETRIES:
+                    print(f"  → 再実行 (attempt {attempt + 2}/{MAX_RETRIES + 1})", flush=True)
+                    display.complete(key, False, done_counter[0], total)
+                    continue
+                with done_lock:
+                    done_counter[0] += 1
+                display.complete(key, False, done_counter[0], total)
+                raise RuntimeError(f"タイムアウト ({workload}/{strategy})")
 
-        if not success:
-            raise RuntimeError(f"Sniper 失敗 ({workload}/{strategy}) ret={ret_code[0]}")
+            success = (ret_code[0] == 0)
+            with done_lock:
+                done_counter[0] += 1
+            display.complete(key, success, done_counter[0], total)
+
+            if not success:
+                raise RuntimeError(f"Sniper 失敗 ({workload}/{strategy}) ret={ret_code[0]}")
+            break
 
         power = estimate_power(out_dir, cpu_map, num_threads)
         update_from_run(workload, bench_class, num_threads, out_dir, elapsed)
@@ -275,7 +319,7 @@ def _run_one_thread_count(
     with ThreadPoolExecutor(max_workers=workers) as ex:
         futures = {
             ex.submit(run_one, wl, st): (wl, st)
-            for wl in workloads for st in strategies
+            for st in strategies for wl in workloads
         }
         for future in as_completed(futures):
             wl, st = futures[future]

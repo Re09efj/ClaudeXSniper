@@ -19,6 +19,7 @@ from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
+matplotlib.rcParams["font.family"] = "Noto Sans CJK JP"
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -29,19 +30,12 @@ from sklearn.model_selection import LeaveOneOut
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from utility.cpu_affinity import get_cpu_map as _get_cpu_map
-from utility.stats_reader import (
-    parse_sim_time,
-    parse_ipc,
-    parse_instructions,
-    parse_cycles,
-    parse_node_stats,
-    parse_numa_access,
-    parse_l1d_where,
-    P_CORES,
-    E_CORES,
-    NODE0_CPUS,
+from utility.stats_reader import P_CORES, E_CORES, NODE0_CPUS
+from MachineLearning.ml_utils import (
+    parse_stats,
+    FEATURE_COLS,
+    FEATURE_COLS_ALLTH,
 )
-from utility.power_model import estimate as estimate_power
 
 # ── CPU トポロジ ─────────────────────────────────────────────
 ALL_P_CORES = sorted(P_CORES)
@@ -61,116 +55,6 @@ def active_cores_for_map(cpu_map: list, num_threads: int) -> tuple[list[int], li
     return p, e
 
 
-def parse_stats(output_dir: Path, num_threads: int, cpu_map: list | None = None) -> dict:
-    """
-    Sniper sim.stats.sqlite3 から特徴量・性能指標を返す。
-
-    Returns dict with keys matching FEATURE_COLS + 'sim_seconds', 'energy_j'.
-    Empty dict if data is unavailable.
-    """
-    if not (output_dir / "sim.stats.sqlite3").exists():
-        return {}
-
-    out_str = str(output_dir)
-
-    sim_seconds = parse_sim_time(out_str) or 0.0
-    ipc_map     = parse_ipc(out_str)
-    inst_map    = parse_instructions(out_str)
-    cycle_map   = parse_cycles(out_str)
-    numa_acc    = parse_numa_access(out_str)
-    node_stats  = parse_node_stats(out_str)
-    l1d_where   = parse_l1d_where(out_str)
-
-    if not ipc_map or sim_seconds == 0:
-        return {}
-
-    # 電力推定
-    power_result = estimate_power(out_str, cpu_map, num_threads)
-    energy_j     = power_result.get("energy_j", 0.0)
-
-    # ── コア別特徴量 ──
-    ipc_list  = []
-    p_ipc_list, e_ipc_list = [], []
-    cycle_list = []
-
-    for sim_core in range(num_threads):
-        if cpu_map:
-            cpu_id = cpu_map[sim_core]
-        else:
-            cpu_id = sim_core
-
-        ipc = ipc_map.get(sim_core, 0.0)
-        if ipc > 0:
-            ipc_list.append(ipc)
-            if cpu_id in P_CORES:
-                p_ipc_list.append(ipc)
-            else:
-                e_ipc_list.append(ipc)
-
-        cycles = cycle_map.get(sim_core, 0)
-        if cycles > 0:
-            cycle_list.append(cycles)
-
-    avg_ipc = float(np.mean(ipc_list)) if ipc_list else 0.0
-    ipc_cv  = float(np.std(ipc_list) / avg_ipc) if avg_ipc > 0 and len(ipc_list) > 1 else 0.0
-    pe_ratio = (float(np.mean(p_ipc_list)) / float(np.mean(e_ipc_list))
-                if p_ipc_list and e_ipc_list and float(np.mean(e_ipc_list)) > 0
-                else 1.0)
-
-    # ── NUMA アクセス特徴量 ──
-    total_local  = numa_acc.get("local", 0)
-    total_remote = numa_acc.get("remote", 0)
-    total_dram   = total_local + total_remote
-    local_ratio  = total_local  / total_dram if total_dram > 0 else 0.0
-    remote_ratio = total_remote / total_dram if total_dram > 0 else 0.0
-
-    # ── メモリ階層内訳（L1-D loads-where-*）──
-    total_insts = sum(inst_map.get(c, 0) for c in range(num_threads))
-    l2_hits = l3_hits = dram_local = dram_remote = 0
-    for core_d in l1d_where.values():
-        l2_hits     += core_d.get("l2", 0)
-        l3_hits     += core_d.get("l3", 0)
-        dram_local  += core_d.get("dram_local", 0)
-        dram_remote += core_d.get("dram_remote", 0)
-
-    l2_intensity   = l2_hits     / total_insts if total_insts > 0 else 0.0
-    l3_intensity   = l3_hits     / total_insts if total_insts > 0 else 0.0
-    mem_intensity  = total_dram  / total_insts if total_insts > 0 else 0.0
-
-    # ── DRAM 読み書き比 ──
-    total_reads  = sum(v["reads"]  for v in node_stats.values())
-    total_writes = sum(v["writes"] for v in node_stats.values())
-    dram_total   = total_reads + total_writes
-    read_ratio   = total_reads  / dram_total if dram_total > 0 else 0.5
-
-    return {
-        "sim_seconds":    sim_seconds,
-        "energy_j":       energy_j,
-        # 特徴量
-        "avg_ipc":        avg_ipc,
-        "ipc_cv":         ipc_cv,
-        "pe_ratio":       pe_ratio,
-        "local_ratio":    local_ratio,
-        "remote_ratio":   remote_ratio,
-        "l2_intensity":   l2_intensity,
-        "l3_intensity":   l3_intensity,
-        "mem_intensity":  mem_intensity,
-        "read_ratio":     read_ratio,
-    }
-
-
-FEATURE_COLS = [
-    "avg_ipc",
-    "ipc_cv",
-    "pe_ratio",
-    "local_ratio",
-    "remote_ratio",
-    "l2_intensity",
-    "l3_intensity",
-    "mem_intensity",
-    "read_ratio",
-]
-FEATURE_COLS_ALLTH = ["num_threads"] + FEATURE_COLS
 
 
 # ── データセット収集 ─────────────────────────────────────────
