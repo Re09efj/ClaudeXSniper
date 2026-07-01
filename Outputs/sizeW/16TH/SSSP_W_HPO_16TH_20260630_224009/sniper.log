@@ -1,0 +1,59 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 6 at 1.00 GHz (global clock 4.00 GHz)
+Core 7 at 1.00 GHz (global clock 4.00 GHz)
+Core 12 at 1.00 GHz (global clock 4.00 GHz)
+Core 13 at 1.00 GHz (global clock 4.00 GHz)
+Core 14 at 1.00 GHz (global clock 4.00 GHz)
+Core 15 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:ExcepC: Tool (or Pin) caused signal 11 at PC 0x7fe054bac6c0
+tion Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7fe054bac6c0. Access Type: UNKNOWN. Access Address = 0x7fe029ff2bc8
+[SIFT:3] Error: Success
+[TRACE:3] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[SIFT:10] Error: [SIFT:Broken pipe
+[TRACE:10] -- DONE --
+[TRACE:12] -- DONE --
+[TRACE:1] -- DONE --
+1[SIFT:] Error: 12] Error: Broken pipe
+Broken pipe
+[SIFT:4[SIFT:] Error: 14] Error: Broken pipe
+[TRACE:14] -- DONE --
+Broken pipe
+[TRACE:4] -- DONE --
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[TRACE:8] -- DONE --
+[SIFT:8] Error: Broken pipe
+[SIFT:13] Error: [SIFT:5Broken pipe[SIFT:] Error: 6
+[TRACE:13] -- DONE --
+Broken pipe] Error: 
+[TRACE:5] -- DONE --
+[TRACE:6] -- DONE --
+Broken pipe
+[SIFT:11] Error: Broken pipe
+[TRACE:11] -- DONE --
+[SIFT:2] Error: Broken pipe
+[TRACE:2] -- DONE --
+[SIFT:15] Error: Broken pipe
+[TRACE:15] -- DONE --
+[SIFT:7] Error: Broken pipe
+[TRACE:7] -- DONE --
+[SIFT:0] Error: Broken pipe[TRACE:0] -- DONE --
+
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 26.60 seconds
+[SNIPER] Simulated 109.7M instructions, 15.2M cycles, 7.22 IPC
+[SNIPER] Simulation speed 4123.7 KIPS (257.7 KIPS / target core - 3880.0ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 26.76 seconds

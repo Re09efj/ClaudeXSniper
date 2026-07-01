@@ -1,0 +1,103 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 8 at 1.00 GHz (global clock 4.00 GHz)
+Core 9 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[HOOKS] Entering ROI
+[HOOKS] Leaving ROI
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - CG Benchmark
+
+ Size:        7000
+ Iterations:                     15
+ Number of available threads:    16
+
+ Initialization time =           0.020 seconds
+
+   iteration           ||r||                 zeta
+        1       0.17255616135994E-12    11.9997003727381
+        2       0.22626692448559E-14    10.3457275664058
+        3       0.22246472994788E-14    10.3617880137963
+        4       0.22195144272667E-14    10.3625416284965
+        5       0.22325184000195E-14    10.3625905854467
+        6       0.21681974557742E-14    10.3625946467087
+        7       0.21749140547919E-14    10.3625950398342
+        8       0.21438369897788E-14    10.3625950817269
+        9       0.20792081515342E-14    10.3625950864815
+       10       0.21482749868758E-14    10.3625950870452
+       11       0.20676406314702E-14    10.3625950871141
+       12       0.20703217182949E-14    10.3625950871227
+       13       0.20974414388046E-14    10.3625950871238
+       14       0.19911602805971E-14    10.3625950871240
+       15       0.20010700853221E-14    10.3625950871240
+ Benchmark completed 
+ VERIFICATION SUCCESSFUL 
+ Zeta is     0.1036259508712E+02
+ Error is    0.3428401523876E-15
+
+
+ CG Benchmark Completed.
+ Class           =                        W
+ Size            =                     7000
+ Iterations      =                       15
+ Time in seconds =                     0.04
+ Total threads   =                       16
+ Avail threads   =                       16
+ Mop/s total     =                  9938.82
+ Mop/s/thread    =                   621.18
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = randi8
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:9] -- STOP --
+[TRACE:14] -- STOP --
+[TRACE:13] -- STOP --
+[TRACE:6] -- STOP --
+[TRACE:1] -- STOP --
+[TRACE:15] -- STOP --
+[TRACE:4] -- STOP --
+[TRACE:8] -- STOP --
+[TRACE:2] -- STOP --
+[TRACE:7] -- STOP --
+[TRACE:12] -- STOP --
+[TRACE:5] -- STOP --
+[TRACE:3] -- STOP --
+[TRACE:11] -- STOP --
+[TRACE:10] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 213.16 seconds
+[SNIPER] Simulated 2242.2M instructions, 63.3M cycles, 35.44 IPC
+[SNIPER] Simulation speed 10519.0 KIPS (657.4 KIPS / target core - 1521.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 213.30 seconds

@@ -28,10 +28,10 @@ from config.generate_config import generate_config, get_config_path
 # ============================================================
 WORKLOADS = [
     "BT", "CG", "FT", "IS", "MG", "SP","lavaMD", "BFS", "PR", "BC", "CC", "SSSP", "TC",
-]#
+]#BT,MG,SPに要注意
 STRATEGIES_TO_RUN  = ["Packed","HPO","Scatter","EPO"]#,, 
-THREAD_COUNTS      = [4,8,16]
-BENCH_CLASSES      = ["W","A"]
+THREAD_COUNTS      = [6, 12]
+BENCH_CLASSES      = ["W"]
 
 
 
@@ -53,7 +53,7 @@ BINARY_BASE  = "/home/hiragahama/ClaudeXSniper/binary"
 NPB_BIN_DIR  = f"{BINARY_BASE}/NPB3.3-OMP/bin"
 GAPBS_DIR    = f"{BINARY_BASE}/GAPBS"
 LAVAMD_DIR   = f"{BINARY_BASE}/Rodinia/openmp/lavaMD"
-VALID_THREAD_COUNTS = {2, 4, 8, 16, 32}
+VALID_THREAD_COUNTS = {2, 4, 6, 8, 12, 16, 32}
 VALID_BENCH_CLASSES = {"S", "W", "A", "B", "C", "D"}
 
 TIMEOUT_LOG = os.path.join(CLAUDEXSNIPER_DIR, "logs", "timeoutwl.log")
@@ -187,8 +187,8 @@ def _print_summary(results: dict, workloads: list,
 
 def _parse_args():
     p = argparse.ArgumentParser(description="ClaudeXSniper orchestrator")
-    p.add_argument("--threads",     type=int, default=None,
-                   help="スレッド数 (省略時: THREAD_COUNTS リストを逐次実行)")
+    p.add_argument("--threads",     type=int, nargs="+", default=None,
+                   help="スレッド数 (複数指定可: --threads 2 6 8 12)")
     p.add_argument("--bench-class", default=None,
                    choices=sorted(VALID_BENCH_CLASSES),
                    help="ベンチクラス (省略時: BENCH_CLASSES リストを逐次実行)")
@@ -196,6 +196,8 @@ def _parse_args():
     p.add_argument("--concurrent",  type=int,  default=None,
                    help="同時実験数 (省略時: host_cores // (threads + 2))")
     p.add_argument("--workloads",   nargs="+", default=None)
+    p.add_argument("--no-timeout",  action="store_true",
+                   help="タイムアウトを無効化 (sizeA など長時間実験用)")
     return p.parse_args()
 
 
@@ -206,6 +208,7 @@ def _run_one_thread_count(
     workers: int,
     workloads: list,
     run_id: str,
+    no_timeout: bool = False,
 ) -> None:
     output_base = OUTPUT_BASE_TMPL.format(cls=bench_class)
     total       = len(workloads) * len(strategies)
@@ -235,7 +238,7 @@ def _run_one_thread_count(
 
         ref          = get_reference(workload, bench_class, num_threads)
         expected_sec = ref["wallTime"] if ref else estimate_walltime(workload, bench_class, num_threads)
-        timeout_sec  = max(expected_sec * 3, 600) if expected_sec else 7200
+        timeout_sec  = float("inf") if no_timeout else (max(expected_sec * 3, 600) if expected_sec else 7200)
 
         from sniper_sim import run_sniper
 
@@ -365,7 +368,7 @@ def _validate(thread_list: list[int], class_list: list[str]) -> None:
 
 def main():
     args         = _parse_args()
-    thread_list  = [args.threads]     if args.threads     is not None else THREAD_COUNTS
+    thread_list  = args.threads        if args.threads     is not None else THREAD_COUNTS
     class_list   = [args.bench_class] if args.bench_class is not None else BENCH_CLASSES
     strategies   = args.strategies or STRATEGIES_TO_RUN
     workloads    = args.workloads  or WORKLOADS
@@ -383,6 +386,7 @@ def main():
             workers = _calc_concurrent(num_threads, args.concurrent)
             _run_one_thread_count(
                 num_threads, bench_class, strategies, workers, workloads, run_id,
+                no_timeout=args.no_timeout,
             )
 
 

@@ -41,7 +41,7 @@ from MachineLearning.ml_utils import (
 ALL_P_CORES = sorted(P_CORES)
 ALL_E_CORES = sorted(E_CORES)
 STRATEGIES  = ["Packed", "Scatter", "HPO", "EPO"]
-THREAD_NUMS = [2, 4, 8, 16]
+THREAD_NUMS = [2, 6, 8, 12]
 
 ML_DIR      = Path(__file__).parent
 OUTPUTS_DIR = ML_DIR.parent.parent / "Outputs" / "sizeS"
@@ -182,7 +182,7 @@ def plot_feature_importance(imp: pd.Series, title: str, path: Path):
     print(f"[RF] 特徴量重要度: {path}")
 
 
-def plot_confusion_matrix(cm: np.ndarray, classes: list, title: str, path: Path):
+def plot_confusion_matrix(cm: np.ndarray, classes: list, title: str, path: Path, tag: str = "RF"):
     fig, ax = plt.subplots(figsize=(6, 5))
     im = ax.imshow(cm, cmap="Blues")
     ax.set_xticks(range(len(classes)))
@@ -198,17 +198,17 @@ def plot_confusion_matrix(cm: np.ndarray, classes: list, title: str, path: Path)
                     color="white" if cm[i, j] > cm.max() / 2 else "black")
     fig.colorbar(im, ax=ax)
     _save(fig, path)
-    print(f"[RF] 混同行列: {path}")
+    print(f"[{tag}] 混同行列: {path}")
 
 
-def plot_strategy_dist(y: pd.Series, title: str, path: Path):
+def plot_strategy_dist(y: pd.Series, title: str, path: Path, tag: str = "RF"):
     fig, ax = plt.subplots(figsize=(6, 4))
     y.value_counts().plot.bar(ax=ax, color="steelblue", rot=0)
     ax.set_title(title, fontsize=12, fontweight="bold")
     ax.set_xlabel("Strategy")
     ax.set_ylabel("Count")
     _save(fig, path)
-    print(f"[RF] 戦略分布: {path}")
+    print(f"[{tag}] 戦略分布: {path}")
 
 
 # ── メイン実験 ───────────────────────────────────────────────
@@ -356,14 +356,12 @@ def main():
     p.add_argument("--all", action="store_true", help="全スレッド数を実行")
     args = p.parse_args()
 
-    if args.all:
+    if args.threads:
+        run(args.threads, args.label)
+    else:
         for n in THREAD_NUMS:
             run(n, args.label)
         run_allth(args.label)
-    elif args.threads:
-        run(args.threads, args.label)
-    else:
-        p.print_help()
 
 
 if __name__ == "__main__":

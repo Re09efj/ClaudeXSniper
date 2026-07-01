@@ -1,0 +1,47 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 6 at 1.00 GHz (global clock 4.00 GHz)
+Core 7 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECO[RDSEIFRT_]R EICOnRDtERer]n alI nextcepetrinoan:l exception:ExEcexpcteipotino n CCooded:e :A CACECSCSE_ISNSV_AILNIVDA_LADIDDR_EASDDSR. EESxS.c Eepxtcieopnt iAodn[drSI esAsFT_RECORDdER ] F=ailed to d print 0backtracx7fee.
+r[SIFT_RECORDEd321eRe] Internal e6c0.x eAss = 0x7cfceceptiond:e3Excepti2son Codse: ACCES1ee6c0S_DENIE. D. ExcTeption Add yress = pA0x7fedc321ee6c0cee. Acs:cess T ype: UNUKNOWN. NKNOWAccess sAddr ess = TN0x7fed.1bc84bf8y
+C: Tool (or Pin) caused signal 11 at PC 0x7fed321ee6c0
+pe: UNKNOW NA.c cAecscse sAsd Addrdersess =s 0 x=7 f0e[SIFT:[SIFT:[SIFT:7] Error: [SIFT:[SIFT:1[SIFT:Success[SIFT:
+] Error: 3[TRACE:7] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:3] -- DONE --
+5] Error: ] Error: 462Success] Error: ] Error: ] Error: Success
+SuccessSuccessSuccess
+Success
+
+
+
+[TRACE:5] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:2] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[SIFT:10] Error: Broken pipe
+[SIFT:0] Error: [TRACE:10] -- DONE --
+[TRACE:0] -- DONE --
+Broken pipe
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[SIFT:11] Error: Broken pipe
+[TRACE:11] -- DONE --
+[SIFT:8] Error: Broken pipe
+[TRACE:8] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.48 seconds
+[SNIPER] Simulated 44.7M instructions, 7.4M cycles, 6.03 IPC
+[SNIPER] Simulation speed 3090.1 KIPS (257.5 KIPS / target core - 3883.4ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.73 seconds

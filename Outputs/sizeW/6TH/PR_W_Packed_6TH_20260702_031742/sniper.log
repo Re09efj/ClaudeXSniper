@@ -1,0 +1,34 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_DENIED. Exception Address = 0x7f680efe3aa0. Access Type: UNKNOWN. Access Address = 0x7f67f7863c08
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_DENIED. Exception Address = 0x7f680efe3aa0. Access Type: UNKNOWN. Access Address = 0x7f67f6a87be8
+C: Tool (or Pin) caused signal 11 at PC 0x7f680efe3aa0
+[SIFT:5] Error: [SIFT:[SIFT:Success
+3[SIFT:] Error: Success[TRACE:5] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:4] -- DONE --
+[SIFT:1
+2] Error: 4Success] Error: Resource temporarily unavailable
+
+] Error: Success
+Pin app terminated abnormally due to signal 11.
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 21.33 seconds
+[SNIPER] Simulated 43.7M instructions, 15.7M cycles, 2.78 IPC
+[SNIPER] Simulation speed 2050.2 KIPS (341.7 KIPS / target core - 2926.6ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 21.46 seconds

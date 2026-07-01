@@ -1,0 +1,43 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 6 at 1.00 GHz (global clock 4.00 GHz)
+Core 7 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_DENIC: Tool (or Pin) caused signal 11 at PC 0x7fd35b4166c0
+ED. Exception Address = 0x7fd35b4166c0. Access Type: UNKNOWN. Access Address = 0x7fd343d96bf8
+[TRACE:4] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:3] -- DONE --
+[SIFT:[SIFT:[SIFT:43] Error: ] Error: Resource temporarily unavailableResource temporarily unavailable
+7] Error: [SIFT:2] Error: Success
+Success
+[SIFT:1] Error: Resource temporarily unavailable
+
+Pin app terminated abnormally due to signal 11.
+[TRACE:5] -- DONE --
+[SIFT:5] Error: Broken pipe
+[SIFT:6] Error: Success
+[TRACE:6] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 26.40 seconds
+[SNIPER] Simulated 47.6M instructions, 14.5M cycles, 3.30 IPC
+[SNIPER] Simulation speed 1804.4 KIPS (225.6 KIPS / target core - 4433.5ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 26.64 seconds

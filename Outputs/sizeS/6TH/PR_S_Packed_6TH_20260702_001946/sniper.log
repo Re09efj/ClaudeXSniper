@@ -1,0 +1,35 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[[[SIFTSSIFI_REFT_RETCORDE_RECORRDERCO] InterRDERn] Inter] Fainal excal exceptioneption::ExcExcepteptionion Cod Code: led to print Abacktre: ACCace.E
+CCE[SIFT_RECOSS_INVARDER] Internal exLIDcepti_ADDRESSS. ESon:xceptExcepti_ion AIddreNss = Von ALID_Code0x7:A ADCCDf0RESS. Excep792t8c06c0. ESS_DENAccIess Tyion AddED.r eEsxcesppe: UNt iKNOWN.o Accessn Addre =ss = 0x A7f0773ed0e6bf8x
+7f07928cd0re6scs0 .=  A0cxce7sfs 0T7y9p2e8:c 0U6NKcNO0W.N .A cAccecsess sT yApded:re sUsN K=N O0WxN7.f A0c7c7e2sfsf 8Adbder8es
+s = 0x7f077b241bf8
+C: Tool (or Pin) caused signal 11 at PC 0x7f07928c06c0
+[TRACE:4] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:2] -- DONE --
+[SIFT:4] Error: [SIFT:2] Error: Success
+[SIFT:5] Error: SuccessSuccess
+
+Pin app terminated abnormally due to signal 11.
+[TRACE:1] -- DONE --
+[SIFT:1] Error: Broken pipe
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.58 seconds
+[SNIPER] Simulated 26.8M instructions, 8.0M cycles, 3.36 IPC
+[SNIPER] Simulation speed 1835.8 KIPS (306.0 KIPS / target core - 3268.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 15.12 seconds

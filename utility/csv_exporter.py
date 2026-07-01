@@ -1,10 +1,9 @@
 """
 csv_exporter.py
-Sniper 実験結果から ML 用 CSV を生成する。
+Sniper 実験結果から CSV を生成する。
 
 出力ファイル:
-  output_dir/metrics.csv      — 転置形式 (metric, value) の 2 列 ×多行。人間が読みやすい。
-  Documents/Data/all_metrics.csv — 横持ち形式。1 実験 = 1 行。ML/pandas 向け。
+  output_dir/metrics.csv — 転置形式 (metric, value) の 2 列 ×多行。人間が読みやすい。
 
 列グループ:
   [識別]      timestamp, workload, strategy, bench_class, num_threads, output_dir
@@ -21,7 +20,6 @@ Sniper 実験結果から ML 用 CSV を生成する。
 import csv
 import json
 import os
-import threading
 from datetime import datetime
 
 from utility.stats_reader import (
@@ -38,12 +36,6 @@ from utility.stats_reader import (
     E_CORES,
     NODE0_CPUS,
     NODE1_CPUS,
-)
-
-_lock = threading.Lock()
-
-GLOBAL_CSV = os.path.normpath(
-    os.path.join(os.path.dirname(__file__), "..", "Documents", "Data", "all_metrics.csv")
 )
 
 # 派生指標の列順（raw 指標はこの後にソート順で追加される）
@@ -172,8 +164,7 @@ def export_csv(
     power: dict | None = None,
 ) -> str:
     """
-    metrics.csv (転置・2列) を output_dir に書き出し、
-    all_metrics.csv (横持ち) に追記する。
+    metrics.csv (転置・2列) を output_dir に書き出す。
 
     Returns: 書き出した metrics.csv のパス
     """
@@ -238,30 +229,10 @@ def export_csv(
     with open(local_csv, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["metric", "value"])
-        # 派生指標
         for k in DERIVED_COLUMNS:
             w.writerow([k, derived.get(k, "")])
-        # 生指標
         for k in raw_keys:
             w.writerow([k, raw[k]])
 
-    # ── all_metrics.csv: 横持ち形式 (ML 用) ────────────────────
-    all_columns = DERIVED_COLUMNS + raw_keys
-    flat_row = {k: derived.get(k, "") for k in DERIVED_COLUMNS}
-    flat_row.update(raw)
-
-    _append_global(flat_row, all_columns)
-
     print(f"[csv] metrics.csv 保存: {local_csv}")
     return local_csv
-
-
-def _append_global(row: dict, columns: list) -> None:
-    os.makedirs(os.path.dirname(GLOBAL_CSV), exist_ok=True)
-    with _lock:
-        write_header = not os.path.exists(GLOBAL_CSV) or os.path.getsize(GLOBAL_CSV) == 0
-        with open(GLOBAL_CSV, "a", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
-            if write_header:
-                w.writeheader()
-            w.writerow(row)

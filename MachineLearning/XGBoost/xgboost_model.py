@@ -127,9 +127,9 @@ def run(num_threads: int, label_by: str):
 
     plot_confusion_matrix(res["confusion"], STRATEGIES,
                           f"XGBoost Confusion Matrix ({num_threads}TH, {tag})",
-                          out_dir / f"confusion_matrix_{tag}.png")
+                          out_dir / f"confusion_matrix_{tag}.png", tag="XGB")
     plot_strategy_dist(y, f"Best Strategy Distribution ({num_threads}TH)",
-                       out_dir / f"strategy_dist_{tag}.png")
+                       out_dir / f"strategy_dist_{tag}.png", tag="XGB")
 
     imp_df = res["importances"].reset_index()
     imp_df.columns = ["feature", "importance"]
@@ -163,9 +163,9 @@ def run_allth(label_by: str):
 
     plot_confusion_matrix(res["confusion"], STRATEGIES,
                           f"XGBoost Confusion Matrix (ALLTH, {tag})",
-                          out_dir / f"confusion_matrix_{tag}.png")
+                          out_dir / f"confusion_matrix_{tag}.png", tag="XGB")
     plot_strategy_dist(y, "Best Strategy Distribution (ALLTH)",
-                       out_dir / f"strategy_dist_{tag}.png")
+                       out_dir / f"strategy_dist_{tag}.png", tag="XGB")
 
     imp_df = res["importances"].reset_index()
     imp_df.columns = ["feature", "importance"]
@@ -185,14 +185,12 @@ def main():
 
     if args.threads in ("allth", "ALLTH"):
         run_allth(args.label)
-    elif args.all or args.threads == "all":
+    elif args.threads and args.threads not in ("all",):
+        run(int(args.threads), args.label)
+    else:
         for n in THREAD_NUMS:
             run(n, args.label)
         run_allth(args.label)
-    elif args.threads:
-        run(int(args.threads), args.label)
-    else:
-        p.print_help()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,40 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[[SIFT_R[[SIFSECORDETRI_] FTRInternal ex_ception:SRIFT_RECORDEREExcepCti] InternEoCn Code:al OeOx ACCceptESS_DEion:RDNIED. ExceExceptiEon RCodptioe: AC]CESSRnD_DEENIED Add. Exress  cept= I0ion AddR]res x7sn = 0x7ff6f31186Ic0tne. Accestsr Type:e UNKNOWrN. Afnf6accelss Ad f3dressn1186a = c0.e0x7f Accef6[ss TxlSIFT_RECdy pe: OeRUxNKcNOWDab75bEeN. eAcc8Rpe
+tssi] Fa iled tAo print cbackdtrace.don
+e[:resps = SIFT_R0x7ff6dbtion:EExceptionC OCERoDaEd63Reb]f:8 xI cAnCt
+CeEepSrSnat_lDiE oNnI eExCodcDee: AC.pCESS_INt iEoxnVAc:LIeD_ADDRESEpS. Excxepttciepotn Aidoiodnn  rCesso A=d e: 0xAddrCeCssE7Sff6Sf_3 I= N0x7ff6f31186c0V. AL1ID_AD1D8R6EcS0S..  AEcxcceeAccpsests Tiypeosn Ty p: eU:ANKNOWNd.  dUrNAceKcesNs OAsdWdNs[ .re s=s = 0x7 ffS6d240c3bf8xA7cIfcfF
+T6_f31e1R8E6CcO0R.D EAcR]c eIsnst sTeyrpnal eex:s cU NAKdNdOeWrNp.t ieAocnc:essss  A=d dErxeceptisos0 n=  Code:0 xA7CfCfE6xdS2S6_INVALeI7Db7_eA8fD
+DfC: Tool (or Pin) caused signal 11 at PC 0x7ff6f31186c0
+RE6SdSb.9 51Ecxc0e8pt
+ion Address = 0x7ff6f31186c0. Access Type: UNKNOWN. Access Address = 0x7ffcfd1a6278
+[SIFT:[SIFT:[SIFT:5[SIFT:[SIFT:3] Error: 2] Error: [TRACE:5] -- DONE --
+6] Error: SuccessSuccess
+] Error: Success
+Resource temporarily unavailable
+7] Error: Success
+[TRACE:2] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:7] -- DONE --
+[SIFT:0] Error: No such file or directory
+[TRACE:0] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[TRACE:6] -- DONE --
+
+[SIFT:1] Error: Success
+[TRACE:1] -- DONE --
+[SIFT:4] Error: Broken pipe
+[TRACE:4] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 24.14 seconds
+[SNIPER] Simulated 49.2M instructions, 16.7M cycles, 2.94 IPC
+[SNIPER] Simulation speed 2037.2 KIPS (254.7 KIPS / target core - 3926.9ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 24.68 seconds

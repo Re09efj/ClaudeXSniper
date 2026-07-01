@@ -1,0 +1,33 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_AC: Tool (or Pin) caused signal 11 at PC 0x7fd6e36de6c0
+DDRESS. Exception Address = 0x7fd6e36de6c0. Access Type: UNKNOWN. Access Address = 0x7fd6cc02abf8
+[SIFT:[SIFT:[SIFT:1] Error: 2] Error: 3] Error: SuccessSuccess
+Resource temporarily unavailable[TRACE:3] -- DONE --
+[TRACE:2] -- DONE --
+
+
+Pin app terminated abnormally due to signal 11.
+[TRACE:1] -- DONE --
+[SIFT:4] Error: Broken pipe
+[TRACE:4] -- DONE --
+[TRACE:0] -- DONE --
+[SIFT:0] Error: Broken pipe
+[SIFT:5] Error: Success
+[TRACE:5] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.57 seconds
+[SNIPER] Simulated 26.8M instructions, 8.1M cycles, 3.31 IPC
+[SNIPER] Simulation speed 1836.5 KIPS (306.1 KIPS / target core - 3267.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.81 seconds

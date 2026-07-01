@@ -35,7 +35,7 @@ from utility.power_model import estimate as estimate_power
 
 # ── 定数 ────────────────────────────────────────────────────────
 STRATEGIES   = ["Packed", "Scatter", "HPO", "EPO"]
-THREAD_NUMS  = [2, 4, 8, 16]
+THREAD_NUMS  = [2, 6, 8, 12]
 OUTPUTS_DIR  = Path(__file__).parent.parent / "Outputs" / "sizeS"
 
 FEATURE_COLS = [
@@ -80,10 +80,13 @@ FEATURE_COLS = [
     # ── ロード供給源 ─────────────────────
     "load_l1_ratio",
 ]
-FEATURE_COLS_ALLTH = ["num_threads"] + FEATURE_COLS
+FEATURE_COLS_ALLTH       = ["num_threads"] + FEATURE_COLS
+FEATURE_COLS_ALLTH_MULTI = ["num_threads", "bench_class_enc"] + FEATURE_COLS
 
 # 2% 以内の差は同率とみなす許容幅
 TIE_TOLERANCE = 0.02
+
+_CLASS_ENC = {"S": 0, "W": 1, "A": 2, "B": 3, "C": 4, "D": 5}
 
 
 # ── 特徴量抽出 ──────────────────────────────────────────────────
@@ -387,26 +390,62 @@ def collect_dataset(
     return X, y, perf
 
 
-def build_allth_data(
+def collect_dataset_multi(
+    outputs_dirs: list[Path],
+    num_threads: int,
     label_by: str,
-    outputs_dir: Path = OUTPUTS_DIR,
 ) -> tuple[pd.DataFrame, pd.Series]:
+    """
+    複数の outputs_dir を結合してスレッド数固定の学習データを返す。
+    bench_class_enc を追加特徴量として付与する。
+    Returns: (X, y)  ─ FEATURE_COLS_MULTI 列
+    """
     rows_X, rows_y, names = [], [], []
-    for n in THREAD_NUMS:
-        X_n, y_n, _ = collect_dataset(outputs_dir, n, label_by)
+    for outputs_dir in outputs_dirs:
+        bench_class = outputs_dir.name.replace("size", "")
+        X_n, y_n, _ = collect_dataset(outputs_dir, num_threads, label_by)
         if X_n.empty:
             continue
-        X_aug = X_n.copy()
-        X_aug.insert(0, "num_threads", n)
-        for i, idx in enumerate(X_aug.index):
-            rows_X.append(X_aug.iloc[i].values)
+        for i, idx in enumerate(X_n.index):
+            feat = [_CLASS_ENC.get(bench_class, 0)] + list(X_n.iloc[i].values)
+            rows_X.append(feat)
             rows_y.append(y_n.iloc[i])
-            names.append(f"{idx}_{n}TH")
+            names.append(f"{idx}_{bench_class}")
     if not names:
         return pd.DataFrame(), pd.Series(dtype=str)
-    X_all = pd.DataFrame(rows_X, index=names, columns=FEATURE_COLS_ALLTH)
+    cols = ["bench_class_enc"] + FEATURE_COLS
+    X = pd.DataFrame(rows_X, index=names, columns=cols)
+    y = pd.Series(rows_y, index=names, name="best_strategy")
+    return X, y
+
+
+def build_allth_data(
+    label_by: str,
+    outputs_dirs: list[Path] | Path = OUTPUTS_DIR,
+) -> tuple[pd.DataFrame, pd.Series]:
+    if isinstance(outputs_dirs, Path):
+        outputs_dirs = [outputs_dirs]
+    rows_X, rows_y, names = [], [], []
+    for outputs_dir in outputs_dirs:
+        bench_class = outputs_dir.name.replace("size", "")  # sizeS → S, sizeW → W
+        for n in THREAD_NUMS:
+            X_n, y_n, _ = collect_dataset(outputs_dir, n, label_by)
+            if X_n.empty:
+                continue
+            X_aug = X_n.copy()
+            X_aug.insert(0, "num_threads", n)
+            X_aug.insert(1, "bench_class_enc", _CLASS_ENC.get(bench_class, 0))
+            for i, idx in enumerate(X_aug.index):
+                rows_X.append(X_aug.iloc[i].values)
+                rows_y.append(y_n.iloc[i])
+                names.append(f"{idx}_{n}TH_{bench_class}")
+    if not names:
+        return pd.DataFrame(), pd.Series(dtype=str)
+    cols = ["num_threads", "bench_class_enc"] + FEATURE_COLS
+    X_all = pd.DataFrame(rows_X, index=names, columns=cols)
     y_all = pd.Series(rows_y, index=names, name="best_strategy")
     return X_all, y_all
+
 
 
 # ── 共通プロット ─────────────────────────────────────────────────

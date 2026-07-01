@@ -1,0 +1,51 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 8 at 1.00 GHz (global clock 4.00 GHz)
+Core 9 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:ExceptiC: Tool (or Pin) caused signal 11 at PC 0x7f16ca8576c0
+on Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f16ca8576c0. Access Type: UNKNOWN. Access Address = 0x7f16a5ddabd8
+[SIFT:[SIFT:[SIFT:[SIFT:[SIFT:7[SIFT:116] Error: ] Error: 85] Error: 2] Error: ] Error: [SIFT:] Error: SuccessSuccessSuccessSuccess9Success
+
+Success
+[TRACE:2] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:11] -- DONE --
+
+
+] Error: 
+Success
+[TRACE:5] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:9] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:4] Error: Broken pipe
+[TRACE:4] -- DONE --
+[SIFT:1] Error: Broken pipe[SIFT:10
+[TRACE:1] -- DONE --
+[TRACE:10] -- DONE --
+] Error: Broken pipe
+[SIFT:0] Error: Broken pipe[TRACE:0] -- DONE --
+
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.48 seconds
+[SNIPER] Simulated 45.0M instructions, 7.3M cycles, 6.15 IPC
+[SNIPER] Simulation speed 3109.3 KIPS (259.1 KIPS / target core - 3859.4ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.64 seconds

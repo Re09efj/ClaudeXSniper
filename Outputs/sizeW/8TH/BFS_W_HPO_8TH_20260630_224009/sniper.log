@@ -1,0 +1,36 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_[R[SSIFT_RECOERDERC] IOInternalFTR_DREERCO]R D exceEIRption:[SIFEnTt_e[[rRSIFT_RSE]CnECORDERaO lRID] EnRt FailIxFedT _tReEo prCceienOxt RcDerbptioan nEcRCokdatrace.]]pl   IIenttineto:exnr:cn
+a eEle prxetxiccnACCEoene:applSS[_ tESIFT_RECIOtixioocnenpe :xCtodieEoxRDENRVcn:e cAeApLID_A]pt ItCniterDnDoinoC:Ral eE CoSdSeEExcexp: Sncti_ S.Ion: ACNoExcVdAeCLCIe:pDE_StEASD_DiexceptIopn  iNAVCon CtoCCoionE RSASL_IIDN_VddAADLDAede:EdS:S ACCESSre_ss =I  NVALI0AxD._7ADDREfSaS. CEx IcCept8a18E00ion6c0 . AcAdcSedressDsS__s IA =TDED ype:0 NUNKNOWNV.x7f aAAc8cesxRcs ESS.Aae1 EpdtdrL800i6cess = 0. IA0ccessx7fDa Typex8: UNKNcOepWN.7ff Afetcibd8oceo_ssAn AD
+ddD ress = A0ddrxRes7fans880bb0bf 8 A
+d=E 0xS7faC: Tool (or Pin) caused signal 11 at PC 0x7fa8a18006c0
+8Sa1d80.06c0 .E xAcccersess eTypes:p U NK=NO WN.[SIFT:[SIFT:[SIFT:6] Error: [SIFT:[SIFT:75] Error: Success43] Error: ] Error: 
+[TRACE:4] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:5] -- DONE --
+Success] Error: SuccessSuccess
+Success
+
+
+[SIFT:2] Error: [TRACE:2] -- DONE --
+Success
+Pin app terminated abnormally due to signal 11.
+[TRACE:0] -- DONE --
+[TRACE:1] -- DONE --
+[SIFT:0] Error: Broken pipe
+[SIFT:1] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 23.48 seconds
+[SNIPER] Simulated 48.6M instructions, 16.6M cycles, 2.92 IPC
+[SNIPER] Simulation speed 2069.4 KIPS (258.7 KIPS / target core - 3865.9ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 23.73 seconds
