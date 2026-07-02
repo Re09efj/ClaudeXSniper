@@ -26,12 +26,12 @@ from config.generate_config import generate_config, get_config_path
 # ============================================================
 # 実験設定（CLI 引数で上書き可能）
 # ============================================================
-WORKLOADS = [
-    "BT", "CG", "FT", "IS", "MG", "SP","lavaMD", "BFS", "PR", "BC", "CC", "SSSP", "TC",
-]#BT,MG,SPに要注意
-STRATEGIES_TO_RUN  = ["Packed","HPO","Scatter","EPO"]#,, 
-THREAD_COUNTS      = [6, 12]
-BENCH_CLASSES      = ["W"]
+WORKLOADS = ["BT", "CG", "FT", "IS", "MG", "SP","lavaMD", "BFS", "PR", "BC", "CC", "SSSP", "TC","BC"]
+#     
+# ]#BT,MG,SPに要注意
+STRATEGIES_TO_RUN  = ["Packed","HPO","Scatter","EPO"]#
+THREAD_COUNTS      = [2,6,8,12]#
+BENCH_CLASSES      = ["A"]
 
 
 

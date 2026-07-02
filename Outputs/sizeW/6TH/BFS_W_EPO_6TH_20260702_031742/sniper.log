@@ -1,0 +1,37 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[S[IFSTIF_TR_ERCEOCRODREDERR]]  IIntn[eStrIFT_RECOneRDERarlnal ] Failede to print xbacktracec. 
+eepxtion:ceptEixo[ncSIFT_eRECORDERp] Internalt exception:i:oExceptioEn Code: ACCxESS_INVALIcD_ADDRESS. eExceptionn Address = Code: A C0x7fd7dadptCiESS_IoN92aa0.V AccessA Type: ULNKNOWN.I Access DAddress_ = 0x7fd7ADDREbbff2bf8n
+C: Tool (or Pin) caused signal 11 at PC 0x7fd7dad92aa0
+ Code: SASC.C EExScSe_pDtEiNoInE DA.d dErexscse p=t i0oxn7fd7d[SIFT:[SIFT:[SIFT:3] Error: 51] Error: ] Error: SuccessResource temporarily unavailableSuccess
+
+[TRACE:5] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:1] -- DONE --
+
+Pin app terminated abnormally due to signal 11.
+[SIFT:2] Error: Broken pipe
+[TRACE:2] -- DONE --
+[SIFT:4] Error: [TRACE:4] -- DONE --
+Broken pipe
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 23.48 seconds
+[SNIPER] Simulated 46.4M instructions, 15.0M cycles, 3.09 IPC
+[SNIPER] Simulation speed 1977.5 KIPS (329.6 KIPS / target core - 3034.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 23.72 seconds

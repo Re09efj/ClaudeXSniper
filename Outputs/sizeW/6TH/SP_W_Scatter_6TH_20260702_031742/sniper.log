@@ -1,0 +1,100 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[HOOKS] Entering ROI
+[HOOKS] Leaving ROI
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults
+ Size:   36x  36x  36
+ Iterations:  400    dt:    0.0015000
+ Number of available threads:     6
+
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for class W
+ accuracy setting for epsilon =  0.1000000000000E-07
+ Comparison of RMS-norms of residual
+           1 0.1893253733584E-02 0.1893253733584E-02 0.6024447041737E-13
+           2 0.1717075447776E-03 0.1717075447775E-03 0.5558107324678E-12
+           3 0.2778153350938E-03 0.2778153350936E-03 0.7760320427456E-12
+           4 0.2887475409984E-03 0.2887475409984E-03 0.8185561434899E-13
+           5 0.3143611161242E-02 0.3143611161242E-02 0.7670368591818E-13
+ Comparison of RMS-norms of solution error
+           1 0.7542088599534E-04 0.7542088599534E-04 0.2893040625725E-13
+           2 0.6512852253085E-05 0.6512852253086E-05 0.2195338631070E-12
+           3 0.1049092285689E-04 0.1049092285688E-04 0.6646484124344E-12
+           4 0.1128838671535E-04 0.1128838671535E-04 0.3886853611075E-13
+           5 0.1212845639773E-03 0.1212845639773E-03 0.4994848017013E-13
+ Verification Successful
+
+
+ SP Benchmark Completed.
+ Class           =                        W
+ Size            =             36x  36x  36
+ Iterations      =                      400
+ Time in seconds =                     0.86
+ Total threads   =                        6
+ Avail threads   =                        6
+ Mop/s total     =                 16448.26
+ Mop/s/thread    =                  2741.38
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = (none)
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:1] -- STOP --
+[TRACE:3] -- STOP --
+[TRACE:4] -- STOP --
+[TRACE:2] -- STOP --
+[TRACE:5] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 7635.71 seconds
+[SNIPER] Simulated 38289.6M instructions, 3473.0M cycles, 11.03 IPC
+[SNIPER] Simulation speed 5014.5 KIPS (835.8 KIPS / target core - 1196.5ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 7630.81 seconds

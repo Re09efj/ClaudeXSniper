@@ -1,0 +1,49 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f711d20baa0. Access Type: UNKNOWN. Access Address = 0x7f70f27f3bc8
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_[SINVALIID_ADDRFT_RECORDERESS. ] Failed to prExcepint tion Address = backtrace.
+[0x7f711d20baa0. AcSIFTcess_REC Type: UNKNOWN. AcORDER] Internalcess Address = 0 excx7f70f37f9bc8eption:Excep
+tion Code: ACCESS_DENIED. Exception Address = 0x7f711d20baa0. Access Type: UNKNOWN. Access Address = 0x7f7107ca9c08
+C: Tool (or Pin) caused signal 11 at PC 0x7f711d20baa0
+[SIFT:[SIFT:21] Error: [SIFT:3] Error: ] Error: SuccessSuccessSuccess
+
+[TRACE:2] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:3] -- DONE --
+
+Pin app terminated abnormally due to signal 11.
+[SIFT:[SIFT:87] Error: Broken pipe] Error: 
+[TRACE:7] -- DONE --
+[TRACE:8] -- DONE --
+Broken pipe
+[SIFT:10] Error: Broken pipe
+[TRACE:10] -- DONE --
+[SIFT:11] Error: Broken pipe
+[TRACE:11] -- DONE --
+[TRACE:6] -- DONE --
+[SIFT:6] Error: Broken pipe
+[SIFT:5] Error: [SIFT:4] Error: Broken pipeBroken pipe
+[TRACE:4] -- DONE --
+[TRACE:5] -- DONE --
+
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 20.53 seconds
+[SNIPER] Simulated 63.1M instructions, 14.5M cycles, 4.34 IPC
+[SNIPER] Simulation speed 3071.3 KIPS (255.9 KIPS / target core - 3907.2ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 20.68 seconds

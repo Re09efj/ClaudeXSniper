@@ -1,0 +1,51 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 8 at 1.00 GHz (global clock 4.00 GHz)
+Core 9 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCC: Tool (or Pin) caused signal 11 at PC 0x7fe898f19aa0
+ESS_INVALID_ADDRESS. Exception Address = 0x7fe898f19aa0. Access Type: UNKNOWN. Access Address = 0x7fe8744c3bd8
+[SIFT:[SIFT:5] Error: 8] Error: [SIFT:SuccessSuccess
+
+11[TRACE:8] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:11] -- DONE --
+] Error: Success
+Pin app terminated abnormally due to signal 11.
+[TRACE:1] -- DONE --
+[SIFT:1] Error: Broken pipe
+[SIFT:6] Error: Broken pipe
+[TRACE:6] -- DONE --
+[SIFT:7] Error: Broken pipe
+[TRACE:7] -- DONE --
+[SIFT:4] Error: Broken pipe
+[TRACE:4] -- DONE --
+[SIFT:10] Error: Broken pipe
+[TRACE:10] -- DONE --
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[SIFT:0] Error: Broken pipe
+[SIFT:2] Error: Broken pipe[TRACE:0] -- DONE --
+[TRACE:2] -- DONE --
+
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 21.33 seconds
+[SNIPER] Simulated 65.2M instructions, 14.1M cycles, 4.63 IPC
+[SNIPER] Simulation speed 3055.3 KIPS (254.6 KIPS / target core - 3927.5ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 21.48 seconds

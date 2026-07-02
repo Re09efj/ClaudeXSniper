@@ -1,0 +1,52 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+Core 2 at 1.00 GHz (global clock 4.00 GHz)
+Core 3 at 1.00 GHz (global clock 4.00 GHz)
+Core 8 at 1.00 GHz (global clock 4.00 GHz)
+Core 9 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f005564baa0. Access Type: UNKNOWN. Access Address = 0x7f0029ccebc8
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_DENIED. Exception Address = 0x7f005564[baSIaF0.T _ARcEce[sCs OTSyIpFT_RECeO:R RUDNEKRNDOWEN].  IARcc]enstse  AIdntedrrrenssal excep t=i n0oxa7lf exc0e0p3ntfi0ofdnb:f8:
+EC: Tool (or Pin) caused signal 11 at PC 0x7f005564baa0
+xcEexptcioenp tiCoodne : CACoCdEeS:S _AICNCVEASLSI_DIN_AVDADLRIEDS_ASD.DRE ESxSc.e pEtixocenp tAiodnd rAedssdr es= s0x 7=[SIFT:[SIFT:4] Error: [SIFT:[SIFT:2] Error: Success
+Success
+[SIFT:11] Error: [TRACE:4] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:5] -- DONE --
+[SIFT:1] Error: 10] Error: 5SuccessSuccess] Error: 
+Success
+Success
+
+Pin app terminated abnormally due to signal 11.
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:6] Error: Broken pipe[TRACE:6] -- DONE --
+
+[SIFT:7[TRACE:7] -- DONE --
+] Error: Broken pipe
+[SIFT:0] Error: [TRACE:0] -- DONE --
+Broken pipe
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[SIFT:8] Error: Broken pipe
+[TRACE:8] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 21.12 seconds
+[SNIPER] Simulated 65.3M instructions, 14.3M cycles, 4.56 IPC
+[SNIPER] Simulation speed 3089.0 KIPS (257.4 KIPS / target core - 3884.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 21.27 seconds

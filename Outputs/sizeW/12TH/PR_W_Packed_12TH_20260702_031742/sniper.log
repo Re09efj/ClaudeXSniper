@@ -1,0 +1,48 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 6 at 1.00 GHz (global clock 4.00 GHz)
+Core 7 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7fb04a809aa0. Access Type: UNKNOWN. Access Address = 0x7fb024880be8
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7fb04a809aa0. Access Type: UNKNOWN. Access Address = 0x7fb01fffebc8
+C: Tool (or Pin) caused signal 11 at PC 0x7fb04a809aa0
+[SIFT:[SIFT:10] Error: 3] Error: Success
+Success[TRACE:10] -- DONE --
+[TRACE:3] -- DONE --
+
+Pin app terminated abnormally due to signal 11.
+[SIFT:11] Error: Broken pipe
+[TRACE:11] -- DONE --
+[SIFT:4] Error: Broken pipe
+[TRACE:4] -- DONE --
+[SIFT:2] Error: Broken pipe
+[TRACE:2] -- DONE --
+[SIFT:8] Error: Broken pipe[TRACE:8] -- DONE --
+
+[SIFT:9] Error: [SIFT:Broken pipe
+[TRACE:9] -- DONE --
+[SIFT:1] Error: 6Broken pipe] Error: Broken pipe
+[TRACE:6] -- DONE --
+
+[TRACE:1] -- DONE --
+[TRACE:7] -- DONE --
+[SIFT:7] Error: Broken pipe
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[SIFT:5] Error: Broken pipe
+[TRACE:5] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 20.95 seconds
+[SNIPER] Simulated 64.8M instructions, 14.6M cycles, 4.45 IPC
+[SNIPER] Simulation speed 3094.6 KIPS (257.9 KIPS / target core - 3877.7ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 21.10 seconds

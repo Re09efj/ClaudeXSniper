@@ -1,70 +1,28 @@
 nohup: 入力を無視します
 
-  クラスシーケンス : ['W']
-  スレッドシーケンス: [6, 12]  (逐次実行)
-
 ================================================================
   ClaudeXSniper — NUMA アフィニティ実験
-  ワークロード: ['BT', 'CG', 'FT', 'IS', 'MG', 'SP', 'lavaMD', 'BFS', 'PR', 'BC', 'CC', 'SSSP', 'TC']
-  クラス=W  スレッド=6  戦略=['Packed', 'HPO', 'Scatter', 'EPO']
-  実験数=52  同時実験数=5  (ホスト32コア)
+  ワークロード: ['BC']
+  クラス=W  スレッド=12  戦略=['EPO']
+  実験数=1  同時実験数=2  (ホスト32コア)
 ================================================================
 
-[STEP] Sniper 並列実行 (52 実験, 同時実験数=5)
+[STEP] Sniper 並列実行 (1 実験, 同時実験数=2)
 
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/BT_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [BT/Packed] 開始
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/CG_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [CG/Packed] 開始
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/IS_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [IS/Packed] 開始
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/FT_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [FT/Packed] 開始
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/MG_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [MG/Packed] 開始
-  [IS/Packed] 完了  経過 03:39  [1/52]
-[profile] IS_W_6: simTime=0.120s, instructions=707,203,113, wallTime=220s (avg 188s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/IS_W_Packed_6TH_20260702_031742/metrics.csv
-[profile/estimate] SP_W_6: S×114.5 → 9048s (ref=79s)
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/SP_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [SP/Packed] 開始
-  [FT/Packed] 完了  経過 06:33  [2/52]
-[profile] FT_W_6: simTime=0.105s, instructions=1,827,319,368, wallTime=394s (avg 386s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/FT_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/lavaMD_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [lavaMD/Packed] 開始
-  [lavaMD/Packed] 完了  経過 00:04  [3/52]
-[profile] lavaMD_W_6: simTime=0.000s, instructions=353,598, wallTime=5s (avg 5s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/lavaMD_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/BFS_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [BFS/Packed] 開始
-  [BFS/Packed] 完了  経過 00:22  [4/52]
-[profile] BFS_W_6: simTime=0.016s, instructions=44,008,899, wallTime=23s (avg 23s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/BFS_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/PR_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [PR/Packed] 開始
-  [PR/Packed] 完了  経過 00:22  [5/52]
-[profile] PR_W_6: simTime=0.016s, instructions=43,731,225, wallTime=23s (avg 23s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/PR_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/BC_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [BC/Packed] 開始
-  [BC/Packed] 完了  経過 00:22  [6/52]
-[profile] BC_W_6: simTime=0.016s, instructions=44,055,871, wallTime=23s (avg 23s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/BC_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/CC_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [CC/Packed] 開始
-  [CC/Packed] 完了  経過 00:22  [7/52]
-[profile] CC_W_6: simTime=0.016s, instructions=44,001,319, wallTime=23s (avg 23s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/CC_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/SSSP_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [SSSP/Packed] 開始
-  [SSSP/Packed] 完了  経過 00:28  [8/52]
-[profile] SSSP_W_6: simTime=0.017s, instructions=60,249,125, wallTime=29s (avg 29s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/SSSP_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/TC_W_Packed_6TH_20260702_031742/affinity_config.txt
-  [TC/Packed] 開始
-  [TC/Packed] 完了  経過 00:22  [9/52]
-[profile] TC_W_6: simTime=0.016s, instructions=44,499,428, wallTime=23s (avg 24s)
-[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/TC_W_Packed_6TH_20260702_031742/metrics.csv
-[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/6TH/BT_W_HPO_6TH_20260702_031742/affinity_config.txt
-  [BT/HPO] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/12TH/BC_W_EPO_12TH_20260702_201232/affinity_config.txt
+  [BC/EPO] 開始
+  [BC/EPO] 完了  経過 00:23  [1/1]
+[profile] BC_W_12: simTime=0.014s, instructions=65,427,153, wallTime=24s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/12TH/BC_W_EPO_12TH_20260702_201232/metrics.csv
+
+[STEP] 結果収集
+
+============================================================================
+  全実験結果サマリー  (Class W, 12 threads)
+============================================================================
+  WL   Strategy         Node0       Node1   Node0%  使用コア
+  ------------------------------------------------------------------------
+  BC   EPO             14,133      13,902    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+============================================================================
+
+  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/{WL}_W_*_12TH_20260702_201232/
