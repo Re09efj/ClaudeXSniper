@@ -1,0 +1,19 @@
+
+  クラスシーケンス : ['A']
+  スレッドシーケンス: [12, 8, 6]  (逐次実行)
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['BT', 'MG', 'SP']
+  クラス=A  スレッド=12  戦略=['Packed', 'HPO', 'Scatter', 'EPO']
+  実験数=12  同時実験数=2  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (12 実験, 同時実験数=2)
+
+[profile/estimate] BT_A_12: W×40.0 → 91328s (ref=2283s)
+[profile/estimate] MG_A_12: W×9.7 → 5537s (ref=572s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BT_A_Packed_12TH_20260704_153332/affinity_config.txt
+  [BT/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/MG_A_Packed_12TH_20260704_153332/affinity_config.txt
+  [MG/Packed] 開始

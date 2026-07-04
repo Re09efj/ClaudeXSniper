@@ -1,0 +1,1120 @@
+
+  クラスシーケンス : ['A']
+  スレッドシーケンス: [2, 6, 8, 12]  (逐次実行)
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['CG', 'FT', 'IS', 'lavaMD', 'BFS', 'PR', 'BC', 'CC', 'SSSP', 'TC']
+  クラス=A  スレッド=2  戦略=['Packed', 'HPO', 'Scatter', 'EPO']
+  実験数=40  同時実験数=16  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (40 実験, 同時実験数=16)
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [FT/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [CG/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [lavaMD/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [IS/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [CG/HPO] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [BC/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [BFS/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [CC/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [SSSP/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [TC/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [FT/HPO] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_Packed_2TH_20260703_174340/affinity_config.txt
+  [PR/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [IS/HPO] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [PR/HPO] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [lavaMD/HPO] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [BFS/HPO] 開始
+  [lavaMD/Packed] 完了  経過 00:05  [1/40]
+[profile] lavaMD_A_2: simTime=0.000s, instructions=383,853, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_Packed_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [BC/HPO] 開始
+  [lavaMD/HPO] 完了  経過 00:06  [2/40]
+[profile] lavaMD_A_2: simTime=0.000s, instructions=385,645, wallTime=7s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_HPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [CC/HPO] 開始
+  [PR/Packed] 完了  経過 00:51  [3/40]
+[profile] PR_A_2: simTime=0.010s, instructions=59,230,650, wallTime=52s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_Packed_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [SSSP/HPO] 開始
+  [BFS/HPO] 完了  経過 00:52  [4/40]
+[profile] BFS_A_2: simTime=0.010s, instructions=59,242,950, wallTime=53s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_HPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_HPO_2TH_20260703_174340/affinity_config.txt
+  [TC/HPO] 開始
+  [BC/Packed] 完了  経過 00:53  [5/40]
+[profile] BC_A_2: simTime=0.010s, instructions=59,267,318, wallTime=54s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_Packed_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [CG/Scatter] 開始
+  [BFS/Packed] 完了  経過 00:54  [6/40]
+  [CC/Packed] 完了  経過 00:54  [7/40]
+  [TC/Packed] 完了  経過 00:54  [8/40]
+  [PR/HPO] 完了  経過 00:54  [9/40]
+[profile] BFS_A_2: simTime=0.010s, instructions=59,295,426, wallTime=55s (avg 50s)
+[profile] TC_A_2: simTime=0.010s, instructions=59,785,980, wallTime=55s (avg 50s)
+[profile] CC_A_2: simTime=0.010s, instructions=59,215,354, wallTime=55s (avg 49s)
+[profile] PR_A_2: simTime=0.010s, instructions=59,274,083, wallTime=55s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_Packed_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [FT/Scatter] 開始
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_HPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [IS/Scatter] 開始
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_Packed_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [lavaMD/Scatter] 開始
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_Packed_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [BFS/Scatter] 開始
+  [BC/HPO] 完了  経過 00:53  [10/40]
+[profile] BC_A_2: simTime=0.010s, instructions=59,322,629, wallTime=54s (avg 52s)
+  [CC/HPO] 完了  経過 00:52  [11/40]
+[profile] CC_A_2: simTime=0.010s, instructions=59,162,562, wallTime=53s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_HPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [PR/Scatter] 開始
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_HPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [BC/Scatter] 開始
+  [lavaMD/Scatter] 完了  経過 00:05  [12/40]
+[profile] lavaMD_A_2: simTime=0.000s, instructions=385,645, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_Scatter_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [CC/Scatter] 開始
+  [SSSP/Packed] 完了  経過 01:06  [13/40]
+[profile] SSSP_A_2: simTime=0.011s, instructions=72,416,417, wallTime=67s (avg 61s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_Packed_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [SSSP/Scatter] 開始
+  [TC/HPO] 完了  経過 00:54  [14/40]
+[profile] TC_A_2: simTime=0.010s, instructions=59,767,953, wallTime=55s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_HPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_Scatter_2TH_20260703_174340/affinity_config.txt
+  [TC/Scatter] 開始
+  [SSSP/HPO] 完了  経過 01:09  [15/40]
+[profile] SSSP_A_2: simTime=0.011s, instructions=72,464,097, wallTime=70s (avg 63s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_HPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [CG/EPO] 開始
+  [BFS/Scatter] 完了  経過 01:09  [16/40]
+[profile] BFS_A_2: simTime=0.010s, instructions=59,335,887, wallTime=70s (avg 54s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_Scatter_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [FT/EPO] 開始
+  [CC/Scatter] 完了  経過 01:06  [17/40]
+[profile] CC_A_2: simTime=0.010s, instructions=59,177,506, wallTime=67s (avg 54s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_Scatter_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [IS/EPO] 開始
+  [BC/Scatter] 完了  経過 01:08  [18/40]
+[profile] BC_A_2: simTime=0.010s, instructions=59,402,208, wallTime=69s (avg 54s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_Scatter_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [lavaMD/EPO] 開始
+  [PR/Scatter] 完了  経過 01:09  [19/40]
+[profile] PR_A_2: simTime=0.010s, instructions=59,188,089, wallTime=70s (avg 54s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_Scatter_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [BFS/EPO] 開始
+  [lavaMD/EPO] 完了  経過 00:05  [20/40]
+[profile] lavaMD_A_2: simTime=0.000s, instructions=385,636, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/lavaMD_A_EPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [PR/EPO] 開始
+  [SSSP/Scatter] 完了  経過 01:27  [21/40]
+[profile] SSSP_A_2: simTime=0.011s, instructions=72,417,422, wallTime=88s (avg 68s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_Scatter_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [BC/EPO] 開始
+  [TC/Scatter] 完了  経過 01:09  [22/40]
+[profile] TC_A_2: simTime=0.010s, instructions=59,867,480, wallTime=70s (avg 55s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_Scatter_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [CC/EPO] 開始
+  [BFS/EPO] 完了  経過 01:01  [23/40]
+[profile] BFS_A_2: simTime=0.037s, instructions=59,020,266, wallTime=62s (avg 57s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BFS_A_EPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [SSSP/EPO] 開始
+  [PR/EPO] 完了  経過 01:03  [24/40]
+[profile] PR_A_2: simTime=0.036s, instructions=59,037,271, wallTime=64s (avg 57s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/PR_A_EPO_2TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_EPO_2TH_20260703_174340/affinity_config.txt
+  [TC/EPO] 開始
+  [BC/EPO] 完了  経過 01:03  [25/40]
+[profile] BC_A_2: simTime=0.036s, instructions=59,086,430, wallTime=64s (avg 56s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/BC_A_EPO_2TH_20260703_174340/metrics.csv
+  [CC/EPO] 完了  経過 01:03  [26/40]
+[profile] CC_A_2: simTime=0.037s, instructions=59,020,890, wallTime=64s (avg 57s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CC_A_EPO_2TH_20260703_174340/metrics.csv
+  [TC/EPO] 完了  経過 01:00  [27/40]
+[profile] TC_A_2: simTime=0.037s, instructions=59,612,796, wallTime=61s (avg 58s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/TC_A_EPO_2TH_20260703_174340/metrics.csv
+  [SSSP/EPO] 完了  経過 01:20  [28/40]
+[profile] SSSP_A_2: simTime=0.039s, instructions=71,629,809, wallTime=81s (avg 72s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/SSSP_A_EPO_2TH_20260703_174340/metrics.csv
+  [IS/HPO] 完了  経過 68:25  [29/40]
+[profile] IS_A_2: simTime=0.861s, instructions=4,521,460,538, wallTime=4106s (avg 3141s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_HPO_2TH_20260703_174340/metrics.csv
+  [IS/Packed] 完了  経過 68:44  [30/40]
+[profile] IS_A_2: simTime=0.861s, instructions=4,523,082,410, wallTime=4125s (avg 3305s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_Packed_2TH_20260703_174340/metrics.csv
+  [IS/Scatter] 完了  経過 68:21  [31/40]
+[profile] IS_A_2: simTime=0.858s, instructions=4,524,694,502, wallTime=4102s (avg 3524s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_Scatter_2TH_20260703_174340/metrics.csv
+  [IS/EPO] 完了  経過 77:56  [32/40]
+[profile] IS_A_2: simTime=2.895s, instructions=4,519,617,187, wallTime=4677s (avg 3833s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/IS_A_EPO_2TH_20260703_174340/metrics.csv
+  [CG/Packed] 完了  経過 176:20  [33/40]
+[profile] CG_A_2: simTime=1.382s, instructions=8,283,201,513, wallTime=10582s (avg 8481s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_Packed_2TH_20260703_174340/metrics.csv
+  [CG/Scatter] 完了  経過 175:38  [34/40]
+[profile] CG_A_2: simTime=1.398s, instructions=8,510,414,251, wallTime=10540s (avg 8824s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_Scatter_2TH_20260703_174340/metrics.csv
+  [CG/HPO] 完了  経過 176:36  [35/40]
+[profile] CG_A_2: simTime=1.382s, instructions=8,283,848,009, wallTime=10598s (avg 9258s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_HPO_2TH_20260703_174340/metrics.csv
+  [CG/EPO] 完了  経過 187:50  [36/40]
+[profile] CG_A_2: simTime=4.098s, instructions=8,282,636,161, wallTime=11271s (avg 9796s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/CG_A_EPO_2TH_20260703_174340/metrics.csv
+  [FT/Scatter] 完了  経過 246:36  [37/40]
+[profile] FT_A_2: simTime=1.443s, instructions=29,427,433,325, wallTime=14797s (avg 13490s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_Scatter_2TH_20260703_174340/metrics.csv
+  [FT/HPO] 完了  経過 254:46  [38/40]
+[profile] FT_A_2: simTime=1.468s, instructions=29,406,099,139, wallTime=15287s (avg 13790s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_HPO_2TH_20260703_174340/metrics.csv
+  [FT/Packed] 完了  経過 256:02  [39/40]
+[profile] FT_A_2: simTime=1.467s, instructions=29,407,097,412, wallTime=15363s (avg 14215s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_Packed_2TH_20260703_174340/metrics.csv
+  [FT/EPO] 完了  経過 275:08  [40/40]
+[profile] FT_A_2: simTime=5.044s, instructions=29,395,569,552, wallTime=16510s (avg 14726s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/2TH/FT_A_EPO_2TH_20260703_174340/metrics.csv
+
+[STEP] 結果収集
+
+============================================================================
+  全実験結果サマリー  (Class A, 2 threads)
+============================================================================
+  WL   Strategy         Node0       Node1   Node0%  使用コア
+  ------------------------------------------------------------------------
+  CG   Packed      161,104,366           0   100.0%  CPU0(N0P) CPU1(N0P)
+  CG   HPO         161,102,124           0   100.0%  CPU0(N0P) CPU1(N0P)
+  CG   Scatter     79,219,835  79,216,693    50.0%  CPU0(N0P) CPU8(N1P)
+  CG   EPO         160,727,998           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  FT   Packed      194,198,176           0   100.0%  CPU0(N0P) CPU1(N0P)
+  FT   HPO         194,237,311           0   100.0%  CPU0(N0P) CPU1(N0P)
+  FT   Scatter     94,728,307  94,723,993    50.0%  CPU0(N0P) CPU8(N1P)
+  FT   EPO         186,227,169           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  IS   Packed      33,927,010           0   100.0%  CPU0(N0P) CPU1(N0P)
+  IS   HPO         33,927,351           0   100.0%  CPU0(N0P) CPU1(N0P)
+  IS   Scatter     16,884,250  16,886,373    50.0%  CPU0(N0P) CPU8(N1P)
+  IS   EPO         33,902,797           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  lavaMD Packed           9,284           0   100.0%  CPU0(N0P) CPU1(N0P)
+  lavaMD HPO              9,285           0   100.0%  CPU0(N0P) CPU1(N0P)
+  lavaMD Scatter          4,668       4,617    50.3%  CPU0(N0P) CPU8(N1P)
+  lavaMD EPO              9,281           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  BFS  Packed          40,130           0   100.0%  CPU0(N0P) CPU1(N0P)
+  BFS  HPO             40,138           0   100.0%  CPU0(N0P) CPU1(N0P)
+  BFS  Scatter         19,496      19,433    50.1%  CPU0(N0P) CPU8(N1P)
+  BFS  EPO             40,057           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  PR   Packed          40,150           0   100.0%  CPU0(N0P) CPU1(N0P)
+  PR   HPO             40,165           0   100.0%  CPU0(N0P) CPU1(N0P)
+  PR   Scatter         19,494      19,432    50.1%  CPU0(N0P) CPU8(N1P)
+  PR   EPO             40,093           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  BC   Packed          40,111           0   100.0%  CPU0(N0P) CPU1(N0P)
+  BC   HPO             38,908           0   100.0%  CPU0(N0P) CPU1(N0P)
+  BC   Scatter         19,479      19,427    50.1%  CPU0(N0P) CPU8(N1P)
+  BC   EPO             40,012           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  CC   Packed          38,283           0   100.0%  CPU0(N0P) CPU1(N0P)
+  CC   HPO             38,291           0   100.0%  CPU0(N0P) CPU1(N0P)
+  CC   Scatter         18,558      18,514    50.1%  CPU0(N0P) CPU8(N1P)
+  CC   EPO             39,450           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  SSSP Packed          57,330           0   100.0%  CPU0(N0P) CPU1(N0P)
+  SSSP HPO             57,341           0   100.0%  CPU0(N0P) CPU1(N0P)
+  SSSP Scatter         28,701      28,605    50.1%  CPU0(N0P) CPU8(N1P)
+  SSSP EPO             57,295           0   100.0%  CPU4(N0E) CPU5(N0E)
+  ------------------------------------------------------------------------
+  TC   Packed          39,028           0   100.0%  CPU0(N0P) CPU1(N0P)
+  TC   HPO             40,218           0   100.0%  CPU0(N0P) CPU1(N0P)
+  TC   Scatter         19,538      19,493    50.1%  CPU0(N0P) CPU8(N1P)
+  TC   EPO             40,166           0   100.0%  CPU4(N0E) CPU5(N0E)
+============================================================================
+
+  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/{WL}_A_*_2TH_20260703_174340/
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['CG', 'FT', 'IS', 'lavaMD', 'BFS', 'PR', 'BC', 'CC', 'SSSP', 'TC']
+  クラス=A  スレッド=6  戦略=['Packed', 'HPO', 'Scatter', 'EPO']
+  実験数=40  同時実験数=5  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (40 実験, 同時実験数=5)
+
+[profile/estimate] CG_A_6: W×5.2 → 4623s (ref=883s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [CG/Packed] 開始
+[profile/estimate] FT_A_6: W×18.5 → 7073s (ref=382s)
+[profile/estimate] lavaMD_A_6: W×1.1 → 5s (ref=5s)
+[profile/estimate] BFS_A_6: W×1.5 → 37s (ref=24s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [FT/Packed] 開始
+[profile/estimate] IS_A_6: W×8.6 → 1500s (ref=174s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [lavaMD/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [IS/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [BFS/Packed] 開始
+  [lavaMD/Packed] 完了  経過 00:05  [1/40]
+[profile] lavaMD_A_6: simTime=0.000s, instructions=386,285, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_Packed_6TH_20260703_174340/metrics.csv
+[profile/estimate] PR_A_6: W×1.5 → 37s (ref=24s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [PR/Packed] 開始
+  [BFS/Packed] 完了  経過 00:52  [2/40]
+[profile] BFS_A_6: simTime=0.032s, instructions=76,381,493, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_Packed_6TH_20260703_174340/metrics.csv
+[profile/estimate] BC_A_6: W×1.5 → 36s (ref=24s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [BC/Packed] 開始
+  [PR/Packed] 完了  経過 00:52  [3/40]
+[profile] PR_A_6: simTime=0.032s, instructions=76,256,129, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_Packed_6TH_20260703_174340/metrics.csv
+[profile/estimate] CC_A_6: W×1.6 → 37s (ref=24s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [CC/Packed] 開始
+  [BC/Packed] 完了  経過 00:52  [4/40]
+[profile] BC_A_6: simTime=0.032s, instructions=76,314,684, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_Packed_6TH_20260703_174340/metrics.csv
+[profile/estimate] SSSP_A_6: W×1.6 → 46s (ref=29s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [SSSP/Packed] 開始
+  [CC/Packed] 完了  経過 00:52  [5/40]
+[profile] CC_A_6: simTime=0.033s, instructions=76,203,586, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_Packed_6TH_20260703_174340/metrics.csv
+[profile/estimate] TC_A_6: W×1.6 → 38s (ref=24s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_Packed_6TH_20260703_174340/affinity_config.txt
+  [TC/Packed] 開始
+  [TC/Packed] 完了  経過 00:51  [6/40]
+[profile] TC_A_6: simTime=0.033s, instructions=76,879,177, wallTime=52s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_Packed_6TH_20260703_174340/metrics.csv
+[profile/estimate] CG_A_6: W×5.2 → 4623s (ref=883s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [CG/HPO] 開始
+  [SSSP/Packed] 完了  経過 01:04  [7/40]
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_Packed_6TH_20260703_174340/metrics.csv
+[profile/estimate] FT_A_6: W×18.5 → 7073s (ref=382s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [FT/HPO] 開始
+  [IS/Packed] 完了  経過 46:30  [8/40]
+[profile] IS_A_6: simTime=0.947s, instructions=4,697,523,362, wallTime=2791s (avg 2791s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_Packed_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [IS/HPO] 開始
+  [IS/HPO] 完了  経過 31:31  [9/40]
+[profile] IS_A_6: simTime=0.289s, instructions=4,561,735,695, wallTime=1892s (avg 2342s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_HPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [lavaMD/HPO] 開始
+  [lavaMD/HPO] 完了  経過 00:05  [10/40]
+[profile] lavaMD_A_6: simTime=0.000s, instructions=386,285, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_HPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [BFS/HPO] 開始
+  [BFS/HPO] 完了  経過 00:52  [11/40]
+[profile] BFS_A_6: simTime=0.009s, instructions=77,719,716, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_HPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [PR/HPO] 開始
+  [PR/HPO] 完了  経過 00:52  [12/40]
+[profile] PR_A_6: simTime=0.008s, instructions=77,422,056, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_HPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [BC/HPO] 開始
+  [BC/HPO] 完了  経過 00:52  [13/40]
+[profile] BC_A_6: simTime=0.008s, instructions=77,609,794, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_HPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [CC/HPO] 開始
+  [CC/HPO] 完了  経過 00:52  [14/40]
+[profile] CC_A_6: simTime=0.009s, instructions=77,595,536, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_HPO_6TH_20260703_174340/metrics.csv
+[profile/estimate] SSSP_A_6: W×1.6 → 46s (ref=29s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [SSSP/HPO] 開始
+  [SSSP/HPO] 完了  経過 01:04  [15/40]
+[profile] SSSP_A_6: simTime=0.009s, instructions=97,550,171, wallTime=65s (avg 65s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_HPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_HPO_6TH_20260703_174340/affinity_config.txt
+  [TC/HPO] 開始
+  [TC/HPO] 完了  経過 00:52  [16/40]
+[profile] TC_A_6: simTime=0.009s, instructions=78,058,774, wallTime=53s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_HPO_6TH_20260703_174340/metrics.csv
+[profile/estimate] CG_A_6: W×5.2 → 4623s (ref=883s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [CG/Scatter] 開始
+  [CG/HPO] 完了  経過 92:14  [17/40]
+[profile] CG_A_6: simTime=0.467s, instructions=8,832,970,311, wallTime=5536s (avg 5536s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_HPO_6TH_20260703_174340/metrics.csv
+[profile/estimate] FT_A_6: W×18.5 → 7073s (ref=382s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [FT/Scatter] 開始
+  [FT/HPO] 完了  経過 139:51  [18/40]
+[profile] FT_A_6: simTime=0.531s, instructions=29,642,073,227, wallTime=8393s (avg 8393s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_HPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [IS/Scatter] 開始
+  [CG/Packed] 完了  経過 150:25  [19/40]
+[profile] CG_A_6: simTime=1.381s, instructions=11,438,882,927, wallTime=9027s (avg 7281s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_Packed_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [lavaMD/Scatter] 開始
+  [lavaMD/Scatter] 完了  経過 00:05  [20/40]
+[profile] lavaMD_A_6: simTime=0.000s, instructions=386,273, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [BFS/Scatter] 開始
+  [BFS/Scatter] 完了  経過 00:51  [21/40]
+[profile] BFS_A_6: simTime=0.009s, instructions=76,455,014, wallTime=52s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [PR/Scatter] 開始
+  [PR/Scatter] 完了  経過 00:52  [22/40]
+[profile] PR_A_6: simTime=0.008s, instructions=76,285,332, wallTime=53s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [BC/Scatter] 開始
+  [BC/Scatter] 完了  経過 00:51  [23/40]
+[profile] BC_A_6: simTime=0.008s, instructions=76,385,559, wallTime=52s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [CC/Scatter] 開始
+  [CC/Scatter] 完了  経過 00:51  [24/40]
+[profile] CC_A_6: simTime=0.009s, instructions=76,298,179, wallTime=52s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [SSSP/Scatter] 開始
+  [SSSP/Scatter] 完了  経過 01:04  [25/40]
+[profile] SSSP_A_6: simTime=0.009s, instructions=96,992,391, wallTime=65s (avg 65s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_Scatter_6TH_20260703_174340/affinity_config.txt
+  [TC/Scatter] 開始
+  [TC/Scatter] 完了  経過 00:53  [26/40]
+[profile] TC_A_6: simTime=0.009s, instructions=76,868,616, wallTime=54s (avg 53s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [CG/EPO] 開始
+  [CG/Scatter] 完了  経過 86:50  [27/40]
+[profile] CG_A_6: simTime=0.466s, instructions=8,677,677,804, wallTime=5212s (avg 6591s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [FT/EPO] 開始
+  [IS/Scatter] 完了  経過 30:47  [28/40]
+[profile] IS_A_6: simTime=0.289s, instructions=4,551,376,982, wallTime=1848s (avg 2177s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_Scatter_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [IS/EPO] 開始
+  [FT/Packed] 完了  経過 190:41  [29/40]
+[profile] FT_A_6: simTime=1.742s, instructions=29,634,416,931, wallTime=11442s (avg 9917s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_Packed_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [lavaMD/EPO] 開始
+  [lavaMD/EPO] 完了  経過 00:05  [30/40]
+[profile] lavaMD_A_6: simTime=0.000s, instructions=386,276, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/lavaMD_A_EPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [BFS/EPO] 開始
+  [BFS/EPO] 完了  経過 00:59  [31/40]
+[profile] BFS_A_6: simTime=0.031s, instructions=81,634,259, wallTime=60s (avg 54s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BFS_A_EPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [PR/EPO] 開始
+  [PR/EPO] 完了  経過 01:00  [32/40]
+[profile] PR_A_6: simTime=0.030s, instructions=81,571,890, wallTime=61s (avg 55s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/PR_A_EPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [BC/EPO] 開始
+  [BC/EPO] 完了  経過 00:59  [33/40]
+[profile] BC_A_6: simTime=0.030s, instructions=81,625,475, wallTime=60s (avg 54s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/BC_A_EPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [CC/EPO] 開始
+  [CC/EPO] 完了  経過 01:00  [34/40]
+[profile] CC_A_6: simTime=0.031s, instructions=81,470,223, wallTime=61s (avg 55s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CC_A_EPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [SSSP/EPO] 開始
+  [SSSP/EPO] 完了  経過 01:13  [35/40]
+[profile] SSSP_A_6: simTime=0.033s, instructions=101,319,217, wallTime=74s (avg 68s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/SSSP_A_EPO_6TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_EPO_6TH_20260703_174340/affinity_config.txt
+  [TC/EPO] 開始
+  [TC/EPO] 完了  経過 01:00  [36/40]
+[profile] TC_A_6: simTime=0.031s, instructions=81,942,627, wallTime=61s (avg 55s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/TC_A_EPO_6TH_20260703_174340/metrics.csv
+  [IS/EPO] 完了  経過 38:39  [37/40]
+[profile] IS_A_6: simTime=0.970s, instructions=4,537,630,468, wallTime=2320s (avg 2213s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/IS_A_EPO_6TH_20260703_174340/metrics.csv
+  [FT/Scatter] 完了  経過 128:34  [38/40]
+[profile] FT_A_6: simTime=0.521s, instructions=29,660,130,409, wallTime=7716s (avg 9184s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_Scatter_6TH_20260703_174340/metrics.csv
+  [CG/EPO] 完了  経過 84:58  [39/40]
+[profile] CG_A_6: simTime=1.404s, instructions=8,690,713,320, wallTime=5099s (avg 6218s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/CG_A_EPO_6TH_20260703_174340/metrics.csv
+  [FT/EPO] 完了  経過 115:29  [40/40]
+[profile] FT_A_6: simTime=1.735s, instructions=29,645,227,250, wallTime=6931s (avg 8620s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/6TH/FT_A_EPO_6TH_20260703_174340/metrics.csv
+
+[STEP] 結果収集
+
+============================================================================
+  全実験結果サマリー  (Class A, 6 threads)
+============================================================================
+  WL   Strategy         Node0       Node1   Node0%  使用コア
+  ------------------------------------------------------------------------
+  CG   Packed      160,925,813           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CG   HPO         79,043,620  79,040,849    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CG   Scatter     79,044,354  79,038,600    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  CG   EPO         78,942,256  78,946,414    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  FT   Packed      214,401,901           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  FT   HPO         101,392,533  101,387,039    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  FT   Scatter     99,979,975  99,966,281    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  FT   EPO         94,196,766  94,197,636    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  IS   Packed      34,310,380           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  IS   HPO         16,986,100  16,988,730    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  IS   Scatter     16,981,707  16,984,503    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  IS   EPO         16,948,182  16,951,143    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  lavaMD Packed           9,288           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  lavaMD HPO              4,670       4,617    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  lavaMD Scatter          4,670       4,615    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  lavaMD EPO              4,667       4,615    50.3%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  BFS  Packed          40,026           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BFS  HPO             20,030      19,691    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BFS  Scatter         20,006      19,693    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  BFS  EPO             20,063      19,681    50.5%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  PR   Packed          39,970           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  PR   HPO             20,040      19,687    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  PR   Scatter         20,002      19,678    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  PR   EPO             20,055      19,676    50.5%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  BC   Packed          40,010           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BC   HPO             20,024      19,677    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BC   Scatter         19,977      19,671    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  BC   EPO             20,024      19,681    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  CC   Packed          38,317           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CC   HPO             19,183      18,857    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CC   Scatter         19,027      18,755    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  CC   EPO             19,968      19,648    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  SSSP Packed               0           0     0.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  SSSP HPO             29,519      28,852    50.6%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  SSSP Scatter         29,394      28,851    50.5%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  SSSP EPO             28,913      28,861    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  TC   Packed          40,759           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  TC   HPO             20,423      20,064    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  TC   Scatter         20,357      20,057    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  TC   EPO             20,415      20,057    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+============================================================================
+
+  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/{WL}_A_*_6TH_20260703_174340/
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['CG', 'FT', 'IS', 'lavaMD', 'BFS', 'PR', 'BC', 'CC', 'SSSP', 'TC']
+  クラス=A  スレッド=8  戦略=['Packed', 'HPO', 'Scatter', 'EPO']
+  実験数=40  同時実験数=4  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (40 実験, 同時実験数=4)
+
+[profile/estimate] CG_A_8: W×5.2 → 5015s (ref=957s)
+[profile/estimate] IS_A_8: W×8.6 → 2512s (ref=291s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [CG/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [IS/Packed] 開始
+[profile/estimate] lavaMD_A_8: W×1.1 → 5s (ref=5s)
+[profile/estimate] FT_A_8: W×18.5 → 9961s (ref=537s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [lavaMD/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [FT/Packed] 開始
+  [lavaMD/Packed] 完了  経過 00:04  [1/40]
+[profile] lavaMD_A_8: simTime=0.000s, instructions=386,598, wallTime=5s (avg 5s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] BFS_A_8: W×1.5 → 41s (ref=26s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [BFS/Packed] 開始
+  [BFS/Packed] 完了  経過 00:47  [2/40]
+[profile] BFS_A_8: simTime=0.031s, instructions=83,965,351, wallTime=48s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] PR_A_8: W×1.5 → 42s (ref=27s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [PR/Packed] 開始
+  [PR/Packed] 完了  経過 00:49  [3/40]
+[profile] PR_A_8: simTime=0.031s, instructions=83,782,456, wallTime=50s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] BC_A_8: W×1.5 → 40s (ref=26s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [BC/Packed] 開始
+  [BC/Packed] 完了  経過 00:49  [4/40]
+[profile] BC_A_8: simTime=0.031s, instructions=83,991,130, wallTime=50s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] CC_A_8: W×1.6 → 41s (ref=26s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [CC/Packed] 開始
+  [CC/Packed] 完了  経過 00:50  [5/40]
+[profile] CC_A_8: simTime=0.032s, instructions=83,860,019, wallTime=51s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] SSSP_A_8: W×1.6 → 54s (ref=34s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [SSSP/Packed] 開始
+  [SSSP/Packed] 完了  経過 01:03  [6/40]
+[profile] SSSP_A_8: simTime=0.033s, instructions=108,262,637, wallTime=64s (avg 64s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] TC_A_8: W×1.6 → 43s (ref=27s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_Packed_8TH_20260703_174340/affinity_config.txt
+  [TC/Packed] 開始
+  [TC/Packed] 完了  経過 00:50  [7/40]
+[profile] TC_A_8: simTime=0.031s, instructions=84,448,251, wallTime=51s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] CG_A_8: W×5.2 → 5015s (ref=957s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [CG/HPO] 開始
+  [IS/Packed] 完了  経過 38:55  [8/40]
+[profile] IS_A_8: simTime=0.721s, instructions=4,727,936,026, wallTime=2336s (avg 2336s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] FT_A_8: W×18.5 → 9961s (ref=537s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [FT/HPO] 開始
+  [CG/HPO] 完了  経過 72:27  [9/40]
+[profile] CG_A_8: simTime=0.349s, instructions=8,718,958,575, wallTime=4348s (avg 4348s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [IS/HPO] 開始
+  [IS/HPO] 完了  経過 27:07  [10/40]
+[profile] IS_A_8: simTime=0.218s, instructions=4,582,981,636, wallTime=1628s (avg 1982s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [lavaMD/HPO] 開始
+  [lavaMD/HPO] 完了  経過 00:05  [11/40]
+[profile] lavaMD_A_8: simTime=0.000s, instructions=384,872, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [BFS/HPO] 開始
+  [BFS/HPO] 完了  経過 00:51  [12/40]
+[profile] BFS_A_8: simTime=0.008s, instructions=84,520,840, wallTime=52s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [PR/HPO] 開始
+  [PR/HPO] 完了  経過 00:51  [13/40]
+[profile] PR_A_8: simTime=0.008s, instructions=84,177,123, wallTime=52s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [BC/HPO] 開始
+  [BC/HPO] 完了  経過 00:52  [14/40]
+[profile] BC_A_8: simTime=0.008s, instructions=84,522,723, wallTime=53s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [CC/HPO] 開始
+  [CC/HPO] 完了  経過 00:51  [15/40]
+[profile] CC_A_8: simTime=0.008s, instructions=84,361,504, wallTime=52s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [SSSP/HPO] 開始
+  [SSSP/HPO] 完了  経過 01:01  [16/40]
+[profile] SSSP_A_8: simTime=0.009s, instructions=108,564,642, wallTime=62s (avg 63s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_HPO_8TH_20260703_174340/affinity_config.txt
+  [TC/HPO] 開始
+  [TC/HPO] 完了  経過 00:50  [17/40]
+[profile] TC_A_8: simTime=0.008s, instructions=84,877,013, wallTime=51s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [CG/Scatter] 開始
+  [CG/Packed] 完了  経過 132:51  [18/40]
+[profile] CG_A_8: simTime=1.049s, instructions=11,501,954,219, wallTime=7973s (avg 6161s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_Packed_8TH_20260703_174340/metrics.csv
+[profile/estimate] FT_A_8: W×18.5 → 9961s (ref=537s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [FT/Scatter] 開始
+  [FT/HPO] 完了  経過 112:30  [19/40]
+[profile] FT_A_8: simTime=0.395s, instructions=29,547,434,978, wallTime=6752s (avg 6752s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_HPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [IS/Scatter] 開始
+  [FT/Packed] 完了  経過 168:57  [20/40]
+[profile] FT_A_8: simTime=1.379s, instructions=29,667,758,037, wallTime=10139s (avg 8445s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_Packed_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [lavaMD/Scatter] 開始
+  [lavaMD/Scatter] 完了  経過 00:05  [21/40]
+[profile] lavaMD_A_8: simTime=0.000s, instructions=386,664, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [BFS/Scatter] 開始
+  [BFS/Scatter] 完了  経過 00:51  [22/40]
+[profile] BFS_A_8: simTime=0.008s, instructions=84,496,164, wallTime=52s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [PR/Scatter] 開始
+  [PR/Scatter] 完了  経過 00:51  [23/40]
+[profile] PR_A_8: simTime=0.008s, instructions=84,220,008, wallTime=52s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [BC/Scatter] 開始
+  [BC/Scatter] 完了  経過 00:50  [24/40]
+[profile] BC_A_8: simTime=0.008s, instructions=84,526,943, wallTime=51s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [CC/Scatter] 開始
+  [CC/Scatter] 完了  経過 00:50  [25/40]
+[profile] CC_A_8: simTime=0.008s, instructions=84,279,471, wallTime=51s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [SSSP/Scatter] 開始
+  [SSSP/Scatter] 完了  経過 01:03  [26/40]
+[profile] SSSP_A_8: simTime=0.009s, instructions=108,488,933, wallTime=64s (avg 63s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_Scatter_8TH_20260703_174340/affinity_config.txt
+  [TC/Scatter] 開始
+  [TC/Scatter] 完了  経過 00:51  [27/40]
+[profile] TC_A_8: simTime=0.008s, instructions=84,952,394, wallTime=52s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [CG/EPO] 開始
+  [IS/Scatter] 完了  経過 27:08  [28/40]
+[profile] IS_A_8: simTime=0.218s, instructions=4,572,396,763, wallTime=1629s (avg 1865s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [FT/EPO] 開始
+  [CG/Scatter] 完了  経過 77:00  [29/40]
+[profile] CG_A_8: simTime=0.349s, instructions=8,726,469,924, wallTime=4621s (avg 5648s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_Scatter_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [IS/EPO] 開始
+  [IS/EPO] 完了  経過 34:59  [30/40]
+[profile] IS_A_8: simTime=0.729s, instructions=4,552,051,838, wallTime=2100s (avg 1923s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/IS_A_EPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [lavaMD/EPO] 開始
+  [lavaMD/EPO] 完了  経過 00:05  [31/40]
+[profile] lavaMD_A_8: simTime=0.000s, instructions=386,623, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/lavaMD_A_EPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [BFS/EPO] 開始
+  [BFS/EPO] 完了  経過 00:53  [32/40]
+[profile] BFS_A_8: simTime=0.029s, instructions=84,072,365, wallTime=54s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BFS_A_EPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [PR/EPO] 開始
+  [PR/EPO] 完了  経過 00:53  [33/40]
+[profile] PR_A_8: simTime=0.029s, instructions=83,704,623, wallTime=54s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/PR_A_EPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [BC/EPO] 開始
+  [BC/EPO] 完了  経過 00:52  [34/40]
+[profile] BC_A_8: simTime=0.029s, instructions=83,974,125, wallTime=53s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/BC_A_EPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [CC/EPO] 開始
+  [CC/EPO] 完了  経過 00:53  [35/40]
+[profile] CC_A_8: simTime=0.030s, instructions=83,833,906, wallTime=54s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CC_A_EPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [SSSP/EPO] 開始
+  [SSSP/EPO] 完了  経過 01:06  [36/40]
+[profile] SSSP_A_8: simTime=0.031s, instructions=107,687,101, wallTime=67s (avg 64s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/SSSP_A_EPO_8TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_EPO_8TH_20260703_174340/affinity_config.txt
+  [TC/EPO] 開始
+  [TC/EPO] 完了  経過 00:53  [37/40]
+[profile] TC_A_8: simTime=0.029s, instructions=84,492,511, wallTime=54s (avg 52s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/TC_A_EPO_8TH_20260703_174340/metrics.csv
+  [FT/Scatter] 完了  経過 109:55  [38/40]
+[profile] FT_A_8: simTime=0.394s, instructions=29,560,176,114, wallTime=6597s (avg 7829s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_Scatter_8TH_20260703_174340/metrics.csv
+  [CG/EPO] 完了  経過 81:13  [39/40]
+[profile] CG_A_8: simTime=1.066s, instructions=8,862,805,241, wallTime=4874s (avg 5454s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/CG_A_EPO_8TH_20260703_174340/metrics.csv
+  [FT/EPO] 完了  経過 105:20  [40/40]
+[profile] FT_A_8: simTime=1.272s, instructions=29,449,567,779, wallTime=6322s (avg 7452s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/8TH/FT_A_EPO_8TH_20260703_174340/metrics.csv
+
+[STEP] 結果収集
+
+============================================================================
+  全実験結果サマリー  (Class A, 8 threads)
+============================================================================
+  WL   Strategy         Node0       Node1   Node0%  使用コア
+  ------------------------------------------------------------------------
+  CG   Packed      160,547,562           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CG   HPO         79,064,142  79,061,408    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CG   Scatter     79,063,316  79,060,817    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  CG   EPO         78,946,539  78,955,240    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  FT   Packed      231,232,267           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  FT   HPO         103,581,754  103,584,207    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  FT   Scatter     103,556,516  103,569,175    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  FT   EPO         94,393,408  94,423,754    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  IS   Packed      34,527,522           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  IS   HPO         17,041,904  17,045,630    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  IS   Scatter     17,040,930  17,044,589    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  IS   EPO         16,993,484  16,996,709    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  lavaMD Packed           9,284           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  lavaMD HPO              4,670       4,616    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  lavaMD Scatter          4,670       4,616    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  lavaMD EPO              4,668       4,613    50.3%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  BFS  Packed          39,688           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BFS  HPO             20,104      19,806    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BFS  Scatter         20,136      19,822    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  BFS  EPO             20,111      19,814    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  PR   Packed          40,124           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  PR   HPO             20,141      19,813    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  PR   Scatter         20,139      19,825    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  PR   EPO             20,089      19,801    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  BC   Packed          40,098           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BC   HPO             20,155      19,817    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BC   Scatter         20,081      19,794    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  BC   EPO             20,091      19,790    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  CC   Packed          40,043           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CC   HPO             19,171      18,887    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CC   Scatter         19,224      18,899    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  CC   EPO             20,033      19,775    50.3%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  SSSP Packed          58,142           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  SSSP HPO             29,500      28,976    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  SSSP Scatter         29,472      28,973    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  SSSP EPO             29,454      28,979    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  TC   Packed          41,025           0   100.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  TC   HPO             20,622      20,281    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  TC   Scatter         20,591      20,263    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  TC   EPO             20,549      20,252    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+============================================================================
+
+  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/{WL}_A_*_8TH_20260703_174340/
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['CG', 'FT', 'IS', 'lavaMD', 'BFS', 'PR', 'BC', 'CC', 'SSSP', 'TC']
+  クラス=A  スレッド=12  戦略=['Packed', 'HPO', 'Scatter', 'EPO']
+  実験数=40  同時実験数=2  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (40 実験, 同時実験数=2)
+
+[profile/estimate] CG_A_12: W×5.7 → 2417s (ref=424s)
+[profile/estimate] FT_A_12: W×16.5 → 3884s (ref=236s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [FT/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [CG/Packed] 開始
+  [CG/Packed] 完了  経過 84:55  [1/40]
+[profile] CG_A_12: simTime=0.711s, instructions=13,146,472,772, wallTime=5096s (avg 5096s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] IS_A_12: W×6.6 → 811s (ref=123s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [IS/Packed] 開始
+  [FT/Packed] 完了  経過 105:13  [2/40]
+[profile] FT_A_12: simTime=0.938s, instructions=29,862,007,607, wallTime=6315s (avg 6315s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] lavaMD_A_12: W×1.2 → 6s (ref=5s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [lavaMD/Packed] 開始
+  [lavaMD/Packed] 完了  経過 00:05  [3/40]
+[profile] lavaMD_A_12: simTime=0.000s, instructions=387,370, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] BFS_A_12: W×1.7 → 39s (ref=22s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [BFS/Packed] 開始
+  [BFS/Packed] 完了  経過 00:48  [4/40]
+[profile] BFS_A_12: simTime=0.030s, instructions=100,124,043, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] PR_A_12: W×1.7 → 40s (ref=23s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [PR/Packed] 開始
+  [PR/Packed] 完了  経過 00:48  [5/40]
+[profile] PR_A_12: simTime=0.030s, instructions=99,631,954, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] BC_A_12: W×1.7 → 40s (ref=24s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [BC/Packed] 開始
+  [BC/Packed] 完了  経過 00:48  [6/40]
+[profile] BC_A_12: simTime=0.030s, instructions=99,975,569, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] CC_A_12: W×1.7 → 39s (ref=23s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [CC/Packed] 開始
+  [CC/Packed] 完了  経過 00:48  [7/40]
+[profile] CC_A_12: simTime=0.030s, instructions=99,839,374, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] SSSP_A_12: W×1.8 → 49s (ref=28s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [SSSP/Packed] 開始
+  [SSSP/Packed] 完了  経過 00:58  [8/40]
+[profile] SSSP_A_12: simTime=0.032s, instructions=134,371,569, wallTime=59s (avg 59s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_Packed_12TH_20260703_174340/metrics.csv
+[profile/estimate] TC_A_12: W×1.8 → 40s (ref=23s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_Packed_12TH_20260703_174340/affinity_config.txt
+  [TC/Packed] 開始
+  [IS/Packed] 完了  経過 25:26  [9/40]
+[profile] IS_A_12: simTime=0.476s, instructions=4,881,536,315, wallTime=1527s (avg 1527s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_Packed_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [CG/HPO] 開始
+  [TC/Packed] 完了  経過 00:48  [10/40]
+[profile] TC_A_12: simTime=0.030s, instructions=101,281,352, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_Packed_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [FT/HPO] 開始
+  [CG/HPO] 完了  経過 84:26  [11/40]
+[profile] CG_A_12: simTime=0.711s, instructions=13,144,666,867, wallTime=5067s (avg 5082s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [IS/HPO] 開始
+  [FT/HPO] 完了  経過 105:41  [12/40]
+[profile] FT_A_12: simTime=0.940s, instructions=29,850,552,081, wallTime=6343s (avg 6329s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [lavaMD/HPO] 開始
+  [lavaMD/HPO] 完了  経過 00:04  [13/40]
+[profile] lavaMD_A_12: simTime=0.000s, instructions=387,370, wallTime=5s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [BFS/HPO] 開始
+  [BFS/HPO] 完了  経過 00:48  [14/40]
+[profile] BFS_A_12: simTime=0.030s, instructions=100,113,475, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [PR/HPO] 開始
+  [PR/HPO] 完了  経過 00:48  [15/40]
+[profile] PR_A_12: simTime=0.030s, instructions=99,454,255, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [BC/HPO] 開始
+  [BC/HPO] 完了  経過 00:48  [16/40]
+[profile] BC_A_12: simTime=0.030s, instructions=100,177,179, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [CC/HPO] 開始
+  [CC/HPO] 完了  経過 00:48  [17/40]
+[profile] CC_A_12: simTime=0.030s, instructions=99,717,650, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [SSSP/HPO] 開始
+  [IS/HPO] 完了  経過 25:21  [18/40]
+[profile] IS_A_12: simTime=0.476s, instructions=4,892,632,717, wallTime=1522s (avg 1525s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_HPO_12TH_20260703_174340/affinity_config.txt
+  [TC/HPO] 開始
+  [SSSP/HPO] 完了  経過 00:58  [19/40]
+[profile] SSSP_A_12: simTime=0.032s, instructions=134,605,238, wallTime=59s (avg 59s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [CG/Scatter] 開始
+  [TC/HPO] 完了  経過 00:47  [20/40]
+[profile] TC_A_12: simTime=0.030s, instructions=100,944,372, wallTime=48s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_HPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [FT/Scatter] 開始
+  [CG/Scatter] 完了  経過 82:48  [21/40]
+[profile] CG_A_12: simTime=0.703s, instructions=13,041,791,232, wallTime=4969s (avg 5044s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [IS/Scatter] 開始
+  [FT/Scatter] 完了  経過 100:21  [22/40]
+[profile] FT_A_12: simTime=0.894s, instructions=29,920,659,036, wallTime=6023s (avg 6227s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [lavaMD/Scatter] 開始
+  [lavaMD/Scatter] 完了  経過 00:05  [23/40]
+[profile] lavaMD_A_12: simTime=0.000s, instructions=387,326, wallTime=6s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [BFS/Scatter] 開始
+  [BFS/Scatter] 完了  経過 00:45  [24/40]
+[profile] BFS_A_12: simTime=0.029s, instructions=94,613,220, wallTime=46s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [PR/Scatter] 開始
+  [PR/Scatter] 完了  経過 00:45  [25/40]
+[profile] PR_A_12: simTime=0.029s, instructions=94,602,051, wallTime=46s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [BC/Scatter] 開始
+  [BC/Scatter] 完了  経過 00:45  [26/40]
+[profile] BC_A_12: simTime=0.029s, instructions=94,813,002, wallTime=46s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [CC/Scatter] 開始
+  [CC/Scatter] 完了  経過 00:45  [27/40]
+[profile] CC_A_12: simTime=0.030s, instructions=94,537,264, wallTime=46s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [SSSP/Scatter] 開始
+  [SSSP/Scatter] 完了  経過 00:56  [28/40]
+[profile] SSSP_A_12: simTime=0.031s, instructions=128,137,733, wallTime=57s (avg 58s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_Scatter_12TH_20260703_174340/affinity_config.txt
+  [TC/Scatter] 開始
+  [TC/Scatter] 完了  経過 00:45  [29/40]
+[profile] TC_A_12: simTime=0.030s, instructions=95,666,993, wallTime=46s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [CG/EPO] 開始
+  [IS/Scatter] 完了  経過 24:37  [30/40]
+[profile] IS_A_12: simTime=0.474s, instructions=4,885,005,703, wallTime=1478s (avg 1509s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_Scatter_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [FT/EPO] 開始
+  [CG/EPO] 完了  経過 79:14  [31/40]
+[profile] CG_A_12: simTime=0.714s, instructions=11,187,493,489, wallTime=4755s (avg 4972s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CG_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [IS/EPO] 開始
+  [FT/EPO] 完了  経過 101:53  [32/40]
+[profile] FT_A_12: simTime=0.948s, instructions=29,913,078,137, wallTime=6115s (avg 6199s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/FT_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [lavaMD/EPO] 開始
+  [lavaMD/EPO] 完了  経過 00:04  [33/40]
+[profile] lavaMD_A_12: simTime=0.000s, instructions=387,326, wallTime=5s (avg 6s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/lavaMD_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [BFS/EPO] 開始
+  [BFS/EPO] 完了  経過 00:47  [34/40]
+[profile] BFS_A_12: simTime=0.029s, instructions=100,149,881, wallTime=48s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BFS_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [PR/EPO] 開始
+  [IS/EPO] 完了  経過 25:14  [35/40]
+[profile] IS_A_12: simTime=0.483s, instructions=4,767,392,220, wallTime=1515s (avg 1511s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/IS_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [BC/EPO] 開始
+  [PR/EPO] 完了  経過 00:46  [36/40]
+[profile] PR_A_12: simTime=0.028s, instructions=99,987,628, wallTime=47s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/PR_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [CC/EPO] 開始
+  [BC/EPO] 完了  経過 00:46  [37/40]
+[profile] BC_A_12: simTime=0.028s, instructions=100,138,415, wallTime=47s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/BC_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [SSSP/EPO] 開始
+  [CC/EPO] 完了  経過 00:46  [38/40]
+[profile] CC_A_12: simTime=0.029s, instructions=99,766,674, wallTime=47s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/CC_A_EPO_12TH_20260703_174340/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_EPO_12TH_20260703_174340/affinity_config.txt
+  [TC/EPO] 開始
+  [SSSP/EPO] 完了  経過 00:56  [39/40]
+[profile] SSSP_A_12: simTime=0.030s, instructions=133,138,850, wallTime=57s (avg 58s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SSSP_A_EPO_12TH_20260703_174340/metrics.csv
+  [TC/EPO] 完了  経過 00:44  [40/40]
+[profile] TC_A_12: simTime=0.029s, instructions=101,108,119, wallTime=45s (avg 47s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/TC_A_EPO_12TH_20260703_174340/metrics.csv
+
+[STEP] 結果収集
+
+============================================================================
+  全実験結果サマリー  (Class A, 12 threads)
+============================================================================
+  WL   Strategy         Node0       Node1   Node0%  使用コア
+  ------------------------------------------------------------------------
+  CG   Packed      79,034,317  79,037,714    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CG   HPO         79,034,176  79,036,219    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CG   Scatter     79,037,553  79,041,523    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  CG   EPO         79,021,080  79,017,766    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  FT   Packed      110,979,975  110,989,995    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  FT   HPO         111,285,605  111,265,475    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  FT   Scatter     106,900,230  106,910,598    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  FT   EPO         108,547,624  108,561,409    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  IS   Packed      17,166,281  17,171,621    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  IS   HPO         17,166,858  17,172,131    50.0%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  IS   Scatter     17,141,059  17,145,261    50.0%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  IS   EPO         17,141,722  17,145,852    50.0%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  lavaMD Packed           4,668       4,618    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  lavaMD HPO              4,668       4,618    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  lavaMD Scatter          4,669       4,617    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  lavaMD EPO              4,668       4,618    50.3%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  BFS  Packed          20,346      20,056    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BFS  HPO             20,354      20,054    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BFS  Scatter         20,337      20,060    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  BFS  EPO             20,358      20,063    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  PR   Packed          20,368      20,051    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  PR   HPO             20,389      20,053    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  PR   Scatter         20,326      20,072    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  PR   EPO             20,386      20,060    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  BC   Packed          20,353      20,044    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BC   HPO             20,329      20,041    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  BC   Scatter         20,319      20,043    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  BC   EPO             20,334      20,043    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  CC   Packed          19,496      19,225    50.3%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CC   HPO             19,530      19,234    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  CC   Scatter         19,357      19,129    50.3%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  CC   EPO             19,338      19,056    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  SSSP Packed          29,288      29,226    50.1%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  SSSP HPO             29,311      29,243    50.1%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  SSSP Scatter         29,699      29,226    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  SSSP EPO             29,298      29,234    50.1%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+  ------------------------------------------------------------------------
+  TC   Packed          20,815      20,504    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  TC   HPO             20,844      20,530    50.4%  CPU0(N0P) CPU1(N0P) CPU2(N0P) CPU3(N0P) ...
+  TC   Scatter         20,812      20,507    50.4%  CPU0(N0P) CPU8(N1P) CPU1(N0P) CPU9(N1P) ...
+  TC   EPO             20,848      20,519    50.4%  CPU4(N0E) CPU5(N0E) CPU6(N0E) CPU7(N0E) ...
+============================================================================
+
+  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/{WL}_A_*_12TH_20260703_174340/

@@ -1,0 +1,26 @@
+[SNIPER] Start
+Core 0 at 1.00 GHz (global clock 4.00 GHz)
+Core 1 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:[ExScIepFtTio_n RCoEdeC: OARCDCEESSR_I]N VFALaIiD_lADeDRd EtSo S.pr Eixcneptt ioban cAdkdtrerssa =c 0ex.7e
+ff5[583S6IF6T_aaR. EAcCceOssRDE TRyp] e:I UnNKtNOeWNr.n Aalc ecexssc Aeddpretssi =on 0:x7fffcaa1Efexc3e8pt
+ion Code: ACCESS_DENIED. Exception Address = 0x7eff558366aa. Access Type: UNKNOWN. Access Address = 0x7eff3f2d4bf8
+C: Tool (or Pin) caused signal 11 at PC 0x7eff558366aa
+[SIFT:[SIFT:1] Error: 0] Error: Resource temporarily unavailable
+Resource temporarily unavailable
+[TRACE:1] -- DONE --
+[TRACE:0] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 62.75 seconds
+[SNIPER] Simulated 59.0M instructions, 36.8M cycles, 1.60 IPC
+[SNIPER] Simulation speed 940.6 KIPS (470.3 KIPS / target core - 2126.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 62.84 seconds

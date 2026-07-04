@@ -1,2 +1,2 @@
-threads,sizes,label,accuracy,n_samples
-ALL,SW,sim_seconds,0.9326923076923077,104
+threads,sizes,label,accuracy,n_samples,perf_ratio
+ALL,SW,sim_seconds,0.8653846153846154,104,1.0028813122893525

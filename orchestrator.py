@@ -21,6 +21,7 @@ from utility.run_profile    import get_reference, update_from_run, estimate_wall
 from utility.stats_reader   import parse_node_stats
 from utility.csv_exporter   import export_csv
 from utility.power_model    import estimate as estimate_power
+from utility.notify         import notify
 from config.generate_config import generate_config, get_config_path
 
 # ============================================================
@@ -30,7 +31,7 @@ WORKLOADS = ["BT", "CG", "FT", "IS", "MG", "SP","lavaMD", "BFS", "PR", "BC", "CC
 #     
 # ]#BT,MG,SPに要注意
 STRATEGIES_TO_RUN  = ["Packed","HPO","Scatter","EPO"]#
-THREAD_COUNTS      = [2,6,8,12]#
+THREAD_COUNTS      = [2]#,6,8,12
 BENCH_CLASSES      = ["A"]
 
 
@@ -381,6 +382,11 @@ def main():
         print(f"\n  クラスシーケンス : {class_list}")
         print(f"  スレッドシーケンス: {thread_list}  (逐次実行)")
 
+    notify(
+        f"[ClaudeXSniper] 実行開始  class={class_list}  threads={thread_list}  "
+        f"workloads={workloads}  strategies={strategies}  no_timeout={args.no_timeout}"
+    )
+
     for bench_class in class_list:
         for num_threads in thread_list:
             workers = _calc_concurrent(num_threads, args.concurrent)
@@ -388,6 +394,9 @@ def main():
                 num_threads, bench_class, strategies, workers, workloads, run_id,
                 no_timeout=args.no_timeout,
             )
+            notify(f"[ClaudeXSniper] {num_threads}TH (class={bench_class}) 完了")
+
+    notify(f"[ClaudeXSniper] 全実行完了  class={class_list}  threads={thread_list}")
 
 
 if __name__ == "__main__":

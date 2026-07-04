@@ -37,7 +37,10 @@ from MachineLearning.ml_utils import (
     STRATEGIES,
     FEATURE_COLS,
     FEATURE_COLS_ALLTH_MULTI,
+    THREAD_NUMS,
+    _CLASS_ENC,
     build_allth_data,
+    collect_dataset,
     save_fig,
 )
 
@@ -47,6 +50,33 @@ OUTPUTS_DIRS = [
 ]
 ML_DIR = Path(__file__).parent
 OUT_SUFFIX = "ALLTH_SW"
+
+
+def build_allth_perf(label_by: str, outputs_dirs: list[Path]) -> pd.DataFrame:
+    """build_allth_data と同じ (index, 順序) で perf_df (各戦略の sim_seconds) を作る。"""
+    rows_perf, names = [], []
+    for outputs_dir in outputs_dirs:
+        bench_class = outputs_dir.name.replace("size", "")
+        for n in THREAD_NUMS:
+            X_n, y_n, perf_n = collect_dataset(outputs_dir, n, label_by)
+            if X_n.empty:
+                continue
+            for i, idx in enumerate(X_n.index):
+                rows_perf.append(perf_n.iloc[i])
+                names.append(f"{idx}_{n}TH_{bench_class}")
+    if not names:
+        return pd.DataFrame()
+    return pd.DataFrame(rows_perf, index=names, columns=STRATEGIES)
+
+
+def perf_ratio(y_true: pd.Series, y_pred, perf: pd.DataFrame) -> float:
+    """予測戦略の sim_seconds が oracle(最速戦略)の何倍かを平均した値。1.0 = oracle と完全一致。"""
+    ratios = []
+    for idx, pred in zip(y_true.index, y_pred):
+        row    = perf.loc[idx, STRATEGIES]
+        oracle = row.min()
+        ratios.append(perf.loc[idx, pred] / oracle)
+    return float(np.mean(ratios))
 
 
 # ── 共通プロット ────────────────────────────────────────────────────
@@ -102,10 +132,15 @@ def _save_results(res: dict, X: pd.DataFrame, y: pd.Series,
     imp_df = res["importances"].reset_index()
     imp_df.columns = ["feature", "importance"]
     imp_df.to_csv(out_dir / f"importances_{label_by}.csv", index=False)
-    pd.DataFrame([{"threads": "ALL", "sizes": "SW", "label": label_by,
-                   "accuracy": res["accuracy"], "n_samples": len(X)}]).to_csv(
-        out_dir / f"performance_{label_by}.csv", index=False)
-    print(f"[{tag}] LOO accuracy={res['accuracy']:.3f}  ({int(res['accuracy']*len(y))}/{len(y)})")
+    row = {"threads": "ALL", "sizes": "SW", "label": label_by,
+           "accuracy": res["accuracy"], "n_samples": len(X)}
+    if "perf_ratio" in res:
+        row["perf_ratio"] = res["perf_ratio"]
+    pd.DataFrame([row]).to_csv(out_dir / f"performance_{label_by}.csv", index=False)
+    msg = f"[{tag}] LOO accuracy={res['accuracy']:.3f}  ({int(res['accuracy']*len(y))}/{len(y)})"
+    if "perf_ratio" in res:
+        msg += f"  perf_ratio={res['perf_ratio']:.4f} (1.0=oracle)"
+    print(msg)
 
 
 # ── Random Forest ───────────────────────────────────────────────────
@@ -234,7 +269,7 @@ def run_xgb(X: pd.DataFrame, y: pd.Series, label_by: str):
 
 
 # ── TabPFN ─────────────────────────────────────────────────────────
-def run_tabpfn(X: pd.DataFrame, y: pd.Series, label_by: str):
+def run_tabpfn(X: pd.DataFrame, y: pd.Series, label_by: str, perf: pd.DataFrame | None = None):
     try:
         from tabpfn_client import TabPFNClassifier, set_access_token
         import os
@@ -284,6 +319,8 @@ def run_tabpfn(X: pd.DataFrame, y: pd.Series, label_by: str):
         "confusion":   confusion_matrix(y_true, y_pred, labels=STRATEGIES),
         "importances": imp,
     }
+    if perf is not None and not perf.empty:
+        res["perf_ratio"] = perf_ratio(y, y_pred, perf)
     _save_results(res, X, y, ML_DIR / "TabPFN" / OUT_SUFFIX, "TabPFN", label_by, "mediumpurple")
 
 
@@ -313,7 +350,8 @@ def main():
     if args.model in ("all", "xgb"):
         run_xgb(X.copy(), y.copy(), args.label)
     if args.model in ("all", "tabpfn"):
-        run_tabpfn(X.copy(), y.copy(), args.label)
+        perf = build_allth_perf(args.label, OUTPUTS_DIRS)
+        run_tabpfn(X.copy(), y.copy(), args.label, perf)
 
     print(f"\n=== 完了 ===  出力: {ML_DIR}/*/ALLTH_SW/")
 

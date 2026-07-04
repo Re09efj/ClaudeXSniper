@@ -1,0 +1,8 @@
+2026-07-03 09:41:47  BT       HPO      Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)
+2026-07-03 09:41:47  SP       Packed   Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)
+2026-07-03 09:41:47  BT       Packed   Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)
+2026-07-03 09:42:31  SP       HPO      Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)
+2026-07-03 09:43:29  BT       Scatter  Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)
+2026-07-03 10:29:30  SP       Scatter  Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)
+2026-07-03 10:37:09  BT       EPO      Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)
+2026-07-03 13:17:38  SP       EPO      Class=A  2TH  elapsed=43201s  timeout=43200s  retry(2/2)

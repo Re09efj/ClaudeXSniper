@@ -1,0 +1,38 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[S[IFSIFTT__RREECCOORRDDEERR]]  FIanitelrenda lt oe xpcrienptt iboanc:ktrace.
+[SIFT_REExCcOeRDptEiRon ]C oIdnet:e rAnCaClE SeSx_cIeNpVtAiLoInD:_ADDRESS. EExxcceeppttiion Addre[os[sn C =S S0IIFT_Rxo7ECORDERf]d eInterbn:eal exce Fption:ACTC_EExcepti4RECORDER] Int3e1r5nSba6Sa_olI n eCoxdce:a eAp.CN CEVAtAcLiSS_IDDEocNneIED.:ss_ADDRESESx .c eE xTEcyeppeptxi:oc eUpNtKinNoOnW  ANd.A dAdctcidersressons  A=d dCor ede: ACCEeSS_D0ENIED. Esxceptionx7 Addressf = 0x7sb fbe4315b=6aa. Acec ess Ty403x17pe: UNKf5NOWN. bbAccess eAddress1 = 0f6x7fbe2ba9c7c08a7
+.f 9Abcdc8es
+s Type: UNKNOWN. Access Address = 0x7fbe2abfbbe8
+ss = 0x7fbe4315b6aa. Access Type: UNKNOWN. Access Address = 0x7ffc555b0c28
+C: Tool (or Pin) caused signal 11 at PC 0x7fbe4315b6aa
+[SIFT:[SIFT:[SIFT:[SIFT:41] Error: [TRACE:1] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:0] -- DONE --
+Success
+[SIFT:3] Error: Success
+5] Error: Success
+0] Error: No such file or directory
+] Error: Success
+Pin app terminated abnormally due to signal 11.
+[TRACE:4] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:7] -- DONE --
+[SIFT:6] Error: Broken pipe
+[SIFT:7] Error: Broken pipe
+[SIFT:2] Error: Broken pipe
+[TRACE:2] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 51.07 seconds
+[SNIPER] Simulated 84.5M instructions, 32.7M cycles, 2.58 IPC
+[SNIPER] Simulation speed 1655.0 KIPS (206.9 KIPS / target core - 4833.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 51.30 seconds

@@ -22,6 +22,8 @@ from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import LeaveOneOut
 
+
+
 try:
     from tabpfn_client import TabPFNClassifier, set_access_token
     import os
@@ -43,6 +45,18 @@ from random_forest import (
 )
 OUTPUTS_DIR = _rf.OUTPUTS_DIR
 MODEL_DIR   = Path(__file__).parent
+
+
+def perf_ratio(y_true: pd.Series, y_pred: list[str], perf: pd.DataFrame) -> float:
+    """予測戦略の sim_seconds が oracle(最速戦略)の何倍かを LOO 全体で平均した値。1.0 = oracle と完全一致。"""
+    avail  = [s for s in STRATEGIES if s in perf.columns]
+    ratios = []
+    for idx, pred in enumerate(y_pred):
+        row    = perf.loc[y_true.index[idx], avail]
+        oracle = row.min()
+        ps     = pred if pred in avail else avail[0]
+        ratios.append(perf.loc[y_true.index[idx], ps] / oracle)
+    return float(np.mean(ratios))
 
 
 def make_clf():
@@ -110,7 +124,10 @@ def run(num_threads: int, label_by: str):
     res = train_and_evaluate(X, y)
     if not res:
         return {}
-    print(f"[TabPFN] LOO accuracy={res['accuracy']:.3f}  ({int(res['accuracy']*len(y))}/{len(y)})")
+    ratio = perf_ratio(y, res["y_pred"], perf)
+    res["perf_ratio"] = ratio
+    print(f"[TabPFN] LOO accuracy={res['accuracy']:.3f}  ({int(res['accuracy']*len(y))}/{len(y)})"
+          f"  perf_ratio={ratio:.4f} (1.0=oracle)")
 
     out_dir = MODEL_DIR / f"{num_threads}TH"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -132,7 +149,8 @@ def run(num_threads: int, label_by: str):
     imp_df.to_csv(out_dir / f"importances_{tag}.csv", index=False)
     X.join(perf).to_csv(out_dir / f"dataset_{tag}.csv")
     pd.DataFrame([{"threads": num_threads, "label": label_by,
-                   "accuracy": res["accuracy"], "n_samples": len(X)}]).to_csv(
+                   "accuracy": res["accuracy"], "perf_ratio": ratio,
+                   "n_samples": len(X)}]).to_csv(
         out_dir / f"performance_{tag}.csv", index=False)
     return res
 
