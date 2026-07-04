@@ -112,7 +112,7 @@ def main():
 
     # ── 統計収集 ──
     sim_seconds = parse_sim_time(out_dir)
-    node_stats  = parse_node_stats(out_dir)
+    node_stats  = parse_node_stats(out_dir, cpu_map=cpu_map)
     power       = estimate_power(out_dir, cpu_map, num_threads)
 
     print_summary(node_stats, cpu_map, num_threads, out_dir)

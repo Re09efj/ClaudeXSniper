@@ -10,7 +10,8 @@ Sniper 実験結果から CSV を生成する。
   [コア構成]  cpu_map, p_core_count, e_core_count, node0_threads, node1_threads
   [性能]      sim_time_ms, total_instructions, avg_ipc, avg_ipc_p, avg_ipc_e
   [電力]      total_power_W, dynamic_W, leakage_W, dram_W, energy_J
-  [NUMA]      node0_reads, node1_reads, node0_pct, dram_local, dram_remote, dram_remote_pct
+  [NUMA]      node0_reads, node1_reads, node0_pct, node0_writes, node1_writes,
+              dram_local, dram_remote, dram_remote_pct
   [キャッシュ] l1d_miss_pct, l2_miss_pct, l3_miss_pct, l1d_mpki, l2_mpki, l3_mpki, l3_miss_count
   [CPI内訳]   cpi_base_frac, cpi_branch_frac, cpi_l2_frac, cpi_l3_frac,
               cpi_dram_local_frac, cpi_dram_remote_frac
@@ -50,6 +51,7 @@ DERIVED_COLUMNS = [
     "total_power_W", "dynamic_W", "leakage_W", "dram_W", "energy_J",
     # NUMA
     "node0_reads", "node1_reads", "node0_pct",
+    "node0_writes", "node1_writes",
     "dram_local", "dram_remote", "dram_remote_pct",
     # キャッシュ
     "l1d_miss_pct", "l2_miss_pct", "l3_miss_pct",
@@ -171,7 +173,7 @@ def export_csv(
     power = power or {}
 
     sim_time   = parse_sim_time(output_dir) or 0.0
-    node_stats = parse_node_stats(output_dir)
+    node_stats = parse_node_stats(output_dir, cpu_map=cpu_map)
     numa       = parse_numa_access(output_dir)
     inst_map   = parse_instructions(output_dir)
     total_insts = sum(inst_map.values()) if inst_map else 0
@@ -179,6 +181,8 @@ def export_csv(
     node0_reads = node_stats.get(0, {}).get("reads", 0)
     node1_reads = node_stats.get(1, {}).get("reads", 0)
     total_reads = node0_reads + node1_reads
+    node0_writes = node_stats.get(0, {}).get("writes", 0)
+    node1_writes = node_stats.get(1, {}).get("writes", 0)
     dram_local  = numa.get("local", 0)
     dram_remote = numa.get("remote", 0)
     dram_total  = dram_local + dram_remote
@@ -209,6 +213,8 @@ def export_csv(
         "node0_reads":     node0_reads,
         "node1_reads":     node1_reads,
         "node0_pct":       _pct(node0_reads, total_reads),
+        "node0_writes":    node0_writes,
+        "node1_writes":    node1_writes,
         "dram_local":      dram_local,
         "dram_remote":     dram_remote,
         "dram_remote_pct": _pct(dram_remote, dram_total),

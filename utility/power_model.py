@@ -46,7 +46,7 @@ def estimate(output_dir: str, cpu_map: list | None = None, num_threads: int = 16
 
     ipc_map    = parse_ipc(output_dir, cpu_map)
     inst_map   = parse_instructions(output_dir)
-    node_stats = parse_node_stats(output_dir)
+    node_stats = parse_node_stats(output_dir, cpu_map=cpu_map)
 
     dynamic_W = 0.0
     leakage_W = 0.0

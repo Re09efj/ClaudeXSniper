@@ -67,12 +67,17 @@ def parse_sim_time(output_dir: str) -> float | None:
 
 # ─── DRAM アクセス (NUMA ノード別) ───────────────────────────────
 
-def parse_node_stats(output_dir: str, num_nodes: int = 2) -> dict:
+def parse_node_stats(output_dir: str, num_nodes: int = 2, cpu_map: list | None = None) -> dict:
     """
     NUMA ノード別 DRAM アクセス数を返す。
-    dram/reads の core フィールドが DRAM controller (= ノード) ID。
+    dram/reads, dram/writes の core フィールドは DRAM controller (= ノード) ID。
     dram/writes は Sniper がライトバックをカウントしないため 0 が返る場合がある。
-    L1-D/stores-where-dram-local/remote も参考値として合算する。
+
+    その場合、L1-D/stores-where-dram-local/remote (シミュレート対象コア単位) から
+    ノード別に再構成する。あるコアの "local" store はそのコアの所属ノードの
+    コントローラへ、"remote" store はもう一方のノードのコントローラへの書き込みなので、
+    ノード N の書き込み数 = (ノード N 所属コアの local 合計) + (それ以外のコアの remote 合計)。
+    cpu_map が無い場合はコア→ノード対応が取れないため、この再構成は行わない。
 
     Returns: {node_id: {"reads": int, "writes": int}}
     """
@@ -84,9 +89,9 @@ def parse_node_stats(output_dir: str, num_nodes: int = 2) -> dict:
     reads_map  = {r[0]: r[1] for r in _query(conn, "stop", "dram", "reads")}
     writes_map = {r[0]: r[1] for r in _query(conn, "stop", "dram", "writes")}
 
-    # L1-D stores-where-dram-* を DRAM write の代理値として使う
-    store_local  = sum(v for _, v in _query(conn, "stop", "L1-D", "stores-where-dram-local"))
-    store_remote = sum(v for _, v in _query(conn, "stop", "L1-D", "stores-where-dram-remote"))
+    # L1-D stores-where-dram-local/remote (シミュレート対象コア単位、フォールバック用)
+    store_local_per_core  = dict(_query(conn, "stop", "L1-D", "stores-where-dram-local"))
+    store_remote_per_core = dict(_query(conn, "stop", "L1-D", "stores-where-dram-remote"))
 
     conn.close()
 
@@ -99,9 +104,25 @@ def parse_node_stats(output_dir: str, num_nodes: int = 2) -> dict:
         ctrl_id     = ctrl_ids[node] if node < len(ctrl_ids) else None
         dram_reads  = reads_map.get(ctrl_id, 0) if ctrl_id is not None else 0
         dram_writes = writes_map.get(ctrl_id, 0) if ctrl_id is not None else 0
-        if dram_writes == 0 and node == 0:
-            dram_writes = store_local + store_remote
         result[node] = {"reads": dram_reads, "writes": dram_writes}
+
+    if cpu_map:
+        sim_cores = set(store_local_per_core) | set(store_remote_per_core)
+        node_of = {
+            sim_core: (0 if cpu_map[sim_core] in NODE0_CPUS else 1)
+            for sim_core in sim_cores
+            if sim_core < len(cpu_map)
+        }
+        for node in range(num_nodes):
+            if result[node]["writes"] != 0:
+                continue
+            total = 0
+            for sim_core, core_node in node_of.items():
+                if core_node == node:
+                    total += store_local_per_core.get(sim_core, 0)
+                else:
+                    total += store_remote_per_core.get(sim_core, 0)
+            result[node]["writes"] = total
 
     return result
 

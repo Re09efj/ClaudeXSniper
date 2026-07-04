@@ -445,11 +445,12 @@ def _run_one_thread_count(
             out_dir = output_dirs.get((wl, st))
             if not out_dir:
                 continue
+            wl_cpu_map = get_cpu_map(st, wl)
             results[wl].append({
                 "strategy":   st,
                 "output_dir": out_dir,
-                "node_stats": parse_node_stats(out_dir),
-                "cpu_map":    get_cpu_map(st, wl),
+                "node_stats": parse_node_stats(out_dir, cpu_map=wl_cpu_map),
+                "cpu_map":    wl_cpu_map,
             })
 
     _print_summary(results, workloads, bench_class, num_threads, output_base, run_id)

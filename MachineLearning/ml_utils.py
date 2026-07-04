@@ -106,7 +106,7 @@ def parse_stats(output_dir: Path, num_threads: int,
     inst_map    = parse_instructions(out_str)
     cycle_map   = parse_cycles(out_str, cpu_map)
     numa_acc    = parse_numa_access(out_str)
-    node_stats  = parse_node_stats(out_str)
+    node_stats  = parse_node_stats(out_str, cpu_map=cpu_map)
     l1d_where   = parse_l1d_where(out_str)
 
     if not ipc_map or sim_seconds == 0:
