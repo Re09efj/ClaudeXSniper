@@ -14,7 +14,7 @@ from matplotlib.colors import LogNorm
 
 # ── データ読み込み ──────────────────────────────────────────
 GEM5_PROFILE   = "/home/hiragahama/gem5/ClaudeX/Documents/Data/run_profile.json"
-SNIPER_PROFILE = "/home/hiragahama/ClaudeXSniper/Documents/Data/run_profile.json"
+SNIPER_PROFILE = "/home/hiragahama/ClaudeXSniper/Data/run_profile.json"
 OUT_DIR        = "/home/hiragahama/ClaudeXSniper/Documents/figs_gem5_vs_sniper_20260630"
 
 os.makedirs(OUT_DIR, exist_ok=True)

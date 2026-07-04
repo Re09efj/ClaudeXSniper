@@ -1,0 +1,109 @@
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['BT', 'CG', 'FT', 'IS', 'MG', 'SP', 'lavaMD', 'BFS', 'PR', 'BC', 'CC', 'SSSP', 'TC']
+  クラス=S  スレッド=2  戦略=['Packed']
+  実験数=13  同時実験数=4  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (13 実験, 同時実験数=4)
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [BT/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [CG/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [FT/Packed] 開始
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [IS/Packed] 開始
+  [IS/Packed] 完了  経過 00:20  [1/13]
+[profile] IS_S_2: simTime=0.005s, instructions=36,760,242, wallTime=21s (avg 18s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [MG/Packed] 開始
+  [CG/Packed] 完了  経過 03:22  [2/13]
+[profile] CG_S_2: simTime=0.022s, instructions=332,381,043, wallTime=203s (avg 135s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/SP_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [SP/Packed] 開始
+  [BT/Packed] 完了  経過 04:15  [3/13]
+[profile] BT_S_2: simTime=0.024s, instructions=559,674,854, wallTime=256s (avg 193s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/lavaMD_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [lavaMD/Packed] 開始
+  [lavaMD/Packed] 完了  経過 00:05  [4/13]
+[profile] lavaMD_S_2: simTime=0.000s, instructions=334,539, wallTime=6s (avg 5s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/lavaMD_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BFS_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [BFS/Packed] 開始
+  [BFS/Packed] 完了  経過 00:22  [5/13]
+[profile] BFS_S_2: simTime=0.003s, instructions=16,285,933, wallTime=23s (avg 15s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BFS_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/PR_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [PR/Packed] 開始
+  [PR/Packed] 完了  経過 00:22  [6/13]
+[profile] PR_S_2: simTime=0.003s, instructions=16,233,191, wallTime=23s (avg 16s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/PR_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BC_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [BC/Packed] 開始
+  [SP/Packed] 完了  経過 01:51  [7/13]
+[profile] SP_S_2: simTime=0.013s, instructions=233,233,668, wallTime=112s (avg 86s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/SP_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CC_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [CC/Packed] 開始
+  [BC/Packed] 完了  経過 00:21  [8/13]
+[profile] BC_S_2: simTime=0.003s, instructions=16,279,853, wallTime=22s (avg 15s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BC_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/SSSP_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [SSSP/Packed] 開始
+  [CC/Packed] 完了  経過 00:21  [9/13]
+[profile] CC_S_2: simTime=0.003s, instructions=16,292,285, wallTime=22s (avg 16s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CC_S_Packed_2TH_20260704_163052/metrics.csv
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/TC_S_Packed_2TH_20260704_163052/affinity_config.txt
+  [TC/Packed] 開始
+  [SSSP/Packed] 完了  経過 00:27  [10/13]
+[profile] SSSP_S_2: simTime=0.003s, instructions=20,661,737, wallTime=28s (avg 19s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/SSSP_S_Packed_2TH_20260704_163052/metrics.csv
+  [TC/Packed] 完了  経過 00:21  [11/13]
+[profile] TC_S_2: simTime=0.003s, instructions=16,460,192, wallTime=22s (avg 16s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/TC_S_Packed_2TH_20260704_163052/metrics.csv
+  [FT/Packed] 完了  経過 05:59  [12/13]
+[profile] FT_S_2: simTime=0.038s, instructions=765,703,574, wallTime=360s (avg 249s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_Packed_2TH_20260704_163052/metrics.csv
+  [MG/Packed] 失敗  経過 05:45  [13/13]
+[ERROR:MG/Packed] Sniper 失敗 (MG/Packed) ret=137
+
+[STEP] 結果収集
+
+============================================================================
+  全実験結果サマリー  (Class S, 2 threads)
+============================================================================
+  WL   Strategy         Node0       Node1   Node0%  使用コア
+  ------------------------------------------------------------------------
+  BT   Packed          17,168           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  CG   Packed          45,324           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  FT   Packed       4,329,305           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  IS   Packed          17,620           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  ------------------------------------------------------------------------
+  SP   Packed          17,310           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  lavaMD Packed           8,510           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  BFS  Packed          20,897           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  PR   Packed          20,917           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  BC   Packed          20,864           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  CC   Packed          19,043           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  SSSP Packed          25,598           0   100.0%  CPU0(N0P) CPU1(N0P)
+  ------------------------------------------------------------------------
+  TC   Packed          21,043           0   100.0%  CPU0(N0P) CPU1(N0P)
+============================================================================
+
+  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/{WL}_S_*_2TH_20260704_163052/

@@ -1,0 +1,48 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_DENIED. Exception Address = 0x7f9144f086c0. Access Type: UNKNOWN. Access Address = 0x7f912f9aac08
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f9144f086c0. Access Type: UNKNOWN. Access Address = 0x7f91195d5bc8
+C: Tool (or Pin) caused signal 11 at PC 0x7f9144f086c0
+Pin app terminated abnormally due to signal 11.
+[SIFT:4] Error: Success
+[TRACE:4] -- DONE --
+[SIFT:1] Error: Success
+[TRACE:1] -- DONE --
+[SIFT:11] Error: Broken pipe
+[TRACE:11] -- DONE --
+[TRACE:10] -- DONE --
+[SIFT:10] Error: Broken pipe
+[SIFT:6] Error: Broken pipe
+[TRACE:6] -- DONE --
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[SIFT:8] Error: Broken pipe
+[TRACE:8] -- DONE --
+[SIFT:3] Error: [TRACE:3] -- DONE --
+Broken pipe
+[SIFT:0] Error: Broken pipe[TRACE:0] -- DONE --
+
+[SIFT:2] Error: Broken pipe
+[TRACE:2] -- DONE --
+[SIFT:7] Error: Broken pipe
+[TRACE:7] -- DONE --
+[SIFT:5] Error: Broken pipe
+[TRACE:5] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.08 seconds
+[SNIPER] Simulated 43.6M instructions, 7.3M cycles, 5.93 IPC
+[SNIPER] Simulation speed 3092.6 KIPS (257.7 KIPS / target core - 3880.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.24 seconds

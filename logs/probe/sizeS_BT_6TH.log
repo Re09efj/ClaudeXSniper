@@ -1,0 +1,12 @@
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['BT']
+  クラス=S  スレッド=6  戦略=['Packed']
+  実験数=1  同時実験数=1  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (1 実験, 同時実験数=1)
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/BT_S_Packed_6TH_20260704_165934/affinity_config.txt
+  [BT/Packed] 開始

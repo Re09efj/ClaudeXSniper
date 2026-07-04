@@ -1,0 +1,24 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECOR[DERSI]F T_IREntCOeRDrERnal]  eFaxceilpteid on:to print bEacxktcraecepti.on 
+C[oSdeIF:T_ REACOCRDCERE]SS_ IDntEeNIrnEalD e.xc epExticone:ptioExnce ptAdiodren sCos de=:  0xAC7CEf0SS6_IaNV9AL7ID5f6c_A0DD.RE SSA. cExcceeptsiosn  AdTdryesps e:=  0xUN7fKNO06Wa9N. 75Af6cc0ce. sAcsc Aesds drTyepes: sUN KN=OW N.0 Ax7ccf06es9s3 A1ddfre1ssb =e8 0
+x7ffc68c7d298
+C: Tool (or Pin) caused signal 11 at PC 0x7f06a975f6c0
+[SIFT:[SIFT:1] Error: 0] Error: No such file or directory
+Success[TRACE:0] -- DONE --
+[TRACE:1] -- DONE --
+
+Pin app terminated abnormally due to signal 11.
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 12.43 seconds
+[SNIPER] Simulated 16.5M instructions, 10.8M cycles, 1.52 IPC
+[SNIPER] Simulation speed 1325.2 KIPS (662.6 KIPS / target core - 1509.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 12.57 seconds

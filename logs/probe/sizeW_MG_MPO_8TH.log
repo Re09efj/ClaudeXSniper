@@ -1,0 +1,27 @@
+
+================================================================
+  ClaudeXSniper — NUMA アフィニティ実験
+  ワークロード: ['MG']
+  クラス=W  スレッド=8  戦略=['MPO']
+  実験数=1  同時実験数=1  (ホスト32コア)
+================================================================
+
+[STEP] Sniper 並列実行 (1 実験, 同時実験数=1)
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/MG_W_MPO_8TH_20260704_180427/affinity_config.txt
+  [MG/MPO] 開始
+  [MG/MPO] 完了  経過 14:05  [1/1]
+[profile] MG_W_8: simTime=0.076s, instructions=2,079,264,006, wallTime=846s (avg 969s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/MG_W_MPO_8TH_20260704_180427/metrics.csv
+
+[STEP] 結果収集
+
+============================================================================
+  全実験結果サマリー  (Class W, 8 threads)
+============================================================================
+  WL   Strategy         Node0       Node1   Node0%  使用コア
+  ------------------------------------------------------------------------
+  MG   MPO         14,571,914  14,575,188    50.0%  CPU0(N0P) CPU1(N0P) CPU8(N1P) CPU9(N1P) ...
+============================================================================
+
+  各実験出力: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/{WL}_W_*_8TH_20260704_180427/

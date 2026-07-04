@@ -312,6 +312,22 @@ def get_cpu_map(strategy: str, workload: str) -> list:
     return STRATEGIES[strategy]
 
 
+MPO_EQUIVALENT_CANDIDATES = ("Packed", "Scatter", "HPO", "EPO")
+
+
+def resolve_mpo_equivalent(workload: str, num_threads: int) -> str | None:
+    """
+    指定ワークロード・スレッド数で MPO の cpu_map (先頭 num_threads 件) が
+    他の主要戦略と完全一致するかを判定する。
+
+    一致すれば一致先の戦略名を返す（実シミュレーション不要、結果を複製流用できる）。
+    一致しなければ None を返す（MPO 専用の実シミュレーションが必要）。
+    """
+    mpo_map = get_cpu_map("MPO", workload)[:num_threads]
+    for name in MPO_EQUIVALENT_CANDIDATES:
+        if STRATEGIES[name][:num_threads] == mpo_map:
+            return name
+    return None
 
 
 

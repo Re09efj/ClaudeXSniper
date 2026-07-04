@@ -17,3 +17,9 @@
   [BT/Packed] 開始
 [config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/MG_A_Packed_12TH_20260704_153332/affinity_config.txt
   [MG/Packed] 開始
+  [MG/Packed] 完了  経過 133:17  [1/12]
+[profile] MG_A_12: simTime=1.419s, instructions=15,380,628,075, wallTime=7999s (avg 7999s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/MG_A_Packed_12TH_20260704_153332/metrics.csv
+[profile/estimate] SP_A_12: W×180.0 → 1045170s (ref=5806s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeA/12TH/SP_A_Packed_12TH_20260704_153332/affinity_config.txt
+  [SP/Packed] 開始

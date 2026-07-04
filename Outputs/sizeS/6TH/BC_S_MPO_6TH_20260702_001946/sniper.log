@@ -1,0 +1,33 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f3e233a66c0. Access Type: UNKNOWN. Access Address = 0x7f3e047f3bf8
+[[SSIIFFTT__RREECCORODERRD]E RFa]i leIdn tetron aprli nte bxaccketpratcie.on:
+[SIFT_ExRcECeOpRtDEiRon]  CIontdeern:a l AeCxCcEeSptSi_oInN:VAELxIDc_eApDtDioRn ECSodeS:.  ACECExScSe_DpENtIiEoDn.  AEdxcdeprteisosn  =A dd0rxe7sfs3 e=2 03x7f33e2a3636ac60.6 c0A.c Accescse ssT yTpypee::  UNUKNNKOWNNO. WAcNc.e sAsc cAedsdsress  =A d0dxr7efs3se 0=b c02x47cf038e0
+3C: Tool (or Pin) caused signal 11 at PC 0x7f3e233a66c0
+7f9be8
+[SIFT:[SIFT:[SIFT:4] Error: 5] Error: 3] Error: SuccessSuccessSuccess
+
+[TRACE:5] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:4] -- DONE --
+
+Pin app terminated abnormally due to signal 11.
+[SIFT:2] Error: Broken pipe
+[TRACE:2] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[SIFT:1] Error: Broken pipe
+[TRACE:1] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.53 seconds
+[SNIPER] Simulated 27.3M instructions, 9.3M cycles, 2.95 IPC
+[SNIPER] Simulation speed 1881.0 KIPS (313.5 KIPS / target core - 3189.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.78 seconds

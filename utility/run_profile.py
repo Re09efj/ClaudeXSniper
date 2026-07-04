@@ -13,7 +13,7 @@ import threading
 _lock = threading.Lock()
 
 PROFILE_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "Documents", "Data", "run_profile.json"
+    os.path.dirname(__file__), "..", "Data", "run_profile.json"
 )
 PROFILE_PATH = os.path.normpath(PROFILE_PATH)
 

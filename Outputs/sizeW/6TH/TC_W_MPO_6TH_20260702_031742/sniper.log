@@ -1,0 +1,32 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception [CodSIFe:T_RECOR ADERC] FaCiled to EpSSrin_Dt bENacktIEDrac. Exe.cep
+t[iSonIF AdT_drRECOResDERs =]  0Internalx7 excepftion30c:74afExceptiaona0 Co. Ade: AccessCCESS Typ_INVALIeD_ADDRE:SS. Ex cepUNKtioNOWn AN.ddre Acss c= ess0x7 Af3dd0cress74 afaa0=. Acc 0ess Tyx7f3pe:0a UfeNKNO1WN. A4ccess bf8A
+ddress = 0x7f30a87f3bf8
+C: Tool (or Pin) caused signal 11 at PC 0x7f30c74afaa0
+[SIFT:[SIFT:2[SIFT:[SIFT:540] Error: ] Error: ] Error: ] Error: SuccessNo such file or directorySuccess[TRACE:4] -- DONE --
+[TRACE:0] -- DONE --
+
+Success
+
+
+[TRACE:2] -- DONE --
+[TRACE:5] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[SIFT:1] Error: Broken pipe
+[TRACE:1] -- DONE --
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 21.57 seconds
+[SNIPER] Simulated 44.8M instructions, 17.3M cycles, 2.59 IPC
+[SNIPER] Simulation speed 2078.2 KIPS (346.4 KIPS / target core - 2887.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 21.81 seconds

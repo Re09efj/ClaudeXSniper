@@ -1,0 +1,47 @@
+[SNIPER] Start
+Core 4 at 1.00 GHz (global clock 4.00 GHz)
+Core 5 at 1.00 GHz (global clock 4.00 GHz)
+Core 10 at 1.00 GHz (global clock 4.00 GHz)
+Core 11 at 1.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception CoC: Tool (or Pin) caused signal 11 at PC 0x7f9b3a86f6c0
+de: ACCESS_DENIED. Exception Address = 0x7f9b3a86f6c0. Access Type: UNKNOWN. Access Address = 0x7f9b231f9bf8
+[SIFT:2] Error: Success
+[TRACE:2] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[SIFT:5] Error: Broken pipe
+[TRACE:5] -- DONE --
+[TRACE:11] -- DONE --
+[SIFT:11] Error: Broken pipe
+[SIFT:8] Error: Broken pipe
+[TRACE:8] -- DONE --
+[TRACE:9] -- DONE --
+[SIFT:9] Error: Broken pipe
+[SIFT:7] Error: Broken pipe
+[TRACE:7] -- DONE --
+[SIFT:6] Error: Broken pipe
+[TRACE:6] -- DONE --
+[SIFT:1] Error: Broken pipe
+[TRACE:1] -- DONE --
+[SIFT:10[SIFT:] Error: [TRACE:10] -- DONE --
+Broken pipe
+4] Error: Broken pipe
+[TRACE:4] -- DONE --
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.09 seconds
+[SNIPER] Simulated 43.1M instructions, 7.3M cycles, 5.86 IPC
+[SNIPER] Simulation speed 3056.4 KIPS (254.7 KIPS / target core - 3926.2ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.35 seconds
