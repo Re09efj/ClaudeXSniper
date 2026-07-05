@@ -1,0 +1,62 @@
+[SNIPER] Start
+Core 2 at 3.00 GHz (global clock 4.00 GHz)
+Core 3 at 3.00 GHz (global clock 4.00 GHz)
+Core 4 at 3.00 GHz (global clock 4.00 GHz)
+Core 5 at 3.00 GHz (global clock 4.00 GHz)
+Core 10 at 3.00 GHz (global clock 4.00 GHz)
+Core 12 at 3.00 GHz (global clock 4.00 GHz)
+Core 13 at 3.00 GHz (global clock 4.00 GHz)
+Core 14 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f41c1d536aa. Access Type: UNKNOWN. Access Address = 0x7f4193fe6bc8
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f41c1d536aa. Access Type: UNKNOWN. Access Address = 0x7f4195b92bd8
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f41c1d536aa. Access Type: UNKNOWN. Access Address = 0x7f4197ffebc8
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f41c1d536aa. Access TyC: Tool (or Pin) caused signal 11 at PC 0x7f41c1d536aa
+pe: UNKNOWN. Access Address = 0x7f4196ca4bd8
+[TRACE:9] -- DONE --
+[TRACE:13] -- DONE --
+[TRACE:12] -- DONE --
+[SIFT:[SIFT:11] Error: [SIFT:9] Error: [SIFT:[SIFT:Success
+10] Error: [SIFT:13] Error: Success
+[SIFT:12] Error: Success
+15] Error: Success
+[SIFT:6] Error: Success
+[SIFT:5] Error: Success
+[TRACE:15] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:1] -- DONE --
+[SIFT:2] Error: Success
+[SIFT:1] Error: Success
+[TRACE:7] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:4] -- DONE --
+[SIFT:7] Error: Success
+Success
+Success
+4] Error: Success
+Pin app terminated abnormally due to signal 11.
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[SIFT:[TRACE:3] -- DONE --
+[SIFT:3] Error: Broken pipe
+8] Error: Broken pipe
+[TRACE:8] -- DONE --
+[TRACE:14] -- DONE --
+[SIFT:14] Error: Success
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 50.79 seconds
+[SNIPER] Simulated 111.0M instructions, 16.3M cycles, 6.82 IPC
+[SNIPER] Simulation speed 2185.1 KIPS (136.6 KIPS / target core - 7322.2ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 50.92 seconds

@@ -59,9 +59,24 @@ detloc-tracer の CSV は行 0 が最大スレッド ID に対応する逆順イ
 
 import argparse
 import csv
+import glob
 import math
 import os
 from typing import Optional
+
+COMM_MATRICES_DIR = "/home/hiragahama/ClaudeXSniper/Data/comm_matrices"
+
+
+def find_comm_csv(workload: str, bench_class: str, num_threads: int) -> str:
+    """Data/comm_matrices/ から該当する comm.csv のパスを探す。"""
+    if bench_class == "S":
+        pattern = f"{COMM_MATRICES_DIR}/{workload}_{num_threads}TH_*.comm.csv"
+    else:
+        pattern = f"{COMM_MATRICES_DIR}/{workload}_{bench_class}_{num_threads}TH_*.comm.csv"
+    matches = glob.glob(pattern)
+    if not matches:
+        raise FileNotFoundError(f"comm.csv が見つかりません: {pattern}")
+    return matches[0]
 
 NUM_NODES = 2
 CORES_PER_NODE = 8

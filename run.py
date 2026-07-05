@@ -14,12 +14,22 @@ from datetime import datetime
 
 from config.generate_config  import generate_config, get_config_path
 from utility.cpu_affinity    import get_cpu_map, binary_path, get_binary_args, save_affinity_config
+from utility.deloc_mapper    import compute_deloc_map_from_csv, find_comm_csv
 from utility.csv_exporter    import export_csv
 from utility.grapher         import generate_numa_graph
 from utility.power_model     import estimate as estimate_power
 from utility.run_profile     import update_from_run
 from utility.stats_reader    import parse_node_stats, parse_sim_time, print_summary
 from sniper_sim              import run_sniper
+
+
+def _resolve_cpu_map(strategy: str, workload: str, bench_class: str, num_threads: int) -> list:
+    """MPO は deloc_mapper.py の本物の2段階アルゴリズムで計算する（静的MPO_MAPSは使わない）。"""
+    if strategy == "MPO":
+        csv_path = find_comm_csv(workload, bench_class, num_threads)
+        cpu_map, _imbalance = compute_deloc_map_from_csv(csv_path, num_threads)
+        return cpu_map
+    return get_cpu_map(strategy, workload)
 
 # ============================================================
 # 実験設定（CLI 引数で上書き可能）
@@ -62,7 +72,7 @@ def main():
     )
     os.makedirs(out_dir, exist_ok=True)
 
-    cpu_map  = get_cpu_map(strategy, workload)
+    cpu_map  = _resolve_cpu_map(strategy, workload, bench_class, num_threads)
     bin_path = binary_path(workload, bench_class)
     bin_args = get_binary_args(workload, bench_class, num_threads)
 

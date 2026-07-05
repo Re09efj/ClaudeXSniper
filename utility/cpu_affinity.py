@@ -177,118 +177,12 @@ STRATEGIES = {
     ],
 }
 
-# MPO はワークロード依存のため別定義
-MPO_MAPS = {
-    # CG: SpMV で全スレッドが共有密ベクトル z/p を読む。
-    # first-touch によりこれらは Node0 に確保されるため Node0 先詰め。
-    "CG": [
-        0,
-        1,
-        2,
-        3,  # threads 0-3: Node0 P-core（z/p がここにある）
-        8,
-        9,
-        10,
-        11,  # threads 4-7: Node1 P-core（帯域補強）
-        4,
-        5,
-        6,
-        7,  # threads 8-11: Node0 E-core
-        12,
-        13,
-        14,
-        15,  # threads12-15: Node1 E-core
-    ],
-    # BT: ブロック三重対角ソルバ。全スレッドが共有配列を高頻度でアクセスするため
-    # first-touch で Node0 に確保された配列へのアクセスを最小化するよう Node0 先詰め。
-    "BT": [
-        0,
-        1,
-        2,
-        3,  # threads 0-3: Node0 P-core
-        8,
-        9,
-        10,
-        11,  # threads 4-7: Node1 P-core
-        4,
-        5,
-        6,
-        7,  # threads 8-11: Node0 E-core
-        12,
-        13,
-        14,
-        15,  # threads12-15: Node1 E-core
-    ],
-    # MG: 3D格子をスラブ分割。隣接スラブを持つスレッドが境界で通信するため
-    # 隣接スレッドペアを同一ノードに配置してノード内通信を最大化する。
-    # (T0,T1)→Node0, (T2,T3)→Node1, (T4,T5)→Node0, ...
-    "MG": [
-        0,
-        1,
-        8,
-        9,  # threads 0-3: T0,T1=Node0P / T2,T3=Node1P
-        2,
-        3,
-        10,
-        11,  # threads 4-7: T4,T5=Node0P / T6,T7=Node1P
-        4,
-        5,
-        12,
-        13,  # threads 8-11: E-core ペア
-        6,
-        7,
-        14,
-        15,  # threads12-15: E-core ペア
-    ],
-    # EP: Embarrassingly Parallel。スレッド間データ共有なし。
-    # 各スレッドが独立した乱数列を処理するため first-touch で自ノードに確保される。
-    # Node0 P-core 優先（HPO と同じ）でキャッシュ競合を最小化。
-    "EP": [
-        0, 1, 2, 3,          # threads 0-3: Node0 P-core
-        8, 9, 10, 11,        # threads 4-7: Node1 P-core
-        4, 5, 6, 7,          # threads 8-11: Node0 E-core
-        12, 13, 14, 15,      # threads12-15: Node1 E-core
-    ],
-    # IS: Integer Sort。バケットソートで全スレッドが bucket_size 配列を共有読み書き。
-    # first-touch で Node0 に確保されるため Node0 先詰めで遠隔アクセスを削減。
-    "IS": [
-        0, 1, 2, 3,          # threads 0-3: Node0 P-core
-        8, 9, 10, 11,        # threads 4-7: Node1 P-core
-        4, 5, 6, 7,          # threads 8-11: Node0 E-core
-        12, 13, 14, 15,      # threads12-15: Node1 E-core
-    ],
-    # FT: FFT。グローバル転置が発生するため両ノードに帯域分散（Scatter と同じ）が有利。
-    "FT": [
-        0, 8, 1, 9, 2, 10, 3, 11,   # threads  0- 7: P-core インターリーブ
-        4, 12, 5, 13, 6, 14, 7, 15,  # threads  8-15: E-core インターリーブ
-    ],
-    # SP: Scalar Pentadiagonal。BT と類似した三重対角ソルバ。
-    # 全スレッドが共有配列を高頻度アクセス → Node0 先詰めで遠隔アクセスを削減。
-    "SP": [
-        0, 1, 2, 3,          # threads 0-3: Node0 P-core
-        8, 9, 10, 11,        # threads 4-7: Node1 P-core
-        4, 5, 6, 7,          # threads 8-11: Node0 E-core
-        12, 13, 14, 15,      # threads12-15: Node1 E-core
-    ],
-    # GAPBS: グラフ処理は不規則メモリアクセス。両ノードの帯域を活用する Scatter 配置が有利。
-    # BFS/BC/SSSP: フロンティアベースの探索 → Scatter で帯域分散
-    # PR/CC/TC: 全ノード反復 → Scatter で帯域分散
-    "BFS":  [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15],
-    "PR":   [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15],
-    "BC":   [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15],
-    "CC":   [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15],
-    "SSSP": [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15],
-    "TC":   [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15],
-    # fluidanimate: 粒子シミュレーション。グリッド分割で隣接スレッドが境界を共有。
-    # MG と同じ隣接ペア同ノード配置で境界通信をノード内に収める。
-    "FLUIDANIMATE": [0, 1, 8, 9, 2, 3, 10, 11, 4, 5, 12, 13, 6, 7, 14, 15],
-}
-
 STRATEGY_DESC = {
     "Packed": "全スレッド → Node0 集中 (P→E順)",
     "Scatter": "ノード間インターリーブ (帯域分散)",
     "HPO": "P-core 優先: Node0 P → Node1 P → E-core",
-    "MPO": "メモリ親和性優先 (ワークロード依存: CG/BT/IS/SP=Node0先詰め / MG=隣接ペア同ノード / EP=HPO / FT=Scatter / lavaMD=Scatter)",
+    "MPO": "Jin本物の2段階DeLoc (utility.deloc_mapper.compute_deloc_map_from_csv で計算。"
+           "ワークロード依存の静的推測ではなく、実測comm.csv/mem_access.csvに基づく)",
     "EPO": "E-core 優先: Node0 E → Node1 E → P-core (省電力重視、HPO の逆)",
     "SPO": "スケジューリング優先度協調制御 (暫定: Scatter 配置)",
     "RoundRobin": "ベースライン: CPU 0→15 順割り当て (NUMA・コア性能差無視)",
@@ -296,39 +190,16 @@ STRATEGY_DESC = {
 
 
 def get_cpu_map(strategy: str, workload: str) -> list:
-    """ストラテジーとワークロードから cpu_map を返す。MPO のみワークロード依存。"""
-    if strategy == "MPO":
-        key = workload.upper()
-        # lavaMD は不規則アクセス → Scatter と同じ配置
-        if key == "LAVAMD":
-            return STRATEGIES["Scatter"]
-        if key not in MPO_MAPS:
-            print(f"[WARNING] MPO map for '{workload}' 未定義。Scatter 配置を使用します。")
-            return STRATEGIES["Scatter"]
-        return MPO_MAPS[key]
+    """
+    ストラテジーとワークロードから cpu_map を返す。
+    MPO は utility.deloc_mapper.compute_deloc_map_from_csv で計算するため、
+    ここでは扱わない（呼び出し側は strategy=="MPO" を先に分岐すること。
+    orchestrator.py/run.py/vsPOSM/vs_posm.py の _resolve_cpu_map を参照）。
+    """
     if strategy not in STRATEGIES:
         print(f"[ERROR] 不明なストラテジー: {strategy}")
         sys.exit(1)
     return STRATEGIES[strategy]
-
-
-MPO_EQUIVALENT_CANDIDATES = ("Packed", "Scatter", "HPO", "EPO")
-
-
-def resolve_mpo_equivalent(workload: str, num_threads: int) -> str | None:
-    """
-    指定ワークロード・スレッド数で MPO の cpu_map (先頭 num_threads 件) が
-    他の主要戦略と完全一致するかを判定する。
-
-    一致すれば一致先の戦略名を返す（実シミュレーション不要、結果を複製流用できる）。
-    一致しなければ None を返す（MPO 専用の実シミュレーションが必要）。
-    """
-    mpo_map = get_cpu_map("MPO", workload)[:num_threads]
-    for name in MPO_EQUIVALENT_CANDIDATES:
-        if STRATEGIES[name][:num_threads] == mpo_map:
-            return name
-    return None
-
 
 
 def save_affinity_config(

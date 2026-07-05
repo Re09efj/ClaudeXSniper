@@ -1,0 +1,48 @@
+[SNIPER] Start
+Core 4 at 3.00 GHz (global clock 4.00 GHz)
+Core 5 at 3.00 GHz (global clock 4.00 GHz)
+Core 6 at 3.00 GHz (global clock 4.00 GHz)
+Core 7 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f56e49146aa. Access Type: UNKNOWN. Access Address = 0x7f56be980be8
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f56e49146aa. Access Type: UNKNOWN. Access Address = 0x7f56bfa92be8
+C: Tool (or Pin) caused signal 11 at PC 0x7f56e49146aa
+[SIFT:[SIFT:[SIFT:[SIFT:[SIFT:[SIFT:[SIFT:029105] Error: ] Error: ] Error: ] Error: ] Error: 67SuccessSuccess
+] Error: 
+No such file or directory[TRACE:5] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:0] -- DONE --
+[TRACE:6] -- DONE --
+SuccessSuccess
+
+Success
+
+[TRACE:2] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:7] -- DONE --
+] Error: Success
+Pin app terminated abnormally due to signal 11.
+[SIFT:1] Error: Broken pipe
+[TRACE:1] -- DONE --
+[SIFT:4] Error: Broken pipe
+[TRACE:4] -- DONE --
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:11] Error: Broken pipe
+[TRACE:11] -- DONE --
+[SIFT:8] Error: Broken pipe[TRACE:8] -- DONE --
+
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 15.43 seconds
+[SNIPER] Simulated 44.5M instructions, 8.4M cycles, 5.32 IPC
+[SNIPER] Simulation speed 2882.2 KIPS (240.2 KIPS / target core - 4163.5ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 15.59 seconds

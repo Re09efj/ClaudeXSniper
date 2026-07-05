@@ -1,0 +1,25 @@
+BENCHMARK=LAVAMD.W (NPB3.3 OpenMP)
+PRESET=MPO
+NUM_THREADS=16
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[7, 5, 4, 15, 8, 0, 2, 13, 10, 1, 3, 12, 14, 11, 9, 6]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU07 (Node0 E-core)
+  thread01 -> CPU05 (Node0 E-core)
+  thread02 -> CPU04 (Node0 E-core)
+  thread03 -> CPU15 (Node1 E-core)
+  thread04 -> CPU08 (Node1 P-core)
+  thread05 -> CPU00 (Node0 P-core)
+  thread06 -> CPU02 (Node0 P-core)
+  thread07 -> CPU13 (Node1 E-core)
+  thread08 -> CPU10 (Node1 P-core)
+  thread09 -> CPU01 (Node0 P-core)
+  thread10 -> CPU03 (Node0 P-core)
+  thread11 -> CPU12 (Node1 E-core)
+  thread12 -> CPU14 (Node1 E-core)
+  thread13 -> CPU11 (Node1 P-core)
+  thread14 -> CPU09 (Node1 P-core)
+  thread15 -> CPU06 (Node0 E-core)

@@ -1,0 +1,409 @@
+[2026年  7月  5日 日曜日 03:06:48 JST] Purple 16THバッチの完了待ち開始
+[2026年  7月  5日 日曜日 03:16:52 JST] Purple 16THバッチ完了を検知
+[2026年  7月  5日 日曜日 03:16:52 JST] Data/comm_matrices/ へ同期開始
+receiving incremental file list
+./
+BC_12TH_bc.12.6.comm.csv
+BC_12TH_bc.12.6.comm_size.csv
+BC_12TH_bc.12.6.mem_access.csv
+BC_16TH_bc.16.6.comm.csv
+BC_16TH_bc.16.6.comm_size.csv
+BC_16TH_bc.16.6.mem_access.csv
+BC_2TH_bc.2.6.comm.csv
+BC_2TH_bc.2.6.comm_size.csv
+BC_2TH_bc.2.6.mem_access.csv
+BC_6TH_bc.6.6.comm.csv
+BC_6TH_bc.6.6.comm_size.csv
+BC_6TH_bc.6.6.mem_access.csv
+BC_8TH_bc.8.6.comm.csv
+BC_8TH_bc.8.6.comm_size.csv
+BC_8TH_bc.8.6.mem_access.csv
+BFS_12TH_bfs.12.6.comm.csv
+BFS_12TH_bfs.12.6.comm_size.csv
+BFS_12TH_bfs.12.6.mem_access.csv
+BFS_16TH_bfs.16.6.comm.csv
+BFS_16TH_bfs.16.6.comm_size.csv
+BFS_16TH_bfs.16.6.mem_access.csv
+BFS_2TH_bfs.2.6.comm.csv
+BFS_2TH_bfs.2.6.comm_size.csv
+BFS_2TH_bfs.2.6.mem_access.csv
+BFS_6TH_bfs.6.6.comm.csv
+BFS_6TH_bfs.6.6.comm_size.csv
+BFS_6TH_bfs.6.6.mem_access.csv
+BFS_8TH_bfs.8.6.comm.csv
+BFS_8TH_bfs.8.6.comm_size.csv
+BFS_8TH_bfs.8.6.mem_access.csv
+BT_12TH_bt.S.x.12.6.comm.csv
+BT_12TH_bt.S.x.12.6.comm_size.csv
+BT_12TH_bt.S.x.12.6.mem_access.csv
+BT_16TH_bt.S.x.16.6.comm.csv
+BT_16TH_bt.S.x.16.6.comm_size.csv
+BT_16TH_bt.S.x.16.6.mem_access.csv
+BT_2TH_bt.S.x.2.6.comm.csv
+BT_2TH_bt.S.x.2.6.comm_size.csv
+BT_2TH_bt.S.x.2.6.mem_access.csv
+BT_6TH_bt.S.x.6.6.comm.csv
+BT_6TH_bt.S.x.6.6.comm_size.csv
+BT_6TH_bt.S.x.6.6.mem_access.csv
+BT_8TH_bt.S.x.8.6.comm.csv
+BT_8TH_bt.S.x.8.6.comm_size.csv
+BT_8TH_bt.S.x.8.6.mem_access.csv
+CC_12TH_cc.12.6.comm.csv
+CC_12TH_cc.12.6.comm_size.csv
+CC_12TH_cc.12.6.mem_access.csv
+CC_16TH_cc.16.6.comm.csv
+CC_16TH_cc.16.6.comm_size.csv
+CC_16TH_cc.16.6.mem_access.csv
+CC_2TH_cc.2.6.comm.csv
+CC_2TH_cc.2.6.comm_size.csv
+CC_2TH_cc.2.6.mem_access.csv
+CC_6TH_cc.6.6.comm.csv
+CC_6TH_cc.6.6.comm_size.csv
+CC_6TH_cc.6.6.mem_access.csv
+CC_8TH_cc.8.6.comm.csv
+CC_8TH_cc.8.6.comm_size.csv
+CC_8TH_cc.8.6.mem_access.csv
+CG_12TH_cg.S.x.12.6.comm.csv
+CG_12TH_cg.S.x.12.6.comm_size.csv
+CG_12TH_cg.S.x.12.6.mem_access.csv
+CG_16TH_cg.S.x.16.6.comm.csv
+CG_16TH_cg.S.x.16.6.comm_size.csv
+CG_16TH_cg.S.x.16.6.mem_access.csv
+CG_2TH_cg.S.x.2.6.comm.csv
+CG_2TH_cg.S.x.2.6.comm_size.csv
+CG_2TH_cg.S.x.2.6.mem_access.csv
+CG_6TH_cg.S.x.6.6.comm.csv
+CG_6TH_cg.S.x.6.6.comm_size.csv
+CG_6TH_cg.S.x.6.6.mem_access.csv
+CG_8TH_cg.S.x.8.6.comm.csv
+CG_8TH_cg.S.x.8.6.comm_size.csv
+CG_8TH_cg.S.x.8.6.mem_access.csv
+FT_12TH_ft.S.x.12.6.comm.csv
+FT_12TH_ft.S.x.12.6.comm_size.csv
+FT_12TH_ft.S.x.12.6.mem_access.csv
+FT_16TH_ft.S.x.16.6.comm.csv
+FT_16TH_ft.S.x.16.6.comm_size.csv
+FT_16TH_ft.S.x.16.6.mem_access.csv
+FT_2TH_ft.S.x.2.6.comm.csv
+FT_2TH_ft.S.x.2.6.comm_size.csv
+FT_2TH_ft.S.x.2.6.mem_access.csv
+FT_6TH_ft.S.x.6.6.comm.csv
+FT_6TH_ft.S.x.6.6.comm_size.csv
+FT_6TH_ft.S.x.6.6.mem_access.csv
+FT_8TH_ft.S.x.8.6.comm.csv
+FT_8TH_ft.S.x.8.6.comm_size.csv
+FT_8TH_ft.S.x.8.6.mem_access.csv
+IS_12TH_is.S.x.12.6.comm.csv
+IS_12TH_is.S.x.12.6.comm_size.csv
+IS_12TH_is.S.x.12.6.mem_access.csv
+IS_16TH_is.S.x.16.6.comm.csv
+IS_16TH_is.S.x.16.6.comm_size.csv
+IS_16TH_is.S.x.16.6.mem_access.csv
+IS_2TH_is.S.x.2.6.comm.csv
+IS_2TH_is.S.x.2.6.comm_size.csv
+IS_2TH_is.S.x.2.6.mem_access.csv
+IS_6TH_is.S.x.6.6.comm.csv
+IS_6TH_is.S.x.6.6.comm_size.csv
+IS_6TH_is.S.x.6.6.mem_access.csv
+IS_8TH_is.S.x.8.6.comm.csv
+IS_8TH_is.S.x.8.6.comm_size.csv
+IS_8TH_is.S.x.8.6.mem_access.csv
+MG_12TH_mg.S.x.12.6.comm.csv
+MG_12TH_mg.S.x.12.6.comm_size.csv
+MG_12TH_mg.S.x.12.6.mem_access.csv
+MG_16TH_mg.S.x.16.6.comm.csv
+MG_16TH_mg.S.x.16.6.comm_size.csv
+MG_16TH_mg.S.x.16.6.mem_access.csv
+MG_2TH_mg.S.x.2.6.comm.csv
+MG_2TH_mg.S.x.2.6.comm_size.csv
+MG_2TH_mg.S.x.2.6.mem_access.csv
+MG_6TH_mg.S.x.6.6.comm.csv
+MG_6TH_mg.S.x.6.6.comm_size.csv
+MG_6TH_mg.S.x.6.6.mem_access.csv
+MG_8TH_mg.S.x.8.6.comm.csv
+MG_8TH_mg.S.x.8.6.comm_size.csv
+MG_8TH_mg.S.x.8.6.mem_access.csv
+PR_12TH_pr.12.6.comm.csv
+PR_12TH_pr.12.6.comm_size.csv
+PR_12TH_pr.12.6.mem_access.csv
+PR_16TH_pr.16.6.comm.csv
+PR_16TH_pr.16.6.comm_size.csv
+PR_16TH_pr.16.6.mem_access.csv
+PR_2TH_pr.2.6.comm.csv
+PR_2TH_pr.2.6.comm_size.csv
+PR_2TH_pr.2.6.mem_access.csv
+PR_6TH_pr.6.6.comm.csv
+PR_6TH_pr.6.6.comm_size.csv
+PR_6TH_pr.6.6.mem_access.csv
+PR_8TH_pr.8.6.comm.csv
+PR_8TH_pr.8.6.comm_size.csv
+PR_8TH_pr.8.6.mem_access.csv
+SP_12TH_sp.S.x.12.6.comm.csv
+SP_12TH_sp.S.x.12.6.comm_size.csv
+SP_12TH_sp.S.x.12.6.mem_access.csv
+SP_16TH_sp.S.x.16.6.comm.csv
+SP_16TH_sp.S.x.16.6.comm_size.csv
+SP_16TH_sp.S.x.16.6.mem_access.csv
+SP_2TH_sp.S.x.2.6.comm.csv
+SP_2TH_sp.S.x.2.6.comm_size.csv
+SP_2TH_sp.S.x.2.6.mem_access.csv
+SP_6TH_sp.S.x.6.6.comm.csv
+SP_6TH_sp.S.x.6.6.comm_size.csv
+SP_6TH_sp.S.x.6.6.mem_access.csv
+SP_8TH_sp.S.x.8.6.comm.csv
+SP_8TH_sp.S.x.8.6.comm_size.csv
+SP_8TH_sp.S.x.8.6.mem_access.csv
+SSSP_12TH_sssp.12.6.comm.csv
+SSSP_12TH_sssp.12.6.comm_size.csv
+SSSP_12TH_sssp.12.6.mem_access.csv
+SSSP_16TH_sssp.16.6.comm.csv
+SSSP_16TH_sssp.16.6.comm_size.csv
+SSSP_16TH_sssp.16.6.mem_access.csv
+SSSP_2TH_sssp.2.6.comm.csv
+SSSP_2TH_sssp.2.6.comm_size.csv
+SSSP_2TH_sssp.2.6.mem_access.csv
+SSSP_6TH_sssp.6.6.comm.csv
+SSSP_6TH_sssp.6.6.comm_size.csv
+SSSP_6TH_sssp.6.6.mem_access.csv
+SSSP_8TH_sssp.8.6.comm.csv
+SSSP_8TH_sssp.8.6.comm_size.csv
+SSSP_8TH_sssp.8.6.mem_access.csv
+TC_12TH_tc.12.6.comm.csv
+TC_12TH_tc.12.6.comm_size.csv
+TC_12TH_tc.12.6.mem_access.csv
+TC_16TH_tc.16.6.comm.csv
+TC_16TH_tc.16.6.comm_size.csv
+TC_16TH_tc.16.6.mem_access.csv
+TC_2TH_tc.2.6.comm.csv
+TC_2TH_tc.2.6.comm_size.csv
+TC_2TH_tc.2.6.mem_access.csv
+TC_6TH_tc.6.6.comm.csv
+TC_6TH_tc.6.6.comm_size.csv
+TC_6TH_tc.6.6.mem_access.csv
+TC_8TH_tc.8.6.comm.csv
+TC_8TH_tc.8.6.comm_size.csv
+TC_8TH_tc.8.6.mem_access.csv
+lavaMD_12TH_lavaMD.12.6.comm.csv
+lavaMD_12TH_lavaMD.12.6.comm_size.csv
+lavaMD_12TH_lavaMD.12.6.mem_access.csv
+lavaMD_16TH_lavaMD.16.6.comm.csv
+lavaMD_16TH_lavaMD.16.6.comm_size.csv
+lavaMD_16TH_lavaMD.16.6.mem_access.csv
+lavaMD_2TH_lavaMD.2.6.comm.csv
+lavaMD_2TH_lavaMD.2.6.comm_size.csv
+lavaMD_2TH_lavaMD.2.6.mem_access.csv
+lavaMD_6TH_lavaMD.6.6.comm.csv
+lavaMD_6TH_lavaMD.6.6.comm_size.csv
+lavaMD_6TH_lavaMD.6.6.mem_access.csv
+lavaMD_8TH_lavaMD.8.6.comm.csv
+lavaMD_8TH_lavaMD.8.6.comm_size.csv
+lavaMD_8TH_lavaMD.8.6.mem_access.csv
+
+sent 4,818 bytes  received 33,547 bytes  76,730.00 bytes/sec
+total size is 103,842  speedup is 2.71
+receiving incremental file list
+./
+BC_W_16TH_bc.16.6.comm.csv
+BC_W_16TH_bc.16.6.comm_size.csv
+BC_W_16TH_bc.16.6.mem_access.csv
+BFS_W_16TH_bfs.16.6.comm.csv
+BFS_W_16TH_bfs.16.6.comm_size.csv
+BFS_W_16TH_bfs.16.6.mem_access.csv
+BT_A_12TH_bt.A.x.12.6.comm.csv
+BT_A_12TH_bt.A.x.12.6.comm_size.csv
+BT_A_12TH_bt.A.x.12.6.mem_access.csv
+BT_W_16TH_bt.W.x.16.6.comm.csv
+BT_W_16TH_bt.W.x.16.6.comm_size.csv
+BT_W_16TH_bt.W.x.16.6.mem_access.csv
+CC_W_16TH_cc.16.6.comm.csv
+CC_W_16TH_cc.16.6.comm_size.csv
+CC_W_16TH_cc.16.6.mem_access.csv
+CG_A_12TH_cg.A.x.12.6.comm.csv
+CG_A_12TH_cg.A.x.12.6.comm_size.csv
+CG_A_12TH_cg.A.x.12.6.mem_access.csv
+CG_W_12TH_cg.W.x.12.6.comm.csv
+CG_W_12TH_cg.W.x.12.6.comm_size.csv
+CG_W_12TH_cg.W.x.12.6.mem_access.csv
+CG_W_16TH_cg.W.x.16.6.comm.csv
+CG_W_16TH_cg.W.x.16.6.comm_size.csv
+CG_W_16TH_cg.W.x.16.6.mem_access.csv
+FT_A_12TH_ft.A.x.12.6.comm.csv
+FT_A_12TH_ft.A.x.12.6.comm_size.csv
+FT_A_12TH_ft.A.x.12.6.mem_access.csv
+FT_W_12TH_ft.W.x.12.6.comm.csv
+FT_W_12TH_ft.W.x.12.6.comm_size.csv
+FT_W_12TH_ft.W.x.12.6.mem_access.csv
+FT_W_16TH_ft.W.x.16.6.comm.csv
+FT_W_16TH_ft.W.x.16.6.comm_size.csv
+FT_W_16TH_ft.W.x.16.6.mem_access.csv
+IS_A_12TH_is.A.x.12.6.comm.csv
+IS_A_12TH_is.A.x.12.6.comm_size.csv
+IS_A_12TH_is.A.x.12.6.mem_access.csv
+IS_W_12TH_is.W.x.12.6.comm.csv
+IS_W_12TH_is.W.x.12.6.comm_size.csv
+IS_W_12TH_is.W.x.12.6.mem_access.csv
+IS_W_16TH_is.W.x.16.6.comm.csv
+IS_W_16TH_is.W.x.16.6.comm_size.csv
+IS_W_16TH_is.W.x.16.6.mem_access.csv
+MG_A_12TH_mg.A.x.12.6.comm.csv
+MG_A_12TH_mg.A.x.12.6.comm_size.csv
+MG_A_12TH_mg.A.x.12.6.mem_access.csv
+MG_W_12TH_mg.W.x.12.6.comm.csv
+MG_W_12TH_mg.W.x.12.6.comm_size.csv
+MG_W_12TH_mg.W.x.12.6.mem_access.csv
+MG_W_16TH_mg.W.x.16.6.comm.csv
+MG_W_16TH_mg.W.x.16.6.comm_size.csv
+MG_W_16TH_mg.W.x.16.6.mem_access.csv
+PR_W_16TH_pr.16.6.comm.csv
+PR_W_16TH_pr.16.6.comm_size.csv
+PR_W_16TH_pr.16.6.mem_access.csv
+SP_A_12TH_sp.A.x.12.6.comm.csv
+SP_A_12TH_sp.A.x.12.6.comm_size.csv
+SP_A_12TH_sp.A.x.12.6.mem_access.csv
+SP_W_12TH_sp.W.x.12.6.comm.csv
+SP_W_12TH_sp.W.x.12.6.comm_size.csv
+SP_W_12TH_sp.W.x.12.6.mem_access.csv
+SP_W_16TH_sp.W.x.16.6.comm.csv
+SP_W_16TH_sp.W.x.16.6.comm_size.csv
+SP_W_16TH_sp.W.x.16.6.mem_access.csv
+SSSP_W_16TH_sssp.16.6.comm.csv
+SSSP_W_16TH_sssp.16.6.comm_size.csv
+SSSP_W_16TH_sssp.16.6.mem_access.csv
+TC_W_16TH_tc.16.6.comm.csv
+TC_W_16TH_tc.16.6.comm_size.csv
+TC_W_16TH_tc.16.6.mem_access.csv
+lavaMD_W_16TH_lavaMD.16.6.comm.csv
+lavaMD_W_16TH_lavaMD.16.6.comm_size.csv
+lavaMD_W_16TH_lavaMD.16.6.mem_access.csv
+
+sent 1,395 bytes  received 47,705 bytes  32,733.33 bytes/sec
+total size is 174,977  speedup is 3.56
+[2026年  7月  5日 日曜日 03:16:53 JST] 同期完了
+[2026年  7月  5日 日曜日 03:16:53 JST] MPO-16TH追加ジョブ(S+W, 26件)を容量2コアで投入
+[profile/estimate] BT_W_16: S×40.0 → 5560s (ref=139s)
+[profile/estimate] CG_W_16: S×15.0 → 645s (ref=43s)
+[profile/estimate] FT_W_16: S×5.0 → 470s (ref=94s)
+[profile/estimate] IS_W_16: S×25.0 → 325s (ref=13s)
+[profile/estimate] MG_W_16: S×90.0 → 1350s (ref=15s)
+[profile/estimate] SP_W_16: S×180.0 → 15120s (ref=84s)
+[profile/estimate] lavaMD_W_16: S×2.0 → 10s (ref=5s)
+[profile/estimate] BFS_W_16: S×3.0 → 54s (ref=18s)
+[profile/estimate] PR_W_16: S×3.0 → 54s (ref=18s)
+[profile/estimate] BC_W_16: S×3.0 → 54s (ref=18s)
+[profile/estimate] CC_W_16: S×3.0 → 54s (ref=18s)
+[profile/estimate] SSSP_W_16: S×3.0 → 63s (ref=21s)
+[profile/estimate] TC_W_16: S×3.0 → 54s (ref=18s)
+[MPO-16TH追加] 26件のジョブ
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=26  実効容量=2.0コア
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/SP_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] SP_W_16: simTime=0.591s, instructions=58,314,269,508, wallTime=20100s (avg 19854s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/SP_W_MPO_16TH_20260705_031653/metrics.csv
+[1/26] Job(SP/MPO/W/16TH, w=2.74core, d=14400s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] BT_W_16: simTime=0.212s, instructions=28,235,247,597, wallTime=9233s (avg 9233s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_MPO_16TH_20260705_031653/metrics.csv
+[2/26] Job(BT/MPO/W/16TH, w=3.14core, d=5560s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/MG_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] MG_W_16: simTime=0.081s, instructions=2,617,427,265, wallTime=2104s (avg 2104s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/MG_W_MPO_16TH_20260705_031653/metrics.csv
+[3/26] Job(MG/MPO/W/16TH, w=2.36core, d=1350s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/CG_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] CG_W_16: simTime=0.022s, instructions=2,271,818,194, wallTime=766s (avg 766s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/CG_W_MPO_16TH_20260705_031653/metrics.csv
+[4/26] Job(CG/MPO/W/16TH, w=2.10core, d=645s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/FT_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] FT_W_16: simTime=0.019s, instructions=1,990,435,527, wallTime=797s (avg 797s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/FT_W_MPO_16TH_20260705_031653/metrics.csv
+[5/26] Job(FT/MPO/W/16TH, w=2.76core, d=470s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/IS_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] IS_W_16: simTime=0.016s, instructions=817,696,409, wallTime=410s (avg 410s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/IS_W_MPO_16TH_20260705_031653/metrics.csv
+[6/26] Job(IS/MPO/W/16TH, w=2.41core, d=325s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] BT_S_16: simTime=0.008s, instructions=1,016,943,571, wallTime=366s (avg 252s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_MPO_16TH_20260705_031653/metrics.csv
+[7/26] Job(BT/MPO/S/16TH, w=3.14core, d=139s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] FT_S_16: simTime=0.008s, instructions=892,210,616, wallTime=326s (avg 210s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_MPO_16TH_20260705_031653/metrics.csv
+[8/26] Job(FT/MPO/S/16TH, w=2.76core, d=94s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SP_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] SP_S_16: simTime=0.006s, instructions=562,030,312, wallTime=214s (avg 149s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SP_S_MPO_16TH_20260705_031653/metrics.csv
+[9/26] Job(SP/MPO/S/16TH, w=2.74core, d=84s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/SSSP_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] SSSP_W_16: simTime=0.005s, instructions=110,992,011, wallTime=51s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/SSSP_W_MPO_16TH_20260705_031653/metrics.csv
+[10/26] Job(SSSP/MPO/W/16TH, w=1.35core, d=63s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BFS_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] BFS_W_16: simTime=0.005s, instructions=71,626,973, wallTime=39s (avg 39s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BFS_W_MPO_16TH_20260705_031653/metrics.csv
+[11/26] Job(BFS/MPO/W/16TH, w=1.35core, d=54s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/PR_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] PR_W_16: simTime=0.005s, instructions=71,350,112, wallTime=39s (avg 39s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/PR_W_MPO_16TH_20260705_031653/metrics.csv
+[12/26] Job(PR/MPO/W/16TH, w=1.35core, d=54s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BC_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] BC_W_16: simTime=0.005s, instructions=71,699,188, wallTime=39s (avg 39s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BC_W_MPO_16TH_20260705_031653/metrics.csv
+[13/26] Job(BC/MPO/W/16TH, w=1.35core, d=54s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/CC_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] CC_W_16: simTime=0.005s, instructions=71,877,538, wallTime=39s (avg 39s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/CC_W_MPO_16TH_20260705_031653/metrics.csv
+[14/26] Job(CC/MPO/W/16TH, w=1.35core, d=54s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/TC_W_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] TC_W_16: simTime=0.005s, instructions=71,976,161, wallTime=40s (avg 40s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/TC_W_MPO_16TH_20260705_031653/metrics.csv
+[15/26] Job(TC/MPO/W/16TH, w=1.35core, d=54s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] CG_S_16: simTime=0.004s, instructions=390,021,218, wallTime=134s (avg 89s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_MPO_16TH_20260705_031653/metrics.csv
+[16/26] Job(CG/MPO/S/16TH, w=2.10core, d=43s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SSSP_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] SSSP_S_16: simTime=0.003s, instructions=80,663,138, wallTime=38s (avg 30s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/SSSP_S_MPO_16TH_20260705_031653/metrics.csv
+[17/26] Job(SSSP/MPO/S/16TH, w=1.35core, d=21s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BFS_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] BFS_S_16: simTime=0.003s, instructions=56,018,279, wallTime=29s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BFS_S_MPO_16TH_20260705_031653/metrics.csv
+[18/26] Job(BFS/MPO/S/16TH, w=1.35core, d=18s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/PR_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] PR_S_16: simTime=0.003s, instructions=55,577,832, wallTime=29s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/PR_S_MPO_16TH_20260705_031653/metrics.csv
+[19/26] Job(PR/MPO/S/16TH, w=1.35core, d=18s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BC_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] BC_S_16: simTime=0.003s, instructions=55,814,104, wallTime=29s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BC_S_MPO_16TH_20260705_031653/metrics.csv
+[20/26] Job(BC/MPO/S/16TH, w=1.35core, d=18s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CC_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] CC_S_16: simTime=0.003s, instructions=55,637,574, wallTime=30s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CC_S_MPO_16TH_20260705_031653/metrics.csv
+[21/26] Job(CC/MPO/S/16TH, w=1.35core, d=18s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/TC_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] TC_S_16: simTime=0.003s, instructions=56,463,443, wallTime=30s (avg 24s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/TC_S_MPO_16TH_20260705_031653/metrics.csv
+[22/26] Job(TC/MPO/S/16TH, w=1.35core, d=18s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] MG_S_16: simTime=0.001s, instructions=72,276,266, wallTime=36s (avg 26s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_MPO_16TH_20260705_031653/metrics.csv
+[23/26] Job(MG/MPO/S/16TH, w=2.36core, d=15s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] IS_S_16: simTime=0.001s, instructions=56,336,363, wallTime=33s (avg 23s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_MPO_16TH_20260705_031653/metrics.csv
+[24/26] Job(IS/MPO/S/16TH, w=2.41core, d=13s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/lavaMD_W_MPO_16TH_20260705_031653/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/lavaMD_S_MPO_16TH_20260705_031653/affinity_config.txt
+[profile] lavaMD_W_16: simTime=0.000s, instructions=355,339, wallTime=5s (avg 5s)
+[profile] lavaMD_S_16: simTime=0.000s, instructions=335,128, wallTime=5s (avg 5s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/lavaMD_W_MPO_16TH_20260705_031653/metrics.csv
+[25/26] Job(lavaMD/MPO/W/16TH, w=0.31core, d=10s) -> OK
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/lavaMD_S_MPO_16TH_20260705_031653/metrics.csv
+[26/26] Job(lavaMD/MPO/S/16TH, w=0.31core, d=5s) -> OK
+
+[完了] 26/26 件処理
+[2026年  7月  5日 日曜日 12:59:34 JST] MPO-16TH追加ジョブ完了。watcher終了

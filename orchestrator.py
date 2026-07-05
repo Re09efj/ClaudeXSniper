@@ -17,13 +17,27 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 from utility.cpu_affinity   import (get_cpu_map, binary_path, get_binary_args,
-                                     save_affinity_config, resolve_mpo_equivalent)
+                                     save_affinity_config)
+from utility.deloc_mapper   import compute_deloc_map_from_csv, find_comm_csv
 from utility.run_profile    import get_reference, update_from_run, estimate_walltime
 from utility.stats_reader   import parse_node_stats
 from utility.csv_exporter   import export_csv
 from utility.power_model    import estimate as estimate_power
 from utility.notify         import notify
 from config.generate_config import generate_config, get_config_path
+
+
+def _resolve_cpu_map(strategy: str, workload: str, bench_class: str, num_threads: int) -> list:
+    """
+    MPO は Jin の本物の2段階アルゴリズム(deloc_mapper.py: Step1通信局所性 + Step2
+    ノード内Big/Small)で都度計算する。静的な MPO_MAPS(推測ベース)はもう使わない。
+    それ以外の戦略は従来通り cpu_affinity.STRATEGIES の固定配置。
+    """
+    if strategy == "MPO":
+        csv_path = find_comm_csv(workload, bench_class, num_threads)
+        cpu_map, _imbalance = compute_deloc_map_from_csv(csv_path, num_threads)
+        return cpu_map
+    return get_cpu_map(strategy, workload)
 
 # ============================================================
 # 実験設定（CLI 引数で上書き可能）
@@ -203,79 +217,6 @@ def _parse_args():
     return p.parse_args()
 
 
-def _find_existing_output(output_base: str, bench_class: str, strategy: str,
-                          workload: str, num_threads: int) -> str | None:
-    """既存の実行結果ディレクトリを検索する(直近のタイムスタンプを採用)。"""
-    import glob
-    pattern = os.path.join(
-        output_base, f"{num_threads}TH",
-        f"{workload}_{bench_class}_{strategy}_{num_threads}TH_*",
-    )
-    matches = sorted(glob.glob(pattern))
-    return matches[-1] if matches else None
-
-
-def _materialize_mpo_copy(src_dir: str, workload: str, bench_class: str,
-                          num_threads: int, source_strategy: str,
-                          output_base: str, run_id: str) -> str:
-    """
-    MPO の cpu_map が source_strategy と完全一致する場合に、実シミュレーションを
-    省略して source_strategy の結果を複製・リネームする(Sniper は決定論的な
-    シミュレータなので、同一 cpu_map なら結果も同一になる)。
-    """
-    new_dir = os.path.join(
-        output_base, f"{num_threads}TH",
-        f"{workload}_{bench_class}_MPO_{num_threads}TH_{run_id}",
-    )
-    if os.path.exists(new_dir):
-        shutil.rmtree(new_dir)
-    shutil.copytree(src_dir, new_dir)
-
-    threads_label = f"{num_threads}TH"
-
-    old_cfg = os.path.join(new_dir, f"arrow_lake_{source_strategy}_{threads_label}.cfg")
-    new_cfg = os.path.join(new_dir, f"arrow_lake_MPO_{threads_label}.cfg")
-    if os.path.exists(old_cfg):
-        os.rename(old_cfg, new_cfg)
-
-    ac_path = os.path.join(new_dir, "affinity_config.txt")
-    if os.path.exists(ac_path):
-        with open(ac_path) as f:
-            content = f.read()
-        content = content.replace(f"PRESET={source_strategy}", "PRESET=MPO")
-        content += (f"\n# NOTE: {source_strategy}とcpu_mapが完全一致するため複製生成"
-                     f"（実機でのMPO専用実験は未実施）\n")
-        with open(ac_path, "w") as f:
-            f.write(content)
-
-    mc_path = os.path.join(new_dir, "metrics.csv")
-    if os.path.exists(mc_path):
-        with open(mc_path) as f:
-            lines = f.readlines()
-        new_lines = []
-        for line in lines:
-            if line.startswith("strategy,"):
-                line = "strategy,MPO\n"
-            elif line.startswith("output_dir,"):
-                line = line.replace(f"_{source_strategy}_", "_MPO_")
-            new_lines.append(line)
-        with open(mc_path, "w") as f:
-            f.writelines(new_lines)
-
-    si_path = os.path.join(new_dir, "sim.info")
-    if os.path.exists(si_path):
-        with open(si_path) as f:
-            content = f.read()
-        content = content.replace(f"arrow_lake_{source_strategy}_{threads_label}.cfg",
-                                   f"arrow_lake_MPO_{threads_label}.cfg")
-        with open(si_path, "w") as f:
-            f.write(content)
-
-    print(f"  [MPO] {workload}: {source_strategy}と完全一致のため複製 (実シミュレーションはスキップ)",
-          flush=True)
-    return new_dir
-
-
 def _run_one_thread_count(
     num_threads: int,
     bench_class: str,
@@ -287,18 +228,11 @@ def _run_one_thread_count(
 ) -> None:
     output_base = OUTPUT_BASE_TMPL.format(cls=bench_class)
 
-    # MPO は cpu_map が他戦略と完全一致するワークロード/スレッド数では
-    # 実シミュレーションを省略し、一致先の結果を複製して使う。
-    real_jobs: list[tuple[str, str]] = []
-    mpo_copy_jobs: list[tuple[str, str]] = []
-    for st in strategies:
-        for wl in workloads:
-            if st == "MPO":
-                equiv = resolve_mpo_equivalent(wl, num_threads)
-                if equiv is not None:
-                    mpo_copy_jobs.append((wl, equiv))
-                    continue
-            real_jobs.append((wl, st))
+    # MPO は deloc_mapper.py の本物の2段階アルゴリズムで都度計算し、常に実シミュレーションする
+    # (静的MPO_MAPSベースの他戦略との複製ショートカットは廃止)。
+    real_jobs: list[tuple[str, str]] = [
+        (wl, st) for st in strategies for wl in workloads
+    ]
 
     total = len(real_jobs)
 
@@ -306,7 +240,7 @@ def _run_one_thread_count(
     print(f"  ClaudeXSniper — NUMA アフィニティ実験")
     print(f"  ワークロード: {workloads}")
     print(f"  クラス={bench_class}  スレッド={num_threads}  戦略={strategies}")
-    print(f"  実験数={total} (実実行)  +{len(mpo_copy_jobs)} (MPO複製)  同時実験数={workers}  (ホスト{_HOST_CORES}コア)")
+    print(f"  実験数={total} (実実行)  同時実験数={workers}  (ホスト{_HOST_CORES}コア)")
     print(f"{'='*64}\n")
 
     display      = ProgressDisplay()
@@ -316,7 +250,7 @@ def _run_one_thread_count(
 
     def run_one(workload: str, strategy: str) -> str:
         key      = f"{workload}/{strategy}"
-        cpu_map  = get_cpu_map(strategy, workload)
+        cpu_map  = _resolve_cpu_map(strategy, workload, bench_class, num_threads)
         bin_path = binary_path(workload, bench_class)
         bin_args = get_binary_args(workload, bench_class, num_threads)
 
@@ -420,24 +354,6 @@ def _run_one_thread_count(
             except Exception as e:
                 print(f"[ERROR:{wl}/{st}] {e}")
 
-    if mpo_copy_jobs:
-        print(f"\n[STEP] MPO複製 ({len(mpo_copy_jobs)}件)")
-        for wl, equiv in mpo_copy_jobs:
-            src_dir = output_dirs.get((wl, equiv))
-            if not src_dir:
-                src_dir = _find_existing_output(output_base, bench_class, equiv, wl, num_threads)
-            if not src_dir:
-                print(f"  [MPO] {wl}: {equiv}相当の既存結果が見つからないため実シミュレーションを実行します",
-                      flush=True)
-                try:
-                    output_dirs[(wl, "MPO")] = run_one(wl, "MPO")
-                except Exception as e:
-                    print(f"[ERROR:{wl}/MPO] {e}")
-                continue
-            output_dirs[(wl, "MPO")] = _materialize_mpo_copy(
-                src_dir, wl, bench_class, num_threads, equiv, output_base, run_id
-            )
-
     print(f"\n[STEP] 結果収集")
     results: dict[str, list] = {wl: [] for wl in workloads}
     for wl in workloads:
@@ -445,7 +361,7 @@ def _run_one_thread_count(
             out_dir = output_dirs.get((wl, st))
             if not out_dir:
                 continue
-            wl_cpu_map = get_cpu_map(st, wl)
+            wl_cpu_map = _resolve_cpu_map(st, wl, bench_class, num_threads)
             results[wl].append({
                 "strategy":   st,
                 "output_dir": out_dir,
