@@ -87,9 +87,24 @@ from utility.stats_reader    import parse_node_stats
 # (config/generate_config.py参照、i7-1195G7ベースで12MB/ノード)を大きく超える
 # 純粋ランダムアクセスカーネルで、計算をほぼ持たないためcanneal(ランダムだが
 # 実コスト計算を伴う)とも異なる、NUMA相互接続そのものの効果を測る基準点。
+# water_nsquaredは2026-07-06の幅計測(実消費コア%)調査中に、SPLASH2の
+# pthread barrier(mutex+cond)がglibcのFUTEX_CMP_REQUEUEに変換される際、
+# Sniperシミュレータ本体(common/system/syscall_server.cc、ソース中に
+# "race condition may have occured"と開発者コメントあり)側のレースにより
+# 8THで確率的にグローバルデッドロックすることが判明(6並列中2/6が真性ハング、
+# gdbで全スレッドが同一命令アドレスで完全停止していることを確認)。本実行で
+# 複数戦略×複数回実行する以上、同じ確率で結果が欠落するため、粒子シミュレーション
+# 系統(fluidanimate/lavaMD含む)は全滅という判断でwater_nsquaredも対象外とした。
+# BFS/PR(GAPBS)は2026-07-06にsendInstructionのPIN_SafeCopy修正を本番:latestに
+# 反映し、BFS/PR×2TH/8THのスモークテストで全コア正常データ(命令数が全スレッドで
+# 非ゼロ)を確認できたため一度再追加したが、直後の問題サイズ調整用実測
+# (GAPBS_SCALE較正のためBFS g=13を計測中)で、water_nsquaredと全く同じ症状
+# (8スレッド全てが同一命令アドレスで完全停止)のSniper本体側futexデッドロックを
+# 再現。SafeCopy修正はGAPBS固有の別バグ(sendInstructionの生ポインタタッチ)への
+# 対処であり、この汎用的なfutexデッドロックとは無関係と判明したため、BFS/PRも
+# water_nsquared同様に対象外とした(2026-07-06)。
 WORKLOADS = ["BT", "FT", "IS", "MG",
-             "canneal", "dedup", "x264",
-             "WATER_NSQUARED", "GUPS"]
+             "canneal", "dedup", "x264", "GUPS"]
 
 # 戦略。既存5戦略(Packed/Scatter/HPO/EPO/MPO)に加え、AKARIN候補生成を意味する
 # 特別な戦略トークン akarin_h / akarin_l を混在指定できる。
@@ -97,11 +112,11 @@ WORKLOADS = ["BT", "FT", "IS", "MG",
 # (WORKLOADSではなくこちらに属する)。
 #   akarin_h: WORKLOADSのうち重量級(NPB系BT/FT/IS/MG)だけを対象に、
 #             粗いalphaグリッド(3点)でAKARIN候補cpu_mapを生成・実行
-#   akarin_l: WORKLOADSのうち軽量級(canneal/dedup/x264/WATER_NSQUARED/GUPS)
+#   akarin_l: WORKLOADSのうち軽量級(canneal/dedup/x264/GUPS)
 #             だけを対象に、密なalphaグリッド(21点)でAKARIN候補cpu_mapを生成・実行
 STRATEGIES_TO_RUN = ["Packed", "Scatter", "HPO", "EPO", "MPO"]
 THREAD_COUNTS     = [2, 8, 12, 16]
-BENCH_CLASSES     = ["S", "W"]
+BENCH_CLASSES     = ["W"]
 
 # 実行先マシン。STRATEGIES_TO_RUNと同じ長さの配列で位置対応させる
 # (WORKLOADS/THREAD_COUNTSと同じ「配列を書き換えるだけ」の感覚でマシンを切り替えられる)。
@@ -174,18 +189,36 @@ def _validate(thread_list: list[int], class_list: list[str]) -> None:
 # ============================================================
 
 # ワークロード種別ごとの実消費ホストコア(%) @ 2TH実測 (project_scheduling_model参照)
-# canneal/dedup/x264/WATER_NSQUARED/GUPSはまだ実測が無いため未記載 →
-# host_width_pct()のデフォルト値(100)にフォールバックする。実測が取れ次第
-# ここに追記すること。GAPBS系(BFS/PR/TC/BC/CC/SSSP)は2026-07-06に
-# クラッシュ再発のためワークロード自体を削除。
+# BT/FT/IS/MG(NPB)はBTの実測4点フィットから得たべき乗則 cost(threads)≈baseline×(threads/2)^0.413
+# で外挿する。GAPBS系(BFS/PR/TC/BC/CC/SSSP)は2026-07-06にクラッシュ再発のため
+# ワークロード自体を削除。
 _WIDTH_BASELINE_2TH = {
     "BT": 133, "FT": 117, "IS": 102, "MG": 100,
 }
 _WIDTH_EXPONENT = 0.413  # BTの実測4点フィット cost(threads)≈99.6×threads^0.413 の指数部を流用
 
+# canneal/dedup/x264/GUPSは2026-07-06に2/8/12/16THを実測したところ、BTのような
+# べき乗則スケーリングに従わない(cannealはほぼ横ばい、dedupは12THでピークになる
+# 非単調な挙動)ことが判明したため、_WIDTH_EXPONENTでの外挿ではなく実測値を
+# 直接引く方式にした。未測定の組み合わせ(bench_class違い等)は同ワークロードの
+# 最も近いスレッド数の実測値にフォールバックする。
+_WIDTH_MEASURED = {
+    ("canneal", 2): 95.0, ("canneal", 8): 94.9, ("canneal", 12): 92.0, ("canneal", 16): 94.6,
+    ("dedup",   2): 129.0, ("dedup",   8): 378.7, ("dedup",   12): 417.9, ("dedup",   16): 387.7,
+    ("x264",    2): 93.0, ("x264",    8): 209.7, ("x264",    12): 215.1, ("x264",    16): 203.8,
+    ("GUPS",    2): 147.0, ("GUPS",    8): 189.5, ("GUPS",    12): 206.1, ("GUPS",    16): 227.6,
+}
+
 
 def host_width_pct(workload: str, num_threads: int) -> float:
     """このワークロード・スレッド数がホストの実コアを何%消費するかの推定値。"""
+    if workload in {"canneal", "dedup", "x264", "GUPS"}:
+        measured = {th: v for (wl, th), v in _WIDTH_MEASURED.items() if wl == workload}
+        if num_threads in measured:
+            return measured[num_threads]
+        # 未測定のスレッド数は最も近い実測点で代用する(べき乗則外挿より安全側)
+        nearest = min(measured, key=lambda th: abs(th - num_threads))
+        return measured[nearest]
     baseline = _WIDTH_BASELINE_2TH.get(workload, 100)
     scale = (num_threads / 2) ** _WIDTH_EXPONENT
     return baseline * scale

@@ -61,6 +61,13 @@ _DEFAULT_STEP: dict[str, float] = {
     'MG':  90.0,                             # 実測 82.2×
     'BT':  40.0,                             # 実測 33.7×
     'SP':  180.0,                            # 実測 175.8×
+    # canneal/dedup/x264/GUPSはget_binary_args()がbench_classを見ておらず、
+    # S/W/A/...どのクラスを指定しても入力(inputs/*.nets等)が完全に同一。
+    # 2026-07-06にrun_tonight.pyでlight系をW一本のみ実行する方針に変えた際、
+    # クラスS↔W比が汎用フォールバック30.0倍のままだと「Sの30倍」という
+    # 全くの虚偽推定(例: canneal 10184秒→305526秒)になることが判明したため、
+    # 実際の比率である1.0を明示した。
+    'canneal': 1.0, 'dedup': 1.0, 'x264': 1.0, 'GUPS': 1.0,
 }
 _DEFAULT_STEP_FALLBACK = 30.0
 _MAX_ESTIMATED_SEC     = 14400.0  # 推定値の上限 4 時間 → timeout max = 12 時間

@@ -27,13 +27,16 @@ from akarin.cpsat_mapper import compute_cpsat_map_from_csv
 from utility.cpu_affinity import resolve_cpu_map
 from utility.deloc_mapper import NODE_E_CORES, NODE_P_CORES, find_comm_csv
 
-# NPB系(BT/FT/IS/MG。CG/SPは2026-07-06にワークロード自体を削減済み)は1スレッド
-# あたりの計算負荷が重く、候補生成のためのCP-SAT呼び出し自体は軽くても後段の
-# Sniper本実行コストが高いため、alpha点数を絞って候補数を抑える。GAPBS系(BFS/PR)
-# は軽量なのでフル解像度のままでよい。canneal/dedup/x264(PARSEC)は実測未取得だが、
-# simsmallクラスの入力規模から暫定的に軽量級(フル解像度)として扱う。実測後に
-# 重ければここへ追加すること。
-HEAVY_WORKLOADS = {"BT", "FT", "IS", "MG"}
+# 候補生成のためのCP-SAT呼び出し自体は軽くても、後段のSniper本実行コストが高い
+# ワークロードほどalpha点数(=候補数=実行本数)を絞る必要がある。当初はNPB系を
+# 一律「重量級」とみなしていたが、2026-07-06の実測壁時計時間(W級、Data/run_profile.json)
+# で canneal(10184s) > BT(10036s) > x264(7765s) > dedup(3506s) > MG(1715s) >
+# GUPS(1534s) > FT(829s) > IS(401s) と判明し、cannealとx264がBT/MG/FT/ISより
+# 重いことが分かった。「NPBかどうか」ではなく実測に基づき、上位3つ(canneal/BT/x264、
+# run_tonight.pyのSID振り分けと同じ基準)を粗グリッドに変更。これを見落として
+# canneal/x264にフル解像度(21点)を適用したまま実行を始めてしまい、最重量級2つに
+# 最大の候補数を割り当てるという本末転倒が起きたため、2026-07-06中に修正した。
+HEAVY_WORKLOADS = {"canneal", "BT", "x264"}
 
 ALPHA_GRID_FULL   = [i / 20 for i in range(21)]  # 0.00, 0.05, ..., 1.00 (21点)
 ALPHA_GRID_COARSE = [0.0, 0.5, 1.0]               # 重量級用(3点)

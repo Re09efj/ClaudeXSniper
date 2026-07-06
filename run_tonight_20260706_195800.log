@@ -1,0 +1,151 @@
+[run_tonight] 重い順(W級実測): ['canneal', 'BT', 'x264', 'dedup', 'MG', 'GUPS', 'FT', 'IS']
+[run_tonight] →SID    = ['canneal', 'BT', 'x264']
+[run_tonight] →Purple = ['dedup', 'MG', 'GUPS', 'FT', 'IS']
+[run_tonight] threads=[2, 8, 12, 16]
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_2@purple: S×1.0 → 3506s (ref=3506s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_8@purple: S×1.0 → 1839s (ref=1839s)
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_12@purple: S/8TH×1.0×0.67 → 1226s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] dedup_W_16@purple: S/8TH×1.0×0.50 → 919s
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_2@purple: S×1.0 → 1534s (ref=1534s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_8@purple: S×1.0 → 1598s (ref=1598s)
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_12@purple: S/8TH×1.0×0.67 → 1065s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[profile/estimate] GUPS_W_16@purple: S/8TH×1.0×0.50 → 799s
+[run_tonight] 総ジョブ数=340
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=340  (sid=90, purple=250)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_Packed_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_Scatter_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_HPO_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_EPO_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_MPO_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_AKARIN_a000_0_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_Packed_16TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_Scatter_16TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_HPO_16TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_EPO_16TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_Packed_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_Scatter_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_HPO_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_EPO_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_MPO_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_AKARIN_a000_0_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_AKARIN_a005_1_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/MG_W_AKARIN_a100_2_2TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/MG_W_Packed_8TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/MG_W_Scatter_8TH_20260706_200005/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/MG_W_HPO_8TH_20260706_200005/affinity_config.txt
