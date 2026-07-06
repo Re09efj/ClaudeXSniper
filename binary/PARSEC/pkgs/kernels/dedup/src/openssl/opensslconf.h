@@ -1,0 +1,3 @@
+#ifndef HEADER_OPENSSLCONF_H
+#define HEADER_OPENSSLCONF_H
+#endif

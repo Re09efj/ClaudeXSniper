@@ -29,18 +29,8 @@ from sklearn.model_selection import LeaveOneOut
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
-from utility.cpu_affinity import get_cpu_map
-from utility.deloc_mapper import compute_deloc_map_from_csv, find_comm_csv
+from utility.cpu_affinity import get_cpu_map, resolve_cpu_map
 from MachineLearning.ml_utils import parse_stats, FEATURE_COLS, THREAD_NUMS, save_fig
-
-
-def _resolve_cpu_map(strategy: str, workload: str, bench_class: str, num_threads: int) -> list:
-    """MPO は deloc_mapper.py の本物の2段階アルゴリズムで計算する（静的MPO_MAPSは使わない）。"""
-    if strategy == "MPO":
-        csv_path = find_comm_csv(workload, bench_class, num_threads)
-        cpu_map, _imbalance = compute_deloc_map_from_csv(csv_path, num_threads)
-        return cpu_map
-    return get_cpu_map(strategy, workload)
 
 try:
     import os
@@ -95,7 +85,7 @@ def collect_dataset_2class(outputs_dir: Path, num_threads: int,
 
         perf_row_full = {}
         for s in ALL_STRATEGIES:
-            s_stats = parse_stats(sdirs[s], num_threads, _resolve_cpu_map(s, wl, bench_class, num_threads)) or {}
+            s_stats = parse_stats(sdirs[s], num_threads, resolve_cpu_map(s, wl, bench_class, num_threads)) or {}
             perf_row_full[s] = s_stats.get(label_by, float("inf"))
 
         two_vals = {s: perf_row_full[s] for s in TWO_CLASS}

@@ -31,6 +31,7 @@ def run_sniper(
     workload:       str = "",
     omp_num_threads: int | None = None,
     proc_holder:    list | None = None,
+    stdin_path:     str | None = None,
 ) -> int:
     """
     podman run で Sniper シミュレーションを実行する。
@@ -46,6 +47,8 @@ def run_sniper(
     config_path   : ホスト上の Sniper 設定ファイルパス
     log_file      : ログ書き込み先 (file object)
     omp_num_threads: OMP_NUM_THREADS (None の場合 num_threads を使用)
+    stdin_path    : 標準入力から読むワークロード(water_nsquared等)用の入力ファイル
+                   (ホスト上の絶対パス)。Noneなら通常通り標準入力は繋がない。
 
     Returns
     -------
@@ -65,11 +68,19 @@ def run_sniper(
 
     podman_cmd = [
         "podman", "run", "--rm",
+        # 作業ディレクトリをバイナリのマウント先にする。water_nsquared等が
+        # カレントディレクトリからの相対パスで補助ファイル(random.in等)を
+        # 読むため。SNIPER_BINは絶対パス実行なのでこの変更でも壊れない。
+        "-w", CONTAINER_BIN,
         "-v", f"{binary_dir}:/binary:ro,z",
         "-v", f"{output_dir}:/out:z",
         "-v", f"{cfg_dir}:/cfg:ro,z",
         "-e", f"OMP_NUM_THREADS={n_omp}",
         "-e", f"GOMP_CPU_AFFINITY={gomp_affinity}",
+    ]
+    if stdin_path:
+        podman_cmd.append("-i")
+    podman_cmd += [
         CONTAINER_IMAGE,
         SNIPER_BIN,
         "-n", str(num_threads),
@@ -83,7 +94,12 @@ def run_sniper(
     if binary_args:
         podman_cmd.extend(binary_args.split())
 
-    proc = subprocess.Popen(podman_cmd, stdout=log_file, stderr=log_file)
-    if proc_holder is not None:
-        proc_holder.append(proc)
-    return proc.wait()
+    stdin_fh = open(stdin_path, "rb") if stdin_path else None
+    try:
+        proc = subprocess.Popen(podman_cmd, stdin=stdin_fh, stdout=log_file, stderr=log_file)
+        if proc_holder is not None:
+            proc_holder.append(proc)
+        return proc.wait()
+    finally:
+        if stdin_fh:
+            stdin_fh.close()

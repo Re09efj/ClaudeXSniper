@@ -1,0 +1,51 @@
+[SNIPER] Start
+Core 0 at 3.00 GHz (global clock 4.00 GHz)
+Core 1 at 3.00 GHz (global clock 4.00 GHz)
+Core 2 at 3.00 GHz (global clock 4.00 GHz)
+Core 3 at 3.00 GHz (global clock 4.00 GHz)
+Core 8 at 3.00 GHz (global clock 4.00 GHz)
+Core 9 at 3.00 GHz (global clock 4.00 GHz)
+Core 10 at 3.00 GHz (global clock 4.00 GHz)
+Core 11 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDEC: Tool (or Pin) caused signal 11 at PC 0x7ff8b67676aa
+R] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7ff8b67676aa. Access Type: UNKNOWN. Access Address = 0x7ff88ade0bc8
+[SIFT:[SIFT:[SIFT:10[SIFT:7] Error: [SIFT:6] Error: 8] Error: [TRACE:7] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:6] -- DONE --
+SuccessSuccess
+4] Error: ] Error: 
+SuccessSuccess
+
+Success
+Pin app terminated abnormally due to signal 11.
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:9] Error: Broken pipe
+[TRACE:9] -- DONE --
+[SIFT:11] Error: Success
+[TRACE:11] -- DONE --
+[SIFT:[TRACE:0] -- DONE --
+0] Error: Broken pipe
+[SIFT:2[TRACE:2] -- DONE --
+] Error: Broken pipe
+[SIFT:1] Error: [TRACE:1] -- DONE --
+Broken pipe
+[TRACE:5] -- DONE --
+[SIFT:5] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 31.75 seconds
+[SNIPER] Simulated 45.4M instructions, 8.4M cycles, 5.41 IPC
+[SNIPER] Simulation speed 1429.7 KIPS (119.1 KIPS / target core - 8393.7ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 31.99 seconds

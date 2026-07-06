@@ -1,0 +1,23 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception CodC: Tool (or Pin) caused signal 11 at PC 0x7f69346886aa
+e: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f69346886aa. Access Type: UNKNOWN. Access Address = 0x7f691e126bf8
+[SIFT:1] Error: Resource temporarily unavailable
+[TRACE:1] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[TRACE:0] -- DONE --
+[SIFT:0] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 36.73 seconds
+[SNIPER] Simulated 30.8M instructions, 20.2M cycles, 1.52 IPC
+[SNIPER] Simulation speed 838.7 KIPS (419.4 KIPS / target core - 2384.6ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 37.15 seconds

@@ -35,8 +35,15 @@ def _save(profile: dict) -> None:
     os.replace(tmp_path, PROFILE_PATH)
 
 
-def _key(workload: str, bench_class: str, num_threads: int) -> str:
-    return f"{workload}_{bench_class}_{num_threads}"
+def _key(workload: str, bench_class: str, num_threads: int, machine: str = "sid") -> str:
+    """
+    プロファイルキー。machine="sid"(既定)は従来通り接尾辞なし(後方互換)。
+    machine="purple"など他マシンは"@machine"を付与し、実行環境が異なるため
+    wallTime統計を混同しないよう分離する(sidとpurpleでは実測walltimeが
+    系統的に2〜3倍異なることが判明したため、2026-07-05導入)。
+    """
+    base = f"{workload}_{bench_class}_{num_threads}"
+    return base if machine == "sid" else f"{base}@{machine}"
 
 
 # クラスの順序（小→大）
@@ -59,19 +66,19 @@ _DEFAULT_STEP_FALLBACK = 30.0
 _MAX_ESTIMATED_SEC     = 14400.0  # 推定値の上限 4 時間 → timeout max = 12 時間
 
 
-def get_reference(workload: str, bench_class: str, num_threads: int) -> dict | None:
+def get_reference(workload: str, bench_class: str, num_threads: int, machine: str = "sid") -> dict | None:
     """{"simTime": float, "instructions": int, "wallTime": float} または None。"""
     with _lock:
-        return _load().get(_key(workload, bench_class, num_threads))
+        return _load().get(_key(workload, bench_class, num_threads, machine))
 
 
 def _empirical_step_ratio(workload: str, lo_cls: str, hi_cls: str,
-                           profile: dict) -> float:
+                           profile: dict, machine: str = "sid") -> float:
     """lo_cls → hi_cls の実測スケール比（中央値）。データなければデフォルト倍率。"""
     ratios = []
     for th in [2, 4, 8, 16]:
-        lo_key = _key(workload, lo_cls, th)
-        hi_key = _key(workload, hi_cls, th)
+        lo_key = _key(workload, lo_cls, th, machine)
+        hi_key = _key(workload, hi_cls, th, machine)
         if lo_key in profile and hi_key in profile:
             ratios.append(profile[hi_key]['wallTime'] / profile[lo_key]['wallTime'])
     if ratios:
@@ -79,21 +86,22 @@ def _empirical_step_ratio(workload: str, lo_cls: str, hi_cls: str,
     return _DEFAULT_STEP.get(workload, _DEFAULT_STEP_FALLBACK)
 
 
-def _class_scale(workload: str, from_cls: str, to_cls: str, profile: dict) -> float:
+def _class_scale(workload: str, from_cls: str, to_cls: str, profile: dict, machine: str = "sid") -> float:
     """from_cls → to_cls の推定倍率（複数ステップは乗算）。"""
     fi = _CLASS_ORDER.index(from_cls)
     ti = _CLASS_ORDER.index(to_cls)
     scale = 1.0
     for i in range(fi, ti):
         scale *= _empirical_step_ratio(
-            workload, _CLASS_ORDER[i], _CLASS_ORDER[i + 1], profile
+            workload, _CLASS_ORDER[i], _CLASS_ORDER[i + 1], profile, machine
         )
     return scale
 
 
-def estimate_walltime(workload: str, bench_class: str, num_threads: int) -> float | None:
+def estimate_walltime(workload: str, bench_class: str, num_threads: int, machine: str = "sid") -> float | None:
     """
-    プロファイルにエントリがない場合の wallTime 推定（タイムアウト設定用）。
+    プロファイルにエントリがない場合の wallTime 推定(タイムアウト設定用)。
+    machineごとに参照キーが分離されているため、sid/purpleを混同しない。
 
     優先順位:
       1. 完全一致（exact match）
@@ -105,7 +113,7 @@ def estimate_walltime(workload: str, bench_class: str, num_threads: int) -> floa
     with _lock:
         profile = _load()
 
-    exact = profile.get(_key(workload, bench_class, num_threads))
+    exact = profile.get(_key(workload, bench_class, num_threads, machine))
     if exact:
         return exact['wallTime']
 
@@ -116,11 +124,11 @@ def estimate_walltime(workload: str, bench_class: str, num_threads: int) -> floa
 
     # 戦略 1: 同 wl+th、より小さいクラスから外挿
     for cls in _CLASS_ORDER[target_idx - 1::-1]:
-        ref_key = _key(workload, cls, num_threads)
+        ref_key = _key(workload, cls, num_threads, machine)
         if ref_key in profile:
-            scale = _class_scale(workload, cls, bench_class, profile)
+            scale = _class_scale(workload, cls, bench_class, profile, machine)
             est   = profile[ref_key]['wallTime'] * scale
-            print(f"[profile/estimate] {_key(workload, bench_class, num_threads)}: "
+            print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
                   f"{cls}×{scale:.1f} → {est:.0f}s (ref={profile[ref_key]['wallTime']:.0f}s)")
             return min(est, _MAX_ESTIMATED_SEC)
 
@@ -128,23 +136,23 @@ def estimate_walltime(workload: str, bench_class: str, num_threads: int) -> floa
     for th in sorted([2, 4, 8, 16], key=lambda t: abs(t - num_threads)):
         if th == num_threads:
             continue
-        ref_key = _key(workload, bench_class, th)
+        ref_key = _key(workload, bench_class, th, machine)
         if ref_key in profile:
             th_scale = max(th / num_threads, 0.5)
             est = profile[ref_key]['wallTime'] * th_scale
-            print(f"[profile/estimate] {_key(workload, bench_class, num_threads)}: "
+            print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
                   f"{bench_class}/{th}TH×{th_scale:.2f} → {est:.0f}s")
             return min(est, _MAX_ESTIMATED_SEC)
 
     # 戦略 3: 同 wl、別クラス+別スレッド数の組み合わせ
     for cls in _CLASS_ORDER[target_idx - 1::-1]:
         for th in sorted([2, 4, 8, 16], key=lambda t: abs(t - num_threads)):
-            ref_key = _key(workload, cls, th)
+            ref_key = _key(workload, cls, th, machine)
             if ref_key in profile:
-                class_scale = _class_scale(workload, cls, bench_class, profile)
+                class_scale = _class_scale(workload, cls, bench_class, profile, machine)
                 th_scale    = max(th / num_threads, 0.5)
                 est = profile[ref_key]['wallTime'] * class_scale * th_scale
-                print(f"[profile/estimate] {_key(workload, bench_class, num_threads)}: "
+                print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
                       f"{cls}/{th}TH×{class_scale:.1f}×{th_scale:.2f} → {est:.0f}s")
                 return min(est, _MAX_ESTIMATED_SEC)
 
@@ -157,6 +165,7 @@ def update_from_run(
     num_threads: int,
     output_dir: str,
     wall_time: float,
+    machine: str = "sid",
 ) -> None:
     """Sniper の出力から統計を読んでプロファイルを更新する。"""
     from utility.stats_reader import parse_sim_time, parse_instructions
@@ -170,7 +179,7 @@ def update_from_run(
 
     with _lock:
         profile = _load()
-        key = _key(workload, bench_class, num_threads)
+        key = _key(workload, bench_class, num_threads, machine)
         existing = profile.get(key, {})
 
         prev_times = existing.get("wallTimes", [])

@@ -1,0 +1,63 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+Using 2 procs on 3 steps of 64 mols
+Other parameters:
+	TSTEP = 1.00e-15
+	NORDER = 6
+	NSAVE = 0
+	NRST = 0
+	NPRINT = 1
+	NFMC = 0
+	CUTOFF = 0.000000
+
+
+TEMPERATURE                =   298.00 K
+DENSITY                    =  0.99800 G/C.C.
+NUMBER OF MOLECULES        =       64
+NUMBER OF PROCESSORS       =        2
+TIME STEP                  = 1.00e+00 SEC
+ORDER USED TO SOLVE F=MA   =        6 
+NO. OF TIME STEPS          =        3 
+FREQUENCY OF DATA SAVING   =        0 
+FREQUENCY TO WRITE RST FILE=        0 
+SPHERICAL CUTOFF RADIUS    =   6.2128 ANGSTROM
+
+NS = 3.9999899999999995
+BOXL =  12.425505
+CUTOFF =   6.212752
+XS =   3.106384
+ZERO = 1.55319
+WCOS = 0.585882
+WSIN = 0.756950
+***** NEW RUN STARTING FROM REGULAR LATTICE *****
+[TRACE:1] -- DONE --
+         1        1.77996      0.24886     10.23203                      -2.17618
+           10.085        353.61933        -25.49745
+         2        2.28433      1.01831      8.68664                      -1.94460
+           10.045        403.72013        -30.66791
+         3        2.81025      1.99390      6.80443                      -1.53880
+           10.070        455.24766        -35.81740
+CREATETIME = 3385
+COMPUTESTART (after initialization) = 1337000000003728
+COMPUTEEND = 1337000000003729
+COMPUTETIME (after initialization) = 1
+Measured Time (2nd timestep onward) = 1901
+Intramolecular time only (2nd timestep onward) = 99
+Intermolecular time only (2nd timestep onward) = 1796
+Other time (2nd timestep onward) = 6
+
+Exited Happily with XTT = 6.95308e-310 (note: XTT value is garbage if NPRINT > NSTEP)
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 24.35 seconds
+[SNIPER] Simulated 51.7M instructions, 14.9M cycles, 3.46 IPC
+[SNIPER] Simulation speed 2123.2 KIPS (1061.6 KIPS / target core - 942.0ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 24.46 seconds

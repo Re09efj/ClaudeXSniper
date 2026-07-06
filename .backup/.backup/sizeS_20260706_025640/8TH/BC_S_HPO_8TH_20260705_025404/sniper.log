@@ -1,0 +1,36 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+C: Tool (or Pin) caused signal 11 at PC 0x7f3f23b1a6aa
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Interna[l SeIxFcTe_pRtiEoCnO:RDER] InternaElxc eeptx[icoeptionn:SIFT_RE CORDERCE] Intexcrnal exceoeption:de:p tAExceptiCCion Codeo: ACCESnES_INVALSID_ADDRESSS. Exception Address =_ 0x7f3f2D3b1a6aa. EAccess TyNpe: UNKNOIWN. AcceEss AddreDss = 0x7f.3f02ee0b f8Ex
+ception Address = 0x7f3f23b1a6aa. Access Type: UNKNOWN. Access Address = 0x7f3f0b396bf8
+[SIFT:[SIFT:7] Error: 5] Error: Success
+[TRACE:7] -- DONE --
+[TRACE:5] -- DONE --
+Success
+[TRACE:2] -- DONE --
+[SIFT:2] Error: Success
+[SIFT:4] Error: Success
+[TRACE:4] -- DONE --
+[SIFT:3] Error: [TRACE:3] -- DONE --
+Resource temporarily unavailable
+Pin app terminated abnormally due to signal 11.
+[SIFT:1] Error: Resource temporarily unavailable
+[TRACE:1] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[SIFT:6] Error: Broken pipe
+[TRACE:6] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 28.78 seconds
+[SNIPER] Simulated 33.9M instructions, 9.0M cycles, 3.75 IPC
+[SNIPER] Simulation speed 1177.5 KIPS (147.2 KIPS / target core - 6794.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 29.01 seconds

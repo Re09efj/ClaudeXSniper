@@ -1,0 +1,51 @@
+[SNIPER] Start
+Core 0 at 3.00 GHz (global clock 4.00 GHz)
+Core 1 at 3.00 GHz (global clock 4.00 GHz)
+Core 2 at 3.00 GHz (global clock 4.00 GHz)
+Core 3 at 3.00 GHz (global clock 4.00 GHz)
+Core 8 at 3.00 GHz (global clock 4.00 GHz)
+Core 9 at 3.00 GHz (global clock 4.00 GHz)
+Core 10 at 3.00 GHz (global clock 4.00 GHz)
+Core 11 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACC: Tool (or Pin) caused signal 11 at PC 0x7f0265b556aa
+CESS_INVALID_ADDRESS. Exception Address = 0x7f0265b556aa. Access Type: UNKNOWN. Access Address = 0x7f023ddc2bd8
+[SIFT:[SIFT:[TRACE:5] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:1] -- DONE --
+5] Error: [SIFT:[SIFT:Success
+[SIFT:11] Error: Success6
+[SIFT:[SIFT:[SIFT:4] Error: 8[SIFT:Pin app terminated abnormally due to signal 11.
+3] Error: Success
+] Error: Success
+] Error: Success
+Success
+1] Error: Success
+7[SIFT:[TRACE:7] -- DONE --
+] Error: Success
+2] Error: Success
+9] Error: Success
+[TRACE:2] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:0] -- DONE --
+[SIFT:0] Error: Broken pipe
+[SIFT:10] Error: Success
+[TRACE:10] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 31.04 seconds
+[SNIPER] Simulated 45.2M instructions, 8.4M cycles, 5.35 IPC
+[SNIPER] Simulation speed 1455.5 KIPS (121.3 KIPS / target core - 8244.6ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 31.33 seconds

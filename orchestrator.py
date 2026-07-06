@@ -16,28 +16,14 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
-from utility.cpu_affinity   import (get_cpu_map, binary_path, get_binary_args,
+from utility.cpu_affinity   import (resolve_cpu_map, binary_path, get_binary_args,
                                      save_affinity_config)
-from utility.deloc_mapper   import compute_deloc_map_from_csv, find_comm_csv
 from utility.run_profile    import get_reference, update_from_run, estimate_walltime
 from utility.stats_reader   import parse_node_stats
 from utility.csv_exporter   import export_csv
 from utility.power_model    import estimate as estimate_power
 from utility.notify         import notify
 from config.generate_config import generate_config, get_config_path
-
-
-def _resolve_cpu_map(strategy: str, workload: str, bench_class: str, num_threads: int) -> list:
-    """
-    MPO は Jin の本物の2段階アルゴリズム(deloc_mapper.py: Step1通信局所性 + Step2
-    ノード内Big/Small)で都度計算する。静的な MPO_MAPS(推測ベース)はもう使わない。
-    それ以外の戦略は従来通り cpu_affinity.STRATEGIES の固定配置。
-    """
-    if strategy == "MPO":
-        csv_path = find_comm_csv(workload, bench_class, num_threads)
-        cpu_map, _imbalance = compute_deloc_map_from_csv(csv_path, num_threads)
-        return cpu_map
-    return get_cpu_map(strategy, workload)
 
 # ============================================================
 # 実験設定（CLI 引数で上書き可能）
@@ -250,7 +236,7 @@ def _run_one_thread_count(
 
     def run_one(workload: str, strategy: str) -> str:
         key      = f"{workload}/{strategy}"
-        cpu_map  = _resolve_cpu_map(strategy, workload, bench_class, num_threads)
+        cpu_map  = resolve_cpu_map(strategy, workload, bench_class, num_threads)
         bin_path = binary_path(workload, bench_class)
         bin_args = get_binary_args(workload, bench_class, num_threads)
 
@@ -361,7 +347,7 @@ def _run_one_thread_count(
             out_dir = output_dirs.get((wl, st))
             if not out_dir:
                 continue
-            wl_cpu_map = _resolve_cpu_map(st, wl, bench_class, num_threads)
+            wl_cpu_map = resolve_cpu_map(st, wl, bench_class, num_threads)
             results[wl].append({
                 "strategy":   st,
                 "output_dir": out_dir,

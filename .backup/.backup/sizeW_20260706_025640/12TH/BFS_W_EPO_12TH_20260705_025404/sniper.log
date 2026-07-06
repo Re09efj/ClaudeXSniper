@@ -1,0 +1,54 @@
+[SNIPER] Start
+Core 0 at 3.00 GHz (global clock 4.00 GHz)
+Core 1 at 3.00 GHz (global clock 4.00 GHz)
+Core 2 at 3.00 GHz (global clock 4.00 GHz)
+Core 3 at 3.00 GHz (global clock 4.00 GHz)
+Core 8 at 3.00 GHz (global clock 4.00 GHz)
+Core 9 at 3.00 GHz (global clock 4.00 GHz)
+Core 10 at 3.00 GHz (global clock 4.00 GHz)
+Core 11 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f0d0becd6aa. Access Type: UNKNOWN. Access Address = 0x7f0ce6fe0be8
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f0d0becd6aa. Access Type: UNKNOWN. Access Address = 0x7f0ce6dbcbf8
+C: [SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f0d0becd6aa. Access Type: UNKNOWN. Access Address = 0x7f0ce5ecebe8
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f0d0becd6aa. Access Type: UNKNOWN. Access Address = 0x7f0ce5ff2bd8
+[Tool (or Pin) caused signal 11 at PC 0x7f0d0becd6aa
+[SIFT:[SIFT:9] Error: [SIFT:[SIFT:[SIFT:[SIFT:[SIFT:11[SIFT:10] Error: Success
+[TRACE:10] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:7] -- DONE --
+5] Error: Success
+4] Error: 6Success
+] Error: Success8
+] Error: Success] Error: Success
+Success
+7
+Pin app terminated abnormally due to signal 11.
+] Error: Success
+[TRACE:3] -- DONE --
+[SIFT:3] Error: Broken pipe
+[TRACE:1] -- DONE --
+[SIFT:1] Error: Broken pipe
+[TRACE:0] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:2] -- DONE --
+[SIFT:2] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 42.30 seconds
+[SNIPER] Simulated 65.2M instructions, 15.4M cycles, 4.24 IPC
+[SNIPER] Simulation speed 1542.5 KIPS (128.5 KIPS / target core - 7779.7ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 42.63 seconds

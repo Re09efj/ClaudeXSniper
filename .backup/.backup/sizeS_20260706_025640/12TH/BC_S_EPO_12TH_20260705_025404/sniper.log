@@ -1,0 +1,51 @@
+[SNIPER] Start
+Core 0 at 3.00 GHz (global clock 4.00 GHz)
+Core 1 at 3.00 GHz (global clock 4.00 GHz)
+Core 2 at 3.00 GHz (global clock 4.00 GHz)
+Core 3 at 3.00 GHz (global clock 4.00 GHz)
+Core 8 at 3.00 GHz (global clock 4.00 GHz)
+Core 9 at 3.00 GHz (global clock 4.00 GHz)
+Core 10 at 3.00 GHz (global clock 4.00 GHz)
+Core 11 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+C: Tool (or Pin) caused signal 11 at PC 0x7fca18b626aa
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7fca18b626aa. Access Type: UNKNOWN. Access Address = 0x7fc9ecfecbc8
+[SIFT:[SIFT:[SIFT:10] Error: [SIFT:[SIFT:Success
+56] Error: ] Error: Success
+Success
+[TRACE:6] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:8] -- DONE --
+[SIFT:2] Error: Success
+3] Error: Success
+[SIFT:8] Error: Success
+0[SIFT:11] Error: ] Error: No such file or directory
+Success
+[TRACE:0] -- DONE --
+[TRACE:11] -- DONE --
+[SIFT:4] Error: Success
+[SIFT:1] Error: Success
+[TRACE:4] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:7] -- DONE --
+[SIFT:7] Error: Success
+Pin app terminated abnormally due to signal 11.
+[SIFT:9] Error: Success
+[TRACE:9] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 31.46 seconds
+[SNIPER] Simulated 45.3M instructions, 8.3M cycles, 5.46 IPC
+[SNIPER] Simulation speed 1440.6 KIPS (120.0 KIPS / target core - 8330.0ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 31.71 seconds

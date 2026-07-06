@@ -1,0 +1,35 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+C: Tool (or Pin) caused signal 11 at PC 0x7f077a37a6aa
+[SIFT_RECORDER[] Failed to print backtrace.S
+IFT[_SIFT_RECORRDERE] InternaCl exceptOion:RDER] IException Code: ACCnESS_DENIED. Exception Addresst = 0x7f0e77a37a6aa. Access Trype: UNKNOWN. Access Address = 0x7f0763e19bf8
+nal exception:Exception Code: ACCESS_D[SIFT:[SIFT:[SIFT:3] Error: 1[SIFT:4] Error: 2] Error: SuccessSuccess
+[TRACE:2] -- DONE --
+Pin app terminated abnormally due to signal 11.
+Success
+] Error: Success
+[TRACE:1] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:3] -- DONE --
+
+[TRACE:7] -- DONE --
+[SIFT:7] Error: Broken pipe
+[SIFT:6] Error: Broken pipe
+[TRACE:6] -- DONE --
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[TRACE:5] -- DONE --
+[SIFT:5] Error: Success
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 33.29 seconds
+[SNIPER] Simulated 47.5M instructions, 9.8M cycles, 4.87 IPC
+[SNIPER] Simulation speed 1425.7 KIPS (178.2 KIPS / target core - 5611.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 33.42 seconds

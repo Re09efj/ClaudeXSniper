@@ -1,0 +1,47 @@
+[SNIPER] Start
+Core 3 at 3.00 GHz (global clock 4.00 GHz)
+Core 7 at 3.00 GHz (global clock 4.00 GHz)
+Core 9 at 3.00 GHz (global clock 4.00 GHz)
+Core 11 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7fb1c51836aa. Access Type: UNKNOWN. Access Address = 0x7fb19b7f9bc8
+C: Tool (or Pin) caused signal 11 at PC 0x7fb1c51836aa
+[SIFT:2] Error: Success
+[TRACE:2] -- DONE --
+Pin app terminated abnormally due to signal 11.
+[TRACE:7] -- DONE --
+[SIFT:7] Error: Broken pipe
+[TRACE:5] -- DONE --
+[SIFT:5] Error: Broken pipe
+[SIFT:1] Error: [TRACE:1] -- DONE --
+Broken pipe
+[SIFT:0] Error: Broken pipe
+[TRACE:0] -- DONE --
+[SIFT:4] Error: [SIFT:Broken pipe
+[TRACE:4] -- DONE --
+[TRACE:9] -- DONE --
+9] Error: Broken pipe
+[SIFT:3] Error: Broken pipe
+[TRACE:3] -- DONE --
+[SIFT:6] Error: Broken pipe
+[TRACE:6] -- DONE --
+[SIFT:11] Error: Success
+[TRACE:11] -- DONE --
+[SIFT:10] Error: Broken pipe
+[TRACE:10] -- DONE --
+[TRACE:8] -- DONE --
+[SIFT:8] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 41.02 seconds
+[SNIPER] Simulated 63.9M instructions, 15.7M cycles, 4.08 IPC
+[SNIPER] Simulation speed 1558.6 KIPS (129.9 KIPS / target core - 7699.4ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 41.46 seconds

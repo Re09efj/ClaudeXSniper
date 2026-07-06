@@ -1,0 +1,35 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[SIFT_RECORDER] Failed to print backtrace.
+[SIFT_RECORDER] Internal exception:Exception Code: ACCESS_INVALID_ADDRESS. Exception Address = 0x7f88e9d996aa. Access Type: UNKNOWN. Access Address = 0x7ffebe6a1768
+C: Tool (or Pin) caused signal 11 at PC 0x7f88e9d996aa
+Pin app terminated abnormally due to signal 11.
+[SIFT:0] Error: [TRACE:0] -- DONE --
+Resource temporarily unavailable
+[TRACE:3] -- DONE --
+[SIFT:3] Error: Success
+[TRACE:1] -- DONE --
+[SIFT:1] Error: Success
+[SIFT:2] Error: Success
+[TRACE:2] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SIFT:5] Error: Success
+[TRACE:5] -- DONE --
+[SIFT:6] Error: Success
+[TRACE:6] -- DONE --
+[SIFT:7] Error: Success
+[TRACE:7] -- DONE --
+[SIFT:4] Error: [TRACE:4] -- DONE --
+Success
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 42.16 seconds
+[SNIPER] Simulated 69.8M instructions, 17.7M cycles, 3.94 IPC
+[SNIPER] Simulation speed 1654.3 KIPS (206.8 KIPS / target core - 4835.9ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 42.50 seconds

@@ -1,0 +1,72 @@
+[SNIPER] Start
+Core 4 at 3.00 GHz (global clock 4.00 GHz)
+Core 5 at 3.00 GHz (global clock 4.00 GHz)
+Core 6 at 3.00 GHz (global clock 4.00 GHz)
+Core 7 at 3.00 GHz (global clock 4.00 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - IS Benchmark
+
+ Size:  65536  (class S)
+ Iterations:  10
+ Number of available threads:  12
+
+[HOOKS] Entering ROI
+[HOOKS] Leaving ROI
+
+
+ IS Benchmark Completed
+ Class           =                        S
+ Size            =                    65536
+ Iterations      =                       10
+ Time in seconds =                     0.00
+ Total threads   =                       12
+ Avail threads   =                       12
+ Mop/s total     =                  1193.56
+ Mop/s/thread    =                    99.46
+ Operation type  =              keys ranked
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    CC           = $(HOOKS_CC)
+    CLINK        = $(CC)
+    C_LIB        = -lm ${HOOKS_LDFLAGS_DYN}
+    C_INC        = ${HOOKS_CFLAGS}
+    CFLAGS       = $(GLOBAL_CFLAGS)
+    CLINKFLAGS   = $(GLOBAL_LDFLAGS)
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:4] -- STOP --
+[TRACE:2] -- STOP --
+[TRACE:7] -- STOP --
+[TRACE:10] -- STOP --
+[TRACE:11] -- STOP --
+[TRACE:3] -- STOP --
+[TRACE:9] -- STOP --
+[TRACE:5] -- STOP --
+[TRACE:6] -- STOP --
+[TRACE:8] -- STOP --
+[TRACE:1] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 14.66 seconds
+[SNIPER] Simulated 48.2M instructions, 4.8M cycles, 9.95 IPC
+[SNIPER] Simulation speed 3288.1 KIPS (274.0 KIPS / target core - 3649.5ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 14.82 seconds
