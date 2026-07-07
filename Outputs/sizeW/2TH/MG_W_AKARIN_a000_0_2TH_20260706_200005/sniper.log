@@ -18,3 +18,57 @@ Core 1 at 2.20 GHz (global clock 2.90 GHz)
  Iterations:                      4
  Number of available threads:     2
 
+ Initialization time:           0.130 seconds
+
+[HOOKS] Entering ROI
+  iter   1
+  iter   4
+[HOOKS] Leaving ROI
+
+ Benchmark completed 
+ VERIFICATION SUCCESSFUL 
+ L2 Norm is  0.6467329375339E-05
+ Error is    0.2894460301605E-13
+
+
+ MG Benchmark Completed.
+ Class           =                        W
+ Size            =            128x 128x 128
+ Iterations      =                        4
+ Time in seconds =                     0.34
+ Total threads   =                        2
+ Avail threads   =                        2
+ Mop/s total     =                  1440.30
+ Mop/s/thread    =                   720.15
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = randi8
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:0] -- DONE --
+[TRACE:1] -- STOP --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 3887.23 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 1929.5M instructions, 1029.9M cycles, 1.87 IPC
+[SNIPER] Simulation speed 496.4 KIPS (248.2 KIPS / target core - 4029.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 3887.08 seconds

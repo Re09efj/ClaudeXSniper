@@ -1,0 +1,267 @@
+[SNIPER] Start
+Core 2 at 2.20 GHz (global clock 2.90 GHz)
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 9 at 2.20 GHz (global clock 2.90 GHz)
+Core 11 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+PARSEC Benchmark Suite
+yuv4mpeg: 640x360@25/1fps, 0:0
+[TRACE:1] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:13] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:12] -- DONE --
+[TRACE:14] -- DONE --
+[TRACE:15] -- DONE --
+*** glibc detected *** /binary/x264: double free or corruption (!prev): 0x000000002a3b7cb0 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x75e5e)[0x7f4a9da40e5e]
+/lib64/libc.so.6(+0x78cf0)[0x7f4a9da43cf0]
+/binary/x264[0x448bdf]
+/binary/x264[0x4136df]
+/binary/x264[0x402bb8]
+/lib64/libc.so.6(__libc_start_main+0x100)[0x7f4a9d9e9d20]
+/binary/x264[0x4030b9]
+======= Memory map: ========
+00400000-004a8000 r-xp 00000000 00:23 1974854                            /binary/x264
+006a7000-006a8000 r--p 000a7000 00:23 1974854                            /binary/x264
+006a8000-006a9000 rw-p 000a8000 00:23 1974854                            /binary/x264
+006a9000-006ac000 rw-p 00000000 00:00 0 
+2a3af000-2aab1000 rw-p 00000000 00:00 0                                  [heap]
+7f4a74000000-7f4a74021000 rw-p 00000000 00:00 0 
+7f4a74021000-7f4a78000000 ---p 00000000 00:00 0 
+7f4a78000000-7f4a78021000 rw-p 00000000 00:00 0 
+7f4a78021000-7f4a7c000000 ---p 00000000 00:00 0 
+7f4a7c000000-7f4a7c021000 rw-p 00000000 00:00 0 
+7f4a7c021000-7f4a80000000 ---p 00000000 00:00 0 
+7f4a80000000-7f4a80021000 rw-p 00000000 00:00 0 
+7f4a80021000-7f4a84000000 ---p 00000000 00:00 0 
+7f4a84000000-7f4a84021000 rw-p 00000000 00:00 0 
+7f4a84021000-7f4a88000000 ---p 00000000 00:00 0 
+7f4a88000000-7f4a88031000 rw-p 00000000 00:00 0 
+7f4a88031000-7f4a8c000000 ---p 00000000 00:00 0 
+7f4a8c7e9000-7f4a8cfee000 rwxp 00000000 00:00 0 
+7f4a8cfee000-7f4a8cfef000 ---p 00000000 00:00 0 
+7f4a8cfef000-7f4a8d7ef000 rw-p 00000000 00:00 0 
+7f4a8d7ef000-7f4a8dff4000 rwxp 00000000 00:00 0 
+7f4a8dff4000-7f4a8dff5000 ---p 00000000 00:00 0 
+7f4a8dff5000-7f4a8e7f5000 rw-p 00000000 00:00 0 
+7f4a8e7f5000-7f4a8effa000 rwxp 00000000 00:00 0 
+7f4a8effa000-7f4a8effb000 ---p 00000000 00:00 0 
+7f4a8effb000-7f4a8f7fb000 rw-p 00000000 00:00 0 
+7f4a8f7fb000-7f4a90000000 rwxp 00000000 00:00 0 
+7f4a90000000-7f4a90021000 rw-p 00000000 00:00 0 
+7f4a90021000-7f4a94000000 ---p 00000000 00:00 0 
+7f4a952ce000-7f4a95ad3000 rwxp 00000000 00:00 0 
+7f4a9630d000-7f4a963c9000 rw-p 00000000 00:00 0 
+7f4a9670b000-7f4a96f10000 rwxp 00000000 00:00 0 
+7f4a9774a000-7f4a97806000 rw-p 00000000 00:00 0 
+7f4a97a3c000-7f4a98241000 rwxp 00000000 00:00 0 
+7f4a98646000-7f4a9865c000 r-xp 00000000 00:be 1047241                    /lib64/libgcc_s-4.4.7-20120601.so.1
+7f4a9865c000-7f4a9885b000 ---p 00016000 00:be 1047241                    /lib64/libgcc_s-4.4.7-20120601.so.1
+7f4a9885b000-7f4a9885c000 rw-p 00015000 00:be 1047241                    /lib64/libgcc_s-4.4.7-20120601.so.1
+7f4a9885c000-7f4a98a5d000 rwxp 00000000 00:00 0 
+7f4a98a5f000-7f4a98b1b000 rw-p 00000000 00:00 0 
+7f4a98b1b000-7f4a98b1c000 rwxp 00000000 00:00 0 
+7f4a98b1d000-7f4a98b20000 rwxp 00000000 00:00 0 
+7f4a98b26000-7f4a98b2e000 rwxp 00000000 00:00 0 
+7f4a98b30000-7f4a98b34000 rwxp 00000000 00:00 0 
+7f4a98b38000-7f4a98b3b000 rwxp 00000000 00:00 0 
+7f4a98b3d000-7f4a98b3e000 rwxp 00000000 00:00 0 
+7f4a98b40000-7f4a98b44000 rwxp 00000000 00:00 0 
+7f4a98b46000-7f4a98b49000 rwxp 00000000 00:00 0 
+7f4a98b4d000-7f4a98b54000 rwxp 00000000 00:00 0 
+7f4a98b56000-7f4a98b5a000 rwxp 00000000 00:00 0 
+7f4a98b60000-7f4a98b6d000 rwxp 00000000 00:00 0 
+7f4a98b75000-7f4a98b9f000 rwxp 00000000 00:00 0 
+7f4a98ba5000-7f4a98bac000 rwxp 00000000 00:00 0 
+7f4a98bae000-7f4a98c0c000 rw-p 00000000 00:00 0 
+7f4a98c0c000-7f4a98c2d000 rwxp 00000000 00:00 0 
+7f4a98c33000-7f4a98c37000 rwxp 00000000 00:00 0 
+7f4a98c39000-7f4a98c43000 rwxp 00000000 00:00 0 
+7f4a98c43000-7f4a98ca1000 rw-p 00000000 00:00 0 
+7f4a98dcb000-7f4a98e19000 rwxp 00000000 00:00 0 
+7f4a98f25000-7f4a9972a000 rwxp 00000000 00:00 0 
+7f4a9972a000-7f4a9972b000 ---p 00000000 00:00 0 
+7f4a9972b000-7f4a99f2b000 rw-p 00000000 00:00 0 
+7f4a99f2b000-7f4a9a7ec000 rw-p 00000000 00:00 0 
+7f4a9a84a000-7f4a9aa69000 rw-p 00000000 00:00 0 
+7f4a9aac7000-7f4a9ace6000 rw-p 00000000 00:00 0 
+7f4a9ad44000-7f4a9af63000 rw-p 00000000 00:00 0 
+7f4a9afc1000-7f4a9b1e0000 rw-p 00000000 00:00 0 
+7f4a9b23e000-7f4a9b45d000 rw-p 00000000 00:00 0 
+7f4a9b491000-7f4a9b494000 rwxp 00000000 00:00 0 
+7f4a9b4bb000-7f4a9b6da000 rw-p 00000000 00:00 0 
+7f4a9b6f0000-7f4a9b6f3000 rwxp 00000000 00:00 0 
+7f4a9b6fc000-7f4a9b6ff000 rwxp 00000000 00:00 0 
+7f4a9b720000-7f4a9b723000 rwxp 00000000 00:00 0 
+7f4a9b726000-7f4a9b72c000 rwxp 00000000 00:00 0 
+7f4a9b738000-7f4a9b957000 rw-p 00000000 00:00 0 
+7f4a9b95b000-7f4a9b95f000 rwxp 00000000 00:00 0 
+7f4a9b95f000-7f4a9b960000 rwxp 00000000 00:00 0 
+7f4a9b96c000-7f4a9b984000 rwxp 00000000 00:00 0 
+7f4a9b984000-7f4a9b985000 rwxp 00000000 00:00 0 
+7f4a9b986000-7f4a9b9b5000 rwxp 00000000 00:00 0 
+7f4a9b9b5000-7f4a9bbd4000 rw-p 00000000 00:00 0 
+7f4a9bbd4000-7f4a9bdab000 rwxp 00000000 00:00 0 
+7f4a9bdab000-7f4a9bdf8000 rwxp 00000000 00:00 0 
+7f4a9bdf8000-7f4a9d800000 rw-p 00000000 00:00 0 
+7f4a9d800000-7f4a9d890000 rwxp 00000000 00:00 0 
+7f4a9d890000-7f4a9d891000 rw-p 00000000 00:00 0 
+7f4a9d891000-7f4a9d8f0000 rwxp 00000000 00:00 0 
+7f4a9d8f0000-7f4a9d90c000 rwxp 00000000 00:00 0 
+7f4a9d90c000-7f4a9d919000 rwxp 00000000 00:00 0 
+7f4a9d919000-7f4a9d91a000 rw-p 00000000 00:00 0 
+7f4a9d91a000-7f4a9d999000 rwxp 00000000 00:00 0 
+7f4a9d999000-7f4a9d9ae000 rwxp 00000000 00:00 0 
+7f4a9d9ae000-7f4a9d9cb000 rwxp 00000000 00:00 0 
+7f4a9d9cb000-7f4a9db56000 r-xp 00000000 00:be 1055761                    /lib64/libc-2.12.so
+7f4a9db56000-7f4a9dd55000 ---p 0018b000 00:be 1055761                    /lib64/libc-2.12.so
+7f4a9dd55000-7f4a9dd59000 r--p 0018a000 00:be 1055761                    /lib64/libc-2.12.so
+7f4a9dd59000-7f4a9dd5b000 rw-p 0018e000 00:be 1055761                    /lib64/libc-2.12.so
+7f4a9dd5b000-7f4a9dd5f000 rw-p 00000000 00:00 0 
+7f4a9dd5f000-7f4a9dd76000 r-xp 00000000 00:be 1055794                    /lib64/libpthread-2.12.so
+7f4a9dd76000-7f4a9df76000 ---p 00017000 00:be 1055794                    /lib64/libpthread-2.12.so
+7f4a9df76000-7f4a9df77000 r--p 00017000 00:be 1055794                    /lib64/libpthread-2.12.so
+7f4a9df77000-7f4a9df78000 rw-p 00018000 00:be 1055794                    /lib64/libpthread-2.12.so
+7f4a9df78000-7f4a9df7c000 rw-p 00000000 00:00 0 
+7f4a9df7c000-7f4a9dfff000 r-xp 00000000 00:be 1055775                    /lib64/libm-2.12.so
+7f4a9dfff000-7f4a9e1fe000 ---p 00083000 00:be 1055775                    /lib64/libm-2.12.so
+7f4a9e1fe000-7f4a9e1ff000 r--p 00082000 00:be 1055775                    /lib64/libm-2.12.so
+7f4a9e1ff000-7f4a9e200000 rw-p 00083000 00:be 1055775                    /lib64/libm-2.12.so
+7f4a9e200000-7f4a9e400000 rw-p 00000000 00:00 0 
+7f4a9e400000-7f4a9e49c000 rwxp 00000000 00:00 0 
+7f4a9e49c000-7f4a9e49d000 rw-p 00000000 00:00 0 
+7f4a9e49d000-7f4a9e600000 rwxp 00000000 00:00 0 
+7f4a9e600000-7f4a9e800000 ---p 00000000 00:00 0 
+7f4a9e800000-7f4a9f980000 rwxp 00000000 00:00 0 
+7f4a9f980000-7f4aae600000 ---p 00000000 00:00 0 
+7f4aae600000-7f4aae643000 rwxp 00000000 00:00 0 
+7f4aae643000-7f4aaf814000 rwxp 00000000 00:00 0 
+7f4aaf814000-7f4aaf81c000 rw-p 00000000 00:00 0 
+7f4aaf81c000-7f4aaf83c000 rwxp 00000000 00:00 0 
+7f4aaf83c000-7f4aaf84c000 rw-p 00000000 00:00 0 
+7f4aaf84c000-7f4aaf9ab000 rwxp 00000000 00:00 0 
+7f4aaf9ab000-7f4aafa1a000 rwxp 00000000 00:00 0 
+7f4aafa1a000-7f4aafa3c000 rwxp 00000000 00:00 0 
+7f4aafa3c000-7f4aafc04000 rw-p 00000000 00:00 0 
+7f4aafc04000-7f4aafcbc000 rwxp 00000000 00:00 0 
+7f4aafcbc000-7f4aafcbd000 rw-p 00000000 00:00 0 
+7f4aafcbd000-7f4aafcbf000 rwxp 00000000 00:00 0 
+7f4aafcbf000-7f4aafcc0000 rw-p 00000000 00:00 0 
+7f4aafcc0000-7f4aafcd4000 rwxp 00000000 00:00 0 
+7f4aafcd4000-7f4aafcd5000 rw-p 00000000 00:00 0 
+7f4aafcd5000-7f4aafce4000 rwxp 00000000 00:00 0 
+7f4aafce4000-7f4aaffa4000 rw-p 00000000 00:00 0 
+7f4aaffa4000-7f4aaffc4000 rwxp 00000000 00:00 0 
+7f4aaffc4000-7f4aaffc5000 rw-p 00000000 00:00 0 
+7f4aaffc5000-7f4aaffdf000 rwxp 00000000 00:00 0 
+7f4aaffdf000-7f4aaffe6000 rwxp 00000000 00:00 0 
+7f4aaffe6000-7f4aaffeb000 rwxp 00000000 00:00 0 
+7f4aaffeb000-7f4aafff6000 rwxp 00000000 00:00 0 
+7f4aafff6000-7f4aafff7000 rwxp 00000000 00:00 0 
+7f4aafff7000-7f4aafff8000 rw-p 00000000 00:00 0 
+7f4aafff8000-7f4ab0071000 rwxp 00000000 00:00 0 
+7f4ab0071000-7f4ab0072000 rwxp 00000000 00:00 0 
+7f4ab0072000-7f4ab0073000 rw-p 00000000 00:00 0 
+7f4ab0073000-7f4ab010c000 rwxp 00000000 00:00 0 
+7f4ab010c000-7f4ab0144000 rwxp 00000000 00:00 0 
+7f4ab0144000-7f4ab0584000 rw-p 00000000 00:00 0 
+7f4ab0584000-7f4ab0596000 r-xp 00000000 00:be 1098759                    /root/sniper/pin_kit/intel64/runtime/pincrt/libunwind-dynamic.so
+7f4ab0596000-7f4ab0795000 ---p 00000000 00:00 0 
+7f4ab0795000-7f4ab0796000 r--p 00011000 00:be 1098759                    /root/sniper/pin_kit/intel64/runtime/pincrt/libunwind-dynamic.so
+7f4ab0796000-7f4ab0797000 rw-p 00012000 00:be 1098759                    /root/sniper/pin_kit/intel64/runtime/pincrt/libunwind-dynamic.so
+7f4ab0797000-7f4ab0a69000 r-xp 00000000 00:be 1098725                    /root/sniper/pin_kit/intel64/lib-ext/libpin3dwarf.so
+7f4ab0a69000-7f4ab0c68000 ---p 00000000 00:00 0 
+7f4ab0c68000-7f4ab0c7c000 r--p 002d1000 00:be 1098725                    /root/sniper/pin_kit/intel64/lib-ext/libpin3dwarf.so
+7f4ab0c7c000-7f4ab0c7d000 rw-p 002e5000 00:be 1098725                    /root/sniper/pin_kit/intel64/lib-ext/libpin3dwarf.so
+7f4ab0c7d000-7f4ab0c80000 rw-p 00000000 00:00 0 
+7f4ab0c80000-7f4ab0ec6000 r-xp 00000000 00:be 1990935                    /root/sniper/sift/recorder/obj-intel64/sift_recorder
+7f4ab0ec6000-7f4ab10c5000 ---p 00000000 00:00 0 
+7f4ab10c5000-7f4ab10c7000 r--p 00245000 00:be 1990935                    /root/sniper/sift/recorder/obj-intel64/sift_recorder
+7f4ab10c7000-7f4ab10c9000 rw-p 00247000 00:be 1990935                    /root/sniper/sift/recorder/obj-intel64/sift_recorder
+7f4ab10c9000-7f4ab1100000 rw-p 00000000 00:00 0 
+7f4ab1100000-7f4ab1189000 r-xp 00000000 00:be 1098747                    /root/sniper/pin_kit/intel64/runtime/pincrt/libc-dynamic.so
+7f4ab1189000-7f4ab1388000 ---p 00000000 00:00 0 
+7f4ab1388000-7f4ab138b000 r--p 00088000 00:be 1098747                    /root/sniper/pin_kit/intel64/runtime/pincrt/libc-dynamic.so
+7f4ab138b000-7f4ab138c000 rw-p 0008b000 00:be 1098747                    /root/sniper/pin_kit/intel64/runtime/pincrt/libc-dynamic.so
+7f4ab138c000-7f4ab13b5000 rw-p 00000000 00:00 0 
+7f4ab13b5000-7f4ab13e3000 r-xp 00000000 00:be 1098753                    /root/sniper/pin_kit/intel64/runtime/pincrt/libm-dynamic.so
+7f4ab13e3000-7f4ab15e2000 ---p 00000000 00:00 0 
+7f4ab15e2000-7f4ab15e3000 r--p 0002d000 00:be 1098753                    /root/sniper/pin_kit/intel64/runtime/pincrt/libm-dynamic.so
+7f4ab15e3000-7f4ab15e4000 rw-p 0002e000 00:be 1098753                    /root/sniper/pin_kit/intel64/runtime/pincrt/libm-dynamic.so
+7f4ab15e4000-7f4ab169d000 r-xp 00000000 00:be 1098757                    /root/sniper/pin_kit/intel64/runtime/pincrt/libstlport-dynamic.so
+7f4ab169d000-7f4ab189d000 ---p 00000000 00:00 0 
+7f4ab189d000-7f4ab18a1000 r--p 000b9000 00:be 1098757                    /root/sniper/pin_kit/intel64/runtime/pincrt/libstlport-dynamic.so
+7f4ab18a1000-7f4ab18a2000 rw-p 000bd000 00:be 1098757                    /root/sniper/pin_kit/intel64/runtime/pincrt/libstlport-dynamic.so
+7f4ab18a2000-7f4ab18a3000 rw-p 00000000 00:00 0 
+7f4ab18a3000-7f4ab1ce6000 r-xp 00000000 00:be 1098669                    /root/sniper/pin_kit/extras/xed-intel64/lib/libxed.so
+7f4ab1ce6000-7f4ab1ee5000 ---p 00000000 00:00 0 
+7f4ab1ee5000-7f4ab1f89000 r--p 00442000 00:be 1098669                    /root/sniper/pin_kit/extras/xed-intel64/lib/libxed.so
+7f4ab1f89000-7f4ab1f8a000 rw-p 004e6000 00:be 1098669                    /root/sniper/pin_kit/extras/xed-intel64/lib/libxed.so
+7f4ab1f8a000-7f4ab1f8f000 rw-p 00000000 00:00 0 
+7f4ab1f8f000-7f4ab1fc5000 r-xp 00000000 00:be 1098761                    /root/sniper/pin_kit/intel64/runtime/pincrt/linker
+7f4ab1fc5000-7f4ab21c5000 ---p 00000000 00:00 0 
+7f4ab21c5000-7f4ab21c6000 r--p 00036000 00:be 1098761                    /root/sniper/pin_kit/intel64/runtime/pincrt/linker
+7f4ab21c6000-7f4ab21c7000 rw-p 00037000 00:be 1098761                    /root/sniper/pin_kit/intel64/runtime/pincrt/linker
+7f4ab21c7000-7f4ab21cb000 rw-p 00000000 00:00 0 
+7f4ab21cb000-7f4ab26de000 r-xp 00000000 00:be 1098719                    /root/sniper/pin_kit/intel64/bin/pinbin
+7f4ab26de000-7f4ab28dd000 ---p 00000000 00:00 0 
+7f4ab28dd000-7f4ab28e5000 r--p 00512000 00:be 1098719                    /root/sniper/pin_kit/intel64/bin/pinbin
+7f4ab28e5000-7f4ab28f1000 rw-p 0051a000 00:be 1098719                    /root/sniper/pin_kit/intel64/bin/pinbin
+7f4ab28f1000-7f4ab293b000 rw-p 00000000 00:00 0 
+7f4ab293b000-7f4ab2940000 rwxp 00000000 00:00 0 
+7f4ab2940000-7f4ab2990000 rw-p 00000000 00:00 0 
+7f4ab2990000-7f4ab2997000 rwxp 00000000 00:00 0 
+7f4ab2997000-7f4ab299a000 ---p 00000000 00:00 0 
+7f4ab299a000-7f4ab29c0000 rwxp 00000000 00:00 0 
+7f4ab29c0000-7f4ab29c2000 ---p 00000000 00:00 0 
+7f4ab29c2000-7f4ab29f9000 rwxp 00000000 00:00 0 
+7f4ab29f9000-7f4ab29fa000 ---p 00000000 00:00 0 
+7f4ab29fa000-7f4ab2a3c000 rw-p 00000000 00:00 0 
+7f4ab2a3c000-7f4ab2a5c000 r-xp 00000000 00:be 1055754                    /lib64/ld-2.12.so
+7f4ab2a5c000-7f4ab2a5e000 rwxp 00000000 00:00 0 
+7f4ab2a5e000-7f4ab2bbe000 rw-p 00000000 00:00 0 
+7f4ab2bbe000-7f4ab2bc1000 r--p 00000000 00:00 0 
+7f4ab2bc1000-7f4ab2bd9000 rw-p 00000000 00:00 0 
+7f4ab2bd9000-7f4ab2be0000 r--p 00000000 00:00 0 
+7f4ab2be0000-7f4ab2bf9000 rw-p 00000000 00:00 0 
+7f4ab2bf9000-7f4ab2bfa000 r--p 00000000 00:00 0 
+7f4ab2bfa000-7f4ab2c12000 rw-p 00000000 00:00 0 
+7f4ab2c12000-7f4ab2c13000 r--p 00000000 00:00 0 
+7f4ab2c13000-7f4ab2c2c000 rw-p 00000000 00:00 0 
+7f4ab2c2c000-7f4ab2c4b000 rwxp 00000000 00:00 0 
+7f4ab2c4b000-7f4ab2c53000 rw-p 00000000 00:00 0 
+7f4ab2c53000-7f4ab2c54000 rwxp 00000000 00:00 0 
+7f4ab2c54000-7f4ab2c58000 r--p 00000000 00:00 0                          [vvar]
+7f4ab2c58000-7f4ab2c5a000 r--p 00000000 00:00 0                          [vvar_vclock]
+7f4ab2c5a000-7f4ab2c5c000 r-xp 00000000 00:00 0                          [vdso]
+7f4ab2c5c000-7f4ab2c5d000 r--p 00020000 00:be 1055754                    /lib64/ld-2.12.so
+7f4ab2c5d000-7f4ab2c5e000 rw-p 00021000 00:be 1055754                    /lib64/ld-2.12.so
+7f4ab2c5e000-7f4ab2c5f000 rw-p 00000000 00:00 0 
+7fff80034000-7fff80055000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+[TRACE:0] -- DONE --
+Pin app terminated abnormally due to signal 6.
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 775.05 seconds
+[SNIPER] Simulated 2416.5M instructions, 346.4M cycles, 6.98 IPC
+[SNIPER] Simulation speed 3117.9 KIPS (259.8 KIPS / target core - 3848.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 774.70 seconds

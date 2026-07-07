@@ -1,0 +1,19 @@
+[SNIPER] Start
+Core 0 at 2.20 GHz (global clock 2.90 GHz)
+Core 1 at 2.20 GHz (global clock 2.90 GHz)
+Core 2 at 2.20 GHz (global clock 2.90 GHz)
+Core 3 at 2.20 GHz (global clock 2.90 GHz)
+Core 10 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+HPCC RandomAccess (GUPS)
+  Table size : 2^23 = 8388608 entries (64 MB)
+  Updates    : 33554432
+  Threads    : 16

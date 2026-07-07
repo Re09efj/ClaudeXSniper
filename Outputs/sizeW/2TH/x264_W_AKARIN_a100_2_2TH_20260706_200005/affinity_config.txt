@@ -1,0 +1,14 @@
+BENCHMARK=X264.W (NPB3.3 OpenMP)
+PRESET=AKARIN_a100_2
+NUM_THREADS=2
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[8, 1]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU08 (Node1 P-core)
+  thread01 -> CPU01 (Node0 P-core)
+
+# AKARIN候補由来: alpha=1.00, MPO
+# backend=sid

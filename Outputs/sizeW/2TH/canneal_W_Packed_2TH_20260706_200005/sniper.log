@@ -1,0 +1,29 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+PARSEC Benchmark Suite
+Threadcount: 2
+10000 swaps per temperature step
+start temperature: 2000
+netlist filename: inputs/100000.nets
+number of temperature steps: 32
+locs created
+locs assigned
+Just saw element: 100000
+netlist created. 100000 elements.
+[TRACE:2] -- DONE --
+[TRACE:1] -- DONE --
+Final routing is: 9.28404e+07
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 4414.53 seconds
+[SNIPER] Simulated 4837.4M instructions, 3510.3M cycles, 1.38 IPC
+[SNIPER] Simulation speed 1095.8 KIPS (547.9 KIPS / target core - 1825.2ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 4411.47 seconds

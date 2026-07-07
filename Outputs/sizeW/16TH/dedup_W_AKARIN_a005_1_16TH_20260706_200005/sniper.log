@@ -1,0 +1,11 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 1 at 2.20 GHz (global clock 2.90 GHz)
+Core 3 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 8 at 2.20 GHz (global clock 2.90 GHz)
+Core 10 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[sniper_sim_purple] リモート実行失敗/SSH切断 ret=255

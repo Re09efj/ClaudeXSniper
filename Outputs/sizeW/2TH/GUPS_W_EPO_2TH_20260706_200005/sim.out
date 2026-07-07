@@ -1,0 +1,58 @@
+                                     | Core 0     | Core 1    
+  Instructions                       |  610763608 |  287363679
+  Cycles                             |  685104860 |  685104860
+  IPC                                |       0.89 |       0.42
+  Time (ns)                          |  311411300 |  311411300
+  Idle time (ns)                     |   23244898 |  193107699
+  Idle time (%)                      |       7.5% |      62.0%
+Branch predictor stats               |            |           
+  num correct                        |   55200286 |   34168677
+  num incorrect                      |       8796 |         78
+  misprediction rate                 |      0.02% |      0.00%
+  mpki                               |       0.01 |       0.00
+TLB Summary                          |            |           
+  I-TLB                              |            |           
+    num accesses                     |   75547537 |        236
+    num misses                       |        118 |         16
+    miss rate                        |      0.00% |      6.78%
+    mpki                             |       0.00 |       0.00
+  D-TLB                              |            |           
+    num accesses                     |   88593349 |   50639686
+    num misses                       |   49910690 |   16683451
+    miss rate                        |     56.34% |     32.95%
+    mpki                             |      81.72 |      58.06
+  L2 TLB                             |            |           
+    num accesses                     |   49910808 |   16683467
+    num misses                       |   48148213 |   16145356
+    miss rate                        |     96.47% |     96.77%
+    mpki                             |      78.83 |      56.18
+Cache Summary                        |            |           
+  Cache L1-I                         |            |           
+    num cache accesses               |   75547537 |        236
+    num cache misses                 |      10340 |         96
+    miss rate                        |      0.01% |     40.68%
+    mpki                             |       0.02 |       0.00
+  Cache L1-D                         |            |           
+    num cache accesses               |   88593349 |   50639686
+    num cache misses                 |   51194623 |   16755896
+    miss rate                        |     57.79% |     33.09%
+    mpki                             |      83.82 |      58.31
+  Cache L2                           |            |           
+    num cache accesses               |   64484584 |   30262343
+    num cache misses                 |   50635511 |   16605975
+    miss rate                        |     78.52% |     54.87%
+    mpki                             |      82.91 |      57.79
+  Cache L3                           |            |           
+    num cache accesses               |   63915137 |   30112326
+    num cache misses                 |   41102246 |   13505852
+    miss rate                        |     64.31% |     44.85%
+    mpki                             |      67.30 |      47.00
+DRAM summary                         |            |           
+  num dram accesses                  |   82442691 |          0
+  average dram access latency (ns)   |      63.82 |        inf
+  average dram queueing delay        |       2.57 |       0.00
+  average dram bandwidth utilization |     33.00% |      0.00%
+Coherency Traffic                    |            |           
+  num loads from dram                |   40050590 |   13505793
+  num loads from dram cache          |          0 |          0
+  num loads from remote cache        |          0 |          0

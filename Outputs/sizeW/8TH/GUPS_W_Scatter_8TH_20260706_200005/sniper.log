@@ -1,0 +1,30 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+HPCC RandomAccess (GUPS)
+  Table size : 2^23 = 8388608 entries (64 MB)
+  Updates    : 33554432
+  Threads    : 8
+  Time       : 0.0468 s
+  GUPS       : 0.717158
+  Error rate : 0.0000% (PASS)
+[SIFT_RECORDER] sift_writer.cc:538: uint64_t Sift::Writer::Syscall(uint16_t, const char*, uint32_t): Assertion `!response->fail()' failed.
+[TRACE:0] -- DONE --
+[SIFT:0] Error: Resource temporarily unavailable
+Pin app terminated abnormally due to signal 6.
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 2976.68 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 1628.4M instructions, 529.0M cycles, 3.08 IPC
+[SNIPER] Simulation speed 547.0 KIPS (68.4 KIPS / target core - 14624.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 2975.85 seconds

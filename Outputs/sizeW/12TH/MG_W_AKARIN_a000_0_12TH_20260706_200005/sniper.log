@@ -1,0 +1,89 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 1 at 2.20 GHz (global clock 2.90 GHz)
+Core 2 at 2.20 GHz (global clock 2.90 GHz)
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 10 at 2.20 GHz (global clock 2.90 GHz)
+Core 11 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - MG Benchmark
+
+ No input file. Using compiled defaults 
+ Size:  128x 128x 128  (class W)
+ Iterations:                      4
+ Number of available threads:    12
+
+ Initialization time:           0.022 seconds
+
+[HOOKS] Entering ROI
+  iter   1
+  iter   4
+[HOOKS] Leaving ROI
+
+ Benchmark completed 
+ VERIFICATION SUCCESSFUL 
+ L2 Norm is  0.6467329375339E-05
+ Error is    0.2868266090730E-13
+
+
+ MG Benchmark Completed.
+ Class           =                        W
+ Size            =            128x 128x 128
+ Iterations      =                        4
+ Time in seconds =                     0.06
+ Total threads   =                       12
+ Avail threads   =                       12
+ Mop/s total     =                  8164.28
+ Mop/s/thread    =                   680.36
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = randi8
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:3] -- STOP --
+[TRACE:4] -- STOP --
+[TRACE:8] -- STOP --
+[TRACE:9] -- STOP --
+[TRACE:2] -- STOP --
+[TRACE:5] -- STOP --
+[TRACE:1] -- STOP --
+[TRACE:7] -- STOP --
+[TRACE:10] -- STOP --
+[TRACE:6] -- STOP --
+[TRACE:11] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 1805.31 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 2526.1M instructions, 181.1M cycles, 13.95 IPC
+[SNIPER] Simulation speed 1399.3 KIPS (116.6 KIPS / target core - 8575.9ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 1806.46 seconds

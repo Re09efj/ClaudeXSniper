@@ -1,0 +1,20 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+bash: line 1: 13847 Killed                  setsid bash -c 'echo $$ > /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/out/GUPS_W_Packed_16TH_20260706_200005/.remote_pgid; cd /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/binary/GUPS && export GRAPHITE_ROOT=/home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/sniper-detloc && export PIN_ROOT=/home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/pin_kit_o0 && export OMP_NUM_THREADS=16 && export GOMP_CPU_AFFINITY="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" && exec /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/sniper-detloc/run-sniper -n 16 -d /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/out/GUPS_W_Packed_16TH_20260706_200005 -c /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/cfg/arrow_lake_Packed_16TH.cfg -- /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/binary/GUPS/gups 23'
+[sniper_sim_purple] リモート実行失敗/SSH切断 ret=137

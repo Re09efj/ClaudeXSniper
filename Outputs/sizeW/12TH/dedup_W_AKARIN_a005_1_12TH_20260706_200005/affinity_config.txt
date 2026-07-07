@@ -1,0 +1,24 @@
+BENCHMARK=DEDUP.W (NPB3.3 OpenMP)
+PRESET=AKARIN_a005_1
+NUM_THREADS=12
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[12, 1, 6, 14, 8, 11, 10, 7, 2, 13, 9, 15]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU12 (Node1 E-core)
+  thread01 -> CPU01 (Node0 P-core)
+  thread02 -> CPU06 (Node0 E-core)
+  thread03 -> CPU14 (Node1 E-core)
+  thread04 -> CPU08 (Node1 P-core)
+  thread05 -> CPU11 (Node1 P-core)
+  thread06 -> CPU10 (Node1 P-core)
+  thread07 -> CPU07 (Node0 E-core)
+  thread08 -> CPU02 (Node0 P-core)
+  thread09 -> CPU13 (Node1 E-core)
+  thread10 -> CPU09 (Node1 P-core)
+  thread11 -> CPU15 (Node1 E-core)
+
+# AKARIN候補由来: alpha=0.05
+# backend=purple

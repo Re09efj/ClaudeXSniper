@@ -1,0 +1,67 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 1 at 2.20 GHz (global clock 2.90 GHz)
+Core 3 at 2.20 GHz (global clock 2.90 GHz)
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 11 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+[TRACE:5] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:12] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:15] -- DONE --
+[TRACE:25] -- DONE --
+[TRACE:24] -- DONE --
+[TRACE:23] -- DONE --
+[TRACE:22] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:34] -- DONE --
+[TRACE:36] -- DONE --
+[TRACE:37] -- DONE --
+[TRACE:35] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:18] -- DONE --
+[TRACE:20] -- DONE --
+[TRACE:19] -- DONE --
+[TRACE:21] -- DONE --
+[TRACE:33] -- DONE --
+[TRACE:32] -- DONE --
+[TRACE:31] -- DONE --
+[TRACE:30] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:16] -- DONE --
+[TRACE:13] -- DONE --
+[TRACE:14] -- DONE --
+[TRACE:17] -- DONE --
+[TRACE:26] -- DONE --
+[TRACE:28] -- DONE --
+[TRACE:29] -- DONE --
+[TRACE:27] -- DONE --
+[TRACE:38] -- DONE --
+dedup: encoder.c:142: merge_stats: Assertion `s2!=((void *)0)' failed.
+PARSEC Benchmark Suite
+[TRACE:0] -- DONE --
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 1674.02 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 2327.3M instructions, 274.8M cycles, 8.47 IPC
+[SNIPER] Simulation speed 1390.2 KIPS (115.9 KIPS / target core - 8631.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 1675.95 seconds
+Pin app terminated abnormally due to signal 6.
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)

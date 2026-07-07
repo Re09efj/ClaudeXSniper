@@ -1,0 +1,12 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 0 at 2.20 GHz (global clock 2.90 GHz)
+Core 1 at 2.20 GHz (global clock 2.90 GHz)
+Core 2 at 2.20 GHz (global clock 2.90 GHz)
+Core 3 at 2.20 GHz (global clock 2.90 GHz)
+Core 8 at 2.20 GHz (global clock 2.90 GHz)
+Core 9 at 2.20 GHz (global clock 2.90 GHz)
+Core 10 at 2.20 GHz (global clock 2.90 GHz)
+Core 11 at 2.20 GHz (global clock 2.90 GHz)
+bash: line 1: 15022 Killed                  setsid bash -c 'echo $$ > /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/out/GUPS_W_EPO_16TH_20260706_200005/.remote_pgid; cd /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/binary/GUPS && export GRAPHITE_ROOT=/home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/sniper-detloc && export PIN_ROOT=/home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/pin_kit_o0 && export OMP_NUM_THREADS=16 && export GOMP_CPU_AFFINITY="4 5 6 7 12 13 14 15 0 1 2 3 8 9 10 11" && exec /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/sniper-detloc/run-sniper -n 16 -d /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/out/GUPS_W_EPO_16TH_20260706_200005 -c /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/cfg/arrow_lake_EPO_16TH.cfg -- /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/binary/GUPS/gups 23'
+[sniper_sim_purple] リモート実行失敗/SSH切断 ret=137

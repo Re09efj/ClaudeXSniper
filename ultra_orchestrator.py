@@ -35,7 +35,6 @@ BT/SPのような重いジョブが同じバッチ内の軽いジョブの完了
 
 import argparse
 import os
-import shutil
 import subprocess
 import sys
 import threading
@@ -158,12 +157,11 @@ TIMEOUT_LOG = os.path.join(CLAUDEXSNIPER_DIR, "logs", "timeoutwl.log")
 
 
 def _log_timeout(workload: str, strategy: str, bench_class: str, num_threads: int,
-                 elapsed: float, timeout_sec: float, attempt: int, max_retries: int) -> None:
-    outcome = f"retry({attempt + 2}/{max_retries + 1})" if attempt < max_retries else "FAILED"
+                 elapsed: float, timeout_sec: float) -> None:
     line = (
         f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  "
         f"{workload:<8} {strategy:<8} Class={bench_class}  {num_threads}TH  "
-        f"elapsed={elapsed:.0f}s  timeout={timeout_sec:.0f}s  {outcome}  [ultra]\n"
+        f"elapsed={elapsed:.0f}s  timeout={timeout_sec:.0f}s  FAILED  [ultra]\n"
     )
     os.makedirs(os.path.dirname(TIMEOUT_LOG), exist_ok=True)
     with open(TIMEOUT_LOG, "a") as f:
@@ -210,18 +208,42 @@ _WIDTH_MEASURED = {
 }
 
 
+# メモリ帯域律速のワークロードは、podman stats実測のCPU使用率(_WIDTH_MEASURED)
+# だけでは同時実行数を絞る根拠にならない(ホストCPU消費が低く見えても、実際は
+# メモリ帯域を奪い合って渋滞する)。2026-07-07: SIDでGUPS/16THを9並列実行した際に
+# 各ジョブが実効24〜27%のCPUしか進まない自己渋滞が発生したことで判明。
+# 判定基準:
+#  - GUPS, canneal: _WIDTH_MEASURED実測がスレッド数によらず低いまま横ばい
+#    (GUPS 147→227%、canneal 92〜95%)= ホストがメモリ待ちで遊んでいる兆候。
+#    特にcannealはPARSEC中で最もキャッシュ効率が悪いポインタチェイシング系として
+#    文献でも知られる。逆にdedup(129→417%)・x264(93→215%)はスレッド数に応じて
+#    実測値が伸びており計算律速と判断、対象外。
+#  - FT, IS: 実測データなし(BT/FT/IS/MGはべき乗則モデル側)だが、NPBの中でも
+#    FT(大ストライドFFTバタフライ)・IS(大規模scatter/gatherバケツソート)は
+#    アルゴリズム的にメモリ帯域律速として知られるため予防的に含める。
+#    BT/MGは構造化グリッド計算でキャッシュ再利用が効きやすいため対象外。
+MEMORY_BOUND_WORKLOADS = {"GUPS", "canneal", "FT", "IS"}
+MEMORY_BOUND_WIDTH_MULTIPLIER = 2.0
+
+
 def host_width_pct(workload: str, num_threads: int) -> float:
     """このワークロード・スレッド数がホストの実コアを何%消費するかの推定値。"""
     if workload in {"canneal", "dedup", "x264", "GUPS"}:
         measured = {th: v for (wl, th), v in _WIDTH_MEASURED.items() if wl == workload}
         if num_threads in measured:
-            return measured[num_threads]
-        # 未測定のスレッド数は最も近い実測点で代用する(べき乗則外挿より安全側)
-        nearest = min(measured, key=lambda th: abs(th - num_threads))
-        return measured[nearest]
-    baseline = _WIDTH_BASELINE_2TH.get(workload, 100)
-    scale = (num_threads / 2) ** _WIDTH_EXPONENT
-    return baseline * scale
+            pct = measured[num_threads]
+        else:
+            # 未測定のスレッド数は最も近い実測点で代用する(べき乗則外挿より安全側)
+            nearest = min(measured, key=lambda th: abs(th - num_threads))
+            pct = measured[nearest]
+    else:
+        baseline = _WIDTH_BASELINE_2TH.get(workload, 100)
+        scale = (num_threads / 2) ** _WIDTH_EXPONENT
+        pct = baseline * scale
+
+    if workload in MEMORY_BOUND_WORKLOADS:
+        pct *= MEMORY_BOUND_WIDTH_MULTIPLIER
+    return pct
 
 
 def live_sid_load_cores() -> float:
@@ -470,80 +492,69 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False) -> str | None:
 
     ref          = get_reference(job.workload, job.bench_class, job.num_threads, job.backend)
     expected_sec = ref["wallTime"] if ref else job.duration
-    timeout_sec  = float("inf") if no_timeout else max(expected_sec * 3, 600)
+    timeout_sec  = float("inf") if no_timeout else max(expected_sec * 2, 600)
 
-    MAX_RETRIES = 1
-    elapsed = 0.0
-    for attempt in range(MAX_RETRIES + 1):
-        if attempt > 0:
-            shutil.rmtree(out_dir, ignore_errors=True)
-        os.makedirs(out_dir, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
 
-        cfg_path = get_config_path(out_dir, job.strategy, job.num_threads)
-        generate_config(job.strategy, job.num_threads, cpu_map, cfg_path)
-        save_affinity_config(out_dir, job.strategy, job.workload, job.bench_class,
-                             cpu_map, job.num_threads)
-        stdin_path = None
-        if needs_stdin(job.workload):
-            stdin_path = write_stdin_file(job.workload, job.bench_class, job.num_threads, out_dir)
-        if job.provenance:
-            with open(os.path.join(out_dir, "affinity_config.txt"), "a") as f:
-                f.write(f"\n# AKARIN候補由来: {', '.join(job.provenance)}\n")
-                f.write(f"# backend={job.backend}\n")
+    cfg_path = get_config_path(out_dir, job.strategy, job.num_threads)
+    generate_config(job.strategy, job.num_threads, cpu_map, cfg_path)
+    save_affinity_config(out_dir, job.strategy, job.workload, job.bench_class,
+                         cpu_map, job.num_threads)
+    stdin_path = None
+    if needs_stdin(job.workload):
+        stdin_path = write_stdin_file(job.workload, job.bench_class, job.num_threads, out_dir)
+    if job.provenance:
+        with open(os.path.join(out_dir, "affinity_config.txt"), "a") as f:
+            f.write(f"\n# AKARIN候補由来: {', '.join(job.provenance)}\n")
+            f.write(f"# backend={job.backend}\n")
 
-        log_path = os.path.join(out_dir, "sniper.log")
-        log_file = open(log_path, "w")
+    log_path = os.path.join(out_dir, "sniper.log")
+    log_file = open(log_path, "w")
 
-        start       = time.time()
-        done_flag   = [False]
-        ret_code    = [None]
-        proc_holder = []
-        timed_out   = [False]
+    start       = time.time()
+    done_flag   = [False]
+    ret_code    = [None]
+    proc_holder = []
+    timed_out   = [False]
 
-        def _do_run():
-            ret_code[0] = run_sniper(
-                binary_path=bin_path, binary_args=bin_args,
-                num_threads=job.num_threads, cpu_map=cpu_map,
-                strategy=job.strategy, output_dir=out_dir,
-                config_path=cfg_path, log_file=log_file,
-                workload=job.workload, proc_holder=proc_holder,
-                stdin_path=stdin_path,
-            )
-            done_flag[0] = True
+    def _do_run():
+        ret_code[0] = run_sniper(
+            binary_path=bin_path, binary_args=bin_args,
+            num_threads=job.num_threads, cpu_map=cpu_map,
+            strategy=job.strategy, output_dir=out_dir,
+            config_path=cfg_path, log_file=log_file,
+            workload=job.workload, proc_holder=proc_holder,
+            stdin_path=stdin_path,
+        )
+        done_flag[0] = True
 
-        t = threading.Thread(target=_do_run, daemon=True)
-        t.start()
-        while not done_flag[0]:
-            elapsed = time.time() - start
-            if elapsed > timeout_sec and proc_holder:
-                timed_out[0] = True
-                proc_holder[0].kill()
-                break
-            time.sleep(1)
-        t.join()
-        log_file.close()
+    t = threading.Thread(target=_do_run, daemon=True)
+    t.start()
+    while not done_flag[0]:
         elapsed = time.time() - start
+        if elapsed > timeout_sec and proc_holder:
+            timed_out[0] = True
+            proc_holder[0].kill()
+            break
+        time.sleep(1)
+    t.join()
+    log_file.close()
+    elapsed = time.time() - start
 
-        if timed_out[0]:
-            _log_timeout(job.workload, job.strategy, job.bench_class, job.num_threads,
-                        elapsed, timeout_sec, attempt, MAX_RETRIES)
-            if attempt < MAX_RETRIES:
-                continue
-            print(f"[TIMEOUT] {job} ({elapsed:.0f}s > {timeout_sec:.0f}s)", flush=True)
-            return None
+    if timed_out[0]:
+        _log_timeout(job.workload, job.strategy, job.bench_class, job.num_threads,
+                    elapsed, timeout_sec)
+        print(f"[TIMEOUT] {job} ({elapsed:.0f}s > {timeout_sec:.0f}s)", flush=True)
+        return None
 
-        if ret_code[0] != 0:
-            # ret=255はsniper_sim_purple.pyのSSH/scp起動失敗を意味することが多い。
-            # Purple向けジョブを大量に同時起動するとsshdのMaxStartups(既定10:30:100)
-            # に引っかかり接続がランダムに拒否されることがあると2026-07-06に判明
-            # (起動直後のバーストでのみ発生、数秒後には自然に収まる一過性の事象)。
-            # タイムアウトと同様にリトライする。
-            print(f"[ERROR] {job} 失敗 ret={ret_code[0]}", flush=True)
-            if attempt < MAX_RETRIES:
-                time.sleep(3)
-                continue
-            return None
-        break
+    if ret_code[0] != 0:
+        # ret=255はsniper_sim_purple.pyのSSH/scp起動失敗を意味することが多い。
+        # Purple向けジョブを大量に同時起動するとsshdのMaxStartups(既定10:30:100)
+        # に引っかかり接続がランダムに拒否されることがあると2026-07-06に判明
+        # (起動直後のバーストでのみ発生、数秒後には自然に収まる一過性の事象)。
+        # 2026-07-07: リトライは実効性が確認できなかったため廃止(タイムアウトのみ残す)。
+        print(f"[ERROR] {job} 失敗 ret={ret_code[0]}", flush=True)
+        return None
 
     power = estimate_power(out_dir, cpu_map, job.num_threads)
     update_from_run(job.workload, job.bench_class, job.num_threads, out_dir, elapsed, job.backend)
