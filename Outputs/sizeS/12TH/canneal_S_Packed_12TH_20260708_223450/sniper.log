@@ -1,0 +1,33 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+PARSEC Benchmark Suite
+Threadcount: 11
+10000 swaps per temperature step
+start temperature: 2000
+netlist filename: inputs/100000.nets
+number of temperature steps: 32
+locs created
+locs assigned
+Just saw element: 100000
+netlist created. 100000 elements.
+[TRACE:4] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:7] -- DONE --
+Final routing is: 9.27864e+07

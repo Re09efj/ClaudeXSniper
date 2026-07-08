@@ -62,17 +62,51 @@ GAPBS_SCALE = {"S": 10, "W": 11, "A": 12, "B": 13, "C": 14, "D": 16}
 LAVAMD_BOXES = {"S": 3, "W": 4, "A": 5, "B": 8, "C": 10, "D": 15}
 
 # PARSEC canneal/dedup/x264/fluidanimate の入力ファイル(PARSEC公式input_simsmall.tarから
-# 展開、各src/inputs/に配置済み)。現時点ではsimsmallクラス相当の入力のみ用意しており、
-# bench_classによる切り替えは未対応(常に同じ入力を使う)。
+# 展開、各src/inputs/に配置済み)。
 #
 # 相対パス("inputs/xxx")で持つ: 実行時cwdは常にバイナリ自身のディレクトリになる
 # (sniper_sim.pyはpodmanの-wでCONTAINER_BINに、sniper_sim_purple.pyはcdでbinary_dirに
 # 移動する)ため、絶対パス(hiragahama上のホストパス)を渡すとコンテナ内やPurple上には
 # 存在せず「file not found」で即終了してしまう(2026-07-06、fluidanimate導入時に発覚し、
 # host-build時にすり替わっていたcanneal/dedup/x264でも同じ不具合を確認)。
-CANNEAL_NETLIST = "inputs/100000.nets"
-DEDUP_INPUT     = "inputs/media.dat"
 X264_INPUT      = "inputs/eledream_640x360_8.y4m"
+
+# 2026-07-06に「canneal/dedup/x264はbench_classを見ておらず、S/Wで完全に同じ実行に
+# なっている」と発覚したが、この時点では`.gettsuushin.py`(Purple側の通信行列取得用
+# スクリプト)側だけに個別のW用パラメータ(NSWAPS=40000、media_w.dat)を仮置きし、
+# 実際にSniperを走らせるこちらの本線(get_binary_args)には反映されていなかった。
+# SizeS実験を仕上げるにあたり2026-07-07に正式反映する。x264は同日の別調査で
+# ワークロード自体を対象外としたため、クラス対応の対象外のまま。
+#
+# BENCH_CLASS → canneal 実行パラメータ(NSWAPS=焼きなましの反復回数、netlist=問題規模、
+# nsteps)。
+#   S: PARSEC公式simsmall.runconfと完全一致(10000, 100000.nets, 32)
+#   W: 2026-07-06にユーザーが決めた独自スケール(NSWAPSのみ4倍、netlistは据え置き)。
+#      既にこの定義でSniper実測・通信行列取得が完了しているため変更しない。
+#   A: 2026-07-08、Purple上のJin/Agungの旧環境(sniper-detloc-backup)からPARSEC公式
+#      input_simmedium.tar(200000.nets)を発見・取得し、PARSEC公式simmedium.runconfの
+#      値をそのまま採用(15000, 200000.nets, 64)。Wと違い数式込みで公式値に準拠。
+#   未知クラスはSにフォールバック。
+CANNEAL_PARAMS = {
+    "S": {"nswaps": 10000, "netlist": "inputs/100000.nets", "nsteps": 32},
+    "W": {"nswaps": 40000, "netlist": "inputs/100000.nets", "nsteps": 32},
+    "A": {"nswaps": 15000, "netlist": "inputs/200000.nets", "nsteps": 64},
+}
+
+# BENCH_CLASS → dedup 入力ファイル。
+#   S: PARSEC公式simsmall基準のmedia.dat
+#   W: media.datを2つ連結したmedia_w.dat(2026-07-06にPurple側で作成、独自スケール。
+#      既にこの定義でSniper実測・通信行列取得が完了しているため変更しない)
+#   A: 2026-07-08、Purple上のJin/Agungの旧環境からPARSEC公式input_simmedium.tar内の
+#      media.dat(32MB、simsmallの約3倍)を取得しmedia_a.datとして配置。PARSEC公式の
+#      本物のsimmediumサイズ(dedup公式runconfはファイル名でクラスを区別しておらず、
+#      配布アーカイブ側でサイズが変わる方式だったため、アーカイブから直接取得)
+#   未知クラスはSにフォールバック。
+DEDUP_INPUT_BY_CLASS = {
+    "S": "inputs/media.dat",
+    "W": "inputs/media_w.dat",
+    "A": "inputs/media_a.dat",
+}
 # fluidanimate: PARSEC公式input_simsmall.tarのin_35K.fluid(粒子数35K、Jinも使用実績あり)。
 # 2026-07-06にsrc/inputs/へ配置。フレーム数はPARSEC標準simsmall相当の5。
 FLUIDANIMATE_INPUT  = "inputs/in_35K.fluid"
@@ -129,6 +163,37 @@ def binary_path(workload: str, bench_class: str) -> str:
     return f"{NPB_BIN_DIR}/{workload.lower()}.{bench_class}.x"
 
 
+# canneal/dedupは起動時の`-t N`引数と実際に立ち上がるOSスレッド数が一致しない
+# (パイプライン/コーディネータスレッドが追加で立つため。2026-07-07実測で確認:
+# canneal `-t N` → 実N+1、dedup `-t N` → 実3N+3)。cpu_map・Job.num_threads・
+# ホスト幅モデルなど、システム全体では一貫して「num_threads=実スレッド数」という
+# 意味で扱う(他の全ワークロードと同じ規約)ため、get_binary_args()側でこの実
+# スレッド数から逆算して正しい`-t`引数を組み立てる(2026-07-08、ユーザー提案の
+# 「1引けばいい」を一般化: canneal=num_threads-1、dedup=(num_threads-3)//3)。
+# dedupは3の倍数+3しか実現できない(6,9,12,15,...)ため、それ以外のnum_threadsを
+# 渡すのは呼び出し側のミス→明示的にエラーにする。
+def _dedup_arg_threads(num_threads: int) -> int:
+    if (num_threads - 3) % 3 != 0 or num_threads < 6:
+        raise ValueError(
+            f"dedupはnum_threads=3n+3(6,9,12,15,...)でしか実現できません: {num_threads}"
+        )
+    return (num_threads - 3) // 3
+
+
+def arg_threads_for(workload: str, num_threads: int) -> int:
+    """
+    num_threads(実スレッド数、システム全体で統一された意味)から、バイナリに
+    渡す`-t`引数・comm.csvのファイル名(起動時引数ベースで命名されている)を
+    逆算する。canneal/dedup以外は恒等写像。
+    """
+    wl = workload.upper()
+    if wl == "CANNEAL":
+        return num_threads - 1
+    if wl == "DEDUP":
+        return _dedup_arg_threads(num_threads)
+    return num_threads
+
+
 def get_binary_args(workload: str, bench_class: str, num_threads: int) -> str:
     """ワークロード種別に応じた実行時引数を返す。"""
     wl_upper = workload.upper()
@@ -150,11 +215,19 @@ def get_binary_args(workload: str, bench_class: str, num_threads: int) -> str:
         # Usage: fluidanimate <threadnum> <framenum> <.fluid input file> [.fluid output file]
         return f"{num_threads} {FLUIDANIMATE_FRAMES} {FLUIDANIMATE_INPUT} /tmp/fluid_out_{num_threads}.fluid"
     if wl_upper == "CANNEAL":
-        # Usage: canneal NTHREADS NSWAPS TEMP NETLIST [NSTEPS] (PARSEC simsmall準拠)
-        return f"{num_threads} 10000 2000 {CANNEAL_NETLIST} 32"
+        # Usage: canneal NTHREADS NSWAPS TEMP NETLIST NSTEPS。
+        # NSWAPS/netlist/nstepsはbench_classでスケール(CANNEAL_PARAMS参照)。
+        # 実スレッド数はNTHREADS+1になるため、num_threads(実スレッド数)から逆算する。
+        p = CANNEAL_PARAMS.get(bench_class, CANNEAL_PARAMS["S"])
+        arg_threads = arg_threads_for(workload, num_threads)
+        return f"{arg_threads} {p['nswaps']} 2000 {p['netlist']} {p['nsteps']}"
     if wl_upper == "DEDUP":
-        # PARSEC標準simsmall呼び出し(圧縮・パイプライン並列・verbose)
-        return f"-c -p -v -t {num_threads} -i {DEDUP_INPUT} -o /tmp/dedup_out_{num_threads}.dat.ddp"
+        # PARSEC標準simsmall呼び出し(圧縮・パイプライン並列・verbose)。
+        # 入力ファイルはbench_classでスケール(DEDUP_INPUT_BY_CLASS参照)。
+        # 実スレッド数は3*(-t N)+3になるため、num_threads(実スレッド数)から逆算する。
+        dedup_input = DEDUP_INPUT_BY_CLASS.get(bench_class, DEDUP_INPUT_BY_CLASS["S"])
+        arg_threads = arg_threads_for(workload, num_threads)
+        return f"-c -p -v -t {arg_threads} -i {dedup_input} -o /tmp/dedup_out_{arg_threads}.dat.ddp"
     if wl_upper == "X264":
         # PARSEC標準simsmall呼び出し
         return (
@@ -325,7 +398,12 @@ def resolve_cpu_map(strategy: str, workload: str, bench_class: str, num_threads:
     """
     if strategy == "MPO":
         from utility.deloc_mapper import compute_deloc_map_from_csv, find_comm_csv
-        csv_path = find_comm_csv(workload, bench_class, num_threads)
+        # comm.csvのファイル名は起動時の-t N(canneal/dedupではnum_threadsと不一致)
+        # で決まるが、行列処理自体はnum_threads(実スレッド数)で行う必要がある。
+        # パス探索はarg_threads_for()で逆算したnominal値、行列処理はnum_threads
+        # (実スレッド数)で分ける。
+        arg_threads = arg_threads_for(workload, num_threads)
+        csv_path = find_comm_csv(workload, bench_class, arg_threads)
         cpu_map, _imbalance = compute_deloc_map_from_csv(csv_path, num_threads)
         return cpu_map
     return get_cpu_map(strategy, workload)

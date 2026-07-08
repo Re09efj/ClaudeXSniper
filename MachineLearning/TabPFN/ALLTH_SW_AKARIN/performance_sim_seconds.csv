@@ -1,0 +1,2 @@
+threads,sizes,label,accuracy,n_samples,perf_ratio
+ALL,SW,sim_seconds,0.5483870967741935,31,1.0805189867493608

@@ -1,0 +1,34 @@
+[gettsuushin_S] SizeS取得ジョブ数: 32 (並列度=8)
+[SKIP] canneal 1TH (既存)
+[SKIP] canneal 7TH (既存)
+[OK] canneal 6TH
+[SKIP] canneal 11TH (既存)
+[OK] canneal 3TH
+[OK] canneal 2TH
+[OK] canneal 9TH
+[SKIP] canneal 15TH (既存)
+[OK] canneal 5TH
+[SKIP] dedup 1TH (既存)
+[SKIP] dedup 2TH (既存)
+[SKIP] dedup 3TH (既存)
+[SKIP] dedup 4TH (既存)
+[OK] canneal 4TH
+[OK] canneal 10TH
+[OK] canneal 8TH
+[OK] canneal 14TH
+[OK] canneal 12TH
+[OK] canneal 16TH
+[OK] canneal 13TH
+[OK] dedup 7TH
+[OK] dedup 8TH
+[OK] dedup 5TH
+[OK] dedup 6TH
+[OK] dedup 10TH
+[OK] dedup 12TH
+[OK] dedup 13TH
+[OK] dedup 11TH
+[OK] dedup 9TH
+[OK] dedup 14TH
+[OK] dedup 16TH
+[OK] dedup 15TH
+[gettsuushin_S] 完了

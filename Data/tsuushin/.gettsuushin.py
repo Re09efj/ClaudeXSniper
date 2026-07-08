@@ -32,6 +32,7 @@ import concurrent.futures
 import glob
 import os
 import subprocess
+import threading
 
 SIZE = "W"
 
@@ -75,6 +76,12 @@ WORKLOADS = [
 
 MAX_PARALLEL = 10  # Purple上で同時に走らせるジョブ数(56論理コア中、無理のない範囲)
 
+# BTは他ワークロードよりPin計装のオーバーヘッドが桁違いに大きく(命令数が多いため)、
+# 2026-07-07にSizeWで8並列実行したところ通常CPU競合で軒並み遅延する事態が発生した。
+# BTだけ同時実行数を3に絞る(GUPSのメモリ帯域競合対策とは別の、素朴なCPU競合対策)。
+BT_CONCURRENCY = 3
+_bt_semaphore = threading.Semaphore(BT_CONCURRENCY)
+
 
 def already_done(workload: str, th: int) -> bool:
     pattern = os.path.join(LOCAL_OUT_DIR, f"{workload}_{SIZE}_{th}TH_*.comm.csv")
@@ -86,6 +93,18 @@ def run_job(workload: str, binary: str, args_template: str, timeout_sec: int, th
     if already_done(workload, th):
         return f"[SKIP] {workload} {th}TH (既存)"
 
+    sem = _bt_semaphore if workload == "BT" else None
+    if sem is not None:
+        sem.acquire()
+    try:
+        return _run_job_inner(workload, binary, args_template, timeout_sec, th, prefix)
+    finally:
+        if sem is not None:
+            sem.release()
+
+
+def _run_job_inner(workload: str, binary: str, args_template: str, timeout_sec: int,
+                    th: int, prefix: str) -> str:
     args = args_template.format(th=th)
     remote_cmd = f"""
 set -u

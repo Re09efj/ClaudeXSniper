@@ -102,8 +102,12 @@ from utility.stats_reader    import parse_node_stats
 # 再現。SafeCopy修正はGAPBS固有の別バグ(sendInstructionの生ポインタタッチ)への
 # 対処であり、この汎用的なfutexデッドロックとは無関係と判明したため、BFS/PRも
 # water_nsquared同様に対象外とした(2026-07-06)。
+# x264は2026-07-07の調査で対象外にした: PARSEC同梱バージョン(0.65.1047M)がフレーム
+# 1枚ごとに使い捨てpthreadを生成する設計のため、「--threadsで指定したN個の
+# スレッドが固定でNUMA配置される」という前提と根本的に噛み合わない
+# (詳細はData/tsuushin/.gettsuushin.pyのdocstring参照)。
 WORKLOADS = ["BT", "FT", "IS", "MG",
-             "canneal", "dedup", "x264", "GUPS"]
+             "canneal", "dedup", "GUPS"]
 
 # 戦略。既存5戦略(Packed/Scatter/HPO/EPO/MPO)に加え、AKARIN候補生成を意味する
 # 特別な戦略トークン akarin_h / akarin_l を混在指定できる。
@@ -479,6 +483,8 @@ class _CapacityPool:
 
 def run_job(job: Job, run_id: str, no_timeout: bool = False) -> str | None:
     output_base = OUTPUT_BASE_TMPL.format(cls=job.bench_class)
+    # job.num_threadsは常に「実スレッド数」の意味(全ワークロードで統一)。
+    # canneal/dedupの-t引数への逆算はget_binary_args/resolve_cpu_map内部で行う。
     cpu_map  = job.cpu_map if job.cpu_map is not None else resolve_cpu_map(
         job.strategy, job.workload, job.bench_class, job.num_threads)
     bin_path = binary_path(job.workload, job.bench_class)

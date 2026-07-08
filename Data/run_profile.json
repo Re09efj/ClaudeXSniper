@@ -1219,15 +1219,15 @@
     ]
   },
   "GUPS_S_2@purple": {
-    "simTime": 0.093423,
-    "instructions": 451439688,
-    "wallTime": 1533.9,
+    "simTime": 0.098319,
+    "instructions": 451442943,
+    "wallTime": 1425.9,
     "wallTimes": [
-      1643.1,
-      1648.1,
       1407.1,
       1434.1,
-      1484.1
+      1484.1,
+      1278.1,
+      1304.1
     ]
   },
   "dedup_S_2@purple": {
@@ -1284,11 +1284,15 @@
     ]
   },
   "GUPS_S_8@purple": {
-    "simTime": 0.103717,
-    "instructions": 829244282,
-    "wallTime": 1598.1,
+    "simTime": 0.103719,
+    "instructions": 829244934,
+    "wallTime": 1488.6,
     "wallTimes": [
-      1598.1
+      1382.1,
+      1541.1,
+      1547.1,
+      1364.1,
+      1559.1
     ]
   },
   "MG_W_8@purple": {
@@ -1592,11 +1596,15 @@
     ]
   },
   "GUPS_W_12": {
-    "simTime": 0.254747,
-    "instructions": 2515099333,
-    "wallTime": 1275.5,
+    "simTime": 0.301564,
+    "instructions": 2515228410,
+    "wallTime": 1633.3,
     "wallTimes": [
-      1275.5
+      1553.1,
+      1556.1,
+      1710.1,
+      1715.1,
+      1722.1
     ]
   },
   "dedup_W_12": {
@@ -1608,11 +1616,15 @@
     ]
   },
   "dedup_W_16": {
-    "simTime": 0.080831,
-    "instructions": 2282592463,
-    "wallTime": 366.5,
+    "simTime": 0.099223,
+    "instructions": 2317654156,
+    "wallTime": 453.7,
     "wallTimes": [
-      366.5
+      498.0,
+      444.0,
+      404.0,
+      427.0,
+      443.0
     ]
   },
   "dedup_W_16@purple": {
@@ -1627,15 +1639,23 @@
     ]
   },
   "GUPS_W_16": {
-    "simTime": 0.296473,
-    "instructions": 3133901078,
-    "wallTime": 1603.1,
+    "simTime": 0.296463,
+    "instructions": 3133907017,
+    "wallTime": 1607.9,
     "wallTimes": [
-      1610.1,
-      1599.1,
-      1593.1,
-      1602.1,
-      1607.1
+      1614.1,
+      1615.1,
+      1611.1,
+      1612.1,
+      1588.1
+    ]
+  },
+  "MG_S_2@purple": {
+    "simTime": 0.004705,
+    "instructions": 35075823,
+    "wallTime": 70.0,
+    "wallTimes": [
+      70.0
     ]
   }
 }

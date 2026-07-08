@@ -36,7 +36,11 @@ from utility.deloc_mapper import NODE_E_CORES, NODE_P_CORES, find_comm_csv
 # run_tonight.pyのSID振り分けと同じ基準)を粗グリッドに変更。これを見落として
 # canneal/x264にフル解像度(21点)を適用したまま実行を始めてしまい、最重量級2つに
 # 最大の候補数を割り当てるという本末転倒が起きたため、2026-07-06中に修正した。
-HEAVY_WORKLOADS = {"canneal", "BT", "x264"}
+#
+# 2026-07-07にx264をワークロード自体から対象外にしたため(PARSEC同梱版がフレーム毎に
+# 使い捨てpthreadを生成する設計非互換、ultra_orchestrator.WORKLOADS参照)、上位3つが
+# canneal/BT/dedupに繰り上がった(x264の代わりにdedupが3位)。
+HEAVY_WORKLOADS = {"canneal", "BT", "dedup"}
 
 ALPHA_GRID_FULL   = [i / 20 for i in range(21)]  # 0.00, 0.05, ..., 1.00 (21点)
 ALPHA_GRID_COARSE = [0.0, 0.5, 1.0]               # 重量級用(3点)
@@ -61,7 +65,15 @@ def canonical_signature(cpu_map: list) -> tuple:
     return tuple(_CORE_KIND[c] for c in cpu_map)
 
 
-def alpha_grid_for(workload: str) -> list:
+def alpha_grid_for(workload: str, bench_class: str = "W") -> list:
+    """
+    重量級(HEAVY_WORKLOADS)は通常3点(粗)に絞るが、SizeS(bench_class="S")に
+    限っては重量級でも軽量級と同じ21点(密)を使う。SizeSはSizeWと違い規模が
+    小さくSniper実行コストが相対的に低いため、粗グリッドで候補数を削る必要が
+    無いとユーザーが2026-07-08に判断した。
+    """
+    if bench_class == "S":
+        return ALPHA_GRID_FULL
     return ALPHA_GRID_COARSE if workload in HEAVY_WORKLOADS else ALPHA_GRID_FULL
 
 
@@ -73,7 +85,7 @@ def generate_candidates(workload: str, bench_class: str, num_threads: int) -> di
     """
     candidates: dict[tuple, dict] = {}
     csv_path = find_comm_csv(workload, bench_class, num_threads)
-    alpha_grid = alpha_grid_for(workload)
+    alpha_grid = alpha_grid_for(workload, bench_class)
 
     def _add(cpu_map: list, label: str):
         key = canonical_signature(cpu_map[:num_threads])
@@ -105,11 +117,14 @@ def main():
     args = _parse_args()
 
     for wl in args.workload:
-        n_alpha = len(alpha_grid_for(wl))
+        n_alpha = len(alpha_grid_for(wl, args.bench_class))
         for th in args.threads:
             candidates = generate_candidates(wl, args.bench_class, th)
             n_unique = len(candidates)
-            tier = "重量級(粗)" if wl in HEAVY_WORKLOADS else "軽量級(密)"
+            if args.bench_class == "S":
+                tier = "重量級だがSizeSのため密" if wl in HEAVY_WORKLOADS else "軽量級(密)"
+            else:
+                tier = "重量級(粗)" if wl in HEAVY_WORKLOADS else "軽量級(密)"
             print(f"\n=== {wl} class={args.bench_class} {th}TH [{tier}] ===")
             print(f"  alpha点数={n_alpha} + 既存5戦略 → "
                   f"ユニーク候補数={n_unique}")

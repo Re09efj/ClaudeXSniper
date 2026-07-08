@@ -1,0 +1,40 @@
+[SNIPER] Start
+Core 1 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 9 at 2.20 GHz (global clock 2.90 GHz)
+Core 10 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+HPCC RandomAccess (GUPS)
+  Table size : 2^23 = 8388608 entries (64 MB)
+  Updates    : 33554432
+  Threads    : 12
+  Time       : 0.0819 s
+  GUPS       : 0.409467
+  Error rate : 0.0000% (PASS)
+[TRACE:0] -- DONE --
+[TRACE:1] -- STOP --
+[TRACE:2] -- STOP --
+[TRACE:3] -- STOP --
+[TRACE:5] -- STOP --
+[TRACE:6] -- STOP --
+[TRACE:7] -- STOP --
+[TRACE:8] -- STOP --
+[TRACE:9] -- STOP --
+[TRACE:11] -- STOP --
+[TRACE:4] -- STOP --
+[TRACE:10] -- STOP --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 1567.11 seconds
+[SNIPER] Simulated 2515.1M instructions, 560.5M cycles, 4.49 IPC
+[SNIPER] Simulation speed 1604.9 KIPS (133.7 KIPS / target core - 7477.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 1566.37 seconds

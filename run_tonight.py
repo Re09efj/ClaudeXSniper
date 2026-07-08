@@ -42,8 +42,9 @@ ALL_STRATEGIES = ["Packed", "Scatter", "HPO", "EPO", "MPO", "akarin_h", "akarin_
 # 壊れる(canneal/x264がS+W重複実行、MG/FT/ISがW単一化)ため、2026-07-06に分離した。
 _NPB_WORKLOADS = {"BT", "FT", "IS", "MG"}
 
-# 全ワークロードをW級実測壁時計時間の重い順に並べる(2026-07-06実測、上のdocstring参照)
-_WEIGHT_ORDER = ["canneal", "BT", "x264", "dedup", "MG", "GUPS", "FT", "IS"]
+# 全ワークロードをW級実測壁時計時間の重い順に並べる(2026-07-06実測、上のdocstring参照)。
+# x264は2026-07-07にワークロード自体を対象外にしたため除外(ultra_orchestrator.WORKLOADS参照)。
+_WEIGHT_ORDER = ["canneal", "BT", "dedup", "MG", "GUPS", "FT", "IS"]
 all_sorted = sorted(uo.WORKLOADS, key=lambda w: _WEIGHT_ORDER.index(w))
 sid_workloads = all_sorted[:3]
 purple_workloads = all_sorted[3:]

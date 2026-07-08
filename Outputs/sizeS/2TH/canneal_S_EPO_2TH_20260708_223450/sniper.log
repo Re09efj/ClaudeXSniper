@@ -1,0 +1,19 @@
+[SNIPER] Start
+Core 0 at 2.20 GHz (global clock 2.90 GHz)
+Core 1 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+PARSEC Benchmark Suite
+Threadcount: 1
+10000 swaps per temperature step
+start temperature: 2000
+netlist filename: inputs/100000.nets
+number of temperature steps: 32
+locs created
+locs assigned
+Just saw element: 100000
+netlist created. 100000 elements.
