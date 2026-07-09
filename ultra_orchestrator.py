@@ -45,8 +45,10 @@ from utility.power_model     import estimate as estimate_power
 from utility.run_profile     import get_reference, update_from_run
 from utility.stats_reader    import parse_node_stats
 from utility.capacity_model  import (host_width_pct, live_sid_load_cores, live_purple_load_cores,
+                                      live_sid_loadavg, live_purple_loadavg,
                                       job_duration_sec, SID_CAPACITY_DEFAULT, PURPLE_CAPACITY_DEFAULT,
-                                      SID_HARD_LIMIT_CORES, PURPLE_HARD_LIMIT_CORES, HEAVY_WORKLOADS)
+                                      SID_HARD_LIMIT_CORES, PURPLE_HARD_LIMIT_CORES,
+                                      SID_LOADAVG_HARD_LIMIT, PURPLE_LOADAVG_HARD_LIMIT, HEAVY_WORKLOADS)
 from utility.scheduling      import lpt_order, cpsat_order, _CapacityPool
 
 # ============================================================
@@ -334,11 +336,13 @@ def _order_jobs(jobs: list[Job], capacity: float, use_exact: bool, exact_thresho
 
 def _run_pool(jobs: list[Job], capacity: float, run_id: str, use_exact: bool,
              no_timeout: bool, exact_threshold: int, counters: dict, lock: threading.Lock,
-             hard_limit: float | None = None, live_load_fn=None) -> None:
+             hard_limit: float | None = None, live_load_fn=None,
+             loadavg_fn=None, loadavg_hard_limit: float | None = None) -> None:
     if not jobs:
         return
     ordered = _order_jobs(jobs, capacity, use_exact, exact_threshold)
-    pool = _CapacityPool(capacity, hard_limit=hard_limit, live_load_fn=live_load_fn)
+    pool = _CapacityPool(capacity, hard_limit=hard_limit, live_load_fn=live_load_fn,
+                         loadavg_fn=loadavg_fn, loadavg_hard_limit=loadavg_hard_limit)
     threads = []
     for job in ordered:
         pool.acquire(job.width)
@@ -374,10 +378,12 @@ def schedule_and_run(jobs: list[Job], capacity: float, run_id: str, use_exact: b
     group_threads = [
         threading.Thread(target=_run_pool, args=(
             sid_jobs, capacity, run_id, use_exact, no_timeout, exact_threshold, counters, lock,
-            SID_HARD_LIMIT_CORES, live_sid_load_cores)),
+            SID_HARD_LIMIT_CORES, live_sid_load_cores,
+            live_sid_loadavg, SID_LOADAVG_HARD_LIMIT)),
         threading.Thread(target=_run_pool, args=(
             purple_jobs, purple_capacity, run_id, use_exact, no_timeout, exact_threshold, counters, lock,
-            PURPLE_HARD_LIMIT_CORES, live_purple_load_cores)),
+            PURPLE_HARD_LIMIT_CORES, live_purple_load_cores,
+            live_purple_loadavg, PURPLE_LOADAVG_HARD_LIMIT)),
     ]
     for t in group_threads:
         t.start()

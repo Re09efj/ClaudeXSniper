@@ -13,6 +13,7 @@ project_scheduling_model メモリ参照:
     Sniper自体のホストCPU消費効率の話である点に注意。
 """
 
+import os
 import subprocess
 
 from utility.run_profile import get_reference, estimate_walltime
@@ -20,6 +21,22 @@ from utility.sniper_sim_purple import SSH_HOST as PURPLE_SSH_HOST
 
 SID_CAPACITY_DEFAULT    = 21.0  # hiragahama(hostname: sid) 実効コア数上限
 PURPLE_CAPACITY_DEFAULT = 45.0  # Purpleは56論理コアの共有サーバ、生スレッド数ベースで上限45(2026-07-05: 50→45に削減)
+
+# 2026-07-10のスケジューリング事故(load average 52超過、CG/LU未較正ワークロード)を
+# 受けて追加。live_*_load_cores()(podman stats/ps由来のCPU使用率)は「実際に消費した
+# CPUサイクル」しか見ておらず、メモリ帯域待ちでブロックされているスレッド(D-state/
+# 実行待ち)を検知できない。これは2026-07-06のGUPS実効24〜27%効率の発覚時と全く
+# 同じ盲点で、その時はGUPS個別にMEMORY_BOUND_WIDTH_MULTIPLIERを追加しただけで、
+# 当日追加されたばかりの未較正ワークロード(CG/LU)がすり抜けて再発した。
+# load average(実行待ちキューの長さ)はCPU%が拾えないこの種の輻輳を直接検知できる
+# ため、静的モデル(host_width_pct)未較正のワークロードに対する汎用的な最終安全弁
+# として、既存のCPU%ゲートに加えて導入する。
+# 上限値は物理/論理コア数ちょうど(SID_HARD_LIMIT_CORES/PURPLE_HARD_LIMIT_CORESと同じ
+# 基準)。load average > コア数は定義上「今まさに実行待ち/ブロック中のスレッドが
+# コア数を超えている」=既に飽和している状態なので、そこに上乗せの余裕を持たせる
+# 理由がない(むしろCPU%側より広く輻輳を拾う指標である以上、緩めるのは筋が悪い)。
+SID_LOADAVG_HARD_LIMIT    = 24.0  # SID物理コア数ちょうど
+PURPLE_LOADAVG_HARD_LIMIT = 56.0  # Purple論理コア数ちょうど
 
 # 実測壁時計時間(W級、Data/run_profile.json)ベースの重量級判定。当初はNPB系を
 # 一律「重量級」とみなしていたが、2026-07-06の実測で canneal(10184s) > BT(10036s)
@@ -87,7 +104,12 @@ _WIDTH_MEASURED = {
 #    FT(大ストライドFFTバタフライ)・IS(大規模scatter/gatherバケツソート)は
 #    アルゴリズム的にメモリ帯域律速として知られるため予防的に含める。
 #    BT/MGは構造化グリッド計算でキャッシュ再利用が効きやすいため対象外。
-MEMORY_BOUND_WORKLOADS = {"GUPS", "canneal", "FT", "IS"}
+#  - CG: 2026-07-10追加。疎行列(不規則スパースアクセス、ポインタチェイシングに
+#    近いgather/scatterパターン)でFT/ISと同種のメモリ帯域律速として文献でも
+#    知られるため予防的に含める(未較正のまま同日にスケジューリング事故の一因と
+#    なったworkloadなので、実測が揃うまでは安全側に倒す)。LUはブロック化された
+#    構造的アクセス(BT/SPに近い波面並列)のため対象外のまま。
+MEMORY_BOUND_WORKLOADS = {"GUPS", "canneal", "FT", "IS", "CG"}
 # 2026-07-09: SizeS本番実行でcanneal(memory-bound)のAKARINジョブが並列輻輳で
 # 6件タイムアウトしたため、2.0→3.0に引き上げ(同時実行数をさらに絞る)。
 MEMORY_BOUND_WIDTH_MULTIPLIER = 3.0
@@ -138,6 +160,31 @@ def live_sid_load_cores() -> float:
         ).stdout
         total_pct = sum(float(l.strip().rstrip("%")) for l in out.splitlines() if l.strip())
         return total_pct / 100.0
+    except Exception:
+        return 0.0
+
+
+def live_sid_loadavg() -> float:
+    """
+    SIDホストのload average(1分値、os.getloadavg())。podman stats(CPU%)と違い、
+    メモリ帯域待ちでブロックされているスレッドも実行待ちキューとしてカウントされるため、
+    CPU%ゲートが見逃す種類の輻輳(2026-07-06/07-10のインシデント)を検知できる。
+    """
+    try:
+        return os.getloadavg()[0]
+    except Exception:
+        return 0.0
+
+
+def live_purple_loadavg() -> float:
+    """Purpleホストのload average(1分値)。SSH経由で/proc/loadavgを取得する。"""
+    try:
+        out = subprocess.run(
+            ["ssh", "-o", "ConnectTimeout=8", "-o", "BatchMode=yes",
+             PURPLE_SSH_HOST, "cat /proc/loadavg"],
+            capture_output=True, text=True, timeout=15,
+        ).stdout
+        return float(out.split()[0])
     except Exception:
         return 0.0
 

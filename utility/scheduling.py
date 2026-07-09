@@ -69,7 +69,8 @@ class _CapacityPool:
     """容量(実効コア数)を超えないよう、ジョブのwidthをゲートする貪欲リストスケジューラの資源プール。"""
 
     def __init__(self, capacity: float, hard_limit: float | None = None,
-                live_load_fn=None, live_poll_interval: float = 10.0):
+                live_load_fn=None, live_poll_interval: float = 10.0,
+                loadavg_fn=None, loadavg_hard_limit: float | None = None):
         self.capacity = capacity
         # hard_limit/live_load_fn: 静的モデル(capacity)を通過した後の最終安全弁。
         # ワークロードごとのコストモデル(utility.capacity_model)未収載時のデフォルト値が
@@ -77,6 +78,15 @@ class _CapacityPool:
         # 取得し、実測+width が物理コア数(hard_limit)を超えるなら投入を遅らせる。
         self.hard_limit = hard_limit
         self.live_load_fn = live_load_fn
+        # loadavg_fn/loadavg_hard_limit: 2026-07-10のスケジューリング事故を受けて追加。
+        # live_load_fn(podman stats等のCPU%)はメモリ帯域待ちでブロックされているスレッドを
+        # 検知できない(CPU%は低いままload averageだけ急騰する)。load averageは実行待ち
+        # キューの長さを直接反映するため、CPU%ゲートが見逃す種類の輻輳を捕捉できる、
+        # 独立した第2の安全弁として並置する。widthを加算せず「現在の値」だけで判定する
+        # (load averageは既に系全体の実行待ち状況を表す実測値であり、CPU%のような
+        # 加算的な予測ではないため)。
+        self.loadavg_fn = loadavg_fn
+        self.loadavg_hard_limit = loadavg_hard_limit
         self.live_poll_interval = live_poll_interval
         self.used = 0.0
         self._cond = threading.Condition()
@@ -99,6 +109,15 @@ class _CapacityPool:
                         # 静的モデルは通過したが実測が逼迫している → TOCTOU回避のため
                         # 即座には確保せず、一定時間待って実測ごと再チェックする
                         # (このwait中に他ジョブが完了して実測が下がる可能性がある)。
+                        self._cond.wait(timeout=self.live_poll_interval)
+                        continue
+                if self.loadavg_fn is not None and self.loadavg_hard_limit is not None:
+                    self._cond.release()
+                    try:
+                        loadavg = self.loadavg_fn()
+                    finally:
+                        self._cond.acquire()
+                    if loadavg > self.loadavg_hard_limit:
                         self._cond.wait(timeout=self.live_poll_interval)
                         continue
                 self.used += width
