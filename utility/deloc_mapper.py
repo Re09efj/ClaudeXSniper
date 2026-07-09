@@ -1,7 +1,7 @@
 """
 deloc_mapper.py
 Agung et al. (IEEE Access 2020) の DeLoc アルゴリズムを、Purple サーバ上の
-detloc-tracer で取得した実通信行列 (Data/comm_matrices/*.comm.csv) から
+detloc-tracer で取得した実通信行列 (Data/tsuushin/size{class}/*.comm.csv) から
 本プロジェクトの NUMA トポロジ (2 node x (4 P-core + 4 E-core)) 向けの
 cpu_map へ変換する。
 
@@ -54,7 +54,7 @@ detloc-tracer の CSV は行 0 が最大スレッド ID に対応する逆順イ
   Jin の原著には存在せず、意図的に未実装のままにしている。
 
 単体実行:
-  python3 -m utility.deloc_mapper Data/comm_matrices/BT_2TH_bt.S.x.2.6.comm.csv --threads 2
+  python3 -m utility.deloc_mapper Data/tsuushin/sizeS/BT_S_2TH_bt.S.x.2.6.comm.csv --threads 2
 """
 
 import argparse
@@ -64,15 +64,18 @@ import math
 import os
 from typing import Optional
 
-COMM_MATRICES_DIR = "/home/hiragahama/ClaudeXSniper/Data/comm_matrices"
+TSUUSHIN_DIR = "/home/hiragahama/ClaudeXSniper/Data/tsuushin"
+
+# 2026-07-09: 参照元をData/comm_matrices(本番用に個別コピーしていた場所、
+# 実体の重複・誤ラベル品混入が発覚)からData/tsuushin(1〜16フル刻みで完全、
+# detloc-tracerの生成物をそのまま保持)に一本化した。tsuushinはクラスに
+# 関わらず常に`{workload}_{bench_class}_{TH}TH_*`という統一命名(Sクラスだけ
+# 接尾辞を省く、という comm_matrices 側の特殊ルールは無い)。
 
 
 def find_comm_csv(workload: str, bench_class: str, num_threads: int) -> str:
-    """Data/comm_matrices/ から該当する comm.csv のパスを探す。"""
-    if bench_class == "S":
-        pattern = f"{COMM_MATRICES_DIR}/{workload}_{num_threads}TH_*.comm.csv"
-    else:
-        pattern = f"{COMM_MATRICES_DIR}/{workload}_{bench_class}_{num_threads}TH_*.comm.csv"
+    """Data/tsuushin/size{bench_class}/ から該当する comm.csv のパスを探す。"""
+    pattern = f"{TSUUSHIN_DIR}/size{bench_class}/{workload}_{bench_class}_{num_threads}TH_*.comm.csv"
     matches = glob.glob(pattern)
     if not matches:
         raise FileNotFoundError(f"comm.csv が見つかりません: {pattern}")
@@ -310,7 +313,7 @@ def compute_deloc_map_from_csv(
 
 def _parse_args():
     p = argparse.ArgumentParser(description="DeLoc/MPO アルゴリズムで comm.csv から cpu_map を計算する")
-    p.add_argument("csv_path", help="Data/comm_matrices/*.comm.csv")
+    p.add_argument("csv_path", help="Data/tsuushin/size{class}/*.comm.csv")
     p.add_argument("--threads", type=int, required=True, help="スレッド数")
     p.add_argument("--node-only", action="store_true",
                    help="Step1 (Agung の DeLoc, ノード決定) のみ。Step2 (ノード内 Big/Small 再配置) をスキップする")

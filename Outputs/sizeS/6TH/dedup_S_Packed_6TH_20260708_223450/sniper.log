@@ -1,0 +1,33 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[TRACE:1] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:5] -- DONE --
+PARSEC Benchmark Suite
+Total input size:                       10.10 MB
+Total output size:                       9.28 MB
+Effective compression factor:            1.09x
+
+Mean data chunk size:                    3.64 KB (stddev: 202.63 KB)
+Amount of duplicate chunks:              4.33%
+Data size after deduplication:          10.09 MB (compression factor: 1.00x)
+Data size after compression:             9.25 MB (compression factor: 1.09x)
+Output overhead:                         0.29%
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 1017.67 seconds
+[SNIPER] Simulated 2281.7M instructions, 928.7M cycles, 2.46 IPC
+[SNIPER] Simulation speed 2242.1 KIPS (373.7 KIPS / target core - 2676.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 1017.09 seconds

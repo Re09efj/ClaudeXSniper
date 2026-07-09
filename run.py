@@ -1,7 +1,7 @@
 """
 run.py
 ClaudeXSniper の単発実験エントリーポイント。
-orchestrator を使わずに 1 ワークロード × 1 戦略を直接実行する。
+ultra_orchestrator.py のバッチ機構を使わず、1 ワークロード × 1 戦略を直接実行する。
 
   python3 run.py
   python3 run.py --workload IS --strategy Packed --threads 4 --class S
@@ -19,7 +19,7 @@ from utility.grapher         import generate_numa_graph
 from utility.power_model     import estimate as estimate_power
 from utility.run_profile     import update_from_run
 from utility.stats_reader    import parse_node_stats, parse_sim_time, print_summary
-from sniper_sim              import run_sniper
+from utility.sniper_sim_sid  import run_sniper
 
 # ============================================================
 # 実験設定（CLI 引数で上書き可能）

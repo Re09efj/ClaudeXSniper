@@ -69,15 +69,15 @@
     ]
   },
   "IS_S_2": {
-    "simTime": 0.005228,
-    "instructions": 36768540,
-    "wallTime": 25.0,
+    "simTime": 0.007675,
+    "instructions": 36754681,
+    "wallTime": 23.3,
     "wallTimes": [
-      24.2,
-      24.3,
-      24.2,
-      30.2,
-      29.2
+      29.2,
+      19.0,
+      18.2,
+      21.0,
+      22.0
     ]
   },
   "SSSP_S_2": {
@@ -117,27 +117,27 @@
     ]
   },
   "CG_S_2": {
-    "simTime": 0.022087,
-    "instructions": 332599130,
-    "wallTime": 161.1,
+    "simTime": 0.023384,
+    "instructions": 314665273,
+    "wallTime": 151.1,
     "wallTimes": [
-      128.0,
       167.4,
       170.4,
       173.4,
-      166.3
+      166.3,
+      101.0
     ]
   },
   "BT_S_2": {
-    "simTime": 0.024382,
-    "instructions": 559657140,
-    "wallTime": 239.5,
+    "simTime": 0.032006,
+    "instructions": 558921321,
+    "wallTime": 325.5,
     "wallTimes": [
-      212.0,
-      246.4,
-      248.4,
-      246.4,
-      244.4
+      335.0,
+      322.0,
+      324.0,
+      414.0,
+      228.0
     ]
   },
   "FT_S_2": {
@@ -281,15 +281,15 @@
     ]
   },
   "BT_S_8": {
-    "simTime": 0.01475,
-    "instructions": 921184173,
-    "wallTime": 265.1,
+    "simTime": 0.013773,
+    "instructions": 901115509,
+    "wallTime": 411.2,
     "wallTimes": [
-      285.5,
-      281.4,
-      279.4,
-      274.5,
-      291.5
+      402.0,
+      449.0,
+      453.0,
+      387.0,
+      390.0
     ]
   },
   "FT_S_8": {
@@ -317,15 +317,15 @@
     ]
   },
   "BT_S_12": {
-    "simTime": 0.008057,
-    "instructions": 735346189,
-    "wallTime": 185.3,
+    "simTime": 0.011211,
+    "instructions": 770067981,
+    "wallTime": 216.0,
     "wallTimes": [
-      201.4,
-      194.4,
-      206.4,
-      200.4,
-      201.4
+      305.0,
+      300.0,
+      139.0,
+      140.0,
+      102.0
     ]
   },
   "IS_S_12": {
@@ -481,15 +481,15 @@
     ]
   },
   "BT_S_16": {
-    "simTime": 0.008326,
-    "instructions": 1029268370,
-    "wallTime": 256.5,
+    "simTime": 0.011374,
+    "instructions": 1030932791,
+    "wallTime": 372.3,
     "wallTimes": [
-      365.6,
-      267.4,
-      254.4,
-      254.4,
-      258.4
+      367.0,
+      373.0,
+      373.0,
+      376.0,
+      374.0
     ]
   },
   "IS_S_16": {
@@ -833,15 +833,15 @@
     ]
   },
   "CG_W_2": {
-    "simTime": 0.689631,
-    "instructions": 2181861527,
-    "wallTime": 1923.0,
+    "simTime": 0.227104,
+    "instructions": 2130813250,
+    "wallTime": 1264.3,
     "wallTimes": [
-      1125.4,
-      1117.4,
-      2406.6,
-      2402.6,
-      2562.8
+      1123.1,
+      1129.1,
+      1342.1,
+      1372.1,
+      1500.1
     ]
   },
   "MG_W_2": {
@@ -917,15 +917,15 @@
     ]
   },
   "CG_W_12": {
-    "simTime": 0.068953,
-    "instructions": 5496290422,
-    "wallTime": 1346.5,
+    "simTime": 0.04011,
+    "instructions": 2253563612,
+    "wallTime": 950.4,
     "wallTimes": [
-      756.0,
-      734.9,
-      1587.8,
-      1837.0,
-      1817.0
+      879.1,
+      729.1,
+      1111.1,
+      723.1,
+      1106.1
     ]
   },
   "FT_W_12": {
@@ -1219,48 +1219,15 @@
     ]
   },
   "GUPS_S_2@purple": {
-    "simTime": 0.098319,
-    "instructions": 451442943,
-    "wallTime": 1425.9,
+    "simTime": 0.093441,
+    "instructions": 451438547,
+    "wallTime": 1298.9,
     "wallTimes": [
-      1407.1,
-      1434.1,
-      1484.1,
-      1278.1,
-      1304.1
-    ]
-  },
-  "dedup_S_2@purple": {
-    "simTime": 0.420317,
-    "instructions": 2331990698,
-    "wallTime": 3506.1,
-    "wallTimes": [
-      3529.3,
-      3532.3,
-      3555.3,
-      3589.3,
-      3334.3
-    ]
-  },
-  "x264_S_2@purple": {
-    "simTime": 0.528896,
-    "instructions": 5815845341,
-    "wallTime": 7765.2,
-    "wallTimes": [
-      7770.7,
-      7830.6,
-      7634.6,
-      7827.7,
-      7769.7
-    ]
-  },
-  "dedup_S_8@purple": {
-    "simTime": 0.106648,
-    "instructions": 2331948934,
-    "wallTime": 1838.6,
-    "wallTimes": [
-      1621.1,
-      2056.2
+      1279.1,
+      1311.1,
+      1320.1,
+      1296.1,
+      1309.1
     ]
   },
   "WATER_NSQUARED_S_8@purple": {
@@ -1269,18 +1236,6 @@
     "wallTime": 31.0,
     "wallTimes": [
       31.0
-    ]
-  },
-  "canneal_S_2@purple": {
-    "simTime": 1.495493,
-    "instructions": 4569321818,
-    "wallTime": 10184.2,
-    "wallTimes": [
-      10001.9,
-      10171.8,
-      10250.8,
-      10325.9,
-      10310.9
     ]
   },
   "GUPS_S_8@purple": {
@@ -1651,11 +1606,275 @@
     ]
   },
   "MG_S_2@purple": {
-    "simTime": 0.004705,
-    "instructions": 35075823,
-    "wallTime": 70.0,
+    "simTime": 0.003411,
+    "instructions": 35231627,
+    "wallTime": 69.7,
     "wallTimes": [
-      70.0
+      68.0,
+      71.0,
+      68.0,
+      73.0,
+      68.0
+    ]
+  },
+  "canneal_S_12": {
+    "simTime": 1.482696,
+    "instructions": 4835996059,
+    "wallTime": 3438.8,
+    "wallTimes": [
+      3526.3,
+      3513.3,
+      3517.3,
+      3269.2,
+      3317.2
+    ]
+  },
+  "canneal_S_2": {
+    "simTime": 1.310496,
+    "instructions": 4835936773,
+    "wallTime": 3581.0,
+    "wallTimes": [
+      3572.3,
+      3578.3,
+      3581.2,
+      3583.3,
+      3602.3
+    ]
+  },
+  "GUPS_S_12@purple": {
+    "simTime": 0.115929,
+    "instructions": 1081310070,
+    "wallTime": 1518.4,
+    "wallTimes": [
+      1455.1,
+      1522.1,
+      1546.1,
+      1552.1,
+      1540.1
+    ]
+  },
+  "canneal_S_16": {
+    "simTime": 1.542629,
+    "instructions": 4835995090,
+    "wallTime": 3267.8,
+    "wallTimes": [
+      3194.2,
+      3204.2,
+      3233.2,
+      3239.2,
+      3555.4
+    ]
+  },
+  "GUPS_S_16@purple": {
+    "simTime": 0.113403,
+    "instructions": 1333388347,
+    "wallTime": 1547.2,
+    "wallTimes": [
+      1569.2,
+      1545.3,
+      1590.3,
+      1537.3,
+      1461.3
+    ]
+  },
+  "canneal_S_8": {
+    "simTime": 1.498227,
+    "instructions": 4835632106,
+    "wallTime": 3194.5,
+    "wallTimes": [
+      3132.2,
+      3216.2,
+      3187.2,
+      3172.2,
+      3245.2
+    ]
+  },
+  "dedup_S_6": {
+    "simTime": 0.412746,
+    "instructions": 2282020255,
+    "wallTime": 1135.9,
+    "wallTimes": [
+      1112.1,
+      1168.1,
+      1128.1,
+      1135.1,
+      1156.1
+    ]
+  },
+  "dedup_S_9": {
+    "simTime": 0.209693,
+    "instructions": 2282223258,
+    "wallTime": 697.2,
+    "wallTimes": [
+      691.0,
+      725.1,
+      731.1,
+      707.0,
+      657.0
+    ]
+  },
+  "dedup_S_15": {
+    "simTime": 0.111281,
+    "instructions": 2282333158,
+    "wallTime": 490.5,
+    "wallTimes": [
+      504.0,
+      499.0,
+      491.0,
+      482.0,
+      469.0
+    ]
+  },
+  "dedup_S_12": {
+    "simTime": 0.156617,
+    "instructions": 2282373761,
+    "wallTime": 547.0,
+    "wallTimes": [
+      542.0,
+      533.0,
+      542.0,
+      562.0,
+      568.0
+    ]
+  },
+  "MG_S_8@purple": {
+    "simTime": 0.001378,
+    "instructions": 46237424,
+    "wallTime": 47.8,
+    "wallTimes": [
+      50.0,
+      50.0,
+      45.0,
+      46.0,
+      46.0
+    ]
+  },
+  "MG_S_12@purple": {
+    "simTime": 0.001666,
+    "instructions": 67530478,
+    "wallTime": 60.2,
+    "wallTimes": [
+      51.0,
+      53.0,
+      49.0,
+      50.0,
+      54.0
+    ]
+  },
+  "MG_S_16@purple": {
+    "simTime": 0.001336,
+    "instructions": 61613991,
+    "wallTime": 44.0,
+    "wallTimes": [
+      43.0,
+      43.0,
+      45.0,
+      45.0,
+      44.0
+    ]
+  },
+  "FT_S_2@purple": {
+    "simTime": 0.040581,
+    "instructions": 724808598,
+    "wallTime": 964.1,
+    "wallTimes": [
+      886.1,
+      888.1,
+      885.1,
+      1061.1,
+      1185.4
+    ]
+  },
+  "FT_S_8@purple": {
+    "simTime": 0.017316,
+    "instructions": 856029130,
+    "wallTime": 463.1,
+    "wallTimes": [
+      345.0,
+      347.0,
+      570.1,
+      341.0,
+      589.1
+    ]
+  },
+  "FT_S_12@purple": {
+    "simTime": 0.012944,
+    "instructions": 1000497892,
+    "wallTime": 381.4,
+    "wallTimes": [
+      297.0,
+      345.1,
+      460.1,
+      377.1,
+      463.2
+    ]
+  },
+  "IS_S_2@purple": {
+    "simTime": 0.008045,
+    "instructions": 36889334,
+    "wallTime": 74.0,
+    "wallTimes": [
+      72.0,
+      78.0,
+      76.0,
+      76.0,
+      76.0
+    ]
+  },
+  "FT_S_16@purple": {
+    "simTime": 0.008833,
+    "instructions": 850758129,
+    "wallTime": 332.4,
+    "wallTimes": [
+      329.1,
+      329.1,
+      334.1,
+      339.1,
+      337.1
+    ]
+  },
+  "IS_S_8@purple": {
+    "simTime": 0.002458,
+    "instructions": 42423502,
+    "wallTime": 44.5,
+    "wallTimes": [
+      45.0,
+      47.0,
+      44.0,
+      44.0,
+      43.0
+    ]
+  },
+  "IS_S_12@purple": {
+    "simTime": 0.002359,
+    "instructions": 51335250,
+    "wallTime": 47.5,
+    "wallTimes": [
+      46.0,
+      49.0,
+      45.0,
+      51.0,
+      48.0
+    ]
+  },
+  "IS_S_16@purple": {
+    "simTime": 0.001986,
+    "instructions": 58834867,
+    "wallTime": 47.8,
+    "wallTimes": [
+      49.0,
+      47.0,
+      47.0,
+      47.0,
+      51.0
+    ]
+  },
+  "LU_S_2": {
+    "simTime": 0.015861,
+    "instructions": 198392876,
+    "wallTime": 83.0,
+    "wallTimes": [
+      83.0
     ]
   }
 }

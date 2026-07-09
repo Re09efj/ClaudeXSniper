@@ -3,7 +3,7 @@ sniper_sim_purple.py
 Purple (CentOS7, yuri@172.20.2.220) 上の Jin 本人のビルド済み Sniper
 (/home/jin/sniper-detloc-backup) を SSH 経由で叩く実行バックエンド。
 
-podman を使う sniper_sim.run_sniper と同じシグネチャを持ち、orchestrator /
+podman を使う sniper_sim_sid.run_sniper と同じシグネチャを持ち、run.py /
 ultra_orchestrator から差し替え可能(podman不可のPurpleを実行資源として
 使うための代替パス)。
 
@@ -119,7 +119,7 @@ def run_sniper(
     """
     SSH経由でPurple上のJin本人ビルドSniperを実行し、結果をoutput_dirへ回収する。
 
-    Parameters は sniper_sim.run_sniper と同一。binary_path/config_path は
+    Parameters は sniper_sim_sid.run_sniper と同一。binary_path/config_path は
     ホスト(hiragahama)上の絶対パスを渡すこと(config_pathは実行前にPurpleへ転送、
     binary_pathはミラー済みPurple側パスへ変換して参照する)。
     stdin_path : 標準入力から読むワークロード(water_nsquared等)用の入力ファイル

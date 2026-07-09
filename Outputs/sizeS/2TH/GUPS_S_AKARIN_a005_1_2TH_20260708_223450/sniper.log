@@ -12,3 +12,19 @@ HPCC RandomAccess (GUPS)
   Table size : 2^22 = 4194304 entries (32 MB)
   Updates    : 16777216
   Threads    : 2
+  Time       : 0.0379 s
+  GUPS       : 0.442355
+  Error rate : 0.0000% (PASS)
+[SIFT_RECORDER] sift_writer.cc:538: uint64_t Sift::Writer::Syscall(uint16_t, const char*, uint32_t): Assertion `!response->fail()' failed.
+[TRACE:0] -- DONE --
+[SIFT:0] Error: Resource temporarily unavailable
+Pin app terminated abnormally due to signal 6.
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 1292.16 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 451.4M instructions, 285.2M cycles, 1.58 IPC
+[SNIPER] Simulation speed 349.4 KIPS (174.7 KIPS / target core - 5724.6ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 1293.45 seconds

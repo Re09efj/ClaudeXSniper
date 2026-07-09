@@ -26,21 +26,13 @@ import argparse
 from akarin.cpsat_mapper import compute_cpsat_map_from_csv
 from utility.cpu_affinity import resolve_cpu_map
 from utility.deloc_mapper import NODE_E_CORES, NODE_P_CORES, find_comm_csv
+from utility.capacity_model import HEAVY_WORKLOADS
 
 # 候補生成のためのCP-SAT呼び出し自体は軽くても、後段のSniper本実行コストが高い
-# ワークロードほどalpha点数(=候補数=実行本数)を絞る必要がある。当初はNPB系を
-# 一律「重量級」とみなしていたが、2026-07-06の実測壁時計時間(W級、Data/run_profile.json)
-# で canneal(10184s) > BT(10036s) > x264(7765s) > dedup(3506s) > MG(1715s) >
-# GUPS(1534s) > FT(829s) > IS(401s) と判明し、cannealとx264がBT/MG/FT/ISより
-# 重いことが分かった。「NPBかどうか」ではなく実測に基づき、上位3つ(canneal/BT/x264、
-# run_tonight.pyのSID振り分けと同じ基準)を粗グリッドに変更。これを見落として
-# canneal/x264にフル解像度(21点)を適用したまま実行を始めてしまい、最重量級2つに
-# 最大の候補数を割り当てるという本末転倒が起きたため、2026-07-06中に修正した。
-#
-# 2026-07-07にx264をワークロード自体から対象外にしたため(PARSEC同梱版がフレーム毎に
-# 使い捨てpthreadを生成する設計非互換、ultra_orchestrator.WORKLOADS参照)、上位3つが
-# canneal/BT/dedupに繰り上がった(x264の代わりにdedupが3位)。
-HEAVY_WORKLOADS = {"canneal", "BT", "dedup"}
+# ワークロードほどalpha点数(=候補数=実行本数)を絞る必要がある。HEAVY_WORKLOADS
+# (実測壁時計時間の重量級判定)は2026-07-09にultra_orchestrator.pyのマシン振り分け
+# と同一概念であることが分かったため、utility.capacity_modelに一本化した
+# (定義・経緯はそちらのdocstring参照)。
 
 ALPHA_GRID_FULL   = [i / 20 for i in range(21)]  # 0.00, 0.05, ..., 1.00 (21点)
 ALPHA_GRID_COARSE = [0.0, 0.5, 1.0]               # 重量級用(3点)

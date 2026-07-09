@@ -1,0 +1,50 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+PARSEC Benchmark Suite
+Threadcount: 15
+10000 swaps per temperature step
+start temperature: 2000
+netlist filename: inputs/100000.nets
+number of temperature steps: 32
+locs created
+locs assigned
+Just saw element: 100000
+netlist created. 100000 elements.
+[TRACE:5] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:13] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:12] -- DONE --
+[TRACE:15] -- DONE --
+[TRACE:14] -- DONE --
+Final routing is: 9.28008e+07
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 3392.81 seconds
+[SNIPER] Simulated 4836.0M instructions, 3180.1M cycles, 1.52 IPC
+[SNIPER] Simulation speed 1425.4 KIPS (89.1 KIPS / target core - 11225.2ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 3390.75 seconds

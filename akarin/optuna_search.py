@@ -29,7 +29,7 @@ from config.generate_config import generate_config, get_config_path
 from utility.cpu_affinity import binary_path, get_binary_args, save_affinity_config
 from utility.deloc_mapper import find_comm_csv
 from utility.stats_reader import parse_sim_time
-from sniper_sim import run_sniper
+from utility.sniper_sim_sid import run_sniper
 
 OUTPUT_BASE = "/home/hiragahama/ClaudeXSniper/Outputs/akarin"
 STUDY_DB = "/home/hiragahama/ClaudeXSniper/akarin/optuna_studies.db"

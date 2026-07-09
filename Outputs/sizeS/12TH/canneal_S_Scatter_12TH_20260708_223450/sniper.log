@@ -31,3 +31,12 @@ netlist created. 100000 elements.
 [TRACE:4] -- DONE --
 [TRACE:5] -- DONE --
 Final routing is: 9.27968e+07
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 3281.47 seconds
+[SNIPER] Simulated 4835.8M instructions, 3259.2M cycles, 1.48 IPC
+[SNIPER] Simulation speed 1473.7 KIPS (122.8 KIPS / target core - 8142.9ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 3279.27 seconds

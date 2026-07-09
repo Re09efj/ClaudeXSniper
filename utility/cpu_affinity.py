@@ -24,6 +24,7 @@ FLUIDANIMATE_DIR = f"{BINARY_BASE}/PARSEC/pkgs/apps/fluidanimate/src"
 CANNEAL_DIR  = f"{BINARY_BASE}/PARSEC/pkgs/kernels/canneal/src"
 DEDUP_DIR    = f"{BINARY_BASE}/PARSEC/pkgs/kernels/dedup/src"
 X264_DIR     = f"{BINARY_BASE}/PARSEC/pkgs/apps/x264/src"
+BODYTRACK_DIR = f"{BINARY_BASE}/PARSEC/pkgs/apps/bodytrack/src"
 WATER_NSQUARED_DIR = f"{BINARY_BASE}/PARSEC/ext/splash2/apps/water_nsquared/src"
 RADIOSITY_DIR       = f"{BINARY_BASE}/PARSEC/ext/splash2/apps/radiosity/src"
 GUPS_DIR     = f"{BINARY_BASE}/GUPS"
@@ -35,7 +36,7 @@ GAPBS_WORKLOADS  = {"BFS", "PR", "BC", "CC", "SSSP", "TC"}
 # 実コスト計算を伴う)やGAPBS(グラフ構造上のポインタチェイス)とも異なり、
 # NUMA相互接続そのものの効果を最も素直に測れる基準点として2026-07-06に追加。
 GUPS_WORKLOADS = {"GUPS"}
-PARSEC_WORKLOADS = {"FLUIDANIMATE", "CANNEAL", "DEDUP", "X264"}
+PARSEC_WORKLOADS = {"FLUIDANIMATE", "CANNEAL", "DEDUP", "X264", "BODYTRACK"}
 # SPLASH-2(PARSECフレームワーク内のext/splash2から2026-07-06にビルドして追加):
 # WATER_NSQUARED = lavaMDの代替(分子動力学N体、別実装のためlavaMD特有のクラッシュを
 # 引き継がない想定)。RADIOSITY = タスクキュー型(work-stealing)並列、fork-join
@@ -53,6 +54,7 @@ PARSEC_BINARY = {
     "CANNEAL":      (CANNEAL_DIR, "canneal"),
     "DEDUP":        (DEDUP_DIR, "dedup"),
     "X264":         (X264_DIR, "x264"),
+    "BODYTRACK":    (BODYTRACK_DIR, "bodytrack"),
 }
 
 # BENCH_CLASS → GAPBS グラフ頂点数スケール（2^g 頂点）
@@ -65,7 +67,7 @@ LAVAMD_BOXES = {"S": 3, "W": 4, "A": 5, "B": 8, "C": 10, "D": 15}
 # 展開、各src/inputs/に配置済み)。
 #
 # 相対パス("inputs/xxx")で持つ: 実行時cwdは常にバイナリ自身のディレクトリになる
-# (sniper_sim.pyはpodmanの-wでCONTAINER_BINに、sniper_sim_purple.pyはcdでbinary_dirに
+# (sniper_sim_sid.pyはpodmanの-wでCONTAINER_BINに、sniper_sim_purple.pyはcdでbinary_dirに
 # 移動する)ため、絶対パス(hiragahama上のホストパス)を渡すとコンテナ内やPurple上には
 # 存在せず「file not found」で即終了してしまう(2026-07-06、fluidanimate導入時に発覚し、
 # host-build時にすり替わっていたcanneal/dedup/x264でも同じ不具合を確認)。
@@ -106,6 +108,18 @@ DEDUP_INPUT_BY_CLASS = {
     "S": "inputs/media.dat",
     "W": "inputs/media_w.dat",
     "A": "inputs/media_a.dat",
+}
+
+# BENCH_CLASS → bodytrack 実行パラメータ(シーケンスディレクトリ・フレーム数・
+# 粒子数)。2026-07-09、Purple上のAgungさんの環境(sniper-detloc-backup系ではなく
+# sniper-bench、PARSEC公式input_simsmall/simmedium/simlarge)からバイナリ
+# (amd64-linux.gcc-pthreads版)と入力データを取得し追加。PARSEC公式仕様通り
+# S/W/Aでシーケンス自体が異なる(facesimと違い本物のクラス分けが存在する)。
+# カメラ数(4)・アニーリング層数(5)は全クラス共通、末尾のverbose(0)も固定。
+BODYTRACK_PARAMS = {
+    "S": {"sequence": "sequenceB_1", "frames": 1, "particles": 1000},
+    "W": {"sequence": "sequenceB_2", "frames": 2, "particles": 2000},
+    "A": {"sequence": "sequenceB_4", "frames": 4, "particles": 4000},
 }
 # fluidanimate: PARSEC公式input_simsmall.tarのin_35K.fluid(粒子数35K、Jinも使用実績あり)。
 # 2026-07-06にsrc/inputs/へ配置。フレーム数はPARSEC標準simsmall相当の5。
@@ -235,6 +249,13 @@ def get_binary_args(workload: str, bench_class: str, num_threads: int) -> str:
             "--b-pyramid --weightb --mixed-refs --no-fast-pskip --me umh --subme 7 "
             f"--analyse b8x8,i4x4 --threads {num_threads} "
             f"-o /tmp/x264_out_{num_threads}.264 {X264_INPUT}"
+        )
+    if wl_upper == "BODYTRACK":
+        # Usage: bodytrack <sequenceDir> <cameras> <frames> <particles> <layers> <verbose> <threads>
+        # (PARSEC公式runconf準拠。入力ファイルはbench_classでスケール、BODYTRACK_PARAMS参照)
+        p = BODYTRACK_PARAMS.get(bench_class, BODYTRACK_PARAMS["S"])
+        return (
+            f"inputs/{p['sequence']} 4 {p['frames']} {p['particles']} 5 0 {num_threads}"
         )
     if wl_upper == "RADIOSITY":
         # PARSEC標準simsmall呼び出し(バッチモード、標準roomシーン)
@@ -393,7 +414,7 @@ def resolve_cpu_map(strategy: str, workload: str, bench_class: str, num_threads:
     Step2ノード内Big/Small)で都度計算する（静的な推測ベースの MPO_MAPS はもう使わない）。
     それ以外の戦略は STRATEGIES の固定配置をそのまま返す。
 
-    orchestrator.py / ultra_orchestrator.py / run.py / vsPOSM/vs_posm.py など、
+    ultra_orchestrator.py / run.py / vsPOSM/vs_posm.py など、
     cpu_map 解決が必要な箇所は全てここを呼ぶ（各ファイルで個別に実装しない）。
     """
     if strategy == "MPO":

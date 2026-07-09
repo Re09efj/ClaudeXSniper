@@ -1,0 +1,20 @@
+BENCHMARK=IS.S (NPB3.3 OpenMP)
+PRESET=AKARIN_a005_1
+NUM_THREADS=8
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[12, 9, 8, 11, 15, 13, 10, 14]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU12 (Node1 E-core)
+  thread01 -> CPU09 (Node1 P-core)
+  thread02 -> CPU08 (Node1 P-core)
+  thread03 -> CPU11 (Node1 P-core)
+  thread04 -> CPU15 (Node1 E-core)
+  thread05 -> CPU13 (Node1 E-core)
+  thread06 -> CPU10 (Node1 P-core)
+  thread07 -> CPU14 (Node1 E-core)
+
+# AKARIN候補由来: alpha=0.05, alpha=0.10, alpha=0.15, alpha=0.20, alpha=0.25, alpha=0.30, alpha=0.35, alpha=0.40, alpha=0.45
+# backend=purple

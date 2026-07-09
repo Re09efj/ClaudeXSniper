@@ -41,6 +41,10 @@ REMOTE_OUT    = f"{REMOTE_HOME}/deloc_test/comm_matrices_tsuushin_{SIZE}"
 PIN  = "/home/agungm/pin-3.7-97619-g0d0c92f4f-gcc-linux/pin"
 TOOL = f"{REMOTE_HOME}/deloc_test/obj-intel64/detloc_tracer.so"
 PARSEC = f"{REMOTE_HOME}/claudex_akarin/binary/PARSEC"
+# CG/LUはNPB3.3-OMPフォールバックバイナリ(deloc_test/workload_binaries/npb_sizes/には
+# lu.*.xが存在しないため、S/W共にこちらのclaudex_akarinミラーに統一。ローカルの
+# binary/NPB3.3-OMP/bin/と同一バイナリであることをファイルサイズ一致で確認済み、2026-07-10)。
+NPB_BIN = f"{REMOTE_HOME}/claudex_akarin/binary/NPB3.3-OMP/bin"
 
 STANDARD_TIMEOUT = 700
 
@@ -48,6 +52,8 @@ STANDARD_TIMEOUT = 700
 # args_templateの{th}は起動引数の値(実スレッド数ではなく-t Nそのもの)で置換する。
 # Sクラスのパラメータはutility/cpu_affinity.pyのCANNEAL_PARAMS["S"]/DEDUP_INPUT_BY_CLASS["S"]
 # と揃えている(NSWAPS=10000/100000.nets、media.dat)。
+# CG/LUは「-t N = 実N」のプレーンなOMPワークロード(canneal/dedupのようなarg-vs-実の
+# ずれなし)なので、.gettsuushin.py(SizeW)と同じ規約で1THを除外し2〜16のみ取得する。
 WORKLOADS = [
     ("canneal", f"{PARSEC}/pkgs/kernels/canneal/src/canneal",
      "{th} 10000 2000 " + f"{PARSEC}/pkgs/kernels/canneal/src/inputs/100000.nets 32",
@@ -56,6 +62,8 @@ WORKLOADS = [
      "-c -p -v -t {th} -i " + f"{PARSEC}/pkgs/kernels/dedup/src/inputs/media.dat"
      + " -o /tmp/dedup_tsuushin_s_{th}.dat.ddp",
      STANDARD_TIMEOUT, list(range(1, 17))),
+    ("CG", f"{NPB_BIN}/cg.S.x", "", STANDARD_TIMEOUT, list(range(2, 17))),
+    ("LU", f"{NPB_BIN}/lu.S.x", "", STANDARD_TIMEOUT, list(range(2, 17))),
 ]
 
 MAX_PARALLEL = 8

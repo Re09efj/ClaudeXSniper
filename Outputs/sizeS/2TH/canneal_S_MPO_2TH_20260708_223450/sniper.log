@@ -15,3 +15,14 @@ locs created
 locs assigned
 Just saw element: 100000
 netlist created. 100000 elements.
+[TRACE:1] -- DONE --
+Final routing is: 9.27689e+07
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 3584.37 seconds
+[SNIPER] Simulated 4835.9M instructions, 3816.7M cycles, 1.27 IPC
+[SNIPER] Simulation speed 1349.2 KIPS (674.6 KIPS / target core - 1482.4ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 3581.93 seconds
