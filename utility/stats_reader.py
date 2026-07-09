@@ -107,11 +107,16 @@ def parse_node_stats(output_dir: str, num_nodes: int = 2, cpu_map: list | None =
         result[node] = {"reads": dram_reads, "writes": dram_writes}
 
     if cpu_map:
+        # 2026-07-10: total_coresをフル16固定(Jin方式)にしたことで、
+        # simulated core index はそのまま physical CPU 番号と一致する
+        # (config/generate_config.pyのordered_cpus=range(16)固定を参照)。
+        # 以前はcpu_map[sim_core](スレッドiのターゲットCPUのリスト、
+        # インデックスの意味が違う)で誤って判定しており、sim_coreの実体と
+        # 無関係な結果を返しうるバグがあった。
         sim_cores = set(store_local_per_core) | set(store_remote_per_core)
         node_of = {
-            sim_core: (0 if cpu_map[sim_core] in NODE0_CPUS else 1)
+            sim_core: (0 if sim_core in NODE0_CPUS else 1)
             for sim_core in sim_cores
-            if sim_core < len(cpu_map)
         }
         for node in range(num_nodes):
             if result[node]["writes"] != 0:
@@ -184,8 +189,16 @@ def parse_elapsed_time_fs(output_dir: str) -> dict:
 def parse_cycles(output_dir: str, cpu_map: list | None = None) -> dict:
     """
     コアごとのサイクル数を返す。{core_id: int}
-    elapsed_time (fs) × 周波数 (Hz) で計算。
-    cpu_map が与えられれば P/E コア周波数を使い分ける。
+    elapsed_time (fs) × 周波数 (Hz) で計算。P/E コア周波数を使い分ける。
+
+    2026-07-10: total_coresをフル16固定(Jin方式)にしたことで、simulated core
+    index はそのまま physical CPU 番号と一致する(config/generate_config.pyの
+    ordered_cpus=range(16)固定を参照)。以前はcpu_map[sim_core](スレッドiの
+    ターゲットCPUのリスト、インデックスの意味が違う)で誤って判定しており、
+    num_threads未満のsim_core番号を持つアクティブコア(例: EPO/2THのcpu_map=
+    [4,5]はsim_core 4,5で動くが、旧コードはlen(cpu_map)=2未満でないとして
+    デフォルトP-coreに倒し、実際はE-coreなのに周波数を誤ってP-core扱いする
+    バグがあった)。cpu_map引数はもう不要だが、呼び出し元との互換のため残す。
     """
     elapsed = parse_elapsed_time_fs(output_dir)
     if not elapsed:
@@ -193,11 +206,7 @@ def parse_cycles(output_dir: str, cpu_map: list | None = None) -> dict:
 
     result = {}
     for sim_core, fs in elapsed.items():
-        if cpu_map and sim_core < len(cpu_map):
-            cpu_id = cpu_map[sim_core]
-            freq = P_FREQ_HZ if cpu_id in P_CORES else E_FREQ_HZ
-        else:
-            freq = P_FREQ_HZ  # デフォルト: P-core
+        freq = P_FREQ_HZ if sim_core in P_CORES else E_FREQ_HZ
         result[sim_core] = int(fs * 1e-15 * freq)
 
     return result
@@ -367,12 +376,10 @@ def dump_all_stats(output_dir: str, cpu_map: list | None = None) -> dict:
     )
     pairs = cur.fetchall()
 
-    # sim_core → node id (cpu_map ベース)
-    core_to_node: dict[int, int] = {}
-    if cpu_map:
-        for sim_core, cpu_id in enumerate(cpu_map):
-            core_to_node[sim_core] = 0 if cpu_id in NODE0_CPUS else 1
-    max_sim_core = (len(cpu_map) - 1) if cpu_map else -1
+    # sim_core → node id (2026-07-10: total_coresフル16固定化により
+    # simulated core index = physical CPU番号なので、cpu_mapを介さず直接判定できる)
+    core_to_node: dict[int, int] = {c: (0 if c in NODE0_CPUS else 1) for c in range(16)}
+    max_sim_core = 15
 
     result: dict[str, int | float] = {}
 

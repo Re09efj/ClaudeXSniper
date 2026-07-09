@@ -82,29 +82,41 @@ def _core_node(cpu_id: int) -> int:
     return 0 if cpu_id in NODE0_CPUs else 1
 
 
-def _controllers_interleaving(cpu_map: list, num_threads: int) -> int:
+TOTAL_SIM_CORES = 16  # シミュレート対象トポロジは常にフル16固定 (Jin方式、2026-07-10)
+
+def _active_dram_controllers(cpu_map: list, num_threads: int) -> tuple[int, list[int]]:
     """
-    Node0 スレッドが先頭グループ・Node1 が後続グループに並んだ場合の
-    グループサイズ = DRAM controllers_interleaving。
-    片ノードのみの場合は num_threads を返す (controller 1 個)。
+    このジョブでアクティブなスレッド集合(cpu_map[:num_threads])がNode0/Node1の
+    どちらか一方に偏っているか、両方にまたがっているかに応じて、DRAMコントローラの
+    個数と配置位置を返す。2026-07-06に実測検証済みの「帯域競合(コントローラを
+    何個使えるか)」効果をtotal_cores固定化後も維持するため、Sniperの自動interleaving
+    計算(total_coresに対する割合で決まる)ではなく、num_controllers/controller_positions
+    を明示指定する方式にする(2026-07-10、Jin方式へのtotal_cores固定化に伴う変更。
+    詳細はDocuments/2026年7月10日.mdの「範囲外バグ」節を参照)。
     """
     active = cpu_map[:num_threads]
     n0 = sum(1 for c in active if c in NODE0_CPUs)
     n1 = num_threads - n0
-    if n0 == 0 or n1 == 0:
-        return num_threads
-    return n0
+    if n0 == 0:
+        return 1, [8]   # Node1のみ使用 → コントローラ1個(Node1側)
+    if n1 == 0:
+        return 1, [0]   # Node0のみ使用 → コントローラ1個(Node0側)
+    return 2, [0, 8]    # 両ノードにまたがる → コントローラ2個
 
 
-def _reorder_by_node(cpu_map: list, num_threads: int) -> list:
+def _write_map_file(cpu_map: list, num_threads: int, map_path: str) -> None:
     """
-    Node0 スレッドを先・Node1 を後ろに安定ソートして返す。
-    emesh の stop 割り当て (core i → stop i // concentration) と整合させる。
+    Jin方式のmap_file(scheduler/pinned_map用)を書き出す。`thread_id:cpu_id`
+    形式(/home/agung/vcs/sniper-configs/sniper-mapping/*.mapと同じ形式)。
     """
-    active = cpu_map[:num_threads]
-    node0 = [c for c in active if c in NODE0_CPUs]
-    node1 = [c for c in active if c in NODE1_CPUs]
-    return node0 + node1
+    with open(map_path, "w") as f:
+        for t in range(num_threads):
+            f.write(f"{t}:{cpu_map[t]}\n")
+
+
+def get_map_path(output_dir: str, strategy: str, num_threads: int) -> str:
+    """map_fileの保存パスを返す(ファイルは生成しない)。get_config_pathと対になる。"""
+    return os.path.join(output_dir, f"arrow_lake_{strategy}_{num_threads}TH.map")
 
 
 def generate_config(
@@ -112,17 +124,37 @@ def generate_config(
     num_threads: int,
     cpu_map: list,
     output_path: str,
+    map_file_container_path: str,
 ) -> str:
     """
     P/Eヘテロジニアス設定ファイルを生成して output_path に書き込み、パスを返す。
-    """
-    ordered_cpus = _reorder_by_node(cpu_map, num_threads)
-    n_cores      = num_threads
-    interleaving = _controllers_interleaving(cpu_map, num_threads)
 
-    # Sniper要件: controllers_interleaving は shared_cores の倍数であること。
-    # shared_cores = interleaving → L3グループがDRAMコントローラ境界に一致する。
-    shared_cores = interleaving
+    2026-07-10: GOMP_CPU_AFFINITY(実行時syscall経由の配置)がこの環境では機能
+    しないと判明したため、JinのSniperフォークが持つscheduler/pinned_map
+    (thread_id:cpu_idを静的configファイルで指定、SIDのSniperイメージにも
+    同じパッチを移植・再ビルド済み)に統一した。map_file_container_pathには、
+    実行環境(SIDコンテナ内 or Purpleリモート)から見た.mapファイルの絶対パスを
+    呼び出し側が渡すこと。実体の.mapファイルはoutput_pathと同じディレクトリに
+    書き出す(get_map_path参照)ので、Purple向けの場合は呼び出し側が転送を担当。
+    """
+    # total_cores は常にフル16固定 (Jin方式、2026-07-10)。cpu_mapは物理CPU番号
+    # 0〜15の固定リストなので、simulated core index == physical CPU番号となり
+    # 常に有効な範囲に収まる(以前はnum_threadsに縮小していたため、Scatter/EPO/
+    # HPO/MPOがnum_threads未満の実行でcpu_mapの値がapplicationCoresを超え、
+    # GOMP_CPU_AFFINITY経由の配置が範囲外になりうるバグがあった)。
+    # 使われない残りのシミュレートコアは単にアイドルのまま。
+    ordered_cpus = list(range(TOTAL_SIM_CORES))
+    n_cores      = TOTAL_SIM_CORES
+    num_controllers, controller_positions = _active_dram_controllers(cpu_map, num_threads)
+    controller_positions_str = ",".join(str(p) for p in controller_positions)
+
+    map_path = os.path.splitext(output_path)[0] + ".map"
+    _write_map_file(cpu_map, num_threads, map_path)
+
+    # shared_cores: L3はノードごとの物理構成(8コア/ノード)に固定。DRAMコントローラの
+    # 個数(num_controllers、帯域競合効果を出すためアクティブなノード数で可変)とは
+    # 別の、トポロジ自体の固定プロパティなので混同しない。
+    shared_cores = 8
 
     # per-core 周波数リスト (GHz)
     freqs = [_core_freq(c) for c in ordered_cpus]
@@ -156,6 +188,10 @@ def generate_config(
 [general]
 total_cores = {n_cores}
 enable_icache_modeling = true
+# 2026-07-10: First-Touch(AddressHomeLookup)とバス課金のノード単位免除
+# (NetworkModelBus)の両方が参照するノード境界。Node0=CPU0-7, Node1=CPU8-15
+# に固定(トポロジ自体の物理プロパティ、戦略に依らず不変)。
+cores_per_node = 8
 
 [perf_model/core]
 type = interval
@@ -186,10 +222,19 @@ shared_cores = {shared_cores}
 address_hash = mod
 
 [perf_model/dram]
-num_controllers = -1
-controllers_interleaving = {interleaving}
+num_controllers = {num_controllers}
+controller_positions = {controller_positions_str}
 latency = {LOCAL_LATENCY_NS}
 per_controller_bandwidth = 51.2
+
+[scheduler]
+type = pinned_map
+
+[scheduler/pinned]
+# GOMP_CPU_AFFINITY(実行時syscall経由)はこの環境で機能しないと2026-07-10に判明。
+# Jinのpinned_mapパッチ(SID/Purple双方のSniperビルドに移植済み)でmap_file
+# (thread_id:cpu_id、_write_map_file()参照)による厳密な静的配置を使う。
+map_file = {map_file_container_path}
 
 [network]
 memory_model_1 = bus

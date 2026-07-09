@@ -28,6 +28,8 @@ SSH切断への耐性:
 import os
 import subprocess
 
+from config.generate_config import TOTAL_SIM_CORES
+
 SSH_HOST    = "yuri@172.20.2.220"
 REMOTE_HOME = "/home/gp.sc.cc.tohoku.ac.jp/yuri"
 REMOTE_ROOT = f"{REMOTE_HOME}/claudex_akarin"
@@ -148,6 +150,24 @@ def run_sniper(
         log_file.write(f"[sniper_sim_purple] cfg転送失敗(SSH切断の可能性): {config_path}\n")
         return scp_ret.returncode
 
+    # map_file(scheduler/pinned_map用、config_pathと同じディレクトリにconfig_path.
+    # generate_config()が生成、2026-07-10)もPurpleへ転送する。cfgの
+    # map_file=行が指すREMOTE_CFG_ROOT配下のパスと一致させる必要がある。
+    map_path = os.path.splitext(config_path)[0] + ".map"
+    if os.path.exists(map_path):
+        remote_map_path = f"{REMOTE_CFG_ROOT}/{os.path.basename(map_path)}"
+        try:
+            scp_ret = subprocess.run(
+                ["scp", "-q", *SSH_OPTS, map_path, f"{SSH_HOST}:{remote_map_path}"],
+                stdout=log_file, stderr=log_file,
+            )
+        except OSError as e:
+            log_file.write(f"[sniper_sim_purple] map_file転送でSSH起動失敗: {e}\n")
+            return 255
+        if scp_ret.returncode != 0:
+            log_file.write(f"[sniper_sim_purple] map_file転送失敗(SSH切断の可能性): {map_path}\n")
+            return scp_ret.returncode
+
     remote_stdin_path = None
     if stdin_path:
         remote_stdin_path = f"{REMOTE_CFG_ROOT}/{os.path.basename(stdin_path)}"
@@ -181,7 +201,9 @@ def run_sniper(
         f"export PIN_ROOT={PIN_ROOT} && "
         f"export OMP_NUM_THREADS={n_omp} && "
         f'export GOMP_CPU_AFFINITY="{gomp_affinity}" && '
-        f"exec {SNIPER_ROOT}/run-sniper -n {num_threads} -d {remote_out_dir} -c {remote_cfg_path} "
+        # -n はコマンドラインから--general/total_coresを上書きするため、.cfgの
+        # TOTAL_SIM_CORES(16固定、Jin方式)と必ず一致させる(sniper_sim_sid.py参照)。
+        f"exec {SNIPER_ROOT}/run-sniper -n {TOTAL_SIM_CORES} -d {remote_out_dir} -c {remote_cfg_path} "
         f"-- {remote_binary}{binary_args_part}{stdin_redirect}"
     )
     remote_cmd = (

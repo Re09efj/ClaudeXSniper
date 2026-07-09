@@ -77,7 +77,11 @@ def main():
     print(f"{'='*60}\n")
 
     cfg_path = get_config_path(out_dir, strategy, num_threads)
-    generate_config(strategy, num_threads, cpu_map, cfg_path)
+    # map_fileはcfgと同じディレクトリ(out_dir)に書き出され、そのディレクトリは
+    # コンテナ内に/cfgとしてマウントされる(utility/sniper_sim_sid.py参照)ので、
+    # コンテナから見たパスは/cfg/{basename}.mapになる。
+    map_container_path = f"/cfg/{os.path.splitext(os.path.basename(cfg_path))[0]}.map"
+    generate_config(strategy, num_threads, cpu_map, cfg_path, map_container_path)
     print(f"[設定] {cfg_path}")
 
     save_affinity_config(

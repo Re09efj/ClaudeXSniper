@@ -329,14 +329,14 @@
     ]
   },
   "IS_S_12": {
-    "simTime": 0.001617,
-    "instructions": 48247122,
-    "wallTime": 14.8,
+    "simTime": 0.002268,
+    "instructions": 48760595,
+    "wallTime": 15.0,
     "wallTimes": [
-      13.0,
       15.2,
       15.2,
       15.2,
+      14.2,
       15.2
     ]
   },

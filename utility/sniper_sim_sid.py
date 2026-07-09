@@ -2,7 +2,12 @@
 sniper_sim_sid.py
 podman を使って Sniper コンテナ上でシミュレーションを実行するラッパー(SIDホスト用)。
 
-コンテナ: snipersim/snipersim:latest
+コンテナ: localhost/snipersim/snipersim:detloc
+  - 2026-07-10、snipersim/snipersim:latestにJinのscheduler_pinned_mapパッチ
+    (common/scheduler/scheduler_pinned_map.cc/h, split_string.cc/h)を移植して
+    再ビルドし、新タグとしてコミットしたイメージ。GOMP_CPU_AFFINITYが機能しない
+    問題への対応で、map_file(thread_id:cpu_id)による厳密な静的配置が必要になった
+    ため(config/generate_config.py参照)。元のlatestタグは変更していない。
   - /root/sniper/run-sniper がエントリポイント
   - バイナリは --binary でホストパスを渡し、コンテナに /binary としてマウント
   - 出力は /out にマウント
@@ -12,8 +17,9 @@ import os
 import subprocess
 import uuid
 
+from config.generate_config import TOTAL_SIM_CORES
 
-CONTAINER_IMAGE = "snipersim/snipersim:latest"
+CONTAINER_IMAGE = "localhost/snipersim/snipersim:detloc"
 SNIPER_BIN      = "/root/sniper/run-sniper"
 CONTAINER_CFG   = "/cfg/arrow_lake.cfg"
 CONTAINER_BIN   = "/binary"
@@ -99,7 +105,10 @@ def run_sniper(
     cfg_dir     = os.path.dirname(config_path)
     cfg_name    = os.path.basename(config_path)
 
-    # GOMP_CPU_AFFINITY: スレッド i を cpu_map[i] にバインド (ヒント)
+    # GOMP_CPU_AFFINITY: 2026-07-10判明、この環境のSniperの実行時syscall経由の
+    # 配置には効かない。実際の配置はconfig側のscheduler/pinned_map(map_file)が
+    # 決める(config/generate_config.py参照)。cpu_mapと同じ値なので設定しても
+    # 矛盾は起きないが、実効性のない冗長設定である点に注意。
     gomp_affinity = " ".join(str(cpu_map[i]) for i in range(n_omp))
 
     # タイムアウト時に確実にkillできるよう、コンテナに一意な名前を付ける
@@ -123,7 +132,10 @@ def run_sniper(
     podman_cmd += [
         CONTAINER_IMAGE,
         SNIPER_BIN,
-        "-n", str(num_threads),
+        # -n はコマンドラインから--general/total_coresを上書きするため、.cfgの
+        # TOTAL_SIM_CORES(16固定、Jin方式)と必ず一致させる。num_threadsを渡すと
+        # cfgの設定を無効化してしまい、以前の「範囲外バグ」が復活する。
+        "-n", str(TOTAL_SIM_CORES),
         "-d", CONTAINER_OUT,
         "-c", f"/cfg/{cfg_name}",
         "--",

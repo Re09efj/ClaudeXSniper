@@ -37,6 +37,7 @@ from datetime import datetime
 from config.generate_config import generate_config, get_config_path
 from utility.sniper_sim_sid   import run_sniper as run_sniper_sid
 from utility.sniper_sim_purple import run_sniper as run_sniper_purple
+from utility.sniper_sim_purple import REMOTE_CFG_ROOT
 from utility.cpu_affinity    import (resolve_cpu_map, binary_path, get_binary_args,
                                       save_affinity_config, needs_stdin, write_stdin_file)
 from utility.csv_exporter    import export_csv
@@ -232,7 +233,16 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False) -> str | None:
     os.makedirs(out_dir, exist_ok=True)
 
     cfg_path = get_config_path(out_dir, job.strategy, job.num_threads)
-    generate_config(job.strategy, job.num_threads, cpu_map, cfg_path)
+    # map_fileはcfgと同じディレクトリに書き出される。SIDはそのディレクトリが
+    # コンテナ内に/cfgとしてマウントされる。Purpleは呼び出し先(sniper_sim_purple.
+    # run_sniper)がcfgと同様にscpで転送するため、転送後の絶対パス(REMOTE_CFG_ROOT
+    # 配下)を渡す。
+    map_basename = f"{os.path.splitext(os.path.basename(cfg_path))[0]}.map"
+    map_container_path = (
+        f"{REMOTE_CFG_ROOT}/{map_basename}" if job.backend == "purple"
+        else f"/cfg/{map_basename}"
+    )
+    generate_config(job.strategy, job.num_threads, cpu_map, cfg_path, map_container_path)
     save_affinity_config(out_dir, job.strategy, job.workload, job.bench_class,
                          cpu_map, job.num_threads)
     stdin_path = None
