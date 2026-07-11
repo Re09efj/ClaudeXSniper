@@ -1,0 +1,24 @@
+BENCHMARK=GUPS.S (NPB3.3 OpenMP)
+PRESET=AKARIN
+NUM_THREADS=12
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[0, 9, 13, 11, 15, 12, 14, 10, 8, 7, 6, 5]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU00 (Node0 P-core)
+  thread01 -> CPU09 (Node1 P-core)
+  thread02 -> CPU13 (Node1 E-core)
+  thread03 -> CPU11 (Node1 P-core)
+  thread04 -> CPU15 (Node1 E-core)
+  thread05 -> CPU12 (Node1 E-core)
+  thread06 -> CPU14 (Node1 E-core)
+  thread07 -> CPU10 (Node1 P-core)
+  thread08 -> CPU08 (Node1 P-core)
+  thread09 -> CPU07 (Node0 E-core)
+  thread10 -> CPU06 (Node0 E-core)
+  thread11 -> CPU05 (Node0 E-core)
+
+# AKARIN候補由来: AKARIN
+# backend=sid

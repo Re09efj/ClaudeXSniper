@@ -1,0 +1,96 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/cfg/arrow_lake_Scatter_2TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - LU Benchmark
+
+ Size:   12x  12x  12
+ Iterations:                     50
+ Number of available threads:     2
+
+[DeTLoc] map thread-1 to core-8
+[HOOKS] Entering ROI
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   50
+[HOOKS] Leaving ROI
+
+ Verification being performed for class S
+ Accuracy setting for epsilon =  0.1000000000000E-07
+ Comparison of RMS-norms of residual
+           1   0.1619634321098E-01 0.1619634321098E-01 0.8846945094284E-13
+           2   0.2197674516482E-02 0.2197674516482E-02 0.1294525863255E-12
+           3   0.1517992765339E-02 0.1517992765340E-02 0.3004068557898E-12
+           4   0.1502958443601E-02 0.1502958443599E-02 0.1236875878279E-11
+           5   0.3426407315590E-01 0.3426407315590E-01 0.1417585618217E-13
+ Comparison of RMS-norms of solution error
+           1   0.6422331995796E-03 0.6422331995796E-03 0.9048619174976E-13
+           2   0.8414434204735E-04 0.8414434204735E-04 0.3768870582808E-13
+           3   0.5858826961650E-04 0.5858826961649E-04 0.3221104529688E-12
+           4   0.5847422259515E-04 0.5847422259516E-04 0.2085923317854E-12
+           5   0.1310334791411E-02 0.1310334791411E-02 0.5576836309660E-13
+ Comparison of surface integral
+               0.7841892886594E+01 0.7841892886594E+01 0.0000000000000E+00
+ Verification Successful
+
+
+ LU Benchmark Completed.
+ Class           =                        S
+ Size            =             12x  12x  12
+ Iterations      =                       50
+ Time in seconds =                     0.02
+ Total threads   =                        2
+ Avail threads   =                        2
+ Mop/s total     =                  5343.81
+ Mop/s/thread    =                  2671.91
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = (none)
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:0] -- DONE --
+[TRACE:1] -- STOP --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 294.67 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 197.0M instructions, 45.5M cycles, 4.33 IPC
+[SNIPER] Simulation speed 668.5 KIPS (41.8 KIPS / target core - 23935.7ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 298.61 seconds

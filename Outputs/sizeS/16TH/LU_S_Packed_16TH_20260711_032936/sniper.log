@@ -1,0 +1,124 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/cfg/arrow_lake_Packed_16TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - LU Benchmark
+
+ Size:   12x  12x  12
+ Iterations:                     50
+ Number of available threads:    16
+
+[DeTLoc] map thread-1 to core-1
+[DeTLoc] map thread-2 to core-2
+[DeTLoc] map thread-3 to core-3
+[DeTLoc] map thread-4 to core-4
+[DeTLoc] map thread-5 to core-5
+[DeTLoc] map thread-6 to core-6
+[DeTLoc] map thread-7 to core-7
+[DeTLoc] map thread-8 to core-8
+[DeTLoc] map thread-9 to core-9
+[DeTLoc] map thread-10 to core-10
+[DeTLoc] map thread-11 to core-11
+[DeTLoc] map thread-12 to core-12
+[DeTLoc] map thread-13 to core-13
+[DeTLoc] map thread-14 to core-14
+[DeTLoc] map thread-15 to core-15
+[HOOKS] Entering ROI
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   50
+[HOOKS] Leaving ROI
+
+ Verification being performed for class S
+ Accuracy setting for epsilon =  0.1000000000000E-07
+ Comparison of RMS-norms of residual
+           1   0.1619634321098E-01 0.1619634321098E-01 0.8889787443408E-13
+           2   0.2197674516482E-02 0.2197674516482E-02 0.1296499225851E-12
+           3   0.1517992765339E-02 0.1517992765340E-02 0.3002640089730E-12
+           4   0.1502958443601E-02 0.1502958443599E-02 0.1236875878279E-11
+           5   0.3426407315590E-01 0.3426407315590E-01 0.1417585618217E-13
+ Comparison of RMS-norms of solution error
+           1   0.6422331995796E-03 0.6422331995796E-03 0.8981092166208E-13
+           2   0.8414434204735E-04 0.8414434204735E-04 0.3768870582808E-13
+           3   0.5858826961650E-04 0.5858826961649E-04 0.3225730891670E-12
+           4   0.5847422259515E-04 0.5847422259516E-04 0.2087082164142E-12
+           5   0.1310334791411E-02 0.1310334791411E-02 0.5543739358267E-13
+ Comparison of surface integral
+               0.7841892886594E+01 0.7841892886594E+01 0.1132607181129E-15
+ Verification Successful
+
+
+ LU Benchmark Completed.
+ Class           =                        S
+ Size            =             12x  12x  12
+ Iterations      =                       50
+ Time in seconds =                     0.01
+ Total threads   =                       16
+ Avail threads   =                       16
+ Mop/s total     =                 14835.96
+ Mop/s/thread    =                   927.25
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = (none)
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:0] -- DONE --
+[TRACE:13] -- STOP --
+[TRACE:9] -- STOP --
+[TRACE:10] -- STOP --
+[TRACE:4] -- STOP --
+[TRACE:14] -- STOP --
+[TRACE:3] -- STOP --
+[TRACE:2] -- STOP --
+[TRACE:6] -- STOP --
+[TRACE:15] -- STOP --
+[TRACE:12] -- STOP --
+[TRACE:8] -- STOP --
+[TRACE:5] -- STOP --
+[TRACE:7] -- STOP --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[TRACE:1] -- STOP --
+[TRACE:11] -- STOP --
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 226.46 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 623.6M instructions, 17.2M cycles, 36.29 IPC
+[SNIPER] Simulation speed 2753.4 KIPS (172.1 KIPS / target core - 5811.0ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 230.41 seconds

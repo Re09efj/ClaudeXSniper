@@ -60,6 +60,13 @@ E_FREQ = 2.2   # GHz (P:E比 ~1.3倍を維持したGracemont相当値)
 
 LOCAL_LATENCY_NS = 60   # ローカルDRAMアクセスレイテンシ
 
+# 2026-07-11: AKARIN新数式(akarin/cpsat_mapper.py、roofline型objective)がこの
+# 帯域値を最適化計算に直接使うため、以前のP_FREQ/E_FREQと同じ理由(2026-07-09に
+# generate_config.py側の値変更にakarin側が追従できず不整合が起きた事例)で、
+# ハードコード値ではなく単一の真実源として名前付き定数化した。
+PER_CONTROLLER_BANDWIDTH_GBPS = 51.2  # [perf_model/dram] per_controller_bandwidth
+BUS_BANDWIDTH_GBPS = 102.4            # [network/bus] bandwidth
+
 # キャッシュサイズ (KB) - 実機公表値ベース (Willow Cove / Gracemont)
 L1D_KB_P = 48
 L1D_KB_E = 32
@@ -225,7 +232,7 @@ address_hash = mod
 num_controllers = {num_controllers}
 controller_positions = {controller_positions_str}
 latency = {LOCAL_LATENCY_NS}
-per_controller_bandwidth = 51.2
+per_controller_bandwidth = {PER_CONTROLLER_BANDWIDTH_GBPS}
 
 [scheduler]
 type = pinned_map
@@ -241,7 +248,7 @@ memory_model_1 = bus
 memory_model_2 = bus
 
 [network/bus]
-bandwidth = 102.4
+bandwidth = {BUS_BANDWIDTH_GBPS}
 ignore_local_traffic = true
 
 [dvfs/simple]

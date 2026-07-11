@@ -119,6 +119,17 @@ def mem_access_path_for(comm_csv_path: str) -> str:
     return comm_csv_path.replace(".comm.csv", ".mem_access.csv")
 
 
+def comm_size_path_for(comm_csv_path: str) -> str:
+    """
+    comm.csv と同じ detloc-tracer 実行が出力した comm_size.csv のパスを推定する。
+    comm.csv がスレッド間の通信メッセージ数、comm_size.csv が実バイト数
+    (フォーマットは同一のdetloc逆順行列)。AKARIN roofline数式のdram_bound/
+    bus_bound項はバイト数÷帯域(GB/s)で秒を出すため、メッセージ数ではなく
+    こちらを使う(2026-07-11)。
+    """
+    return comm_csv_path.replace(".comm.csv", ".comm_size.csv")
+
+
 def load_mem_access(csv_path: str) -> dict[int, float]:
     """
     detloc-tracer 出力の mem_access.csv (tid,n_reads,n_writes,sz_reads,sz_writes) を

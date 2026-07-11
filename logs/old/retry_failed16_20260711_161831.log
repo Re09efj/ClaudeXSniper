@@ -1,0 +1,114 @@
+[JOBS] 12件 (machine=sid, workloads=['dedup'], strategies=['Packed', 'Scatter', 'HPO', 'EPO', 'MPO', 'akarin'], bench_class=['S'], threads=[2, 8])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=12  (sid=12, purple=0)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_Packed_6TH_20260711_161831/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_Scatter_6TH_20260711_161831/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_HPO_6TH_20260711_161831/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_EPO_6TH_20260711_161831/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_MPO_6TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_6: simTime=0.425s, instructions=2,281,690,183, wallTime=970s (avg 1112s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_EPO_6TH_20260711_161831/metrics.csv
+[1/12] Job(dedup/EPO/S/6TH@sid, w=3.79, d=1136s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_AKARIN_6TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_6: simTime=0.422s, instructions=2,281,679,437, wallTime=973s (avg 1088s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_Packed_6TH_20260711_161831/metrics.csv
+[2/12] Job(dedup/Packed/S/6TH@sid, w=3.79, d=1136s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_Packed_9TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_6: simTime=0.407s, instructions=2,281,691,872, wallTime=996s (avg 1060s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_Scatter_6TH_20260711_161831/metrics.csv
+[3/12] Job(dedup/Scatter/S/6TH@sid, w=3.79, d=1136s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_Scatter_9TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_6: simTime=0.410s, instructions=2,281,651,206, wallTime=996s (avg 1038s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_HPO_6TH_20260711_161831/metrics.csv
+[4/12] Job(dedup/HPO/S/6TH@sid, w=3.79, d=1136s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_HPO_9TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_6: simTime=0.410s, instructions=2,281,670,199, wallTime=997s (avg 1015s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_MPO_6TH_20260711_161831/metrics.csv
+[5/12] Job(dedup/MPO/S/6TH@sid, w=3.79, d=1136s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_EPO_9TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_9: simTime=0.215s, instructions=2,282,155,395, wallTime=562s (avg 679s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_Packed_9TH_20260711_161831/metrics.csv
+[6/12] Job(dedup/Packed/S/9TH@sid, w=3.79, d=697s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_MPO_9TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_9: simTime=0.217s, instructions=2,282,207,264, wallTime=543s (avg 654s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_EPO_9TH_20260711_161831/metrics.csv
+[7/12] Job(dedup/EPO/S/9TH@sid, w=3.79, d=697s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_AKARIN_9TH_20260711_161831/affinity_config.txt
+[profile] dedup_S_9: simTime=0.209s, instructions=2,282,178,047, wallTime=553s (avg 626s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_Scatter_9TH_20260711_161831/metrics.csv
+[8/12] Job(dedup/Scatter/S/9TH@sid, w=3.79, d=697s) -> OK
+[profile] dedup_S_9: simTime=0.208s, instructions=2,282,160,173, wallTime=561s (avg 597s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_HPO_9TH_20260711_161831/metrics.csv
+[9/12] Job(dedup/HPO/S/9TH@sid, w=3.79, d=697s) -> OK
+[profile] dedup_S_6: simTime=0.408s, instructions=2,281,658,549, wallTime=961s (avg 982s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_AKARIN_6TH_20260711_161831/metrics.csv
+[10/12] Job(dedup/AKARIN/S/6TH@sid, w=3.79, d=1136s) -> OK
+[profile] dedup_S_9: simTime=0.212s, instructions=2,282,163,936, wallTime=651s (avg 588s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_AKARIN_9TH_20260711_161831/metrics.csv
+[11/12] Job(dedup/AKARIN/S/9TH@sid, w=3.79, d=697s) -> OK
+[profile] dedup_S_9: simTime=0.210s, instructions=2,282,168,553, wallTime=691s (avg 594s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_MPO_9TH_20260711_161831/metrics.csv
+[12/12] Job(dedup/MPO/S/9TH@sid, w=3.79, d=697s) -> OK
+
+[完了] 12/12 件処理
+[JOBS] 1件 (machine=sid, workloads=['canneal'], strategies=['HPO'], bench_class=['S'], threads=[8])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=1  (sid=1, purple=0)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_HPO_8TH_20260711_165538/affinity_config.txt
+[profile] canneal_S_8: simTime=1.494s, instructions=4,835,516,598, wallTime=2920s (avg 2920s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_HPO_8TH_20260711_165538/metrics.csv
+[1/1] Job(canneal/HPO/S/8TH@sid, w=2.85, d=2923s) -> OK
+
+[完了] 1/1 件処理
+[JOBS] 1件 (machine=sid, workloads=['canneal'], strategies=['Scatter'], bench_class=['S'], threads=[16])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=1  (sid=1, purple=0)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_Scatter_16TH_20260711_174420/affinity_config.txt
+[profile] canneal_S_16: simTime=1.437s, instructions=4,836,057,552, wallTime=2829s (avg 2995s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_Scatter_16TH_20260711_174420/metrics.csv
+[1/1] Job(canneal/Scatter/S/16TH@sid, w=2.84, d=2996s) -> OK
+
+[完了] 1/1 件処理
+[JOBS] 1件 (machine=sid, workloads=['GUPS'], strategies=['akarin'], bench_class=['S'], threads=[8])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=1  (sid=1, purple=0)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_AKARIN_8TH_20260711_183130/affinity_config.txt
+[profile] GUPS_S_8: simTime=0.123s, instructions=961,207,142, wallTime=566s (avg 578s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_AKARIN_8TH_20260711_183130/metrics.csv
+[1/1] Job(GUPS/AKARIN/S/8TH@sid, w=5.68, d=592s) -> OK
+
+[完了] 1/1 件処理
+[JOBS] 1件 (machine=sid, workloads=['BT'], strategies=['HPO'], bench_class=['S'], threads=[8])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=1  (sid=1, purple=0)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_HPO_8TH_20260711_184057/affinity_config.txt
+[profile] BT_S_8: simTime=0.018s, instructions=897,994,950, wallTime=137s (avg 175s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_HPO_8TH_20260711_184057/metrics.csv
+[1/1] Job(BT/HPO/S/8TH@sid, w=4.72, d=218s) -> OK
+
+[完了] 1/1 件処理

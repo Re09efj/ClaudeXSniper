@@ -1,0 +1,30 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_MPO_2TH.map
+[DeTLoc] map thread-0 to core-8
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=10000 cpn=8 sender=8 requester=8 same=1
+[DeTLoc] map thread-1 to core-0
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=20000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=25000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=30000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=35000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=40000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=45000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=45000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=50000 cpn=8 sender=8 requester=8 same=1
+[HOOKS] Entering ROI

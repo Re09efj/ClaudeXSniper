@@ -208,6 +208,21 @@ def arg_threads_for(workload: str, num_threads: int) -> int:
     return num_threads
 
 
+def resolve_valid_num_threads(workload: str, num_threads: int) -> int:
+    """
+    要求されたnum_threads(標準の2/8/12/16等)を、このワークロードで実現可能な
+    最も近い値に変換する(dedupの3n+3制約など)。単純にスキップするのではなく
+    「一番近い有効値」に丸めることで、dedupのようなワークロードでも標準の
+    スレッド数リストから4点相当のカバレッジを得られるようにする
+    (2026-07-10、ユーザー提案: 別バッチに分けるのではなくワークロードごとの
+    変換をbuild_jobs()に組み込む方式)。他ワークロードでは恒等写像。
+    """
+    if workload.upper() == "DEDUP":
+        rounded = round(num_threads / 3) * 3
+        return max(6, rounded)
+    return num_threads
+
+
 def get_binary_args(workload: str, bench_class: str, num_threads: int) -> str:
     """ワークロード種別に応じた実行時引数を返す。"""
     wl_upper = workload.upper()

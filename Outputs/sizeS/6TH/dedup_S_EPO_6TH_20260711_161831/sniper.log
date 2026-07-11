@@ -1,0 +1,190 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_EPO_6TH.map
+[DeTLoc] map thread-0 to core-4
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=20000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=25000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=30000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=35000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=40000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=45000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=50000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=55000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=60000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=65000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=70000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=75000 cpn=8 sender=0 requester=0 same=1
+[DeTLoc] map thread-1 to core-5
+[DeTLoc] map thread-2 to core-6
+[DeTLoc] map thread-3 to core-7
+[DeTLoc] map thread-4 to core-12
+[DeTLoc] map thread-5 to core-13
+[GDBG] n=80000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=85000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=90000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=95000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=100000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=105000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=110000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=115000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=120000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=125000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=130000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=135000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=140000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=145000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=150000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=155000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=160000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=165000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=170000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=175000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=180000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=185000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=190000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=195000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=200000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=205000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=210000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=215000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=220000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=225000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=230000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=235000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=240000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=245000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=250000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=255000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=260000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=265000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=270000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=275000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=280000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=285000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=290000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=295000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=300000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=305000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=310000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=315000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=320000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=325000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=330000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=335000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=340000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=345000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=350000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=355000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=360000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=365000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=370000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=375000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=380000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=385000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=390000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=395000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=400000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=405000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=410000 cpn=8 sender=0 requester=0 same=1
+[TRACE:1] -- DONE --
+[GDBG] n=415000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=420000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=425000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=430000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=435000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=440000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=445000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=450000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=455000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=460000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=465000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=470000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=475000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=480000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=485000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=490000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=495000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=500000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=505000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=510000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=515000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=520000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=525000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=530000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=535000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=540000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=545000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=550000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=555000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=560000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=565000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=570000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=575000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=580000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=585000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=590000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=595000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=600000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=605000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=610000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=615000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=620000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=625000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=630000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=635000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=640000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=645000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=650000 cpn=8 sender=0 requester=0 same=1
+[TRACE:2] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:5] -- DONE --
+[GDBG] n=655000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=660000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=665000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=670000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=675000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=680000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=685000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=690000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=695000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=700000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=705000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=710000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=715000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=720000 cpn=8 sender=0 requester=0 same=1
+PARSEC Benchmark Suite
+Total input size:                       10.10 MB
+Total output size:                       9.28 MB
+Effective compression factor:            1.09x
+
+Mean data chunk size:                    3.64 KB (stddev: 202.63 KB)
+Amount of duplicate chunks:              4.33%
+Data size after deduplication:          10.09 MB (compression factor: 1.00x)
+Data size after compression:             9.25 MB (compression factor: 1.09x)
+Output overhead:                         0.29%
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 968.54 seconds
+[SNIPER] Simulated 2281.7M instructions, 935.7M cycles, 2.44 IPC
+[SNIPER] Simulation speed 2355.8 KIPS (147.2 KIPS / target core - 6791.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 968.05 seconds

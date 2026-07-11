@@ -1,0 +1,25 @@
+BENCHMARK=GUPS.S (NPB3.3 OpenMP)
+PRESET=Scatter
+NUM_THREADS=16
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU00 (Node0 P-core)
+  thread01 -> CPU08 (Node1 P-core)
+  thread02 -> CPU01 (Node0 P-core)
+  thread03 -> CPU09 (Node1 P-core)
+  thread04 -> CPU02 (Node0 P-core)
+  thread05 -> CPU10 (Node1 P-core)
+  thread06 -> CPU03 (Node0 P-core)
+  thread07 -> CPU11 (Node1 P-core)
+  thread08 -> CPU04 (Node0 E-core)
+  thread09 -> CPU12 (Node1 E-core)
+  thread10 -> CPU05 (Node0 E-core)
+  thread11 -> CPU13 (Node1 E-core)
+  thread12 -> CPU06 (Node0 E-core)
+  thread13 -> CPU14 (Node1 E-core)
+  thread14 -> CPU07 (Node0 E-core)
+  thread15 -> CPU15 (Node1 E-core)

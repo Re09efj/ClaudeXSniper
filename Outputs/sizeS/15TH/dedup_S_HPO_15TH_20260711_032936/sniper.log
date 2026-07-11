@@ -1,0 +1,68 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/cfg/arrow_lake_HPO_15TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+[DeTLoc] map thread-1 to core-1
+[DeTLoc] map thread-2 to core-2
+[DeTLoc] map thread-3 to core-3
+[DeTLoc] map thread-4 to core-8
+[DeTLoc] map thread-5 to core-9
+[DeTLoc] map thread-6 to core-10
+[DeTLoc] map thread-7 to core-11
+[DeTLoc] map thread-8 to core-4
+[DeTLoc] map thread-9 to core-5
+[DeTLoc] map thread-10 to core-6
+[DeTLoc] map thread-11 to core-7
+[DeTLoc] map thread-12 to core-12
+[DeTLoc] map thread-13 to core-13
+[DeTLoc] map thread-14 to core-14
+[TRACE:1] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:4] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:7] -- DONE --
+[TRACE:9] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:8] -- DONE --
+[TRACE:10] -- DONE --
+[TRACE:11] -- DONE --
+[TRACE:13] -- DONE --
+[TRACE:12] -- DONE --
+[TRACE:14] -- DONE --
+PARSEC Benchmark Suite
+Total input size:                       10.10 MB
+Total output size:                       9.28 MB
+Effective compression factor:            1.09x
+
+Mean data chunk size:                    3.64 KB (stddev: 202.63 KB)
+Amount of duplicate chunks:              4.33%
+Data size after deduplication:          10.09 MB (compression factor: 1.00x)
+Data size after compression:             9.25 MB (compression factor: 1.09x)
+Output overhead:                         0.29%
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 1923.22 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 2332.0M instructions, 323.6M cycles, 7.21 IPC
+[SNIPER] Simulation speed 1212.5 KIPS (75.8 KIPS / target core - 13195.5ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 1924.54 seconds

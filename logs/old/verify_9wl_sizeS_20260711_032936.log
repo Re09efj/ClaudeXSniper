@@ -1,0 +1,889 @@
+[profile/estimate] GUPS_S_16: W×1.0 → 1608s (ref=1608s)
+[profile/estimate] GUPS_S_16: W×1.0 → 1608s (ref=1608s)
+[profile/estimate] GUPS_S_16: W×1.0 → 1608s (ref=1608s)
+[profile/estimate] GUPS_S_16: W×1.0 → 1608s (ref=1608s)
+[profile/estimate] GUPS_S_16: W×1.0 → 1608s (ref=1608s)
+[profile/estimate] GUPS_S_16: W×1.0 → 1608s (ref=1608s)
+[JOBS] 72件 (machine=sid, workloads=['BT', 'canneal', 'GUPS'], strategies=['Packed', 'Scatter', 'HPO', 'EPO', 'MPO', 'akarin'], bench_class=['S'], threads=[2, 8, 12, 16])
+[profile/estimate] dedup_S_6@purple: W/8TH×1.0×1.33 → 2158s
+[profile/estimate] dedup_S_9@purple: W/8TH×1.0×0.89 → 1439s
+[profile/estimate] dedup_S_12@purple: W×1.0 → 1676s (ref=1676s)
+[profile/estimate] dedup_S_15@purple: W/16TH×1.0×1.07 → 1864s
+[profile/estimate] dedup_S_6@purple: W/8TH×1.0×1.33 → 2158s
+[profile/estimate] dedup_S_9@purple: W/8TH×1.0×0.89 → 1439s
+[profile/estimate] dedup_S_12@purple: W×1.0 → 1676s (ref=1676s)
+[profile/estimate] dedup_S_15@purple: W/16TH×1.0×1.07 → 1864s
+[profile/estimate] dedup_S_6@purple: W/8TH×1.0×1.33 → 2158s
+[profile/estimate] dedup_S_9@purple: W/8TH×1.0×0.89 → 1439s
+[profile/estimate] dedup_S_12@purple: W×1.0 → 1676s (ref=1676s)
+[profile/estimate] dedup_S_15@purple: W/16TH×1.0×1.07 → 1864s
+[profile/estimate] dedup_S_6@purple: W/8TH×1.0×1.33 → 2158s
+[profile/estimate] dedup_S_9@purple: W/8TH×1.0×0.89 → 1439s
+[profile/estimate] dedup_S_12@purple: W×1.0 → 1676s (ref=1676s)
+[profile/estimate] dedup_S_15@purple: W/16TH×1.0×1.07 → 1864s
+[profile/estimate] dedup_S_6@purple: W/8TH×1.0×1.33 → 2158s
+[profile/estimate] dedup_S_9@purple: W/8TH×1.0×0.89 → 1439s
+[profile/estimate] dedup_S_12@purple: W×1.0 → 1676s (ref=1676s)
+[profile/estimate] dedup_S_15@purple: W/16TH×1.0×1.07 → 1864s
+[profile/estimate] dedup_S_6@purple: W/8TH×1.0×1.33 → 2158s
+[profile/estimate] dedup_S_9@purple: W/8TH×1.0×0.89 → 1439s
+[profile/estimate] dedup_S_12@purple: W×1.0 → 1676s (ref=1676s)
+[profile/estimate] dedup_S_15@purple: W/16TH×1.0×1.07 → 1864s
+[JOBS] 144件 (machine=purple, workloads=['FT', 'IS', 'MG', 'CG', 'LU', 'dedup'], strategies=['Packed', 'Scatter', 'HPO', 'EPO', 'MPO', 'akarin'], bench_class=['S'], threads=[2, 8, 12, 16])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=216  (sid=72, purple=144)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_Packed_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_HPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_EPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_MPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_Packed_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_Packed_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Packed_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_Packed_12TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_Packed_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_Packed_2TH_20260711_032936/affinity_config.txt
+[profile] CG_S_16@purple: simTime=0.009s, instructions=405,716,904, wallTime=176s (avg 176s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_Packed_16TH_20260711_032936/metrics.csv
+[1/216] Job(CG/Packed/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_Packed_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] CG_S_12@purple: simTime=0.011s, instructions=378,587,388, wallTime=191s (avg 191s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_Packed_12TH_20260711_032936/metrics.csv
+[2/216] Job(CG/Packed/S/12TH@purple, w=12.00, d=3600s) -> OK
+[profile] CG_S_8@purple: simTime=0.015s, instructions=361,119,102, wallTime=244s (avg 244s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Packed_8TH_20260711_032936/metrics.csv
+[3/216] Job(CG/Packed/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_Packed_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[profile] LU_S_2@purple: simTime=0.021s, instructions=198,806,795, wallTime=295s (avg 295s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_Packed_2TH_20260711_032936/metrics.csv
+[4/216] Job(LU/Packed/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_8@purple: simTime=0.011s, instructions=320,278,480, wallTime=213s (avg 213s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_Packed_8TH_20260711_032936/metrics.csv
+[5/216] Job(LU/Packed/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[profile] CG_S_2@purple: simTime=0.053s, instructions=314,537,055, wallTime=402s (avg 402s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_Packed_2TH_20260711_032936/metrics.csv
+[6/216] Job(CG/Packed/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_12@purple: simTime=0.008s, instructions=429,792,590, wallTime=227s (avg 227s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_Packed_12TH_20260711_032936/metrics.csv
+[7/216] Job(LU/Packed/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[profile] LU_S_16@purple: simTime=0.008s, instructions=623,576,192, wallTime=235s (avg 235s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_Packed_16TH_20260711_032936/metrics.csv
+[8/216] Job(LU/Packed/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[profile] CG_S_12@purple: simTime=0.011s, instructions=380,794,765, wallTime=175s (avg 183s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_Scatter_12TH_20260711_032936/metrics.csv
+[9/216] Job(CG/Scatter/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[profile] CG_S_8@purple: simTime=0.015s, instructions=359,764,021, wallTime=195s (avg 220s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_Scatter_8TH_20260711_032936/metrics.csv
+[10/216] Job(CG/Scatter/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[profile] CG_S_2@purple: simTime=0.053s, instructions=314,571,264, wallTime=384s (avg 393s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_Scatter_2TH_20260711_032936/metrics.csv
+[11/216] Job(CG/Scatter/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] CG_S_16@purple: simTime=0.009s, instructions=404,497,864, wallTime=175s (avg 176s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_Scatter_16TH_20260711_032936/metrics.csv
+[12/216] Job(CG/Scatter/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_HPO_2TH_20260711_032936/affinity_config.txt
+[profile] LU_S_2@purple: simTime=0.021s, instructions=196,978,942, wallTime=302s (avg 298s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_Scatter_2TH_20260711_032936/metrics.csv
+[13/216] Job(LU/Scatter/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_8@purple: simTime=0.010s, instructions=324,998,042, wallTime=216s (avg 214s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_Scatter_8TH_20260711_032936/metrics.csv
+[14/216] Job(LU/Scatter/S/8TH@purple, w=8.00, d=3600s) -> OK
+[profile] LU_S_12@purple: simTime=0.007s, instructions=417,098,863, wallTime=211s (avg 219s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_Scatter_12TH_20260711_032936/metrics.csv
+[15/216] Job(LU/Scatter/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_HPO_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] LU_S_16@purple: simTime=0.007s, instructions=599,891,137, wallTime=222s (avg 228s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_Scatter_16TH_20260711_032936/metrics.csv
+[16/216] Job(LU/Scatter/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_HPO_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_HPO_2TH_20260711_032936/affinity_config.txt
+[profile] CG_S_12@purple: simTime=0.011s, instructions=382,638,531, wallTime=194s (avg 187s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_HPO_12TH_20260711_032936/metrics.csv
+[17/216] Job(CG/HPO/S/12TH@purple, w=12.00, d=3600s) -> OK
+[profile] CG_S_8@purple: simTime=0.015s, instructions=360,290,221, wallTime=195s (avg 211s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_HPO_8TH_20260711_032936/metrics.csv
+[18/216] Job(CG/HPO/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_HPO_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] CG_S_2@purple: simTime=0.053s, instructions=314,569,297, wallTime=394s (avg 393s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_HPO_2TH_20260711_032936/metrics.csv
+[19/216] Job(CG/HPO/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] CG_S_16@purple: simTime=0.009s, instructions=405,364,673, wallTime=175s (avg 175s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_HPO_16TH_20260711_032936/metrics.csv
+[20/216] Job(CG/HPO/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_HPO_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_EPO_2TH_20260711_032936/affinity_config.txt
+[profile] LU_S_2@purple: simTime=0.021s, instructions=199,056,112, wallTime=301s (avg 299s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_HPO_2TH_20260711_032936/metrics.csv
+[21/216] Job(LU/HPO/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_12@purple: simTime=0.008s, instructions=427,614,205, wallTime=216s (avg 218s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_HPO_12TH_20260711_032936/metrics.csv
+[22/216] Job(LU/HPO/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_EPO_8TH_20260711_032936/affinity_config.txt
+[profile] LU_S_8@purple: simTime=0.010s, instructions=329,213,258, wallTime=218s (avg 216s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_HPO_8TH_20260711_032936/metrics.csv
+[23/216] Job(LU/HPO/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] LU_S_16@purple: simTime=0.008s, instructions=618,318,644, wallTime=225s (avg 227s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_HPO_16TH_20260711_032936/metrics.csv
+[24/216] Job(LU/HPO/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_EPO_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_EPO_2TH_20260711_032936/affinity_config.txt
+[profile] CG_S_8@purple: simTime=0.015s, instructions=354,942,533, wallTime=189s (avg 206s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_EPO_8TH_20260711_032936/metrics.csv
+[25/216] Job(CG/EPO/S/8TH@purple, w=8.00, d=3600s) -> OK
+[profile] CG_S_12@purple: simTime=0.011s, instructions=382,208,514, wallTime=188s (avg 187s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_EPO_12TH_20260711_032936/metrics.csv
+[26/216] Job(CG/EPO/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_EPO_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] CG_S_16@purple: simTime=0.009s, instructions=404,340,427, wallTime=171s (avg 174s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_EPO_16TH_20260711_032936/metrics.csv
+[27/216] Job(CG/EPO/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_EPO_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_MPO_2TH_20260711_032936/affinity_config.txt
+[profile] CG_S_2@purple: simTime=0.055s, instructions=319,351,079, wallTime=425s (avg 401s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_EPO_2TH_20260711_032936/metrics.csv
+[28/216] Job(CG/EPO/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_2@purple: simTime=0.024s, instructions=197,978,280, wallTime=298s (avg 299s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_EPO_2TH_20260711_032936/metrics.csv
+[29/216] Job(LU/EPO/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_8@purple: simTime=0.011s, instructions=327,177,884, wallTime=213s (avg 215s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_EPO_8TH_20260711_032936/metrics.csv
+[30/216] Job(LU/EPO/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] LU_S_12@purple: simTime=0.008s, instructions=401,975,310, wallTime=221s (avg 219s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_EPO_12TH_20260711_032936/metrics.csv
+[31/216] Job(LU/EPO/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] LU_S_16@purple: simTime=0.008s, instructions=623,007,557, wallTime=238s (avg 230s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_EPO_16TH_20260711_032936/metrics.csv
+[32/216] Job(LU/EPO/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_MPO_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_MPO_2TH_20260711_032936/affinity_config.txt
+[profile] CG_S_12@purple: simTime=0.011s, instructions=379,191,367, wallTime=175s (avg 185s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_MPO_12TH_20260711_032936/metrics.csv
+[33/216] Job(CG/MPO/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] CG_S_8@purple: simTime=0.015s, instructions=359,878,122, wallTime=195s (avg 204s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_MPO_8TH_20260711_032936/metrics.csv
+[34/216] Job(CG/MPO/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] CG_S_2@purple: simTime=0.053s, instructions=314,577,878, wallTime=381s (avg 397s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_MPO_2TH_20260711_032936/metrics.csv
+[35/216] Job(CG/MPO/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] CG_S_16@purple: simTime=0.009s, instructions=404,047,886, wallTime=175s (avg 174s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_MPO_16TH_20260711_032936/metrics.csv
+[36/216] Job(CG/MPO/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_MPO_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[profile] LU_S_2@purple: simTime=0.021s, instructions=196,904,235, wallTime=295s (avg 298s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_MPO_2TH_20260711_032936/metrics.csv
+[37/216] Job(LU/MPO/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_8@purple: simTime=0.010s, instructions=328,174,535, wallTime=214s (avg 215s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_MPO_8TH_20260711_032936/metrics.csv
+[38/216] Job(LU/MPO/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[profile] LU_S_12@purple: simTime=0.007s, instructions=408,562,156, wallTime=214s (avg 218s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_MPO_12TH_20260711_032936/metrics.csv
+[39/216] Job(LU/MPO/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[profile] LU_S_16@purple: simTime=0.008s, instructions=612,595,946, wallTime=235s (avg 231s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_MPO_16TH_20260711_032936/metrics.csv
+[40/216] Job(LU/MPO/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[profile] CG_S_12@purple: simTime=0.011s, instructions=381,476,621, wallTime=187s (avg 185s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/CG_S_AKARIN_12TH_20260711_032936/metrics.csv
+[41/216] Job(CG/AKARIN/S/12TH@purple, w=12.00, d=3600s) -> OK
+[profile] CG_S_8@purple: simTime=0.015s, instructions=364,495,114, wallTime=199s (avg 203s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/CG_S_AKARIN_8TH_20260711_032936/metrics.csv
+[42/216] Job(CG/AKARIN/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[profile] CG_S_2@purple: simTime=0.053s, instructions=314,562,418, wallTime=387s (avg 396s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/CG_S_AKARIN_2TH_20260711_032936/metrics.csv
+[43/216] Job(CG/AKARIN/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] CG_S_16@purple: simTime=0.009s, instructions=405,772,906, wallTime=175s (avg 174s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/CG_S_AKARIN_16TH_20260711_032936/metrics.csv
+[44/216] Job(CG/AKARIN/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_Packed_6TH_20260711_032936/affinity_config.txt
+[profile] LU_S_2@purple: simTime=0.021s, instructions=198,800,169, wallTime=298s (avg 298s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/LU_S_AKARIN_2TH_20260711_032936/metrics.csv
+[45/216] Job(LU/AKARIN/S/2TH@purple, w=2.00, d=3600s) -> OK
+[profile] LU_S_12@purple: simTime=0.007s, instructions=405,433,079, wallTime=211s (avg 217s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/LU_S_AKARIN_12TH_20260711_032936/metrics.csv
+[46/216] Job(LU/AKARIN/S/12TH@purple, w=12.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_Scatter_6TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_HPO_6TH_20260711_032936/affinity_config.txt
+[profile] LU_S_8@purple: simTime=0.012s, instructions=339,556,032, wallTime=226s (avg 217s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/LU_S_AKARIN_8TH_20260711_032936/metrics.csv
+[47/216] Job(LU/AKARIN/S/8TH@purple, w=8.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_EPO_6TH_20260711_032936/affinity_config.txt
+[profile] LU_S_16@purple: simTime=0.008s, instructions=613,949,243, wallTime=232s (avg 231s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/LU_S_AKARIN_16TH_20260711_032936/metrics.csv
+[48/216] Job(LU/AKARIN/S/16TH@purple, w=16.00, d=3600s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_MPO_6TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/6TH/dedup_S_AKARIN_6TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_8: simTime=1.460s, instructions=4,835,633,176, wallTime=2901s (avg 2920s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_Packed_8TH_20260711_032936/metrics.csv
+[49/216] Job(canneal/Packed/S/8TH@sid, w=2.85, d=2926s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_2: simTime=1.883s, instructions=4,835,936,765, wallTime=3161s (avg 3217s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_EPO_2TH_20260711_032936/metrics.csv
+[50/216] Job(canneal/EPO/S/2TH@sid, w=2.85, d=3218s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_HPO_8TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_2: simTime=1.877s, instructions=4,835,936,780, wallTime=3204s (avg 3220s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_AKARIN_2TH_20260711_032936/metrics.csv
+[51/216] Job(canneal/AKARIN/S/2TH@sid, w=2.85, d=3218s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_EPO_8TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_2: simTime=1.758s, instructions=4,835,936,773, wallTime=3210s (avg 3219s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_Packed_2TH_20260711_032936/metrics.csv
+[52/216] Job(canneal/Packed/S/2TH@sid, w=2.85, d=3218s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_2: simTime=1.752s, instructions=4,835,936,773, wallTime=3217s (avg 3220s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_MPO_2TH_20260711_032936/metrics.csv
+[53/216] Job(canneal/MPO/S/2TH@sid, w=2.85, d=3218s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_2: simTime=1.750s, instructions=4,835,936,773, wallTime=3220s (avg 3217s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_HPO_2TH_20260711_032936/metrics.csv
+[54/216] Job(canneal/HPO/S/2TH@sid, w=2.85, d=3218s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_2: simTime=1.757s, instructions=4,835,936,773, wallTime=3240s (avg 3209s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/canneal_S_Scatter_2TH_20260711_032936/metrics.csv
+[55/216] Job(canneal/Scatter/S/2TH@sid, w=2.85, d=3218s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_8: simTime=1.500s, instructions=4,835,589,055, wallTime=2905s (avg 2916s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_Scatter_8TH_20260711_032936/metrics.csv
+[56/216] Job(canneal/Scatter/S/8TH@sid, w=2.85, d=2926s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_8: simTime=1.561s, instructions=4,835,423,407, wallTime=2876s (avg 2907s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_EPO_8TH_20260711_032936/metrics.csv
+[57/216] Job(canneal/EPO/S/8TH@sid, w=2.85, d=2926s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_12: simTime=1.482s, instructions=4,835,887,330, wallTime=2913s (avg 2922s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_Packed_12TH_20260711_032936/metrics.csv
+[58/216] Job(canneal/Packed/S/12TH@sid, w=2.76, d=2923s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_8: simTime=1.493s, instructions=4,835,310,474, wallTime=2939s (avg 2908s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_MPO_8TH_20260711_032936/metrics.csv
+[59/216] Job(canneal/MPO/S/8TH@sid, w=2.85, d=2926s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_12: simTime=1.471s, instructions=4,835,588,192, wallTime=2916s (avg 2921s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_Scatter_12TH_20260711_032936/metrics.csv
+[60/216] Job(canneal/Scatter/S/12TH@sid, w=2.76, d=2923s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_Packed_16TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_8: simTime=1.474s, instructions=4,835,482,745, wallTime=2980s (avg 2923s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/canneal_S_AKARIN_8TH_20260711_032936/metrics.csv
+[61/216] Job(canneal/AKARIN/S/8TH@sid, w=2.85, d=2926s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(dedup/Packed/S/6TH@purple, w=6.00, d=2158s) (4317s > 4316s)
+[62/216] Job(dedup/Packed/S/6TH@purple, w=6.00, d=2158s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_Packed_15TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(dedup/Scatter/S/6TH@purple, w=6.00, d=2158s) (4317s > 4316s)
+[63/216] Job(dedup/Scatter/S/6TH@purple, w=6.00, d=2158s) -> FAILED
+[TIMEOUT] Job(dedup/HPO/S/6TH@purple, w=6.00, d=2158s) (4317s > 4316s)
+[64/216] Job(dedup/HPO/S/6TH@purple, w=6.00, d=2158s) -> FAILED
+[TIMEOUT] Job(dedup/EPO/S/6TH@purple, w=6.00, d=2158s) (4317s > 4316s)
+[65/216] Job(dedup/EPO/S/6TH@purple, w=6.00, d=2158s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_Scatter_15TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(dedup/MPO/S/6TH@purple, w=6.00, d=2158s) (4317s > 4316s)
+[66/216] Job(dedup/MPO/S/6TH@purple, w=6.00, d=2158s) -> FAILED
+[TIMEOUT] Job(dedup/AKARIN/S/6TH@purple, w=6.00, d=2158s) (4317s > 4316s)
+[67/216] Job(dedup/AKARIN/S/6TH@purple, w=6.00, d=2158s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_HPO_15TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_15@purple: simTime=0.145s, instructions=2,331,986,072, wallTime=1884s (avg 1884s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_Packed_15TH_20260711_032936/metrics.csv
+[68/216] Job(dedup/Packed/S/15TH@purple, w=15.00, d=1864s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_EPO_15TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_15@purple: simTime=0.147s, instructions=2,332,026,481, wallTime=1941s (avg 1913s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_Scatter_15TH_20260711_032936/metrics.csv
+[69/216] Job(dedup/Scatter/S/15TH@purple, w=15.00, d=1864s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_MPO_15TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_15@purple: simTime=0.147s, instructions=2,332,006,176, wallTime=1927s (avg 1918s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_HPO_15TH_20260711_032936/metrics.csv
+[70/216] Job(dedup/HPO/S/15TH@purple, w=15.00, d=1864s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_AKARIN_15TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_12: simTime=1.493s, instructions=4,835,832,407, wallTime=2932s (avg 2920s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_HPO_12TH_20260711_032936/metrics.csv
+[71/216] Job(canneal/HPO/S/12TH@sid, w=2.76, d=2923s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_HPO_16TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_12: simTime=1.576s, instructions=4,836,043,308, wallTime=2894s (avg 2914s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_EPO_12TH_20260711_032936/metrics.csv
+[72/216] Job(canneal/EPO/S/12TH@sid, w=2.76, d=2923s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_EPO_16TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(canneal/HPO/S/8TH@sid, w=2.85, d=2926s) (5842s > 5841s)
+[73/216] Job(canneal/HPO/S/8TH@sid, w=2.85, d=2926s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_MPO_16TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_12: simTime=1.483s, instructions=4,835,863,499, wallTime=2955s (avg 2922s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_MPO_12TH_20260711_032936/metrics.csv
+[74/216] Job(canneal/MPO/S/12TH@sid, w=2.76, d=2923s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_12: simTime=1.478s, instructions=4,836,147,073, wallTime=2940s (avg 2925s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/canneal_S_AKARIN_12TH_20260711_032936/metrics.csv
+[75/216] Job(canneal/AKARIN/S/12TH@sid, w=2.76, d=2923s) -> OK
+[profile] canneal_S_16: simTime=1.441s, instructions=4,836,000,215, wallTime=2954s (avg 2904s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_Packed_16TH_20260711_032936/metrics.csv
+[76/216] Job(canneal/Packed/S/16TH@sid, w=2.84, d=2896s) -> OK
+[profile] dedup_S_15@purple: simTime=0.144s, instructions=2,332,015,229, wallTime=1984s (avg 1934s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_EPO_15TH_20260711_032936/metrics.csv
+[77/216] Job(dedup/EPO/S/15TH@purple, w=15.00, d=1864s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_15@purple: simTime=0.144s, instructions=2,331,980,592, wallTime=2033s (avg 1954s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_MPO_15TH_20260711_032936/metrics.csv
+[78/216] Job(dedup/MPO/S/15TH@purple, w=15.00, d=1864s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_15@purple: simTime=0.148s, instructions=2,332,017,488, wallTime=1981s (avg 1959s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/15TH/dedup_S_AKARIN_15TH_20260711_032936/metrics.csv
+[79/216] Job(dedup/AKARIN/S/15TH@purple, w=15.00, d=1864s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_16: simTime=1.564s, instructions=4,835,888,204, wallTime=2975s (avg 2914s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_EPO_16TH_20260711_032936/metrics.csv
+[80/216] Job(canneal/EPO/S/16TH@sid, w=2.84, d=2896s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_Packed_16TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(canneal/Scatter/S/16TH@sid, w=2.84, d=2896s) (5793s > 5792s)
+[81/216] Job(canneal/Scatter/S/16TH@sid, w=2.84, d=2896s) -> FAILED
+[profile] canneal_S_16: simTime=1.467s, instructions=4,835,999,058, wallTime=3086s (avg 2941s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_HPO_16TH_20260711_032936/metrics.csv
+[82/216] Job(canneal/HPO/S/16TH@sid, w=2.84, d=2896s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[profile] canneal_S_16: simTime=1.453s, instructions=4,836,005,092, wallTime=3060s (avg 2964s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_MPO_16TH_20260711_032936/metrics.csv
+[83/216] Job(canneal/MPO/S/16TH@sid, w=2.84, d=2896s) -> OK
+[profile] canneal_S_16: simTime=1.448s, instructions=4,836,138,078, wallTime=3063s (avg 2996s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/canneal_S_AKARIN_16TH_20260711_032936/metrics.csv
+[84/216] Job(canneal/AKARIN/S/16TH@sid, w=2.84, d=2896s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_HPO_16TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_16: simTime=0.120s, instructions=1,594,405,426, wallTime=623s (avg 623s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_Packed_16TH_20260711_032936/metrics.csv
+[85/216] Job(GUPS/Packed/S/16TH@sid, w=6.83, d=1608s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_EPO_16TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_16: simTime=0.119s, instructions=1,594,351,793, wallTime=623s (avg 623s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_Scatter_16TH_20260711_032936/metrics.csv
+[86/216] Job(GUPS/Scatter/S/16TH@sid, w=6.83, d=1608s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_MPO_16TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_16: simTime=0.120s, instructions=1,594,354,444, wallTime=633s (avg 626s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_HPO_16TH_20260711_032936/metrics.csv
+[87/216] Job(GUPS/HPO/S/16TH@sid, w=6.83, d=1608s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_12@purple: simTime=0.185s, instructions=2,331,855,068, wallTime=2603s (avg 2603s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_Packed_12TH_20260711_032936/metrics.csv
+[88/216] Job(dedup/Packed/S/12TH@purple, w=12.00, d=1676s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_16: simTime=0.138s, instructions=1,594,583,206, wallTime=628s (avg 627s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_EPO_16TH_20260711_032936/metrics.csv
+[89/216] Job(GUPS/EPO/S/16TH@sid, w=6.83, d=1608s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_16: simTime=0.118s, instructions=1,594,377,772, wallTime=626s (avg 627s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_MPO_16TH_20260711_032936/metrics.csv
+[90/216] Job(GUPS/MPO/S/16TH@sid, w=6.83, d=1608s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_12@purple: simTime=0.191s, instructions=2,331,827,808, wallTime=2546s (avg 2575s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_HPO_12TH_20260711_032936/metrics.csv
+[91/216] Job(dedup/HPO/S/12TH@purple, w=12.00, d=1676s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_12@purple: simTime=0.191s, instructions=2,331,813,719, wallTime=2619s (avg 2590s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_Scatter_12TH_20260711_032936/metrics.csv
+[92/216] Job(dedup/Scatter/S/12TH@purple, w=12.00, d=1676s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_Packed_9TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_16: simTime=0.119s, instructions=1,594,452,156, wallTime=631s (avg 627s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/GUPS_S_AKARIN_16TH_20260711_032936/metrics.csv
+[93/216] Job(GUPS/AKARIN/S/16TH@sid, w=6.83, d=1608s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_12: simTime=0.119s, instructions=1,277,805,096, wallTime=601s (avg 618s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_Packed_12TH_20260711_032936/metrics.csv
+[94/216] Job(GUPS/Packed/S/12TH@sid, w=6.18, d=618s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_12: simTime=0.120s, instructions=1,277,799,396, wallTime=601s (avg 618s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_Scatter_12TH_20260711_032936/metrics.csv
+[95/216] Job(GUPS/Scatter/S/12TH@sid, w=6.18, d=618s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_12: simTime=0.121s, instructions=1,277,802,584, wallTime=603s (avg 616s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_HPO_12TH_20260711_032936/metrics.csv
+[96/216] Job(GUPS/HPO/S/12TH@sid, w=6.18, d=618s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_12: simTime=0.139s, instructions=1,277,893,666, wallTime=604s (avg 612s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_EPO_12TH_20260711_032936/metrics.csv
+[97/216] Job(GUPS/EPO/S/12TH@sid, w=6.18, d=618s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_Packed_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_12: simTime=0.121s, instructions=1,277,794,524, wallTime=593s (avg 605s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_MPO_12TH_20260711_032936/metrics.csv
+[98/216] Job(GUPS/MPO/S/12TH@sid, w=6.18, d=618s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_12: simTime=0.121s, instructions=1,277,757,105, wallTime=603s (avg 601s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/GUPS_S_AKARIN_12TH_20260711_032936/metrics.csv
+[99/216] Job(GUPS/AKARIN/S/12TH@sid, w=6.18, d=618s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_HPO_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_8: simTime=0.123s, instructions=961,191,360, wallTime=600s (avg 615s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_Packed_8TH_20260711_032936/metrics.csv
+[100/216] Job(GUPS/Packed/S/8TH@sid, w=5.68, d=616s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_EPO_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_8: simTime=0.120s, instructions=961,219,915, wallTime=582s (avg 610s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_Scatter_8TH_20260711_032936/metrics.csv
+[101/216] Job(GUPS/Scatter/S/8TH@sid, w=5.68, d=616s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_8: simTime=0.121s, instructions=961,180,875, wallTime=573s (avg 604s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_HPO_8TH_20260711_032936/metrics.csv
+[102/216] Job(GUPS/HPO/S/8TH@sid, w=5.68, d=616s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_12@purple: simTime=0.186s, instructions=2,331,903,705, wallTime=2466s (avg 2559s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_EPO_12TH_20260711_032936/metrics.csv
+[103/216] Job(dedup/EPO/S/12TH@purple, w=12.00, d=1676s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_Scatter_9TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_8: simTime=0.142s, instructions=961,213,508, wallTime=572s (avg 598s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_EPO_8TH_20260711_032936/metrics.csv
+[104/216] Job(GUPS/EPO/S/8TH@sid, w=5.68, d=616s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_Packed_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_8: simTime=0.121s, instructions=961,191,885, wallTime=577s (avg 592s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/GUPS_S_MPO_8TH_20260711_032936/metrics.csv
+[105/216] Job(GUPS/MPO/S/8TH@sid, w=5.68, d=616s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_HPO_2TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_12@purple: simTime=0.186s, instructions=2,331,853,537, wallTime=2542s (avg 2555s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_MPO_12TH_20260711_032936/metrics.csv
+[106/216] Job(dedup/MPO/S/12TH@purple, w=12.00, d=1676s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_HPO_9TH_20260711_032936/affinity_config.txt
+[profile] dedup_S_12@purple: simTime=0.189s, instructions=2,331,918,445, wallTime=2509s (avg 2548s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/dedup_S_AKARIN_12TH_20260711_032936/metrics.csv
+[107/216] Job(dedup/AKARIN/S/12TH@purple, w=12.00, d=1676s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_EPO_9TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_MPO_9TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_2: simTime=0.131s, instructions=486,288,011, wallTime=560s (avg 580s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_Packed_2TH_20260711_032936/metrics.csv
+[108/216] Job(GUPS/Packed/S/2TH@sid, w=4.41, d=581s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_EPO_2TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_2: simTime=0.129s, instructions=486,287,032, wallTime=573s (avg 577s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_Scatter_2TH_20260711_032936/metrics.csv
+[109/216] Job(GUPS/Scatter/S/2TH@sid, w=4.41, d=581s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_MPO_2TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_2: simTime=0.131s, instructions=486,291,071, wallTime=555s (avg 573s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_HPO_2TH_20260711_032936/metrics.csv
+[110/216] Job(GUPS/HPO/S/2TH@sid, w=4.41, d=581s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(dedup/Packed/S/9TH@purple, w=9.00, d=1439s) (2879s > 2878s)
+[111/216] Job(dedup/Packed/S/9TH@purple, w=9.00, d=1439s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/9TH/dedup_S_AKARIN_9TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(GUPS/AKARIN/S/8TH@sid, w=5.68, d=616s) (1208s > 1208s)
+[112/216] Job(GUPS/AKARIN/S/8TH@sid, w=5.68, d=616s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Packed_8TH_20260711_032936/affinity_config.txt
+[profile] BT_S_8: simTime=0.018s, instructions=834,299,413, wallTime=124s (avg 368s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Packed_8TH_20260711_032936/metrics.csv
+[113/216] Job(BT/Packed/S/8TH@sid, w=4.72, d=411s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[profile] BT_S_8: simTime=0.018s, instructions=898,299,186, wallTime=133s (avg 323s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_Scatter_8TH_20260711_032936/metrics.csv
+[114/216] Job(BT/Scatter/S/8TH@sid, w=4.72, d=411s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_HPO_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_2: simTime=0.160s, instructions=486,293,914, wallTime=555s (avg 569s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_EPO_2TH_20260711_032936/metrics.csv
+[115/216] Job(GUPS/EPO/S/2TH@sid, w=4.41, d=581s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_EPO_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_2: simTime=0.132s, instructions=486,287,769, wallTime=565s (avg 564s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_AKARIN_2TH_20260711_032936/metrics.csv
+[116/216] Job(GUPS/AKARIN/S/2TH@sid, w=4.41, d=581s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] GUPS_S_2: simTime=0.129s, instructions=486,288,153, wallTime=579s (avg 565s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/GUPS_S_MPO_2TH_20260711_032936/metrics.csv
+[117/216] Job(GUPS/MPO/S/2TH@sid, w=4.41, d=581s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[profile] BT_S_8: simTime=0.021s, instructions=900,044,612, wallTime=208s (avg 282s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_EPO_8TH_20260711_032936/metrics.csv
+[118/216] Job(BT/EPO/S/8TH@sid, w=4.72, d=411s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_Packed_16TH_20260711_032936/affinity_config.txt
+[profile] BT_S_8: simTime=0.018s, instructions=900,907,775, wallTime=212s (avg 242s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_MPO_8TH_20260711_032936/metrics.csv
+[119/216] Job(BT/MPO/S/8TH@sid, w=4.72, d=411s) -> OK
+[profile] BT_S_8: simTime=0.021s, instructions=994,739,934, wallTime=238s (avg 218s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/BT_S_AKARIN_8TH_20260711_032936/metrics.csv
+[120/216] Job(BT/AKARIN/S/8TH@sid, w=4.72, d=411s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[profile] BT_S_16: simTime=0.011s, instructions=1,029,972,790, wallTime=144s (avg 334s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_Packed_16TH_20260711_032936/metrics.csv
+[121/216] Job(BT/Packed/S/16TH@sid, w=6.28, d=372s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_HPO_16TH_20260711_032936/affinity_config.txt
+[profile] BT_S_16: simTime=0.011s, instructions=1,016,863,335, wallTime=143s (avg 297s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_Scatter_16TH_20260711_032936/metrics.csv
+[122/216] Job(BT/Scatter/S/16TH@sid, w=6.28, d=372s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_EPO_16TH_20260711_032936/affinity_config.txt
+[profile] BT_S_16: simTime=0.011s, instructions=1,022,843,295, wallTime=142s (avg 259s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_HPO_16TH_20260711_032936/metrics.csv
+[123/216] Job(BT/HPO/S/16TH@sid, w=6.28, d=372s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_MPO_16TH_20260711_032936/affinity_config.txt
+[profile] BT_S_16: simTime=0.011s, instructions=1,041,263,751, wallTime=152s (avg 222s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_EPO_16TH_20260711_032936/metrics.csv
+[124/216] Job(BT/EPO/S/16TH@sid, w=6.28, d=372s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_Packed_2TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(BT/HPO/S/8TH@sid, w=4.72, d=411s) (646s > 645s)
+[125/216] Job(BT/HPO/S/8TH@sid, w=4.72, d=411s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_HPO_2TH_20260711_032936/affinity_config.txt
+[profile] BT_S_16: simTime=0.011s, instructions=1,025,121,180, wallTime=159s (avg 186s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_MPO_16TH_20260711_032936/metrics.csv
+[126/216] Job(BT/MPO/S/16TH@sid, w=6.28, d=372s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_EPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_MPO_2TH_20260711_032936/affinity_config.txt
+[profile] BT_S_16: simTime=0.011s, instructions=1,043,711,744, wallTime=166s (avg 151s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/BT_S_AKARIN_16TH_20260711_032936/metrics.csv
+[127/216] Job(BT/AKARIN/S/16TH@sid, w=6.28, d=372s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[profile] BT_S_2: simTime=0.042s, instructions=559,227,702, wallTime=204s (avg 304s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_Packed_2TH_20260711_032936/metrics.csv
+[128/216] Job(BT/Packed/S/2TH@sid, w=2.66, d=326s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] BT_S_2: simTime=0.042s, instructions=559,088,350, wallTime=201s (avg 282s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_Scatter_2TH_20260711_032936/metrics.csv
+[129/216] Job(BT/Scatter/S/2TH@sid, w=2.66, d=326s) -> OK
+[profile] BT_S_2: simTime=0.042s, instructions=559,146,016, wallTime=203s (avg 262s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_HPO_2TH_20260711_032936/metrics.csv
+[130/216] Job(BT/HPO/S/2TH@sid, w=2.66, d=326s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[profile] BT_S_2: simTime=0.049s, instructions=559,102,885, wallTime=197s (avg 241s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_EPO_2TH_20260711_032936/metrics.csv
+[131/216] Job(BT/EPO/S/2TH@sid, w=2.66, d=326s) -> OK
+[profile] BT_S_2: simTime=0.042s, instructions=559,405,853, wallTime=200s (avg 206s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_MPO_2TH_20260711_032936/metrics.csv
+[132/216] Job(BT/MPO/S/2TH@sid, w=2.66, d=326s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] BT_S_12: simTime=0.011s, instructions=779,329,764, wallTime=144s (avg 188s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_Packed_12TH_20260711_032936/metrics.csv
+[133/216] Job(BT/Packed/S/12TH@sid, w=5.58, d=216s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] BT_S_2: simTime=0.042s, instructions=559,162,570, wallTime=201s (avg 201s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/BT_S_AKARIN_2TH_20260711_032936/metrics.csv
+[134/216] Job(BT/AKARIN/S/2TH@sid, w=2.66, d=326s) -> OK
+[profile] BT_S_12: simTime=0.011s, instructions=769,746,059, wallTime=143s (avg 161s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_Scatter_12TH_20260711_032936/metrics.csv
+[135/216] Job(BT/Scatter/S/12TH@sid, w=5.58, d=216s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] BT_S_12: simTime=0.011s, instructions=773,035,027, wallTime=142s (avg 135s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_HPO_12TH_20260711_032936/metrics.csv
+[136/216] Job(BT/HPO/S/12TH@sid, w=5.58, d=216s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[profile] BT_S_12: simTime=0.011s, instructions=749,637,663, wallTime=147s (avg 136s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_EPO_12TH_20260711_032936/metrics.csv
+[137/216] Job(BT/EPO/S/12TH@sid, w=5.58, d=216s) -> OK
+[profile] BT_S_12: simTime=0.011s, instructions=789,662,373, wallTime=137s (avg 136s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_MPO_12TH_20260711_032936/metrics.csv
+[138/216] Job(BT/MPO/S/12TH@sid, w=5.58, d=216s) -> OK
+[profile] BT_S_12: simTime=0.011s, instructions=781,591,550, wallTime=119s (avg 139s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/BT_S_AKARIN_12TH_20260711_032936/metrics.csv
+[139/216] Job(BT/AKARIN/S/12TH@sid, w=5.58, d=216s) -> OK
+[TIMEOUT] Job(dedup/Scatter/S/9TH@purple, w=9.00, d=1439s) (2879s > 2878s)
+[140/216] Job(dedup/Scatter/S/9TH@purple, w=9.00, d=1439s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_Packed_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_HPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_EPO_2TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(dedup/HPO/S/9TH@purple, w=9.00, d=1439s) (2879s > 2878s)
+[141/216] Job(dedup/HPO/S/9TH@purple, w=9.00, d=1439s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_MPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(dedup/EPO/S/9TH@purple, w=9.00, d=1439s) (2879s > 2878s)
+[142/216] Job(dedup/EPO/S/9TH@purple, w=9.00, d=1439s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Packed_8TH_20260711_032936/affinity_config.txt
+[TIMEOUT] Job(dedup/MPO/S/9TH@purple, w=9.00, d=1439s) (2879s > 2878s)
+[143/216] Job(dedup/MPO/S/9TH@purple, w=9.00, d=1439s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_HPO_8TH_20260711_032936/affinity_config.txt
+[profile] FT_S_8@purple: simTime=0.014s, instructions=733,812,074, wallTime=368s (avg 427s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Scatter_8TH_20260711_032936/metrics.csv
+[144/216] Job(FT/Scatter/S/8TH@purple, w=8.00, d=463s) -> OK
+[TIMEOUT] Job(dedup/AKARIN/S/9TH@purple, w=9.00, d=1439s) (2879s > 2878s)
+[145/216] Job(dedup/AKARIN/S/9TH@purple, w=9.00, d=1439s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_EPO_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] FT_S_8@purple: simTime=0.014s, instructions=734,381,623, wallTime=370s (avg 431s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_HPO_8TH_20260711_032936/metrics.csv
+[146/216] Job(FT/HPO/S/8TH@purple, w=8.00, d=463s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[profile] FT_S_8@purple: simTime=0.017s, instructions=849,165,047, wallTime=602s (avg 473s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_Packed_8TH_20260711_032936/metrics.csv
+[147/216] Job(FT/Packed/S/8TH@purple, w=8.00, d=463s) -> OK
+[profile] FT_S_2@purple: simTime=0.065s, instructions=725,026,722, wallTime=951s (avg 976s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_EPO_2TH_20260711_032936/metrics.csv
+[148/216] Job(FT/EPO/S/2TH@purple, w=2.00, d=964s) -> OK
+[profile] FT_S_2@purple: simTime=0.052s, instructions=724,981,147, wallTime=965s (avg 989s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_Packed_2TH_20260711_032936/metrics.csv
+[149/216] Job(FT/Packed/S/2TH@purple, w=2.00, d=964s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] FT_S_2@purple: simTime=0.052s, instructions=725,100,670, wallTime=966s (avg 1002s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_Scatter_2TH_20260711_032936/metrics.csv
+[150/216] Job(FT/Scatter/S/2TH@purple, w=2.00, d=964s) -> OK
+[profile] FT_S_2@purple: simTime=0.052s, instructions=725,008,496, wallTime=976s (avg 1018s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_HPO_2TH_20260711_032936/metrics.csv
+[151/216] Job(FT/HPO/S/2TH@purple, w=2.00, d=964s) -> OK
+[profile] FT_S_8@purple: simTime=0.014s, instructions=734,915,960, wallTime=371s (avg 440s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_AKARIN_8TH_20260711_032936/metrics.csv
+[152/216] Job(FT/AKARIN/S/8TH@purple, w=8.00, d=463s) -> OK
+[profile] FT_S_8@purple: simTime=0.014s, instructions=734,734,871, wallTime=374s (avg 446s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_MPO_8TH_20260711_032936/metrics.csv
+[153/216] Job(FT/MPO/S/8TH@purple, w=8.00, d=463s) -> OK
+[profile] FT_S_8@purple: simTime=0.017s, instructions=734,382,310, wallTime=386s (avg 412s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/FT_S_EPO_8TH_20260711_032936/metrics.csv
+[154/216] Job(FT/EPO/S/8TH@purple, w=8.00, d=463s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] FT_S_2@purple: simTime=0.052s, instructions=725,150,283, wallTime=915s (avg 993s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_MPO_2TH_20260711_032936/metrics.csv
+[155/216] Job(FT/MPO/S/2TH@purple, w=2.00, d=964s) -> OK
+[profile] FT_S_2@purple: simTime=0.052s, instructions=725,167,463, wallTime=919s (avg 949s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/FT_S_AKARIN_2TH_20260711_032936/metrics.csv
+[156/216] Job(FT/AKARIN/S/2TH@purple, w=2.00, d=964s) -> OK
+[profile] FT_S_12@purple: simTime=0.011s, instructions=827,024,658, wallTime=401s (avg 391s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_Packed_12TH_20260711_032936/metrics.csv
+[157/216] Job(FT/Packed/S/12TH@purple, w=12.00, d=381s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] FT_S_12@purple: simTime=0.011s, instructions=825,452,387, wallTime=343s (avg 398s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_Scatter_12TH_20260711_032936/metrics.csv
+[158/216] Job(FT/Scatter/S/12TH@purple, w=12.00, d=381s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] FT_S_12@purple: simTime=0.011s, instructions=830,320,864, wallTime=388s (avg 405s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_HPO_12TH_20260711_032936/metrics.csv
+[159/216] Job(FT/HPO/S/12TH@purple, w=12.00, d=381s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[profile] FT_S_12@purple: simTime=0.013s, instructions=928,093,598, wallTime=436s (avg 401s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_EPO_12TH_20260711_032936/metrics.csv
+[160/216] Job(FT/EPO/S/12TH@purple, w=12.00, d=381s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_Packed_16TH_20260711_032936/affinity_config.txt
+[profile] FT_S_12@purple: simTime=0.013s, instructions=1,001,639,520, wallTime=391s (avg 404s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_MPO_12TH_20260711_032936/metrics.csv
+[161/216] Job(FT/MPO/S/12TH@purple, w=12.00, d=381s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[profile] FT_S_12@purple: simTime=0.013s, instructions=1,001,952,932, wallTime=416s (avg 396s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/FT_S_AKARIN_12TH_20260711_032936/metrics.csv
+[162/216] Job(FT/AKARIN/S/12TH@purple, w=12.00, d=381s) -> OK
+[profile] FT_S_16@purple: simTime=0.009s, instructions=852,321,406, wallTime=326s (avg 332s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_Packed_16TH_20260711_032936/metrics.csv
+[163/216] Job(FT/Packed/S/16TH@purple, w=16.00, d=332s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_HPO_16TH_20260711_032936/affinity_config.txt
+[profile] FT_S_16@purple: simTime=0.009s, instructions=851,402,671, wallTime=330s (avg 333s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_Scatter_16TH_20260711_032936/metrics.csv
+[164/216] Job(FT/Scatter/S/16TH@purple, w=16.00, d=332s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_EPO_16TH_20260711_032936/affinity_config.txt
+[profile] FT_S_16@purple: simTime=0.009s, instructions=853,065,269, wallTime=325s (avg 332s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_HPO_16TH_20260711_032936/metrics.csv
+[165/216] Job(FT/HPO/S/16TH@purple, w=16.00, d=332s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_MPO_16TH_20260711_032936/affinity_config.txt
+[profile] FT_S_16@purple: simTime=0.009s, instructions=858,527,885, wallTime=329s (avg 331s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_EPO_16TH_20260711_032936/metrics.csv
+[166/216] Job(FT/EPO/S/16TH@purple, w=16.00, d=332s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_Packed_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_HPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_EPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_MPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[profile] IS_S_2@purple: simTime=0.009s, instructions=36,863,642, wallTime=67s (avg 74s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_Packed_2TH_20260711_032936/metrics.csv
+[167/216] Job(IS/Packed/S/2TH@purple, w=2.00, d=74s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_Packed_2TH_20260711_032936/affinity_config.txt
+[profile] IS_S_2@purple: simTime=0.009s, instructions=36,865,300, wallTime=68s (avg 74s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_HPO_2TH_20260711_032936/metrics.csv
+[168/216] Job(IS/HPO/S/2TH@purple, w=2.00, d=74s) -> OK
+[profile] IS_S_2@purple: simTime=0.009s, instructions=36,863,196, wallTime=66s (avg 72s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_Scatter_2TH_20260711_032936/affinity_config.txt
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_AKARIN_2TH_20260711_032936/metrics.csv
+[169/216] Job(IS/AKARIN/S/2TH@purple, w=2.00, d=74s) -> OK
+[profile] IS_S_2@purple: simTime=0.010s, instructions=36,860,302, wallTime=68s (avg 70s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_EPO_2TH_20260711_032936/metrics.csv
+[170/216] Job(IS/EPO/S/2TH@purple, w=2.00, d=74s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_HPO_2TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_EPO_2TH_20260711_032936/affinity_config.txt
+[profile] IS_S_2@purple: simTime=0.010s, instructions=36,862,282, wallTime=83s (avg 71s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_Scatter_2TH_20260711_032936/metrics.csv
+[171/216] Job(IS/Scatter/S/2TH@purple, w=2.00, d=74s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_MPO_2TH_20260711_032936/affinity_config.txt
+[profile] IS_S_2@purple: simTime=0.010s, instructions=36,869,547, wallTime=83s (avg 72s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/IS_S_MPO_2TH_20260711_032936/metrics.csv
+[172/216] Job(IS/MPO/S/2TH@purple, w=2.00, d=74s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_AKARIN_2TH_20260711_032936/affinity_config.txt
+[profile] MG_S_2@purple: simTime=0.004s, instructions=35,052,115, wallTime=71s (avg 70s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_Packed_2TH_20260711_032936/metrics.csv
+[173/216] Job(MG/Packed/S/2TH@purple, w=2.00, d=70s) -> OK
+[profile] MG_S_2@purple: simTime=0.004s, instructions=35,063,483, wallTime=70s (avg 70s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_Scatter_2TH_20260711_032936/metrics.csv
+[174/216] Job(MG/Scatter/S/2TH@purple, w=2.00, d=70s) -> OK
+[profile] MG_S_2@purple: simTime=0.004s, instructions=35,081,297, wallTime=71s (avg 70s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_HPO_2TH_20260711_032936/metrics.csv
+[175/216] Job(MG/HPO/S/2TH@purple, w=2.00, d=70s) -> OK
+[profile] MG_S_2@purple: simTime=0.005s, instructions=35,127,559, wallTime=74s (avg 71s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_EPO_2TH_20260711_032936/metrics.csv
+[176/216] Job(MG/EPO/S/2TH@purple, w=2.00, d=70s) -> OK
+[profile] MG_S_2@purple: simTime=0.004s, instructions=35,027,566, wallTime=70s (avg 71s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_MPO_2TH_20260711_032936/metrics.csv
+[177/216] Job(MG/MPO/S/2TH@purple, w=2.00, d=70s) -> OK
+[profile] MG_S_2@purple: simTime=0.005s, instructions=36,745,167, wallTime=74s (avg 72s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/2TH/MG_S_AKARIN_2TH_20260711_032936/metrics.csv
+[178/216] Job(MG/AKARIN/S/2TH@purple, w=2.00, d=70s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] MG_S_12@purple: simTime=0.002s, instructions=64,724,413, wallTime=49s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_Packed_12TH_20260711_032936/metrics.csv
+[179/216] Job(MG/Packed/S/12TH@purple, w=12.00, d=60s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[profile] MG_S_12@purple: simTime=0.002s, instructions=60,629,218, wallTime=51s (avg 51s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_Scatter_12TH_20260711_032936/metrics.csv
+[180/216] Job(MG/Scatter/S/12TH@purple, w=12.00, d=60s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] MG_S_12@purple: simTime=0.002s, instructions=61,401,112, wallTime=47s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_HPO_12TH_20260711_032936/metrics.csv
+[181/216] Job(MG/HPO/S/12TH@purple, w=12.00, d=60s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] FT_S_16@purple: simTime=0.009s, instructions=855,140,262, wallTime=343s (avg 332s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_MPO_16TH_20260711_032936/metrics.csv
+[182/216] Job(FT/MPO/S/16TH@purple, w=16.00, d=332s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_MPO_12TH_20260711_032936/affinity_config.txt
+[profile] FT_S_16@purple: simTime=0.009s, instructions=855,004,973, wallTime=348s (avg 334s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/FT_S_AKARIN_16TH_20260711_032936/metrics.csv
+[183/216] Job(FT/AKARIN/S/16TH@purple, w=16.00, d=332s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[profile] MG_S_12@purple: simTime=0.002s, instructions=65,533,676, wallTime=49s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_EPO_12TH_20260711_032936/metrics.csv
+[184/216] Job(MG/EPO/S/12TH@purple, w=12.00, d=60s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_Packed_16TH_20260711_032936/affinity_config.txt
+[profile] MG_S_12@purple: simTime=0.002s, instructions=65,556,644, wallTime=50s (avg 50s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_MPO_12TH_20260711_032936/metrics.csv
+[185/216] Job(MG/MPO/S/12TH@purple, w=12.00, d=60s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Packed_8TH_20260711_032936/affinity_config.txt
+[profile] MG_S_12@purple: simTime=0.002s, instructions=63,979,842, wallTime=49s (avg 49s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/MG_S_AKARIN_12TH_20260711_032936/metrics.csv
+[186/216] Job(MG/AKARIN/S/12TH@purple, w=12.00, d=60s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[profile] IS_S_16@purple: simTime=0.002s, instructions=58,306,223, wallTime=45s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_Packed_16TH_20260711_032936/metrics.csv
+[187/216] Job(IS/Packed/S/16TH@purple, w=16.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[profile] MG_S_8@purple: simTime=0.002s, instructions=45,618,259, wallTime=46s (avg 47s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Packed_8TH_20260711_032936/metrics.csv
+[188/216] Job(MG/Packed/S/8TH@purple, w=8.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_HPO_16TH_20260711_032936/affinity_config.txt
+[profile] IS_S_16@purple: simTime=0.002s, instructions=58,552,648, wallTime=50s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_Scatter_16TH_20260711_032936/metrics.csv
+[189/216] Job(IS/Scatter/S/16TH@purple, w=16.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_HPO_8TH_20260711_032936/affinity_config.txt
+[profile] MG_S_8@purple: simTime=0.002s, instructions=44,493,912, wallTime=44s (avg 46s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_Scatter_8TH_20260711_032936/metrics.csv
+[190/216] Job(MG/Scatter/S/8TH@purple, w=8.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_EPO_16TH_20260711_032936/affinity_config.txt
+[profile] IS_S_16@purple: simTime=0.002s, instructions=58,284,089, wallTime=47s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_HPO_16TH_20260711_032936/metrics.csv
+[191/216] Job(IS/HPO/S/16TH@purple, w=16.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_EPO_8TH_20260711_032936/affinity_config.txt
+[profile] MG_S_8@purple: simTime=0.002s, instructions=45,403,206, wallTime=42s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_HPO_8TH_20260711_032936/metrics.csv
+[192/216] Job(MG/HPO/S/8TH@purple, w=8.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_MPO_16TH_20260711_032936/affinity_config.txt
+[profile] IS_S_16@purple: simTime=0.002s, instructions=58,414,657, wallTime=46s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_EPO_16TH_20260711_032936/metrics.csv
+[193/216] Job(IS/EPO/S/16TH@purple, w=16.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] MG_S_8@purple: simTime=0.002s, instructions=44,767,430, wallTime=41s (avg 44s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_EPO_8TH_20260711_032936/metrics.csv
+[194/216] Job(MG/EPO/S/8TH@purple, w=8.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[profile] IS_S_16@purple: simTime=0.002s, instructions=58,824,415, wallTime=47s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_MPO_16TH_20260711_032936/metrics.csv
+[195/216] Job(IS/MPO/S/16TH@purple, w=16.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_Packed_12TH_20260711_032936/affinity_config.txt
+[profile] MG_S_8@purple: simTime=0.002s, instructions=45,207,454, wallTime=43s (avg 44s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_MPO_8TH_20260711_032936/metrics.csv
+[196/216] Job(MG/MPO/S/8TH@purple, w=8.00, d=48s) -> OK
+[profile] IS_S_16@purple: simTime=0.002s, instructions=58,818,912, wallTime=49s (avg 47s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/IS_S_AKARIN_16TH_20260711_032936/metrics.csv
+[197/216] Job(IS/AKARIN/S/16TH@purple, w=16.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_Scatter_12TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_HPO_12TH_20260711_032936/affinity_config.txt
+[profile] MG_S_8@purple: simTime=0.002s, instructions=47,246,832, wallTime=46s (avg 44s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/MG_S_AKARIN_8TH_20260711_032936/metrics.csv
+[198/216] Job(MG/AKARIN/S/8TH@purple, w=8.00, d=48s) -> OK
+[profile] IS_S_12@purple: simTime=0.002s, instructions=51,458,225, wallTime=47s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_Packed_12TH_20260711_032936/metrics.csv
+[199/216] Job(IS/Packed/S/12TH@purple, w=12.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_EPO_12TH_20260711_032936/affinity_config.txt
+[profile] IS_S_12@purple: simTime=0.002s, instructions=51,560,775, wallTime=47s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_HPO_12TH_20260711_032936/metrics.csv
+[200/216] Job(IS/HPO/S/12TH@purple, w=12.00, d=48s) -> OK
+[profile] IS_S_12@purple: simTime=0.002s, instructions=51,506,263, wallTime=48s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_Scatter_12TH_20260711_032936/metrics.csv
+[201/216] Job(IS/Scatter/S/12TH@purple, w=12.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_MPO_12TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_AKARIN_12TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Packed_8TH_20260711_032936/affinity_config.txt
+[profile] IS_S_12@purple: simTime=0.002s, instructions=49,956,005, wallTime=46s (avg 48s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_EPO_12TH_20260711_032936/metrics.csv
+[202/216] Job(IS/EPO/S/12TH@purple, w=12.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Scatter_8TH_20260711_032936/affinity_config.txt
+[profile] IS_S_12@purple: simTime=0.002s, instructions=51,750,961, wallTime=46s (avg 47s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_MPO_12TH_20260711_032936/metrics.csv
+[203/216] Job(IS/MPO/S/12TH@purple, w=12.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_HPO_8TH_20260711_032936/affinity_config.txt
+[profile] IS_S_8@purple: simTime=0.003s, instructions=45,849,603, wallTime=45s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Packed_8TH_20260711_032936/metrics.csv
+[204/216] Job(IS/Packed/S/8TH@purple, w=8.00, d=44s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_EPO_8TH_20260711_032936/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_MPO_8TH_20260711_032936/affinity_config.txt
+[profile] IS_S_12@purple: simTime=0.002s, instructions=51,820,579, wallTime=48s (avg 47s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/12TH/IS_S_AKARIN_12TH_20260711_032936/metrics.csv
+[205/216] Job(IS/AKARIN/S/12TH@purple, w=12.00, d=48s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_AKARIN_8TH_20260711_032936/affinity_config.txt
+[profile] IS_S_8@purple: simTime=0.003s, instructions=42,386,139, wallTime=46s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_Scatter_8TH_20260711_032936/metrics.csv
+[206/216] Job(IS/Scatter/S/8TH@purple, w=8.00, d=44s) -> OK
+[profile] IS_S_8@purple: simTime=0.003s, instructions=42,327,479, wallTime=46s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_HPO_8TH_20260711_032936/metrics.csv
+[207/216] Job(IS/HPO/S/8TH@purple, w=8.00, d=44s) -> OK
+[profile] IS_S_8@purple: simTime=0.003s, instructions=42,381,127, wallTime=46s (avg 45s)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_Packed_16TH_20260711_032936/affinity_config.txt
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_EPO_8TH_20260711_032936/metrics.csv
+[208/216] Job(IS/EPO/S/8TH@purple, w=8.00, d=44s) -> OK
+[profile] IS_S_8@purple: simTime=0.003s, instructions=42,311,634, wallTime=47s (avg 46s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_MPO_8TH_20260711_032936/metrics.csv
+[209/216] Job(IS/MPO/S/8TH@purple, w=8.00, d=44s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_Scatter_16TH_20260711_032936/affinity_config.txt
+[profile] IS_S_8@purple: simTime=0.003s, instructions=46,464,261, wallTime=49s (avg 46s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/8TH/IS_S_AKARIN_8TH_20260711_032936/metrics.csv
+[210/216] Job(IS/AKARIN/S/8TH@purple, w=8.00, d=44s) -> OK
+[profile] MG_S_16@purple: simTime=0.001s, instructions=61,669,493, wallTime=43s (avg 44s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_Packed_16TH_20260711_032936/metrics.csv
+[211/216] Job(MG/Packed/S/16TH@purple, w=16.00, d=44s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_HPO_16TH_20260711_032936/affinity_config.txt
+[profile] MG_S_16@purple: simTime=0.001s, instructions=59,624,128, wallTime=48s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_Scatter_16TH_20260711_032936/metrics.csv
+[212/216] Job(MG/Scatter/S/16TH@purple, w=16.00, d=44s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_EPO_16TH_20260711_032936/affinity_config.txt
+[profile] MG_S_16@purple: simTime=0.001s, instructions=61,410,215, wallTime=43s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_HPO_16TH_20260711_032936/metrics.csv
+[213/216] Job(MG/HPO/S/16TH@purple, w=16.00, d=44s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_MPO_16TH_20260711_032936/affinity_config.txt
+[profile] MG_S_16@purple: simTime=0.001s, instructions=64,972,864, wallTime=45s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_EPO_16TH_20260711_032936/metrics.csv
+[214/216] Job(MG/EPO/S/16TH@purple, w=16.00, d=44s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_AKARIN_16TH_20260711_032936/affinity_config.txt
+[profile] MG_S_16@purple: simTime=0.001s, instructions=61,884,108, wallTime=45s (avg 45s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_MPO_16TH_20260711_032936/metrics.csv
+[215/216] Job(MG/MPO/S/16TH@purple, w=16.00, d=44s) -> OK
+[profile] MG_S_16@purple: simTime=0.001s, instructions=65,245,282, wallTime=43s (avg 44s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeS/16TH/MG_S_AKARIN_16TH_20260711_032936/metrics.csv
+[216/216] Job(MG/AKARIN/S/16TH@purple, w=16.00, d=44s) -> OK
+
+[完了] 216/216 件処理

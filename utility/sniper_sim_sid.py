@@ -2,12 +2,29 @@
 sniper_sim_sid.py
 podman を使って Sniper コンテナ上でシミュレーションを実行するラッパー(SIDホスト用)。
 
-コンテナ: localhost/snipersim/snipersim:detloc
-  - 2026-07-10、snipersim/snipersim:latestにJinのscheduler_pinned_mapパッチ
-    (common/scheduler/scheduler_pinned_map.cc/h, split_string.cc/h)を移植して
-    再ビルドし、新タグとしてコミットしたイメージ。GOMP_CPU_AFFINITYが機能しない
-    問題への対応で、map_file(thread_id:cpu_id)による厳密な静的配置が必要になった
-    ため(config/generate_config.py参照)。元のlatestタグは変更していない。
+コンテナ: localhost/snipersim/snipersim:detloc-firsttouch-v3
+  - 2026-07-10、snipersim/snipersim:latestに以下を段階的に移植・再ビルドした
+    イメージ(元のlatestタグは無変更、各段階も別タグで保存済み):
+    1. detloc: Jinのscheduler_pinned_mapパッチ(common/scheduler/
+       scheduler_pinned_map.cc/h, split_string.cc/h)。GOMP_CPU_AFFINITYが
+       この環境で機能しない問題への対応で、map_file(thread_id:cpu_id)による
+       厳密な静的配置が必要になったため(config/generate_config.py参照)。
+    2. detloc-firsttouch-v2: AddressHomeLookupへのFirst-Touch実装(初版)、
+       NetworkModelBusのignore_local_traffic判定・DramDirectoryCntlrの
+       DRAM_LOCAL/REMOTE判定のノード単位化。「本棚問題」(getHome()が
+       アドレスハッシュのみでコアの物理配置を無視する問題)への対応。
+    3. detloc-firsttouch-v3: v2のFirst-Touch実装にあった重大なバグ修正
+       (AddressHomeLookupはコアごとに別インスタンスが生成されるため、
+       first-touchの記録がコアごとに16個バラバラで、グローバルに1つの
+       はずの「持ち主」情報が共有されていなかった。static共有マップに変更)。
+       加えてcache_cntlr.cc/hに新しい検証用計測ポイント
+       (access-home-local/remote)を追加(既存のloads-where-dram-local/
+       remoteはタグディレクトリ⇔DRAMコントローラの内部プロトコル区間しか
+       見ておらず、First-Touch後は常に一致するため検証に使えなかった)。
+       GUPS(全スレッドが共有テーブル全体へランダムアクセスするワークロード)
+       で実測検証: Packed=100%ローカル、Scatter=SID53.3%/Purple73.5%
+       ローカルという、配置に応じた妥当な差を確認済み。
+       詳細はDocuments/2026年7月10日.md参照。
   - /root/sniper/run-sniper がエントリポイント
   - バイナリは --binary でホストパスを渡し、コンテナに /binary としてマウント
   - 出力は /out にマウント
@@ -19,7 +36,7 @@ import uuid
 
 from config.generate_config import TOTAL_SIM_CORES
 
-CONTAINER_IMAGE = "localhost/snipersim/snipersim:detloc"
+CONTAINER_IMAGE = "localhost/snipersim/snipersim:detloc-firsttouch-v3"
 SNIPER_BIN      = "/root/sniper/run-sniper"
 CONTAINER_CFG   = "/cfg/arrow_lake.cfg"
 CONTAINER_BIN   = "/binary"

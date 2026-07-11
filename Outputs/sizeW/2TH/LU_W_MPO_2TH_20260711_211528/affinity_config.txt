@@ -1,0 +1,11 @@
+BENCHMARK=LU.W (NPB3.3 OpenMP)
+PRESET=MPO
+NUM_THREADS=2
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[8, 0]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU08 (Node1 P-core)
+  thread01 -> CPU00 (Node0 P-core)

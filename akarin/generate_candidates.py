@@ -5,10 +5,10 @@ Sniperは一切実行しない(CP-SATの計算のみ、高速・低負荷)。進
 競合しない。
 
 各(workload, bench_class, num_threads)について:
-  1. alphaを振ってCP-SATで候補cpu_mapを計算する。重量級ワークロード(NPB系)は
-     1回あたりのSniper本実行コストが高く候補数=実行待ち時間に直結するため、
-     3点(0.0/0.5/1.0)の粗いグリッドに絞る。軽量級(GAPBS系・lavaMD)は
-     21点(0.05刻み)のフル解像度で振る。
+  1. CP-SAT(akarin/cpsat_mapper.py、ルーフラインモデル)で候補cpu_mapを1つ
+     計算する。2026-07-11: 以前はalphaを0〜1で振って候補cpu_mapを21点(密)/
+     3点(粗)グリッド生成していたが、新数式はalphaという恣意的パラメータを
+     持たない決定的な最適化になったため、候補は1点のみになった。
   2. 既存の5戦略(Packed/Scatter/HPO/EPO/MPO)のcpu_mapも候補に加える
   3. 「どのスレッドが(ノード, P/E種別)のどのバケツに乗るか」を正規化した
      署名(canonical signature)をキーに重複排除する。generate_config.pyの
@@ -27,15 +27,6 @@ from akarin.cpsat_mapper import compute_cpsat_map_from_csv
 from utility.cpu_affinity import resolve_cpu_map
 from utility.deloc_mapper import NODE_E_CORES, NODE_P_CORES, find_comm_csv
 from utility.capacity_model import HEAVY_WORKLOADS
-
-# 候補生成のためのCP-SAT呼び出し自体は軽くても、後段のSniper本実行コストが高い
-# ワークロードほどalpha点数(=候補数=実行本数)を絞る必要がある。HEAVY_WORKLOADS
-# (実測壁時計時間の重量級判定)は2026-07-09にultra_orchestrator.pyのマシン振り分け
-# と同一概念であることが分かったため、utility.capacity_modelに一本化した
-# (定義・経緯はそちらのdocstring参照)。
-
-ALPHA_GRID_FULL   = [i / 20 for i in range(21)]  # 0.00, 0.05, ..., 1.00 (21点)
-ALPHA_GRID_COARSE = [0.0, 0.5, 1.0]               # 重量級用(3点)
 
 LEGACY_STRATEGIES = ["Packed", "Scatter", "HPO", "EPO", "MPO"]
 
@@ -57,38 +48,24 @@ def canonical_signature(cpu_map: list) -> tuple:
     return tuple(_CORE_KIND[c] for c in cpu_map)
 
 
-def alpha_grid_for(workload: str, bench_class: str = "W") -> list:
-    """
-    重量級(HEAVY_WORKLOADS)は通常3点(粗)に絞るが、SizeS(bench_class="S")に
-    限っては重量級でも軽量級と同じ21点(密)を使う。SizeSはSizeWと違い規模が
-    小さくSniper実行コストが相対的に低いため、粗グリッドで候補数を削る必要が
-    無いとユーザーが2026-07-08に判断した。
-    """
-    if bench_class == "S":
-        return ALPHA_GRID_FULL
-    return ALPHA_GRID_COARSE if workload in HEAVY_WORKLOADS else ALPHA_GRID_FULL
-
-
 def generate_candidates(workload: str, bench_class: str, num_threads: int) -> dict[tuple, dict]:
     """
     正規化署名 -> {"cpu_map": 代表cpu_map, "labels": [ラベル...]} の辞書を返す。
-    同じ署名(=同一シミュレーション結果になる配置)に複数のラベル(alphaや戦略名)が
+    同じ署名(=同一シミュレーション結果になる配置)に複数のラベル(AKARINや戦略名)が
     対応する場合はまとめて記録する。
     """
     candidates: dict[tuple, dict] = {}
     csv_path = find_comm_csv(workload, bench_class, num_threads)
-    alpha_grid = alpha_grid_for(workload, bench_class)
 
     def _add(cpu_map: list, label: str):
         key = canonical_signature(cpu_map[:num_threads])
         entry = candidates.setdefault(key, {"cpu_map": cpu_map, "labels": []})
         entry["labels"].append(label)
 
-    for alpha in alpha_grid:
-        cpu_map, _info, _imbalance = compute_cpsat_map_from_csv(
-            csv_path, num_threads, alpha=alpha, time_limit_sec=5.0,
-        )
-        _add(cpu_map, f"alpha={alpha:.2f}")
+    cpu_map, _info, _imbalance = compute_cpsat_map_from_csv(
+        csv_path, num_threads, time_limit_sec=5.0,
+    )
+    _add(cpu_map, "AKARIN")
 
     for strategy in LEGACY_STRATEGIES:
         cpu_map = resolve_cpu_map(strategy, workload, bench_class, num_threads)
@@ -109,17 +86,12 @@ def main():
     args = _parse_args()
 
     for wl in args.workload:
-        n_alpha = len(alpha_grid_for(wl, args.bench_class))
         for th in args.threads:
             candidates = generate_candidates(wl, args.bench_class, th)
             n_unique = len(candidates)
-            if args.bench_class == "S":
-                tier = "重量級だがSizeSのため密" if wl in HEAVY_WORKLOADS else "軽量級(密)"
-            else:
-                tier = "重量級(粗)" if wl in HEAVY_WORKLOADS else "軽量級(密)"
+            tier = "重量級" if wl in HEAVY_WORKLOADS else "軽量級"
             print(f"\n=== {wl} class={args.bench_class} {th}TH [{tier}] ===")
-            print(f"  alpha点数={n_alpha} + 既存5戦略 → "
-                  f"ユニーク候補数={n_unique}")
+            print(f"  AKARIN(1点、alpha廃止) + 既存5戦略 → ユニーク候補数={n_unique}")
             for entry in sorted(candidates.values(), key=lambda e: -len(e["labels"])):
                 labels = entry["labels"]
                 label_str = ", ".join(labels) if len(labels) <= 6 else f"{len(labels)}種"

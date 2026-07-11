@@ -1,0 +1,109 @@
+[profile/estimate] GUPS_W_2: S×2.6 → 1491s (ref=565s)
+[profile/estimate] GUPS_W_8: S×2.6 → 1527s (ref=578s)
+[profile/estimate] GUPS_W_2: S×2.6 → 1491s (ref=565s)
+[profile/estimate] GUPS_W_8: S×2.6 → 1527s (ref=578s)
+[profile/estimate] GUPS_W_2: S×2.6 → 1491s (ref=565s)
+[profile/estimate] GUPS_W_8: S×2.6 → 1527s (ref=578s)
+[profile/estimate] GUPS_W_2: S×2.6 → 1491s (ref=565s)
+[profile/estimate] GUPS_W_8: S×2.6 → 1527s (ref=578s)
+[profile/estimate] GUPS_W_2: S×2.6 → 1491s (ref=565s)
+[profile/estimate] GUPS_W_8: S×2.6 → 1527s (ref=578s)
+[profile/estimate] GUPS_W_2: S×2.6 → 1491s (ref=565s)
+[profile/estimate] GUPS_W_8: S×2.6 → 1527s (ref=578s)
+[JOBS] 72件 (machine=sid, workloads=['BT', 'canneal', 'GUPS'], strategies=['Packed', 'Scatter', 'HPO', 'EPO', 'MPO', 'akarin'], bench_class=['W'], threads=[2, 8, 12, 16])
+[profile/estimate] CG_W_2@purple: S×15.0 → 5934s (ref=396s)
+[profile/estimate] CG_W_8@purple: S×15.0 → 3042s (ref=203s)
+[profile/estimate] CG_W_12@purple: S×15.0 → 2775s (ref=185s)
+[profile/estimate] CG_W_16@purple: S×15.0 → 2618s (ref=174s)
+[profile/estimate] LU_W_2@purple: S×30.0 → 8946s (ref=298s)
+[profile/estimate] LU_W_8@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_12@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_16@purple: S×30.0 → 6936s (ref=231s)
+[profile/estimate] dedup_W_6@purple: S/12TH×0.7×2.00 → 3720s
+[profile/estimate] dedup_W_9@purple: S/12TH×0.7×1.33 → 2480s
+[profile/estimate] dedup_W_12@purple: S×0.7 → 1860s (ref=2548s)
+[profile/estimate] dedup_W_15@purple: S×0.7 → 1430s (ref=1959s)
+[profile/estimate] CG_W_2@purple: S×15.0 → 5934s (ref=396s)
+[profile/estimate] CG_W_8@purple: S×15.0 → 3042s (ref=203s)
+[profile/estimate] CG_W_12@purple: S×15.0 → 2775s (ref=185s)
+[profile/estimate] CG_W_16@purple: S×15.0 → 2618s (ref=174s)
+[profile/estimate] LU_W_2@purple: S×30.0 → 8946s (ref=298s)
+[profile/estimate] LU_W_8@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_12@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_16@purple: S×30.0 → 6936s (ref=231s)
+[profile/estimate] dedup_W_6@purple: S/12TH×0.7×2.00 → 3720s
+[profile/estimate] dedup_W_9@purple: S/12TH×0.7×1.33 → 2480s
+[profile/estimate] dedup_W_12@purple: S×0.7 → 1860s (ref=2548s)
+[profile/estimate] dedup_W_15@purple: S×0.7 → 1430s (ref=1959s)
+[profile/estimate] CG_W_2@purple: S×15.0 → 5934s (ref=396s)
+[profile/estimate] CG_W_8@purple: S×15.0 → 3042s (ref=203s)
+[profile/estimate] CG_W_12@purple: S×15.0 → 2775s (ref=185s)
+[profile/estimate] CG_W_16@purple: S×15.0 → 2618s (ref=174s)
+[profile/estimate] LU_W_2@purple: S×30.0 → 8946s (ref=298s)
+[profile/estimate] LU_W_8@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_12@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_16@purple: S×30.0 → 6936s (ref=231s)
+[profile/estimate] dedup_W_6@purple: S/12TH×0.7×2.00 → 3720s
+[profile/estimate] dedup_W_9@purple: S/12TH×0.7×1.33 → 2480s
+[profile/estimate] dedup_W_12@purple: S×0.7 → 1860s (ref=2548s)
+[profile/estimate] dedup_W_15@purple: S×0.7 → 1430s (ref=1959s)
+[profile/estimate] CG_W_2@purple: S×15.0 → 5934s (ref=396s)
+[profile/estimate] CG_W_8@purple: S×15.0 → 3042s (ref=203s)
+[profile/estimate] CG_W_12@purple: S×15.0 → 2775s (ref=185s)
+[profile/estimate] CG_W_16@purple: S×15.0 → 2618s (ref=174s)
+[profile/estimate] LU_W_2@purple: S×30.0 → 8946s (ref=298s)
+[profile/estimate] LU_W_8@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_12@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_16@purple: S×30.0 → 6936s (ref=231s)
+[profile/estimate] dedup_W_6@purple: S/12TH×0.7×2.00 → 3720s
+[profile/estimate] dedup_W_9@purple: S/12TH×0.7×1.33 → 2480s
+[profile/estimate] dedup_W_12@purple: S×0.7 → 1860s (ref=2548s)
+[profile/estimate] dedup_W_15@purple: S×0.7 → 1430s (ref=1959s)
+[profile/estimate] CG_W_2@purple: S×15.0 → 5934s (ref=396s)
+[profile/estimate] CG_W_8@purple: S×15.0 → 3042s (ref=203s)
+[profile/estimate] CG_W_12@purple: S×15.0 → 2775s (ref=185s)
+[profile/estimate] CG_W_16@purple: S×15.0 → 2618s (ref=174s)
+[profile/estimate] LU_W_2@purple: S×30.0 → 8946s (ref=298s)
+[profile/estimate] LU_W_8@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_12@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_16@purple: S×30.0 → 6936s (ref=231s)
+[profile/estimate] dedup_W_6@purple: S/12TH×0.7×2.00 → 3720s
+[profile/estimate] dedup_W_9@purple: S/12TH×0.7×1.33 → 2480s
+[profile/estimate] dedup_W_12@purple: S×0.7 → 1860s (ref=2548s)
+[profile/estimate] dedup_W_15@purple: S×0.7 → 1430s (ref=1959s)
+[profile/estimate] CG_W_2@purple: S×15.0 → 5934s (ref=396s)
+[profile/estimate] CG_W_8@purple: S×15.0 → 3042s (ref=203s)
+[profile/estimate] CG_W_12@purple: S×15.0 → 2775s (ref=185s)
+[profile/estimate] CG_W_16@purple: S×15.0 → 2618s (ref=174s)
+[profile/estimate] LU_W_2@purple: S×30.0 → 8946s (ref=298s)
+[profile/estimate] LU_W_8@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_12@purple: S×30.0 → 6501s (ref=217s)
+[profile/estimate] LU_W_16@purple: S×30.0 → 6936s (ref=231s)
+[profile/estimate] dedup_W_6@purple: S/12TH×0.7×2.00 → 3720s
+[profile/estimate] dedup_W_9@purple: S/12TH×0.7×1.33 → 2480s
+[profile/estimate] dedup_W_12@purple: S×0.7 → 1860s (ref=2548s)
+[profile/estimate] dedup_W_15@purple: S×0.7 → 1430s (ref=1959s)
+[JOBS] 144件 (machine=purple, workloads=['FT', 'IS', 'MG', 'CG', 'LU', 'dedup'], strategies=['Packed', 'Scatter', 'HPO', 'EPO', 'MPO', 'akarin'], bench_class=['W'], threads=[2, 8, 12, 16])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=216  (sid=72, purple=144)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[SCHED] sid: 見積完了時間 = 84688s (23.5時間、72件、実測ゲートの遅延は含まず)
+[SCHED] purple: 見積完了時間 = 85217s (23.7時間、144件、実測ゲートの遅延は含まず)
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_Packed_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_Scatter_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_HPO_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_EPO_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_MPO_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_AKARIN_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/LU_W_Packed_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/LU_W_Scatter_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/LU_W_HPO_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/LU_W_EPO_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/LU_W_MPO_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/LU_W_AKARIN_2TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_Packed_16TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_Scatter_16TH_20260711_211528/affinity_config.txt
