@@ -477,7 +477,6 @@ def save_affinity_config(
         lines.append(f"  thread{t:02d} -> CPU{cpu:02d} (Node{node} {ctype}-core)")
     with open(path, "w") as f:
         f.write("\n".join(lines) + "\n")
-    print(f"[config] 保存: {path}")
 
 
 def recompile_workload(workload: str, bench_class: str = "S") -> None:

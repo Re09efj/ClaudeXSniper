@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_fec966c8292b1f8b9a8d60cca0a19018" kind="dir">
+    <compoundname>adaptor</compoundname>
+    <innerfile refid="pinrt__adaptor__utils_8PH">pinrt_adaptor_utils.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pinrt/adaptor/"/>
+  </compounddef>
+</doxygen>

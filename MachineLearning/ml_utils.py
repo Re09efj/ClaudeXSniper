@@ -422,13 +422,15 @@ def collect_dataset_multi(
 def build_allth_data(
     label_by: str,
     outputs_dirs: list[Path] | Path = OUTPUTS_DIR,
+    thread_nums: list[int] | None = None,
 ) -> tuple[pd.DataFrame, pd.Series]:
     if isinstance(outputs_dirs, Path):
         outputs_dirs = [outputs_dirs]
+    thread_nums = thread_nums if thread_nums is not None else THREAD_NUMS
     rows_X, rows_y, names = [], [], []
     for outputs_dir in outputs_dirs:
         bench_class = outputs_dir.name.replace("size", "")  # sizeS → S, sizeW → W
-        for n in THREAD_NUMS:
+        for n in thread_nums:
             X_n, y_n, _ = collect_dataset(outputs_dir, n, label_by)
             if X_n.empty:
                 continue

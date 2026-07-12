@@ -205,9 +205,9 @@ def estimate_walltime(workload: str, bench_class: str, num_threads: int, machine
             ratio = _empirical_machine_ratio(workload, bench_class, profile, machine)
             if ratio is not None:
                 est = profile[sid_exact_key]['wallTime'] * ratio
-                print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
-                      f"sid実測×machine比率{ratio:.2f} → {est:.0f}s "
-                      f"(sid_ref={profile[sid_exact_key]['wallTime']:.0f}s)")
+                # print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
+                #       f"sid実測×machine比率{ratio:.2f} → {est:.0f}s "
+                #       f"(sid_ref={profile[sid_exact_key]['wallTime']:.0f}s)")
                 return min(est, _MAX_ESTIMATED_SEC)
 
     try:
@@ -221,8 +221,8 @@ def estimate_walltime(workload: str, bench_class: str, num_threads: int, machine
         if ref_key in profile:
             scale = _class_scale(workload, cls, bench_class, profile, machine)
             est   = profile[ref_key]['wallTime'] * scale
-            print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
-                  f"{cls}×{scale:.1f} → {est:.0f}s (ref={profile[ref_key]['wallTime']:.0f}s)")
+            # print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
+            #       f"{cls}×{scale:.1f} → {est:.0f}s (ref={profile[ref_key]['wallTime']:.0f}s)")
             return min(est, _MAX_ESTIMATED_SEC)
 
     # 戦略 2: 同 wl+class、別スレッド数（スレッドスケールは楽観的に線形仮定）
@@ -235,8 +235,8 @@ def estimate_walltime(workload: str, bench_class: str, num_threads: int, machine
         if ref_key in profile:
             th_scale = max(th / num_threads, 0.5)
             est = profile[ref_key]['wallTime'] * th_scale
-            print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
-                  f"{bench_class}/{th}TH×{th_scale:.2f} → {est:.0f}s")
+            # print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
+            #       f"{bench_class}/{th}TH×{th_scale:.2f} → {est:.0f}s")
             return min(est, _MAX_ESTIMATED_SEC)
 
     # 戦略 3: 同 wl、別クラス+別スレッド数の組み合わせ
@@ -247,8 +247,8 @@ def estimate_walltime(workload: str, bench_class: str, num_threads: int, machine
                 class_scale = _class_scale(workload, cls, bench_class, profile, machine)
                 th_scale    = max(th / num_threads, 0.5)
                 est = profile[ref_key]['wallTime'] * class_scale * th_scale
-                print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
-                      f"{cls}/{th}TH×{class_scale:.1f}×{th_scale:.2f} → {est:.0f}s")
+                # print(f"[profile/estimate] {_key(workload, bench_class, num_threads, machine)}: "
+                #       f"{cls}/{th}TH×{class_scale:.1f}×{th_scale:.2f} → {est:.0f}s")
                 return min(est, _MAX_ESTIMATED_SEC)
 
     return None

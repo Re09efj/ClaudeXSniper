@@ -1,0 +1,1139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__REMOTE" kind="group">
+    <compoundname>REMOTE</compoundname>
+    <title>REMOTE</title>
+    <innerclass refid="structremote_1_1Rpc__buffer__wrapper" prot="public">remote::Rpc_buffer_wrapper</innerclass>
+    <innerclass refid="structRPC__message__schema" prot="public">RPC_message_schema</innerclass>
+    <innerclass refid="structRPC__arg" prot="public">RPC_arg</innerclass>
+    <innergroup refid="group__PLUGIN">PLUGIN</innergroup>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__REMOTE_1ga0fe3cd523928aeaf36c41aa85d459312" prot="public" static="no" strong="no">
+        <type></type>
+        <name>E_pin_rpc_flags</name>
+        <enumvalue id="group__REMOTE_1gga0fe3cd523928aeaf36c41aa85d459312acb3d02c2f6a01337b9996a26b3026e81" prot="public">
+          <name>PinRpcFlagsNone</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga0fe3cd523928aeaf36c41aa85d459312ab2926f1429d2073625fd923bd92055be" prot="public">
+          <name>PinRpcFlagsNoResponseRequired</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Normal operation. Will wait for a response with some &quot;reasonable&quot; internal timeout. If a timeout occurs the program will abort </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga0fe3cd523928aeaf36c41aa85d459312a13da60c0b4de14663dc78b37c177b954" prot="public">
+          <name>PinRpcFlagsCanBlockIndefinitely</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>No response is expected from the server. Can return immediately </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>RPC flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>These flags cannot be combined. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="41" column="1" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__REMOTE_1ga6fbb5fc9f6072e19c0e7fd41979a8405" prot="public" static="no" strong="no">
+        <type></type>
+        <name>E_rpc_arg_type</name>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a519a222350ee903e6e48816eb522d290" prot="public">
+          <name>RpcBoolean</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Boolean argument type. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a6ad644070e9f982164e7f6e3808b1da0" prot="public">
+          <name>RpcInt</name>
+          <briefdescription>
+<para>Integer (possibly negative) argument type. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405ab803de1bcf4a7ad63d095a2d9c896784" prot="public">
+          <name>RpcUInt</name>
+          <briefdescription>
+<para>Unsigned integer argument type. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a5384f53be9cb71eb02ae59d511c1baea" prot="public">
+          <name>RpcChar</name>
+          <briefdescription>
+<para>Character argument type (char, wchar_t, char16_t, char32_t) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a15a075a36202c97bce1447635a27249d" prot="public">
+          <name>RpcFloat</name>
+          <briefdescription>
+<para>Floating point argument type (float, double, long double) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a2c96c0255ddcf13bc7b977f082526bb3" prot="public">
+          <name>RpcBuffer</name>
+          <briefdescription>
+<para>A memory buffer argument type. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405aeafe95d4be55cf3bee6aca503ca93f9e" prot="public">
+          <name>RpcOOBRef</name>
+          <briefdescription>
+<para>Currently not supported. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a31eee1e41c3f89c050bc9f5d642d63b0" prot="public">
+          <name>RpcRecord</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A record argument type that may contain members of other types A record may contain upto 4096 members. Nested records are currently not supported </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a9c51458703f0ac650fdb5a7006c14499" prot="public">
+          <name>RpcArray</name>
+          <briefdescription>
+<para>An array argument which may contain upto 4096 entries of the same type. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a340b66299109d54cc5b3c8fcf03a11c2" prot="public">
+          <name>RpcNil</name>
+          <briefdescription>
+<para>Indicates no data argument. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a4a43872cd35631b2d930bef5ccd71ce3" prot="public">
+          <name>RpcVoid</name>
+          <initializer>= RpcNil</initializer>
+          <briefdescription>
+<para>The same as RpcNil. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a9e3e030acad87e34af375251a747ffc3" prot="public">
+          <name>RpcPaddingNoEncode</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>This type of argument is can be used to describe padding for a record argument. The decoder will use it when constructing the record layout in memory </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The type of RSC RPC argument. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the type we wish to encode from/decode to not the type inside the RSC RPC Message. For instance RpcInt might be encoded as int4, int12, varint, int4_neg, int12_neg or varint_neg </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="45" column="1" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="46" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__REMOTE_1gac97805fdcf8d38f8707f7a477426073b" prot="public" static="no" strong="no">
+        <type></type>
+        <name>E_rpc_arg_flags</name>
+        <enumvalue id="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" prot="public">
+          <name>RpcArgFlagsNone</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Does not modify argument encoding behavior </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073ba13a6ffb2661fb912c392beff113bf0e4" prot="public">
+          <name>RpcArgFlagsDataEmpty</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Indicate that the argument has no encodable/decodable data If this value is set on encode then the argument will be encoded as RpcNil If this value is set returning from decode then the argument does not contain valid data. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Bitwise flags affecting the encoding of RPC arguments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="71" column="1" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="72" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__REMOTE_1gac2141c45018f57ba9b189ad0474e4024" prot="public" static="no">
+        <type>enum <ref refid="group__REMOTE_1ga6fbb5fc9f6072e19c0e7fd41979a8405" kindref="member">E_rpc_arg_type</ref></type>
+        <definition>typedef enum E_rpc_arg_type E_rpc_arg_type</definition>
+        <argsstring></argsstring>
+        <name>E_rpc_arg_type</name>
+        <briefdescription>
+<para>The type of RSC RPC argument. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the type we wish to encode from/decode to not the type inside the RSC RPC Message. For instance RpcInt might be encoded as int4, int12, varint, int4_neg, int12_neg or varint_neg </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="63" column="16"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__REMOTE_1gac8c3bb5c86daca6c776466dda3209fa2" prot="public" static="no">
+        <type>enum <ref refid="group__REMOTE_1gac97805fdcf8d38f8707f7a477426073b" kindref="member">E_rpc_arg_flags</ref></type>
+        <definition>typedef enum E_rpc_arg_flags E_rpc_arg_flags</definition>
+        <argsstring></argsstring>
+        <name>E_rpc_arg_flags</name>
+        <briefdescription>
+<para>Bitwise flags affecting the encoding of RPC arguments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="80" column="17"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__REMOTE_1gae941608347fc1d2b35de4664da247393" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t t_rpc_id</definition>
+        <argsstring></argsstring>
+        <name>t_rpc_id</name>
+        <briefdescription>
+<para>Type of RPC Ids. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="88" column="18" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__REMOTE_1ga9ae75f4632bad6aa35442f52fa451060" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t t_arg_count</definition>
+        <argsstring></argsstring>
+        <name>t_arg_count</name>
+        <briefdescription>
+<para>Type of RPC argument count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="95" column="17" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t t_rpc_arg_schema</definition>
+        <argsstring></argsstring>
+        <name>t_rpc_arg_schema</name>
+        <briefdescription>
+<para>Type of RPC argument schema. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="102" column="18" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" prot="public" static="no">
+        <type>struct <ref refid="structRPC__message__schema" kindref="compound">RPC_message_schema</ref></type>
+        <definition>typedef struct RPC_message_schema t_rpc_message_schema</definition>
+        <argsstring></argsstring>
+        <name>t_rpc_message_schema</name>
+        <briefdescription>
+<para>A collection of RPC_arg_schema structures together describing an RPC message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="132" column="22"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__REMOTE_1ga80df60c6741df3da64d880ae3bde8788" prot="public" static="no">
+        <type>struct <ref refid="structRPC__arg" kindref="compound">RPC_arg</ref></type>
+        <definition>typedef struct RPC_arg t_rpc_arg</definition>
+        <argsstring></argsstring>
+        <name>t_rpc_arg</name>
+        <briefdescription>
+<para>TStructure to hold the actual data to encode or the actual data of a decoded argument. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="178" column="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>t_syscall_ret</type>
+        <definition>t_syscall_ret PIN_DoRPC</definition>
+        <argsstring>(t_rpc_message_schema const *rpcSchema, t_rpc_arg *rpcArgs, E_pin_rpc_flags flags=PinRpcFlagsNone) noexcept</argsstring>
+        <name>PIN_DoRPC</name>
+        <param>
+          <type><ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref> const *</type>
+          <declname>rpcSchema</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REMOTE_1ga80df60c6741df3da64d880ae3bde8788" kindref="member">t_rpc_arg</ref> *</type>
+          <declname>rpcArgs</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REMOTE_1ga0fe3cd523928aeaf36c41aa85d459312" kindref="member">E_pin_rpc_flags</ref></type>
+          <declname>flags</declname>
+          <defval>PinRpcFlagsNone</defval>
+        </param>
+        <briefdescription>
+<para>Execute an RPC (Remote Procedure Call). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The remote procedure is implemented by a plugin that is loaded by pind, the Pin server. The plugin must be installed prior starting pin with a Pintool that uses this function. For more information see <ref refid="index_1PLUGINSTALL" kindref="member">Installing and Loading pind Plugins</ref>. If the plugin was not properly installed or loaded the call will fail. The return value of this function reflects the status of the remote execution. The return value of the remote function is written to the last arg in rpcArgs.</para>
+<para>See <ref refid="index_1REMOTE" kindref="member">Executing Remote Procedures</ref> section in Pin User Manual</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rpcSchema</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The schema describing the remote procedure. Both the Pintool and the pind RPC plugin should use the same schema. The schema is used both to verify the arguments before calling the RPC, and is also used to verify the response to the RPC. The maximum arguments for an RPC schema accepted by this function is 15. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">rpcArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of args to pass to the remote procedure. The args may be [in], [out] or [inout] arguments. The length of the array must be equal to the count of the message arguments as described by rpcSchema + one entry for the return value of the RPC. So the length of this array must be at least 1, even if the return argument type is RpcVoid or RpcNil. The return value of the remote procedure is written to the last argument in the array. Arguments are checked against rpcSchema. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags modifying the behavior of the RPC. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>t_syscall_ret On success SYSRET(SUCCESS) (0) is returned. On error a negative value is returned. The value represents an error that is specified in pinsyscall.h. To properly check if the return value is an error, IS_RPC_EXEC_ERROR macro should be used.</para>
+</simplesect>
+<simplesect kind="note"><para>The return status of <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref> does not indicate success or failure of the actual RPC (Remote Procedure Call). Just whether the RPC request was processed correctly by Pin &amp; pind. The actual success or failure of the remote procedure call should be deduced from the return value of the RPC, if such return value exists for the RPC. The actual interpretation of the return value of the RPC is user defined.</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="96" column="22" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="96" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1gae5c6096dc71aa53e8badf544fae93749" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t PIN_CalculateSafeRPCDataSize</definition>
+        <argsstring>(t_rpc_message_schema const *rpcSchema) noexcept</argsstring>
+        <name>PIN_CalculateSafeRPCDataSize</name>
+        <param>
+          <type><ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref> const *</type>
+          <declname>rpcSchema</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the size available for data given a message schema. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>An RSC/RPC message can be of a maximum size of 64KB. However the actual size available for data in a message is 64KB - RSC_RPC_DATA_OFFSET - (size of argument encoding metadata). This function calculates the maximum possible size that the argument encoding metadata will take and returns a safe estimate to the size in bytes actually available for encoding.</para>
+<para><simplesect kind="note"><para>The size returned is for the data of all arguments passed to the RPC.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rpcSchema</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message schema for which to calculate the metadata overhead </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>size_t - The available size for data given a schema.</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="128" column="15" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1gaf1da75a117dec80c291b8914f668653d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>Rpc_buffer_wrapper</type>
+        <definition>Rpc_buffer_wrapper remote::rpc_buffer</definition>
+        <argsstring>(void *mem, size_t size, E_rpc_arg_flags flags=RpcArgFlagsNone) noexcept</argsstring>
+        <name>rpc_buffer</name>
+        <param>
+          <type>void *</type>
+          <declname>mem</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REMOTE_1gac97805fdcf8d38f8707f7a477426073b" kindref="member">E_rpc_arg_flags</ref></type>
+          <declname>flags</declname>
+          <defval><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref></defval>
+        </param>
+        <briefdescription>
+<para>Wrap a buffer to be used as an argument to an RPC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">mem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The buffer memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the buffer in bytes. If size is 0 then no data will be copied into the RPC request. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags modifying the behaviour of the argument encoding. If this is set to <ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073ba13a6ffb2661fb912c392beff113bf0e4" kindref="member">E_rpc_arg_flags::RpcArgFlagsDataEmpty</ref> then no data will be sent to the RPC, however the RPC can fill the buffer on return. This behaviour is just a performance optimization so if the buffer is intended to be filled by the RPC and the contents are not valid until the RPC returns, then there is no point in copying the initial content to the RPC request.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref> structure wrapping the buffer</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="178" column="27" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1ga40e34b38d510108512e1599d47cf22e0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>Rpc_buffer_wrapper</type>
+        <definition>Rpc_buffer_wrapper remote::rpc_buffer</definition>
+        <argsstring>(const void *mem, size_t size) noexcept</argsstring>
+        <name>rpc_buffer</name>
+        <param>
+          <type>const void *</type>
+          <declname>mem</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Wrap a buffer to be used as an argument to an RPC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The buffer memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the buffer in bytes. If the size is 0 then no data is copied to the RPC request. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref> structure wrapping the buffer</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="197" column="27" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="197" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1ga271363a1745733bda9c98f92cea90517" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref> const &amp;</type>
+            <declname>SCHEMA</declname>
+            <defname>SCHEMA</defname>
+          </param>
+          <param>
+            <type>typename RetType</type>
+          </param>
+          <param>
+            <type><ref refid="group__REMOTE_1ga0fe3cd523928aeaf36c41aa85d459312" kindref="member">E_pin_rpc_flags</ref></type>
+            <declname>Flags</declname>
+            <defname>Flags</defname>
+            <defval>PinRpcFlagsNone</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>pinrt::std::enable_if_t&lt; details::Rpc_arg_type_traits&lt; RetType &gt;::is_void, bool &gt;</type>
+        <definition>pinrt::std::enable_if_t&lt; details::Rpc_arg_type_traits&lt; RetType &gt;::is_void, bool &gt; remote::do_rpc</definition>
+        <argsstring>(Args &amp;&amp;... args) noexcept</argsstring>
+        <name>do_rpc</name>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Execute an RPC (Remote Procedure Call). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is a convenience wrapper around <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref>. See <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref> for details.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>SCHEMA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The schema of the RPC to use. Since this is a template argument the schema must be fully initialized at compile time. Current implementation does not check the arguments against the schema at compile time. This may change in the future. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>RetType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the return value of the RPC - The type must be void for this overload. When using this overload the type is not automatically deduced and <ref refid="group__REMOTE_1ga271363a1745733bda9c98f92cea90517" kindref="member">do_rpc()</ref> should be called as <computeroutput>do_rpc&lt;SCHEMA, void&gt;(...)</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags modifying the behavior of the RPC. If the value is set to PinRpcFlagsNoResponseRequired then no response is expected from the server. If the value is set to PinRpcFlagsCanBlockIndefinitely then the RPC can block indefinitely waiting for a response. If the value is set to PinRpcFlagsNone then the RPC will wait for a response with some &quot;reasonable&quot; internal timeout. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of arguments - pack automatically deduced </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RPC arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool True if the RPC request was sent, the server accepted &amp; processed it and output arguments were successfully filled. If <emphasis>Flags</emphasis> is set to PinRpcFlagsNoResponseRequired then the return value is always true if the message was sent.</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="527" column="33" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="527" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1ga6d2e7f0f1ced6261f7f2163bb265ee70" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref> const &amp;</type>
+            <declname>SCHEMA</declname>
+            <defname>SCHEMA</defname>
+          </param>
+          <param>
+            <type>typename RetType</type>
+          </param>
+          <param>
+            <type><ref refid="group__REMOTE_1ga0fe3cd523928aeaf36c41aa85d459312" kindref="member">E_pin_rpc_flags</ref></type>
+            <declname>Flags</declname>
+            <defname>Flags</defname>
+            <defval>PinRpcFlagsNone</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>pinrt::std::enable_if_t&lt; !details::Rpc_arg_type_traits&lt; RetType &gt;::is_void, bool &gt;</type>
+        <definition>pinrt::std::enable_if_t&lt; !details::Rpc_arg_type_traits&lt; RetType &gt;::is_void, bool &gt; remote::do_rpc</definition>
+        <argsstring>(RetType &amp;retValue, Args &amp;&amp;... args) noexcept</argsstring>
+        <name>do_rpc</name>
+        <param>
+          <type>RetType &amp;</type>
+          <declname>retValue</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Execute an RPC (Remote Procedure Call). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is a convenience wrapper around <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref>. See <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref> for details.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>SCHEMA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The schema of the RPC to use. Since this is a template argument the schema must be fully initialized at compile time. Current implementation does not check the arguments against the schema at compile time. This may change in the future. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>RetType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the return value of the RPC - automatically deduced If RetType is <ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref> then the size member must be 0 or big enough to hold the return value. Please not that if size is 0 then we assume the buffer contains enough space for the return value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags modifying the behavior of the RPC. If the value is set to PinRpcFlagsCanBlockIndefinitely then the RPC can block indefinitely waiting for a response. If the value is set to PinRpcFlagsNone then the RPC will wait for a response with some &quot;reasonable&quot; internal timeout. PinRpcFlagsNoResponseRequired cannot be used with non-void return types RPCs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of arguments - pack automatically deduced </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">retValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An argument receiving the return value of the RPC </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RPC arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the RPC request was sent, the server accepted &amp; processed it and output arguments and return value were successfully filled.</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="582" column="33" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="582" bodyend="601"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__REMOTE_1ga364f6fc6efd4a9e22b54685f1091c172" prot="public" static="no">
+        <name>IS_RPC_EXEC_ERROR</name>
+        <param><defname>ret</defname></param>
+        <initializer>IS_PINOS_SYSCALL_ERROR(ret)</initializer>
+        <briefdescription>
+<para>Check if ret is an error. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Client side interface to pind RPC plugins.</para>
+<para>See <ref refid="index_1REMOTE" kindref="member">Executing Remote Procedures</ref> section in Pin User Manual</para>
+<para><simplesect kind="note"><para>APIs declared in this file are under active development and are subject to change or removal without notice</para>
+</simplesect>
+This macro should be used to check if <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref> succeeded or not.</para>
+<para><simplesect kind="note"><para>The return status of <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref> does not indicate success or failure of the actual RPC (Remote Procedure Call). Just whether the RPC request was processed correctly by Pin &amp; pind. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="32" column="9" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga9ea2c9f1628cb6aa96c1038c226a1e56" prot="public" static="no">
+        <name>RPCID_INVALID</name>
+        <initializer>(<ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref>)(0xFFFFFFFF)</initializer>
+        <briefdescription>
+<para>Indicates an Invalid RPC Id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This RPC Id is used internally </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="195" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1gaa5b7c0a1c2257a884b811bb054b984dd" prot="public" static="no">
+        <name>RPCID_MIN</name>
+        <initializer>(<ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref>)(2048)</initializer>
+        <briefdescription>
+<para>The smallest RPC Id available for Pintool developers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>RPC Ids less than RPCID_MIN are reserved for Pin </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="205" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga8169f27f849e464d69481086450b9818" prot="public" static="no">
+        <name>RPCID_MAX</name>
+        <initializer>(<ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref>)(<ref refid="group__REMOTE_1ga9ea2c9f1628cb6aa96c1038c226a1e56" kindref="member">RPCID_INVALID</ref> - 1025)</initializer>
+        <briefdescription>
+<para>The largest valid RPC Id available for Pintool developers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>RPC Ids greater than RPCID_MAX are reserved for Pin </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="215" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga885f686445cd7366751d3b520cc3d07b" prot="public" static="no">
+        <name>RPCID_RESERVED_LOW_RANGE_START</name>
+        <initializer>(<ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref>)(0x00000000)</initializer>
+        <briefdescription>
+<para>Start of reserved the low range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="224" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga615cc9800878dde9df57c6f94d9120f8" prot="public" static="no">
+        <name>RPCID_RESERVED_LOW_RANGE_END</name>
+        <initializer>(<ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref>)(<ref refid="group__REMOTE_1gaa5b7c0a1c2257a884b811bb054b984dd" kindref="member">RPCID_MIN</ref> - 1)</initializer>
+        <briefdescription>
+<para>End of reserved the low range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="232" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1gadd3a596d1024a0e49ec491b732dd9d42" prot="public" static="no">
+        <name>RPCID_RESERVED_HIGH_RANGE_START</name>
+        <initializer>(<ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref>)(<ref refid="group__REMOTE_1ga8169f27f849e464d69481086450b9818" kindref="member">RPCID_MAX</ref> + 1)</initializer>
+        <briefdescription>
+<para>Start of reserved the high range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="240" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga7a195b8b4672b6a9da6a5ce2dad2f9c7" prot="public" static="no">
+        <name>RPCID_RESERVED_HIGH_RANGE_END</name>
+        <initializer>(<ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref>)(<ref refid="group__REMOTE_1ga9ea2c9f1628cb6aa96c1038c226a1e56" kindref="member">RPCID_INVALID</ref> - 1)</initializer>
+        <briefdescription>
+<para>End of reserved the high range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="248" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga00c4f52c6a67a37360207088d88ce8b2" prot="public" static="no">
+        <name>RPCID_IS_VALID</name>
+        <param><defname>rpcId</defname></param>
+        <initializer>((rpcId) &gt;= <ref refid="group__REMOTE_1gaa5b7c0a1c2257a884b811bb054b984dd" kindref="member">RPCID_MIN</ref> &amp;&amp; (rpcId) &lt;= <ref refid="group__REMOTE_1ga8169f27f849e464d69481086450b9818" kindref="member">RPCID_MAX</ref>)</initializer>
+        <briefdescription>
+<para>Check if an RPC Id is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="257" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga7322c24f15dc5887cbe8820cf24aba74" prot="public" static="no">
+        <name>RPCID_IS_RESERVED_LOW</name>
+        <param><defname>rpcId</defname></param>
+        <initializer>((rpcId) &gt;= <ref refid="group__REMOTE_1ga885f686445cd7366751d3b520cc3d07b" kindref="member">RPCID_RESERVED_LOW_RANGE_START</ref> &amp;&amp; (rpcId) &lt;= <ref refid="group__REMOTE_1ga615cc9800878dde9df57c6f94d9120f8" kindref="member">RPCID_RESERVED_LOW_RANGE_END</ref>)</initializer>
+        <briefdescription>
+<para>Check if an RPC Id is reserved in the low range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="265" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga6c97e8aa98523c4f4118e51375e67fcf" prot="public" static="no">
+        <name>RPCID_IS_RESERVED_HIGH</name>
+        <param><defname>rpcId</defname></param>
+        <initializer>((rpcId) &gt;= <ref refid="group__REMOTE_1gadd3a596d1024a0e49ec491b732dd9d42" kindref="member">RPCID_RESERVED_HIGH_RANGE_START</ref> &amp;&amp; (rpcId) &lt;= <ref refid="group__REMOTE_1ga7a195b8b4672b6a9da6a5ce2dad2f9c7" kindref="member">RPCID_RESERVED_HIGH_RANGE_END</ref>)</initializer>
+        <briefdescription>
+<para>Check if an RPC Id is reserved in the high range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="273" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga5d7861e343886928e55932c946b17b21" prot="public" static="no">
+        <name>RPCID_IS_RESERVED</name>
+        <param><defname>rpcId</defname></param>
+        <initializer>(<ref refid="group__REMOTE_1ga7322c24f15dc5887cbe8820cf24aba74" kindref="member">RPCID_IS_RESERVED_LOW</ref>(rpcId) || <ref refid="group__REMOTE_1ga6c97e8aa98523c4f4118e51375e67fcf" kindref="member">RPCID_IS_RESERVED_HIGH</ref>(rpcId))</initializer>
+        <briefdescription>
+<para>Check if an RPC Id is reserved. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="281" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1gac160ab1c626c59b558f3d915de9a4f6d" prot="public" static="no">
+        <name>RSC_RPC_MESSAGE_SCHEMA</name>
+        <param><defname>rpcId</defname></param>
+        <param><defname>argCount</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    {                                                \
+        (rpcId), (argCount), ##__VA_ARGS__           \
+    }</initializer>
+        <briefdescription>
+<para>Helper macro for creating a t_rpc_message_schema. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="290" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga15e22d511f177bbbfbdbaaab8bf04e4a" prot="public" static="no">
+        <name>MAKE_ARG_SCHEMA</name>
+        <param><defname>rpcType</defname></param>
+        <param><defname>size</defname></param>
+        <initializer>    (<ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref>)(((uint32_t)rpcType &amp; 0x000000FFU) | (((uint32_t)size &amp; 0x00001FFF) &lt;&lt; 16))</initializer>
+        <briefdescription>
+<para>Helper macro for creating t_rpc_arg_schema. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rpcType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the argument (E_rpc_arg_type) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the argument in bytes (for RpcRecord this is the number of members which can be at most 4096)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This is a helper macro and it does not verify its inputs! </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="306" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1gabad33490e1e39374b0b41025c7f377a7" prot="public" static="no">
+        <name>ARG_SCHEMA_TYPE</name>
+        <param><defname>argSchema</defname></param>
+        <initializer>((<ref refid="group__REMOTE_1ga6fbb5fc9f6072e19c0e7fd41979a8405" kindref="member">E_rpc_arg_type</ref>)(argSchema &amp; 0x000000FFU))</initializer>
+        <briefdescription>
+<para>Get the type of an RPC argument schema. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="327" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1gace96cc5a16e34807dc6ec02140ff2046" prot="public" static="no">
+        <name>ARG_SCHEMA_SIZE</name>
+        <param><defname>argSchema</defname></param>
+        <initializer>((size_t)((argSchema &gt;&gt; 16) &amp; 0x00001FFFU))</initializer>
+        <briefdescription>
+<para>Get the size of an RPC argument schema. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="335" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="335" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga35d199e65000bfd6f9459b1dc9129e58" prot="public" static="no">
+        <name>MAX_RSC_RPC_SCHEMA_ARGS</name>
+        <initializer>32</initializer>
+        <briefdescription>
+<para>Maximum number of RPC arguments in a message schema. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="349" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="349" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__REMOTE_1ga6825bc1d38d9dc91c05bece3d70a4240" prot="public" static="no">
+        <name>RSC_RPC_DATA_OFFSET</name>
+        <initializer>48</initializer>
+        <briefdescription>
+<para>Offset of RPC arguments from start of message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="357" column="9" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="357" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Remote Procedure Call APIs can be used by Pintools to execute RPCs implemented by a pind RPC plugin.</para>
+<para>An example of using the remote APIs can be find in ManualExamples/buffer_offload.cpp</para>
+<para><programlisting filename="buffer_offload.cpp"><codeline><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2024-2025<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pin.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer_offload.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>pintool<sp/>demonstrates<sp/>Pin<sp/>4.x<sp/>new<sp/>RPC<sp/>(Remote<sp/>Procedure<sp/>Call)<sp/>mechanism<sp/>which<sp/>allows<sp/>Pintools<sp/>to<sp/>offload</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>processing<sp/>to<sp/>a<sp/>remote<sp/>process.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>pintool<sp/>collects<sp/>information<sp/>about<sp/>memory<sp/>accesses<sp/>in<sp/>a<sp/>trace<sp/>buffer,<sp/>and<sp/>when<sp/>the<sp/>buffer<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>gets<sp/>full<sp/>transmits<sp/>the<sp/>buffer<sp/>to<sp/>a<sp/>remote<sp/>function<sp/>for<sp/>further<sp/>processing.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>The<sp/>pintool<sp/>is<sp/>responsible<sp/>for<sp/>the<sp/>instrumentation<sp/>and<sp/>data<sp/>collection.<sp/>The<sp/>remote<sp/><sp/>function<sp/>implemented<sp/>as<sp/>part<sp/>of<sp/>a</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Pin<sp/>server<sp/>plugin<sp/>(buffer_offload_plugin.cpp),<sp/>is<sp/>responsible<sp/>for<sp/>analyzing<sp/>the<sp/>collected<sp/>data.<sp/>The<sp/>schema<sp/>for<sp/>the</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>RPC<sp/>is<sp/>shared<sp/>between<sp/>the<sp/>Pintool<sp/>and<sp/>the<sp/>plugin<sp/>and<sp/>is<sp/>located<sp/>in<sp/>buffer_offload.h.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>knob<sp/>for<sp/>setting<sp/>the<sp/>name<sp/>of<sp/>the<sp/>file<sp/>into<sp/>which<sp/>the<sp/>remote<sp/>plugin<sp/>will<sp/>write<sp/>the<sp/>analysis<sp/>report</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classKNOB" kindref="compound">KNOB&lt; std::string &gt;</ref><sp/>KnobOutputFile(<ref refid="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3a481b1b4bfea2ef7e5d78a540baf2ccab" kindref="member">KNOB_MODE_WRITEONCE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;pintool&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;o&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;memory_analysis.log&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;output<sp/>file&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>id<sp/>of<sp/>the<sp/>trace<sp/>buffer<sp/>assigned<sp/>by<sp/>Pin</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref><sp/>buffeId<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>open_out_file(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>outFileName)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fileOpened<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>remote::do_rpc&lt;<sp/>OPEN_OUT_FILE_SCHEMA<sp/>&gt;(fileOpened,<sp/>outFileName)<sp/>&amp;&amp;<sp/>fileOpened;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mem_analyze(VOID*<sp/>buffer,<sp/>uint32_t<sp/>bufferSize)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>remote::do_rpc&lt;<sp/>MEM_ANALYZE_SCHEMA,<sp/>void<sp/>&gt;(<ref refid="group__REMOTE_1gaf1da75a117dec80c291b8914f668653d" kindref="member">remote::rpc_buffer</ref>(buffer,<sp/>bufferSize));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>get_mem_access_info(ADDRINT&amp;<sp/>addrMin,<sp/>ADDRINT&amp;<sp/>addrMax,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>topRangesCount,<sp/>MEMREF*<sp/>topRanges)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(remote::do_rpc&lt;<sp/>GET_MEM_ACCESS_INFO_SCHEMA<sp/>&gt;(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret,<sp/>addrMin,<sp/>addrMax,<sp/>topRangesCount,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__REMOTE_1gaf1da75a117dec80c291b8914f668653d" kindref="member">remote::rpc_buffer</ref>(topRanges,<sp/>topRangesCount<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(MEMREF),<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073ba13a6ffb2661fb912c392beff113bf0e4" kindref="member">RpcArgFlagsDataEmpty</ref>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitializeRemoteLogger()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>outfile<sp/>=<sp/>KnobOutputFile.Value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(outfile.is_relative())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>=<sp/>std::filesystem::current_path()<sp/>/<sp/>outfile;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(TARGET_WINDOWS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>Windows<sp/>LSC<sp/>implementation<sp/>for<sp/>::getcwd<sp/>(Source/pinrt/pinos/lsc/support/windows/syscallimp/getcwd.cpp)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>prefixes<sp/>the<sp/>path<sp/>with<sp/>&apos;/&apos;<sp/>-<sp/>intentionally.<sp/>However<sp/>std::ofstream::open<sp/>is<sp/>not<sp/>happy<sp/>with<sp/>the<sp/>&apos;/&apos;<sp/>so<sp/>we<sp/>remove<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fullpath<sp/>=<sp/>outfile.string();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>==<sp/>fullpath.find(</highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>=<sp/>fullpath.substr(1,<sp/>fullpath.size()<sp/>-<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Report<sp/>will<sp/>be<sp/>written<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>outfile<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ASSERTX(open_out_file(outfile.string()));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>is<sp/>called<sp/>by<sp/>Pin<sp/>when<sp/>the<sp/>trace<sp/>buffer<sp/>gets<sp/>full.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>In<sp/>this<sp/>function<sp/>we<sp/>do<sp/>not<sp/>process<sp/>the<sp/>trace<sp/>buffer<sp/>but<sp/>rather<sp/>transmit<sp/>it<sp/>to<sp/>the<sp/>remote</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>plugin<sp/>for<sp/>further<sp/>processing.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>VOID*<sp/>BufferFull(<ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="group__THREADS_1gab0be56ec5de7d57d369411d078175186" kindref="member">THREADID</ref><sp/>tid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/>VOID*<sp/>buffer,<sp/>UINT64<sp/>numElements,<sp/>VOID*<sp/>v)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ASSERTX(mem_analyze(buffer,<sp/>numElements<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(MEMREF)));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">VOID<sp/>Fini(INT32<sp/>code,<sp/>VOID*<sp/>v)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ADDRINT<sp/>addrMin<sp/>=<sp/>0,<sp/>addrMax<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MEMREF<sp/>topRanges[6]<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>topRangesCount<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(topRanges)<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(MEMREF);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ASSERTX(get_mem_access_info(addrMin,<sp/>addrMax,<sp/>topRangesCount,<sp/>topRanges));</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lowest<sp/>address<sp/>accessed<sp/>0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>addrMin<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>;<sp/>Highest<sp/>address<sp/>accessed<sp/>0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>addrMax</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Largest<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>topRangesCount<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>ranges<sp/>are:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>topRangesCount;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\t&apos;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Base:<sp/>0x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>uintptr_t(topRanges[i].ea)<sp/>&lt;&lt;<sp/>std::dec<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Size:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>topRanges[i].size</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>bytes&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">VOID<sp/>Trace(<ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref><sp/>trace,<sp/>VOID*<sp/>v)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(BBL<sp/>bbl<sp/>=<sp/><ref refid="group__TRACE_1ga025844ffbef1e892eed7d7ce46f98138" kindref="member">TRACE_BblHead</ref>(trace);<sp/><ref refid="group__BBL_1gada06259bbda0582373f43b63e044146a" kindref="member">BBL_Valid</ref>(bbl);<sp/>bbl<sp/>=<sp/><ref refid="group__BBL_1gaa86bd2f0e6a8f1a23205e553dcba8740" kindref="member">BBL_Next</ref>(bbl))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(INS<sp/>ins<sp/>=<sp/><ref refid="group__BBL_1ga924f36e487a71b9e59583a07e45e8019" kindref="member">BBL_InsHead</ref>(bbl);<sp/><ref refid="group__INS__INSPECTION_1ga29639fe41688c24d5cbe6a60ed0e48cc" kindref="member">INS_Valid</ref>(ins);<sp/>ins<sp/>=<sp/><ref refid="group__INS__INSPECTION_1ga7200b02bcadf61e9e651eeadd69f96d5" kindref="member">INS_Next</ref>(ins))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT32<sp/>memoryOperands<sp/>=<sp/><ref refid="group__INS__INSPECTION_1gaa01f153aa19aeb478458cf2042d05a01" kindref="member">INS_MemoryOperandCount</ref>(ins);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(UINT32<sp/>memOp<sp/>=<sp/>0;<sp/>memOp<sp/>&lt;<sp/>memoryOperands;<sp/>memOp++)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT32<sp/>numBytesAccessed<sp/>=<sp/><ref refid="group__INS__INSPECTION_1gaa905931fcdcac481c789192e0bd30014" kindref="member">INS_MemoryOperandSize</ref>(ins,<sp/>memOp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__INS__INSTRUMENTATION_1ga097198320639318c65fa1ee815cbbe0c" kindref="member">INS_InsertFillBuffer</ref>(ins,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>application<sp/>instruction</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a7c7cbebb7a62a40e9f803b1db2e6ce20" kindref="member">IPOINT_BEFORE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>before<sp/>the<sp/>instruction<sp/>executes</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffeId,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>id<sp/>of<sp/>the<sp/>buffer<sp/>whose<sp/>record<sp/>is<sp/>filled</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da985747a3c70e3a4283fc8a2f16399e63" kindref="member">IARG_MEMORYOP_EA</ref>,<sp/>memOp,<sp/>offsetof(MEMREF,<sp/>ea),<sp/></highlight><highlight class="comment">//<sp/>effective<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dabd19b79248899659441e56e4738d5bfd" kindref="member">IARG_UINT32</ref>,<sp/>numBytesAccessed,<sp/>offsetof(MEMREF,<sp/>size),<sp/></highlight><highlight class="comment">//<sp/>number<sp/>of<sp/>bytes<sp/>read/written</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IARG_END);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">INT32<sp/>Usage()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>tool<sp/>demonstrates<sp/>offloading<sp/>analysis<sp/>work<sp/>to<sp/>a<sp/>remote<sp/>process.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Instead<sp/>of<sp/>doing<sp/>the<sp/>processing<sp/>in<sp/>the<sp/>analysis<sp/>routine<sp/>we<sp/>send<sp/>the<sp/>data<sp/>using<sp/>an<sp/>RPC<sp/>message<sp/>to<sp/>the<sp/>remote<sp/>process&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>std::endl<sp/>&lt;&lt;<sp/><ref refid="group__KNOBS_1ga6fbe7181260cd701b0fa884c2958074e" kindref="member">KNOB_BASE::StringKnobSummary</ref>()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[])</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__PIN__CONTROL_1gade9cf860942a12f2f81eff43be7861f4" kindref="member">PIN_Init</ref>(argc,<sp/>argv))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Usage();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>is<sp/>a<sp/>physical<sp/>limit<sp/>for<sp/>transmitting<sp/>buffers<sp/>to<sp/>the<sp/>remote<sp/>process<sp/>-<sp/>65535<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>However<sp/>we<sp/>need<sp/>to<sp/>leave<sp/>some<sp/>room<sp/>for<sp/>RSC-RPC<sp/>Message<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>should<sp/>limit<sp/>the<sp/>trace<sp/>buffer<sp/>size<sp/>to<sp/>not<sp/>exceed<sp/>that<sp/>limit<sp/>since<sp/>we<sp/>want<sp/>to<sp/>transmit<sp/>the<sp/>full<sp/>buffer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bufferSizeLimit<sp/>=<sp/><ref refid="group__REMOTE_1gae5c6096dc71aa53e8badf544fae93749" kindref="member">PIN_CalculateSafeRPCDataSize</ref>(&amp;MEM_ANALYZE_SCHEMA);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pageSize<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>getpagesize();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ASSERTX(bufferSizeLimit<sp/>&gt;=<sp/>pageSize);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>numPages<sp/>=<sp/>bufferSizeLimit<sp/>/<sp/>pageSize;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>buffeId<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__BUFFER_1ga56fa8ed5b1b58950a46f5bab942adfb8" kindref="member">PIN_DefineTraceBuffer</ref>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(MEMREF),<sp/>numPages,<sp/>BufferFull,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffeId<sp/>==<sp/><ref refid="group__BUFFER_1gaf379010b4b5cf3316089bb041ce5c02b" kindref="member">BUFFER_ID_INVALID</ref>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>could<sp/>not<sp/>allocate<sp/>initial<sp/>buffer&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>InitializeRemoteLogger();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__TRACE_1gab2f19ff0a9198c83715eea79ada22503" kindref="member">TRACE_AddInstrumentFunction</ref>(Trace,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PIN__CONTROL_1gaa78c7b560975a6feffa420fadedc0627" kindref="member">PIN_AddFiniFunction</ref>(Fini,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,699 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Packed_2TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+[DeTLoc] map thread-1 to core-1
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Write of size 8 at 0x7b3400000280 by thread T18 (mutexes: write M786857851410339400):
+    #0 void std::vector<TraceThread*, std::allocator<TraceThread*> >::_M_realloc_insert<TraceThread* const&>(__gnu_cxx::__normal_iterator<TraceThread**, std::vector<TraceThread*, std::allocator<TraceThread*> > >, TraceThread* const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/vector.tcc:503 (sniper+0x4203c9)
+    #1 std::vector<TraceThread*, std::allocator<TraceThread*> >::push_back(TraceThread* const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/stl_vector.h:1195 (sniper+0x41f39d)
+    #2 TraceManager::newThread(int, bool, bool, bool, SubsecondTime, int) /root/sniper/common/trace_frontend/trace_manager.cc:125 (sniper+0x41f39d)
+    #3 TraceManager::createThread(int, SubsecondTime, int) /root/sniper/common/trace_frontend/trace_manager.cc:83 (sniper+0x41f5ac)
+    #4 TraceThread::handleNewThreadFunc() /root/sniper/common/trace_frontend/trace_thread.cc:235 (sniper+0x4c5964)
+    #5 TraceThread::__handleNewThreadFunc(void*) /root/sniper/common/trace_frontend/trace_thread.h:84 (sniper+0x4caec1)
+    #6 Sift::Reader::Read(Sift::Instruction&) /root/sniper/sift/sift_reader.cc:340 (sniper+0x541b0b)
+    #7 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x4200be)
+    #8 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x4502dc)
+
+  Previous read of size 8 at 0x7b3400000280 by main thread:
+    #0 __gnu_cxx::__normal_iterator<TraceThread**, std::vector<TraceThread*, std::allocator<TraceThread*> > >::__normal_iterator(TraceThread** const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/stl_iterator.h:807 (sniper+0x41d57c)
+    #1 std::vector<TraceThread*, std::allocator<TraceThread*> >::end() /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/stl_vector.h:827 (sniper+0x41d57c)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:281 (sniper+0x41d57c)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Location is heap block of size 208 at 0x7b3400000270 allocated by main thread:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 Simulator::start() /root/sniper/common/system/simulator.cc:155 (sniper+0x40df8d)
+    #2 main /root/sniper/standalone/standalone.cc:40 (sniper+0x40b65a)
+
+  Mutex M786857851410339400 is already destroyed.
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/vector.tcc:503 in void std::vector<TraceThread*, std::allocator<TraceThread*> >::_M_realloc_insert<TraceThread* const&>(__gnu_cxx::__normal_iterator<TraceThread**, std::vector<TraceThread*, std::allocator<TraceThread*> > >, TraceThread* const&)
+==================
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Atomic write of size 8 at 0x0000005aa508 by thread T18:
+    #0 __tsan_atomic64_fetch_add <null> (libtsan.so.0+0x66c51)
+    #1 Core::hookPeriodicInsCheck() /root/sniper/common/core/core.cc:168 (sniper+0x423627)
+    #2 Core::countInstructions(unsigned long, unsigned int) /root/sniper/common/core/core.cc:158 (sniper+0x423772)
+    #3 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:801 (sniper+0x4ca314)
+    #4 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x4200be)
+    #5 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x4502dc)
+
+  Previous read of size 8 at 0x0000005aa508 by thread T19:
+    #0 Core::hookPeriodicInsCheck() /root/sniper/common/core/core.cc:173 (sniper+0x42367d)
+    #1 Core::countInstructions(unsigned long, unsigned int) /root/sniper/common/core/core.cc:158 (sniper+0x423772)
+    #2 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:801 (sniper+0x4ca314)
+    #3 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x4200be)
+    #4 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x4502dc)
+
+  Location is global 'Core::g_instructions_hpi_global' of size 8 at 0x0000005aa508 (sniper+0x0000005aa508)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Thread T19 (tid=58, running) created by thread T18 at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::newThread(int, bool, bool, bool, SubsecondTime, int) /root/sniper/common/trace_frontend/trace_manager.cc:131 (sniper+0x41f3b7)
+    #3 TraceManager::createThread(int, SubsecondTime, int) /root/sniper/common/trace_frontend/trace_manager.cc:83 (sniper+0x41f5ac)
+    #4 TraceThread::handleNewThreadFunc() /root/sniper/common/trace_frontend/trace_thread.cc:235 (sniper+0x4c5964)
+    #5 TraceThread::__handleNewThreadFunc(void*) /root/sniper/common/trace_frontend/trace_thread.h:84 (sniper+0x4caec1)
+    #6 Sift::Reader::Read(Sift::Instruction&) /root/sniper/sift/sift_reader.cc:340 (sniper+0x541b0b)
+    #7 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x4200be)
+    #8 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x4502dc)
+
+SUMMARY: ThreadSanitizer: data race (/usr/lib64/libtsan.so.0+0x66c51) in __tsan_atomic64_fetch_add
+==================
+[HOOKS] Entering ROI
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7b0c000012c0 by main thread (mutexes: write M786576376433628696):
+    #0 std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_before_node(unsigned long, HookType::hook_type_t const&, unsigned long) const /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:1542 (sniper+0x40caca)
+    #1 std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_node(unsigned long, HookType::hook_type_t const&, unsigned long) const /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:655 (sniper+0x40caca)
+    #2 std::__detail::_Map_base<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:697 (sniper+0x40caca)
+    #3 std::unordered_map<HookType::hook_type_t, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> >, std::hash<HookType::hook_type_t>, std::equal_to<HookType::hook_type_t>, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > > >::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/unordered_map.h:985 (sniper+0x40c21d)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:47 (sniper+0x40c21d)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7b0c000012c0 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 48 at 0x7b0c000012c0 allocated by main thread:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 __gnu_cxx::new_allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> >::allocate(unsigned long, void const*) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:114 (sniper+0x40cb5c)
+    #2 std::allocator_traits<std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> > >::allocate(std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> >&, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/alloc_traits.h:444 (sniper+0x40cb5c)
+    #3 std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<HookType::hook_type_t const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<HookType::hook_type_t const&>&&, std::tuple<>&&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:2081 (sniper+0x40cb5c)
+    #4 std::__detail::_Map_base<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:701 (sniper+0x40cb5c)
+    #5 std::unordered_map<HookType::hook_type_t, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> >, std::hash<HookType::hook_type_t>, std::equal_to<HookType::hook_type_t>, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > > >::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/unordered_map.h:985 (sniper+0x40c118)
+    #6 HooksManager::registerHook(HookType::hook_type_t, long (*)(unsigned long, unsigned long), unsigned long, HooksManager::HookCallbackOrder) /root/sniper/common/system/hooks_manager.cc:40 (sniper+0x40c118)
+    #7 ThreadStatsManager::ThreadStatsManager() /root/sniper/common/system/thread_stats_manager.cc:22 (sniper+0x4b9682)
+    #8 Simulator::start() /root/sniper/common/system/simulator.cc:144 (sniper+0x40dddd)
+    #9 main /root/sniper/standalone/standalone.cc:40 (sniper+0x40b65a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:1542 in std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_before_node(unsigned long, HookType::hook_type_t const&, unsigned long) const
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7b0c020a7a08 by main thread (mutexes: write M786576376433628696):
+    #0 std::__detail::_Equal_helper<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, unsigned long, true>::_S_equals(std::equal_to<HookType::hook_type_t> const&, std::__detail::_Select1st const&, HookType::hook_type_t const&, unsigned long, std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true>*) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:1450 (sniper+0x40cb0c)
+    #1 std::__detail::_Hashtable_base<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >::_M_equals(HookType::hook_type_t const&, unsigned long, std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true>*) const /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:1834 (sniper+0x40cb0c)
+    #2 std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_before_node(unsigned long, HookType::hook_type_t const&, unsigned long) const /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:1545 (sniper+0x40cb0c)
+    #3 std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_node(unsigned long, HookType::hook_type_t const&, unsigned long) const /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:655 (sniper+0x40cb0c)
+    #4 std::__detail::_Map_base<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:697 (sniper+0x40cb0c)
+    #5 std::unordered_map<HookType::hook_type_t, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> >, std::hash<HookType::hook_type_t>, std::equal_to<HookType::hook_type_t>, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > > >::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/unordered_map.h:985 (sniper+0x40c21d)
+    #6 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:47 (sniper+0x40c21d)
+    #7 <null> <null> (libtsan.so.0+0x2a1ad)
+    #8 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #9 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #10 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #11 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7b0c020a7a08 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 48 at 0x7b0c020a79e0 allocated by thread T18:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 __gnu_cxx::new_allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> >::allocate(unsigned long, void const*) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:114 (sniper+0x40cb5c)
+    #2 std::allocator_traits<std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> > >::allocate(std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> >&, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/alloc_traits.h:444 (sniper+0x40cb5c)
+    #3 std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<HookType::hook_type_t const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<HookType::hook_type_t const&>&&, std::tuple<>&&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:2081 (sniper+0x40cb5c)
+    #4 std::__detail::_Map_base<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:701 (sniper+0x40cb5c)
+    #5 std::unordered_map<HookType::hook_type_t, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> >, std::hash<HookType::hook_type_t>, std::equal_to<HookType::hook_type_t>, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > > >::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/unordered_map.h:985 (sniper+0x40c21d)
+    #6 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:47 (sniper+0x40c21d)
+    #7 Core::hookPeriodicInsCall() /root/sniper/common/core/core.cc:188 (sniper+0x423533)
+    #8 Core::hookPeriodicInsCheck() /root/sniper/common/core/core.cc:174 (sniper+0x4236a2)
+    #9 Core::countInstructions(unsigned long, unsigned int) /root/sniper/common/core/core.cc:158 (sniper+0x423772)
+    #10 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:801 (sniper+0x4ca314)
+    #11 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x4200be)
+    #12 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x4502dc)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:1450 in std::__detail::_Equal_helper<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, unsigned long, true>::_S_equals(std::equal_to<HookType::hook_type_t> const&, std::__detail::_Select1st const&, HookType::hook_type_t const&, unsigned long, std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true>*)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7b0c020a79e0 by main thread (mutexes: write M786576376433628696):
+    #0 std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_before_node(unsigned long, HookType::hook_type_t const&, unsigned long) const /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:1548 (sniper+0x40cad8)
+    #1 std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_node(unsigned long, HookType::hook_type_t const&, unsigned long) const /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:655 (sniper+0x40cad8)
+    #2 std::__detail::_Map_base<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:697 (sniper+0x40cad8)
+    #3 std::unordered_map<HookType::hook_type_t, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> >, std::hash<HookType::hook_type_t>, std::equal_to<HookType::hook_type_t>, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > > >::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/unordered_map.h:985 (sniper+0x40c21d)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:47 (sniper+0x40c21d)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7b0c020a79e0 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 48 at 0x7b0c020a79e0 allocated by thread T18:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 __gnu_cxx::new_allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> >::allocate(unsigned long, void const*) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:114 (sniper+0x40cb5c)
+    #2 std::allocator_traits<std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> > >::allocate(std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> >&, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/alloc_traits.h:444 (sniper+0x40cb5c)
+    #3 std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, true> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<HookType::hook_type_t const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<HookType::hook_type_t const&>&&, std::tuple<>&&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:2081 (sniper+0x40cb5c)
+    #4 std::__detail::_Map_base<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable_policy.h:701 (sniper+0x40cb5c)
+    #5 std::unordered_map<HookType::hook_type_t, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> >, std::hash<HookType::hook_type_t>, std::equal_to<HookType::hook_type_t>, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > > >::operator[](HookType::hook_type_t const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/unordered_map.h:985 (sniper+0x40c21d)
+    #6 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:47 (sniper+0x40c21d)
+    #7 Core::hookPeriodicInsCall() /root/sniper/common/core/core.cc:188 (sniper+0x423533)
+    #8 Core::hookPeriodicInsCheck() /root/sniper/common/core/core.cc:174 (sniper+0x4236a2)
+    #9 Core::countInstructions(unsigned long, unsigned int) /root/sniper/common/core/core.cc:158 (sniper+0x423772)
+    #10 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:801 (sniper+0x4ca314)
+    #11 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x4200be)
+    #12 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x4502dc)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /opt/rh/devtoolset-9/root/usr/include/c++/9/bits/hashtable.h:1548 in std::_Hashtable<HookType::hook_type_t, std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > >, std::allocator<std::pair<HookType::hook_type_t const, std::vector<HooksManager::HookCallback, std::allocator<HooksManager::HookCallback> > > >, std::__detail::_Select1st, std::equal_to<HookType::hook_type_t>, std::hash<HookType::hook_type_t>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_before_node(unsigned long, HookType::hook_type_t const&, unsigned long) const
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 malloc <null> (libtsan.so.0+0x2c952)
+    #1 __fopen_internal <null> (libc.so.6+0x66daa)
+    #2 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:70 (sniper+0x44fde2)
+    #3 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #4 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #5 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #6 <null> <null> (libtsan.so.0+0x2a1ad)
+    #7 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #8 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #9 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #10 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2c952) in malloc
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7b1400006168 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:72 (sniper+0x44fdf1)
+    #1 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #2 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #3 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #4 <null> <null> (libtsan.so.0+0x2a1ad)
+    #5 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #6 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #7 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #8 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous atomic write of size 8 at 0x7b1400006168 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 72 at 0x7b1400006130 allocated by main thread:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501b5)
+    #2 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #3 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #4 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #5 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:72 in CircularLog::writeLog()
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e000170 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:90 (sniper+0x44fcd0)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e000170 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:90 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e000168 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:90 (sniper+0x44fcdc)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e000168 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:90 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e0001a8 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:91 (sniper+0x44fd03)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e0001a8 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:91 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e0001a0 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:91 (sniper+0x44fd10)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e0001a0 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:91 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e000198 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:91 (sniper+0x44fd1d)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e000198 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:91 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e000190 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:91 (sniper+0x44fd2a)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e000190 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:91 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e000188 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:91 (sniper+0x44fd37)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e000188 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:91 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e000180 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:91 (sniper+0x44fd48)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e000180 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:91 in CircularLog::writeEntry(_IO_FILE*, int)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 8 at 0x7f969e000178 by main thread (mutexes: write M786576376433628696, write M219):
+    #0 CircularLog::writeEntry(_IO_FILE*, int) /root/sniper/common/misc/circular_log.cc:91 (sniper+0x44fd59)
+    #1 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:80 (sniper+0x44fe66)
+    #2 CircularLog::dump() /root/sniper/common/misc/circular_log.cc:35 (sniper+0x44ff17)
+    #3 CircularLog::hook_sigusr1(unsigned long, unsigned long) /root/sniper/common/misc/circular_log.h:42 (sniper+0x450299)
+    #4 HooksManager::callHooks(HookType::hook_type_t, unsigned long, bool) /root/sniper/common/system/hooks_manager.cc:51 (sniper+0x40c282)
+    #5 <null> <null> (libtsan.so.0+0x2a1ad)
+    #6 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x44cc54)
+    #7 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x44cc54)
+    #8 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:316 (sniper+0x41d5c7)
+    #9 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+  Previous write of size 8 at 0x7f969e000178 by thread T18:
+    [failed to restore the stack]
+
+  Location is heap block of size 75497472 at 0x7f969e000000 allocated by main thread:
+    #0 operator new[](unsigned long) <null> (libtsan.so.0+0x734ba)
+    #1 CircularLog::CircularLog(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:41 (sniper+0x450096)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Mutex M786576376433628696 is already destroyed.
+
+  Mutex M219 (0x7b0c00000cf8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x450eca)
+    #2 CircularLog::init(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) /root/sniper/common/misc/circular_log.cc:12 (sniper+0x4501c3)
+    #3 Log::Log(Config&) /root/sniper/common/misc/log.cc:43 (sniper+0x44ef22)
+    #4 Simulator::Simulator() /root/sniper/common/system/simulator.cc:126 (sniper+0x40cc9b)
+    #5 Simulator::allocate() /root/sniper/common/system/simulator.cc:42 (sniper+0x40cf18)
+    #6 main /root/sniper/standalone/standalone.cc:39 (sniper+0x40b64a)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x45035b)
+    #2 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x41d596)
+    #3 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x41d5bf)
+    #4 main /root/sniper/standalone/standalone.cc:50 (sniper+0x40b682)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/misc/circular_log.cc:91 in CircularLog::writeEntry(_IO_FILE*, int)
+==================

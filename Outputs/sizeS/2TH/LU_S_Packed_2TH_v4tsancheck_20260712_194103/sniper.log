@@ -1,0 +1,155 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Packed_2TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+[DeTLoc] map thread-1 to core-1
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 4 at 0x7b0c00018c40 by thread T18 (mutexes: write M247, write M564):
+    #0 CacheBlockInfo::getCState() const /root/sniper/common/core/memory_subsystem/cache/cache_block_info.h:46 (sniper+0x4a0407)
+    #1 ParametricDramDirectoryMSI::CacheCntlr::getCacheState(CacheBlockInfo*) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1372 (sniper+0x4a0407)
+    #2 ParametricDramDirectoryMSI::CacheCntlr::operationPermissibleinCache(unsigned long, Core::mem_op_t, CacheBlockInfo**) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1295 (sniper+0x4a0671)
+    #3 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:373 (sniper+0x4accfd)
+    #4 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x423223)
+    #5 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:371 (sniper+0x41c3d2)
+
+  Previous write of size 4 at 0x7b0c00018c40 by thread T19 (mutexes: write M908455041326390344, write M997401133967034008):
+    #0 CacheBlockInfo::setCState(CacheState::cstate_t) /root/sniper/common/core/memory_subsystem/cache/cache_block_info.h:49 (sniper+0x4a1a60)
+    #1 ParametricDramDirectoryMSI::CacheCntlr::updateCacheBlock(unsigned long, CacheState::cstate_t, ParametricDramDirectoryMSI::Transition::reason_t, unsigned char*, ShmemPerfModel::Thread_t) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1683 (sniper+0x4a1a60)
+    #2 ParametricDramDirectoryMSI::CacheCntlr::updateCacheBlock(unsigned long, CacheState::cstate_t, ParametricDramDirectoryMSI::Transition::reason_t, unsigned char*, ShmemPerfModel::Thread_t) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1598 (sniper+0x4a155c)
+    #3 ParametricDramDirectoryMSI::CacheCntlr::processShmemReqFromPrevCache(ParametricDramDirectoryMSI::CacheCntlr*, Core::mem_op_t, unsigned long, bool, bool, ParametricDramDirectoryMSI::Prefetch::prefetch_type_t, SubsecondTime, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:890 (sniper+0x4ab6cf)
+    #4 ParametricDramDirectoryMSI::CacheCntlr::processShmemReqFromPrevCache(ParametricDramDirectoryMSI::CacheCntlr*, Core::mem_op_t, unsigned long, bool, bool, ParametricDramDirectoryMSI::Prefetch::prefetch_type_t, SubsecondTime, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:953 (sniper+0x4ac218)
+    #5 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:488 (sniper+0x4ad91a)
+    #6 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x423223)
+    #7 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:371 (sniper+0x41c3d2)
+
+  Location is heap block of size 40 at 0x7b0c00018c30 allocated by main thread:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 CacheBlockInfo::create(CacheBase::cache_t) /root/sniper/common/core/memory_subsystem/cache/cache_block_info.cc:47 (sniper+0x4b68f9)
+    #2 ParametricDramDirectoryMSI::MemoryManager::MemoryManager(Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:290 (sniper+0x4287f2)
+    #3 MemoryManagerBase::createMMU(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>, Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/memory_manager_base.cc:18 (sniper+0x41e6ec)
+    #4 Core::Core(int) /root/sniper/common/core/core.cc:100 (sniper+0x41c02b)
+
+  Mutex M247 (0x7b0c000017d8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x43fa5a)
+
+  Mutex M564 (0x7b0c00016298) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x43fa5a)
+    #2 ParametricDramDirectoryMSI::MemoryManager::MemoryManager(Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:290 (sniper+0x4287f2)
+    #3 MemoryManagerBase::createMMU(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>, Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/memory_manager_base.cc:18 (sniper+0x41e6ec)
+    #4 Core::Core(int) /root/sniper/common/core/core.cc:100 (sniper+0x41c02b)
+
+  Mutex M908455041326390344 is already destroyed.
+
+  Mutex M997401133967034008 is already destroyed.
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x43f2fb)
+
+  Thread T19 (tid=58, running) created by thread T18 at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x43f2fb)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/core/memory_subsystem/cache/cache_block_info.h:46 in CacheBlockInfo::getCState() const
+==================
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Read of size 4 at 0x7b0c000174d0 by thread T18 (mutexes: write M247, write M564):
+    #0 CacheBlockInfo::getCState() const /root/sniper/common/core/memory_subsystem/cache/cache_block_info.h:46 (sniper+0x4a0407)
+    #1 ParametricDramDirectoryMSI::CacheCntlr::getCacheState(CacheBlockInfo*) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1372 (sniper+0x4a0407)
+    #2 ParametricDramDirectoryMSI::CacheCntlr::operationPermissibleinCache(unsigned long, Core::mem_op_t, CacheBlockInfo**) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1295 (sniper+0x4a0671)
+    #3 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:373 (sniper+0x4accfd)
+    #4 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x423223)
+    #5 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:371 (sniper+0x41c3d2)
+
+  Previous write of size 4 at 0x7b0c000174d0 by thread T19 (mutexes: write M908455041326390344, write M997401133967034008):
+    #0 CacheBlockInfo::setCState(CacheState::cstate_t) /root/sniper/common/core/memory_subsystem/cache/cache_block_info.h:49 (sniper+0x4a1b1e)
+    #1 ParametricDramDirectoryMSI::CacheCntlr::updateCacheBlock(unsigned long, CacheState::cstate_t, ParametricDramDirectoryMSI::Transition::reason_t, unsigned char*, ShmemPerfModel::Thread_t) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1708 (sniper+0x4a1b1e)
+    #2 ParametricDramDirectoryMSI::CacheCntlr::updateCacheBlock(unsigned long, CacheState::cstate_t, ParametricDramDirectoryMSI::Transition::reason_t, unsigned char*, ShmemPerfModel::Thread_t) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1598 (sniper+0x4a155c)
+    #3 ParametricDramDirectoryMSI::CacheCntlr::processShmemReqFromPrevCache(ParametricDramDirectoryMSI::CacheCntlr*, Core::mem_op_t, unsigned long, bool, bool, ParametricDramDirectoryMSI::Prefetch::prefetch_type_t, SubsecondTime, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:906 (sniper+0x4ab84e)
+    #4 ParametricDramDirectoryMSI::CacheCntlr::processShmemReqFromPrevCache(ParametricDramDirectoryMSI::CacheCntlr*, Core::mem_op_t, unsigned long, bool, bool, ParametricDramDirectoryMSI::Prefetch::prefetch_type_t, SubsecondTime, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:953 (sniper+0x4ac218)
+    #5 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:488 (sniper+0x4ad91a)
+    #6 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x423223)
+    #7 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:371 (sniper+0x41c3d2)
+
+  Location is heap block of size 40 at 0x7b0c000174c0 allocated by main thread:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 CacheBlockInfo::create(CacheBase::cache_t) /root/sniper/common/core/memory_subsystem/cache/cache_block_info.cc:47 (sniper+0x4b68f9)
+    #2 ParametricDramDirectoryMSI::MemoryManager::MemoryManager(Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:290 (sniper+0x4287f2)
+    #3 MemoryManagerBase::createMMU(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>, Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/memory_manager_base.cc:18 (sniper+0x41e6ec)
+    #4 Core::Core(int) /root/sniper/common/core/core.cc:100 (sniper+0x41c02b)
+
+  Mutex M247 (0x7b0c000017d8) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x43fa5a)
+
+  Mutex M564 (0x7b0c00016298) created at:
+    #0 pthread_mutex_init <null> (libtsan.so.0+0x2df4d)
+    #1 LockCreator_Default::create() /root/sniper/common/misc/pthread_lock.cc:25 (sniper+0x43fa5a)
+    #2 ParametricDramDirectoryMSI::MemoryManager::MemoryManager(Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:290 (sniper+0x4287f2)
+    #3 MemoryManagerBase::createMMU(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>, Core*, Network*, ShmemPerfModel*) /root/sniper/common/core/memory_subsystem/memory_manager_base.cc:18 (sniper+0x41e6ec)
+    #4 Core::Core(int) /root/sniper/common/core/core.cc:100 (sniper+0x41c02b)
+
+  Mutex M908455041326390344 is already destroyed.
+
+  Mutex M997401133967034008 is already destroyed.
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x43f2fb)
+
+  Thread T19 (tid=58, running) created by thread T18 at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x43f2fb)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/core/memory_subsystem/cache/cache_block_info.h:46 in CacheBlockInfo::getCState() const
+==================
+[HOOKS] Entering ROI
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 malloc <null> (libtsan.so.0+0x2c952)
+    #1 __fopen_internal <null> (libc.so.6+0x66daa)
+    #2 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:70 (sniper+0x43f06b)
+    #3 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x43cd64)
+    #4 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x43cd64)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2c952) in malloc
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 free <null> (libtsan.so.0+0x2cc37)
+    #1 fclose@@GLIBC_2.2.5 <null> (libc.so.6+0x663ac)
+[LOG] Wrote 1048576 out of 347563 events to sim.clog
+    #2 CircularLog::writeLog() /root/sniper/common/misc/circular_log.cc:82 (sniper+0x43f0ad)
+    #3 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x43cd64)
+    #4 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x43cd64)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2cc37) in __interceptor_free
+==================
+==================
+WARNING: ThreadSanitizer: signal handler spoils errno (pid=22)
+    #0 handleSigUsr1 /root/sniper/standalone/exceptions.cc:56 (sniper+0x40cab0)
+    #1 TLock<LockCreator_Default>::acquire() /root/sniper/common/misc/lock.h:69 (sniper+0x43cd64)
+    #2 Semaphore::wait() /root/sniper/common/misc/semaphore.cc:40 (sniper+0x43cd64)
+
+SUMMARY: ThreadSanitizer: signal handler spoils errno /root/sniper/standalone/exceptions.cc:56 in handleSigUsr1
+==================

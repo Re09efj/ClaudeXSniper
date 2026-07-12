@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kind="struct" language="C++" prot="public">
+    <compoundname>pinrt::rscschema::RPC_arg_schema_wrapper</compoundname>
+    <templateparamlist>
+      <param>
+        <type><ref refid="group__REMOTE_1ga6fbb5fc9f6072e19c0e7fd41979a8405" kindref="member">E_rpc_arg_type</ref></type>
+        <declname>ARG_TYPE</declname>
+        <defname>ARG_TYPE</defname>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>ARG_SIZE</declname>
+        <defname>ARG_SIZE</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper_1a5dd5e4f398461ca33a36795da8af28c6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref></type>
+        <definition>constexpr t_rpc_arg_schema pinrt::rscschema::RPC_arg_schema_wrapper&lt; ARG_TYPE, ARG_SIZE &gt;::v</definition>
+        <argsstring></argsstring>
+        <name>v</name>
+        <initializer>= <ref refid="group__REMOTE_1ga15e22d511f177bbbfbdbaaab8bf04e4a" kindref="member">MAKE_ARG_SCHEMA</ref>(ARG_TYPE, ARG_SIZE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="42" column="39" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pinrt/rscschema/include/rscschema.h" line="40" column="15" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="41" bodyend="43"/>
+    <listofallmembers>
+      <member refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper_1a5dd5e4f398461ca33a36795da8af28c6" prot="public" virt="non-virtual"><scope>pinrt::rscschema::RPC_arg_schema_wrapper</scope><name>v</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ipind__plugin_8h" kind="file" language="C++">
+    <compoundname>ipind_plugin.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes refid="rscprotomsgtypes_8h" local="no">rscprotomsgtypes.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>ipind_plugin.h</label>
+        <link refid="ipind__plugin_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structIPindPlugin" prot="public">IPindPlugin</innerclass>
+    <innerclass refid="structIRPCPlugin" prot="public">IRPCPlugin</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ipind__plugin_8h_1a2ac44fadcea1948320b2a1beb0e24fb0" prot="public" static="no">
+        <name>PLUGIN__DLLVIS</name>
+        <initializer>__attribute__((visibility(&quot;default&quot;)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>End of Auxiliary functions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="259" column="10" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ipind__plugin_8h_1afe0d4da7f2919798bc983d1b8245cc35" prot="public" static="no">
+        <name>PLUGIN_EXTERNC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="265" column="10" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__PLUGIN_1ga0a6f6f461ade393b128acafadbfc16ea" prot="public" static="no" strong="no">
+        <type></type>
+        <name>E_plugin_type</name>
+        <enumvalue id="group__PLUGIN_1gga0a6f6f461ade393b128acafadbfc16eaa7f7e32ed10aea1dd73b80e96c70e8abf" prot="public">
+          <name>RPC</name>
+          <briefdescription>
+<para>Indicates a pind RPC plugin. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The plugin type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains declarations of pind plugin interfaces.</para>
+<para>For usage examples please refer to the <ref refid="index_1REMOTE" kindref="member">Executing Remote Procedures</ref> section in Pin User Manual.</para>
+<para><simplesect kind="note"><para>APIs declared in this file are under active development and are subject to change or removal without notice</para>
+</simplesect>
+For user developed plugins only RPC is supported. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="35" column="1" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="36" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ipind__plugin_8h_1ab8ec8adddb8878d758c535dc613ad207" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void plugin_log_impl</definition>
+        <argsstring>(IPindPlugin *pindPlugin, const char *msg, size_t length)</argsstring>
+        <name>plugin_log_impl</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>pindPlugin</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Auxiliary functions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="195" column="20" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="195" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="ipind__plugin_8h_1a279e15dd22dad4c12112026a9fb37779" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void plugin_log</definition>
+        <argsstring>(IPindPlugin *pindPlugin, const char *msg)</argsstring>
+        <name>plugin_log</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>pindPlugin</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Print the specified message ( <emphasis>msg</emphasis>) into the plugin log file. See <ref refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" kindref="member">IPindPlugin::plugin_log()</ref> for more information (such as which log file is being used) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pindPlugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>C Style string message (const chart*) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="214" column="20" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="214" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="ipind__plugin_8h_1a48c37aa25231dc95c9f1c8ff89cb632f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void plugin_log_n</definition>
+        <argsstring>(IPindPlugin *pindPlugin, const char *msg, size_t length)</argsstring>
+        <name>plugin_log_n</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>pindPlugin</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Same as plugin_log with <emphasis>length</emphasis> specifying the length of the message. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="219" column="20" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="219" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="ipind__plugin_8h_1a00bab36e28cb74e65b1d1f53ce6ee107" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void plugin_log_verbose_impl</definition>
+        <argsstring>(IPindPlugin *pindPlugin, const char *msg, size_t length)</argsstring>
+        <name>plugin_log_verbose_impl</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>pindPlugin</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="224" column="20" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="224" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="ipind__plugin_8h_1ac86dc9e7f332855c8365bfc9080380c7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void plugin_log_verbose</definition>
+        <argsstring>(IPindPlugin *pindPlugin, const char *msg)</argsstring>
+        <name>plugin_log_verbose</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>pindPlugin</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Same as plugin_log(), but prints conditionally depending on <ref refid="structIPindPlugin_1a21520cc7843b073a61254bdd01658527" kindref="member">IPindPlugin::verbose_</ref> flag (see documentation for more details) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="239" column="20" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="239" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="ipind__plugin_8h_1a885e6b335568f8f1dfdf44af83d250ea" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void plugin_log_verbose_n</definition>
+        <argsstring>(IPindPlugin *pindPlugin, const char *msg, size_t length)</argsstring>
+        <name>plugin_log_verbose_n</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>pindPlugin</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Same as plugin_log_n(), but prints conditionally depending on <ref refid="structIPindPlugin_1a21520cc7843b073a61254bdd01658527" kindref="member">IPindPlugin::verbose_</ref> flag (see documentation for more details) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="247" column="20" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="247" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PLUGIN_1ga841f2257a22717c7c4a016ff138dbee3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+        <definition>IPindPlugin* load_plugin</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>load_plugin</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Allocate a structure object that can be safely casted to <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>. Set its pointers to the correct functions in the plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Plugin may allocate any structure that contain <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> structure as its first member. This enabled every plugin to expend the set of functions pointers and state. <ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref> is normally used.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A plugin library may support more than a single plugin. This argument is use to identify the requested plugin. This can be achieved through the plugin JSON configuration file like this: &quot;ExtraRPCPlugins&quot;: [ { &quot;lib&quot;: &quot;my_plugin.so&quot;, &quot;name&quot;: &quot;plugin 1&quot; }, { &quot;lib&quot;: &quot;my_plugin.so&quot;, &quot;name&quot;: &quot;plugin 2&quot; } ]</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pointer to <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> upon successful initialization. Caller can then convert the return pointer to the actual structure created ((See comments above)). NULL upon any failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="298" column="15" declfile="Source/pinrt/pind/include/ipind_plugin.h" declline="298" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PLUGIN_1ga4e5ffb12ab1ad4c24b65edcfbaef2d3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void unload_plugin</definition>
+        <argsstring>(IPindPlugin *plugin)</argsstring>
+        <name>unload_plugin</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+<para>Release resources allocated allocated by <ref refid="group__PLUGIN_1ga841f2257a22717c7c4a016ff138dbee3" kindref="member">load_plugin()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by pind before unloading the plugin library. Resources allocated by the plugin itself either on call to <ref refid="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" kindref="member">IPindPlugin::init</ref>, or during plugin operations, should be released by <ref refid="structIPindPlugin_1a036601ad3630cf483571107c2c9c44ce" kindref="member">IPindPlugin::uninit</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The plugin to unload. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="311" column="8" declfile="Source/pinrt/pind/include/ipind_plugin.h" declline="311" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2023-2025<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_IPIND_PLUGIN_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_IPIND_PLUGIN_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;rscprotomsgtypes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__PLUGIN_1ga0a6f6f461ade393b128acafadbfc16ea" kindref="member">E_plugin_type</ref></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PLUGIN_1gga0a6f6f461ade393b128acafadbfc16eaa7f7e32ed10aea1dd73b80e96c70e8abf" kindref="member">RPC</ref></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="structIPindPlugin" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structIPindPlugin_1a21520cc7843b073a61254bdd01658527" kindref="member">verbose_</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structIPindPlugin_1a03f7436d97008ccb22dac8629386c8e2" kindref="member">logName_</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" kindref="member">plugin_log</ref>)(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PLUGIN_1ga0a6f6f461ade393b128acafadbfc16ea" kindref="member">E_plugin_type</ref><sp/>(*<ref refid="structIPindPlugin_1a8dbb34e1b575bd3b2ff337196be2bf08" kindref="member">get_plugin_type</ref>)(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" kindref="member">init</ref>)(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>argv[]);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structIPindPlugin_1a036601ad3630cf483571107c2c9c44ce" kindref="member">uninit</ref>)(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="structIRPCPlugin" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref><sp/><ref refid="structIRPCPlugin_1a6eaee8416c4dba9cc7cad1cdb79a01f5" kindref="member">base_</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>(*get_injection_data)(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structRPC__message__schema" kindref="compound">t_rpc_message_schema</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/>(*get_rpc_schema)(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/><ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref><sp/>rpcId);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structIRPCPlugin_1ae70a0781ed4917e63675652509fbfe1d" kindref="member">do_rpc</ref>)(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/><ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref><sp/>rpcId,<sp/><ref refid="group__REMOTE_1ga9ae75f4632bad6aa35442f52fa451060" kindref="member">t_arg_count</ref><sp/>argCount,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_arg</ref>*<sp/>rpcArgs,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_ret</ref>*<sp/>retRpcArg);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>plugin_log_impl(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>pindPlugin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>pindPlugin-&gt;<ref refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" kindref="member">plugin_log</ref>)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;plugin_log()<sp/>called<sp/>too<sp/>early<sp/>(can<sp/>be<sp/>called<sp/>only<sp/>after<sp/>init())\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindPlugin-&gt;<ref refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" kindref="member">plugin_log</ref>(pindPlugin,<sp/>msg,<sp/>length);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>plugin_log(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>pindPlugin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg)<sp/>{<sp/>plugin_log_impl(pindPlugin,<sp/>msg,<sp/>strlen(msg));<sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>plugin_log_n(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>pindPlugin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>plugin_log_impl(pindPlugin,<sp/>msg,<sp/>length);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>plugin_log_verbose_impl(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>pindPlugin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>pindPlugin-&gt;<ref refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" kindref="member">plugin_log</ref>)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;plugin_log_verbose()<sp/>called<sp/>too<sp/>early<sp/>(can<sp/>be<sp/>called<sp/>only<sp/>after<sp/>init())\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pindPlugin-&gt;<ref refid="structIPindPlugin_1a21520cc7843b073a61254bdd01658527" kindref="member">verbose_</ref>)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindPlugin-&gt;<ref refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" kindref="member">plugin_log</ref>(pindPlugin,<sp/>msg,<sp/>length);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>plugin_log_verbose(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>pindPlugin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>plugin_log_verbose_impl(pindPlugin,<sp/>msg,<sp/>strlen(msg));</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>plugin_log_verbose_n(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>pindPlugin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>plugin_log_verbose_impl(pindPlugin,<sp/>msg,<sp/>length);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_WINDOWS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLUGIN__DLLVIS<sp/>__declspec(dllexport)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLUGIN__DLLVIS<sp/>__attribute__((visibility(&quot;default&quot;</highlight><highlight class="normal">)))</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLUGIN_EXTERNC<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLUGIN_EXTERNC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal">PLUGIN_EXTERNC<sp/>PLUGIN__DLLVIS<sp/><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/><ref refid="group__PLUGIN_1ga841f2257a22717c7c4a016ff138dbee3" kindref="member">load_plugin</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal">PLUGIN_EXTERNC<sp/>PLUGIN__DLLVIS<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PLUGIN_1ga4e5ffb12ab1ad4c24b65edcfbaef2d3c" kindref="member">unload_plugin</ref>(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>plugin);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>_IPIND_PLUGIN_H_</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Source/pinrt/pind/include/ipind_plugin.h"/>
+  </compounddef>
+</doxygen>

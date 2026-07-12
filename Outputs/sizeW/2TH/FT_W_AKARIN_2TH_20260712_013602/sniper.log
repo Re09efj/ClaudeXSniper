@@ -1,0 +1,82 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/cfg/arrow_lake_AKARIN_2TH.map
+[DeTLoc] map thread-0 to core-8
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - FT Benchmark
+
+ Size                :  128x 128x  32
+ Iterations                  :      6
+ Number of available threads :      2
+
+[DeTLoc] map thread-1 to core-9
+[HOOKS] Entering ROI
+ T =    1     Checksum =    5.673612178944D+02    5.293246849175D+02
+ T =    2     Checksum =    5.631436885271D+02    5.282149986629D+02
+ T =    3     Checksum =    5.594024089970D+02    5.270996558037D+02
+ T =    4     Checksum =    5.560698047020D+02    5.260027904925D+02
+ T =    5     Checksum =    5.530898991250D+02    5.249400845633D+02
+ T =    6     Checksum =    5.504159734538D+02    5.239212247086D+02
+[HOOKS] Leaving ROI
+ Result verification successful
+ class = W
+
+
+ FT Benchmark Completed.
+ Class           =                        W
+ Size            =            128x 128x  32
+ Iterations      =                        6
+ Time in seconds =                     0.10
+ Total threads   =                        2
+ Avail threads   =                        2
+ Mop/s total     =                  3714.95
+ Mop/s/thread    =                  1857.48
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = randi8
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:1] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 2066.48 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 1611.8M instructions, 263.0M cycles, 6.13 IPC
+[SNIPER] Simulation speed 780.0 KIPS (48.7 KIPS / target core - 20513.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 2067.78 seconds

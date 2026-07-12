@@ -1,0 +1,160 @@
+\ProvidesPackage{global}
+
+\usepackage{tabularx}
+\usepackage{amsmath,amssymb} % 数式用に追加（便利）
+\usepackage{cuted}
+\usepackage{placeins}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{subcaption}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{arydshln}
+\usepackage{float}
+\usepackage{times} % 欧文フォント（必要なら）
+\usepackage{caption}
+\renewcommand{\figurename}{図}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\tablename}{表}
+\renewcommand{\thetable}{\arabic{table}}
+\twocolumn
+\sloppy
+\flushbottom
+
+\setlength{\parindent}{1em}
+\setlength{\leftmargini}{2em}
+\setlength{\leftmarginv}{.5em}
+\setlength{\leftmarginvi}{.5em}
+
+% ページレイアウト（A4基準で調整）
+\setlength{\oddsidemargin}{-5.4mm}
+\setlength{\evensidemargin}{-5.4mm}
+\setlength{\topmargin}{-2mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\topskip}{0mm}
+\setlength{\textheight}{250mm}
+\setlength{\textwidth}{170mm}
+\setlength{\columnsep}{10mm}
+
+\pagestyle{empty}
+
+% コマンド定義
+\def\abst#1{\gdef\@abst{#1}}
+\def\keywords#1{\gdef\@keywords{#1}}
+\def\prof#1{\gdef\@prof{#1}}
+\def\asoprof#1{\gdef\@asoprof{#1}}
+\def\student#1{\gdef\@student{#1}}
+\def\journal#1{\gdef\@journal{#1}}
+\def\nendo#1{\gdef\@nendo{#1}}
+\def\title#1{\gdef\@title{#1}}
+\def\author#1{\gdef\@author{#1}}
+\def\date#1{\gdef\@date{#1}}
+\def\headertext#1{\gdef\@headertext{#1}}
+\def\@headertext{グローバルルーム論文紹介}
+
+% タイトル部（意味を維持しつつ整理）
+\def\@maketitle{\newpage
+  \null
+  {\noindent
+    {\large \rlap{\phantom{\@date}}%
+    \makebox[\textwidth][c]{\@headertext}%
+    \llap{\@date}\par}
+    \begin{large}
+      \begin{center}
+        \vskip 1em
+        {\bfseries \@title}\\[1em]
+        \@author
+      \end{center}
+    \end{large}
+  }
+
+  % Abstract
+  \@ifundefined{@abst}{}{%
+    \vskip 1.5em
+    {\normalsize
+      \begin{list}{{\bf Abstract}:}{
+          \setlength{\topsep}{0pt}
+          \setlength{\partopsep}{0pt}
+          \setlength{\parsep}{0pt}
+          \setlength{\baselineskip}{4.25mm}
+          \setlength{\leftmargin}{0.05\textwidth}
+          \setlength{\rightmargin}{0.05\textwidth}
+          \setlength{\itemindent}{0.05\textwidth}
+          \setlength{\listparindent}{0mm}
+          \setlength{\labelsep}{0pt}
+        }
+        \item \@abst
+        \vskip \baselineskip
+
+        \@ifundefined{@keywords}{}{%
+          \begin{list}{{\bf Key Words}:}{
+              \setlength{\topsep}{0pt}
+              \setlength{\parsep}{0pt}
+              \setlength{\partopsep}{0pt}
+              \setlength{\listparindent}{0mm}
+              \setlength{\baselineskip}{4.25mm}
+              \settowidth{\labelwidth}{{\bf Key Words}:}
+              \setlength{\labelsep}{0pt}
+              \setlength{\leftmargin}{\labelwidth}
+              \setlength{\rightmargin}{0mm}
+            }
+            \item \@keywords
+          \end{list}
+        }
+      \end{list}
+    }
+  }
+  \vskip \baselineskip
+}
+
+% セクション定義
+\def\section{\@startsection {section}{1}{\z@}{3.25ex plus 1ex minus .2ex}{.4ex plus .1ex}{\large\bf}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{1.2ex plus 1ex minus .2ex}{.4ex plus .1ex}{\normalsize\bf}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{1.2ex plus 1ex minus .2ex}{.4ex plus .1ex}{\normalsize\bf}}
+
+% その他の設定（ほぼ元のまま）
+\def\@makecaption#1#2{\vskip 10pt \setbox\@tempboxa\hbox{#1. #2}
+  \ifdim \wd\@tempboxa >\hsize #1. #2\par \else \hbox to\hsize{\hfil\box\@tempboxa\hfil}\fi}
+
+\def\topfraction{0.99}
+\def\bottomfraction{0.99}
+\def\textfraction{0.15}
+\def\floatpagefraction{0.99}
+\def\dbltopfraction{0.99}
+\def\dblfloatpagefraction{0.99}
+
+\floatsep .5\floatsep
+\textfloatsep .5\textfloatsep
+\intextsep .5\intextsep
+\dblfloatsep .5\dblfloatsep
+\dbltextfloatsep .5\dbltextfloatsep
+
+\def\thebibliography#1{\section*{参考文献}\list
+  {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+  \advance\leftmargin\labelsep
+  \usecounter{enumi}}\normalsize\itemsep=.1ex\parskip=.1ex
+  \def\newblock{\hskip .11em plus .33em minus .07em}
+  \sloppy\clubpenalty4000\widowpenalty4000
+  \sfcode`\.=1000\relax}
+
+\lineskip 1pt \normallineskip 1pt
+\def\baselinestretch{0.85}
+
+% フォントサイズ設定
+\newdimen\h \h=0.25mm
+\def\@normalsize{\@setsize\normalsize{18.5\h}\ixpt\@ixpt
+  \abovedisplayskip 10pt plus3pt minus4pt
+  \belowdisplayskip \abovedisplayskip
+  \abovedisplayshortskip \z@ plus2.5pt
+  \belowdisplayshortskip 5pt plus2pt minus2pt}
+\normalsize
+
+\def\small{\@setsize\small{14\h}\viiipt\@viiipt}
+\def\footnotesize{\@setsize\footnotesize{13\h}\viipt\@viipt}
+\def\scriptsize{\@setsize\scriptsize{8pt}\viipt\@viipt}
+\def\tiny{\@setsize\tiny{6pt}\vpt\@vpt}
+\def\large{\@setsize\large{12pt}\xipt\@xipt}
+\def\Large{\@setsize\Large{14.4pt}\xiipt\@xiipt}

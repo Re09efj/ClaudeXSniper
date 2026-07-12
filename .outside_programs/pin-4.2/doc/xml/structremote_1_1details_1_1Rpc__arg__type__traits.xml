@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structremote_1_1details_1_1Rpc__arg__type__traits" kind="struct" language="C++" prot="public">
+    <compoundname>remote::details::Rpc_arg_type_traits</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structremote_1_1details_1_1Rpc__arg__type__traits_1a68bdaab070934b54f9e3e9978237bc4a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool remote::details::Rpc_arg_type_traits&lt; T &gt;::is_void</definition>
+        <argsstring></argsstring>
+        <name>is_void</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="208" column="27" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structremote_1_1details_1_1Rpc__arg__type__traits_1af999df476edf76c00b67f23deb2d697f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool remote::details::Rpc_arg_type_traits&lt; T &gt;::is_buffer</definition>
+        <argsstring></argsstring>
+        <name>is_buffer</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="209" column="27" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/pin_rpc_client.PH" line="206" column="13" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="207" bodyend="210"/>
+    <listofallmembers>
+      <member refid="structremote_1_1details_1_1Rpc__arg__type__traits_1af999df476edf76c00b67f23deb2d697f" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_type_traits</scope><name>is_buffer</name></member>
+      <member refid="structremote_1_1details_1_1Rpc__arg__type__traits_1a68bdaab070934b54f9e3e9978237bc4a" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_type_traits</scope><name>is_void</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

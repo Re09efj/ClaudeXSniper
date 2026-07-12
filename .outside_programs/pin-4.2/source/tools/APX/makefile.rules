@@ -1,0 +1,165 @@
+#
+# Copyright (C) 2012-2025 Intel Corporation.
+# SPDX-License-Identifier: MIT
+#
+
+##############################################################
+#
+# This file includes all the test targets as well as all the
+# non-default build rules and test recipes.
+#
+##############################################################
+
+
+##############################################################
+#
+# Test targets
+#
+##############################################################
+
+###### Place all generic definitions here ######
+
+# This defines tests which run tools of the same name.  This is simply for convenience to avoid
+# defining the test name twice (once in TOOL_ROOTS and again in TEST_ROOTS).
+# Tests defined here should not be defined in TOOL_ROOTS and TEST_ROOTS.
+TEST_TOOL_ROOTS := 
+
+# This defines the tests to be run that were not already defined in TEST_TOOL_ROOTS.
+TEST_ROOTS := 
+# This defines the tools which will be run during the the tests, and were not already defined in
+# TEST_TOOL_ROOTS.
+TOOL_ROOTS := 
+
+# This defines the static analysis tools which will be run during the the tests. They should not
+# be defined in TEST_TOOL_ROOTS. If a test with the same name exists, it should be defined in
+# TEST_ROOTS.
+# Note: Static analysis tools are in fact executables linked with the Pin Static Analysis Library.
+# This library provides a subset of the Pin APIs which allows the tool to perform static analysis
+# of an application or dll. Pin itself is not used when this tool runs.
+SA_TOOL_ROOTS :=
+
+# This defines all the applications that will be run during the tests.
+APP_ROOTS := 
+
+# This defines any additional object files that need to be compiled.
+OBJECT_ROOTS := 
+
+# This defines any additional dlls (shared objects), other than the pintools, that need to be compiled.
+DLL_ROOTS :=
+
+# This defines any static libraries (archives), that need to be built.
+LIB_ROOTS :=
+
+###### Place OS-specific definitions here ######
+
+# Place intel64-specific definitions here if they apply to all supported operating systems.
+ifeq ($(TARGET_OS),linux)
+	ifeq ($(TARGET),intel64)
+		TOOL_ROOTS += check_rex2_tool
+		APP_ROOTS += rex2_app
+		TEST_ROOTS += check_rex2
+	endif
+endif
+
+
+
+###### Handle exceptions here (OS/arch related) ######
+
+
+#Tests in this directory only run on Windows and Linux, disable all other OSs.
+ifeq ($(TARGET),ia32)
+    TARGET_HAS_DEPENDENCIES :=
+endif
+
+# If there are apx-dependent targets, make sure that the apx_check program exists.
+ifneq ($(TARGET_HAS_DEPENDENCIES),)
+    ifeq ($(wildcard $(CHECKAPX)),)
+        $(error Unable to proceed. Run "make apxcheck", then try again)
+    endif
+    MACHINE_SUPPORTS_APX_INSTRUCTIONS := $(shell $(CHECKAPX) | $(GREP) Yes)
+endif
+
+# APX only supports 64 bit.
+ifneq ($(MACHINE_SUPPORTS_APX_INSTRUCTIONS),Yes)
+	ifeq ($(TARGET),intel64)
+		TEST_ROOTS +=  apx_disabled
+		TOOL_ROOTS += apx_instructions_tool
+		APP_ROOTS += apx_instructions_app
+	endif
+endif
+
+# RUNNABLE_TESTS := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
+
+###### Define the serial subset ######
+
+###### Define the sanity subset ######
+
+# This defines the list of tests that should run in sanity. It should include all the tests listed in
+# TEST_TOOL_ROOTS and TEST_ROOTS excluding only unstable tests.
+SANITY_SUBSET := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
+
+##############################################################
+#
+# Test recipes
+#
+##############################################################
+
+# This section contains recipes for tests other than the default.
+# See makefile.default.rules for the default test rules.
+# All tests in this section should adhere to the naming convention: <testname>.test
+
+# Test for verifying the APX instrcutions are disabled.
+# This test uses an app with APX instructions and a tool that tries insturment them.
+# The test verifies we get Illegal instruction in the app log and that we get to a point where pin could not fetch any instructions
+# (which indicates that APX instructions were not instrumented).
+apx_disabled.test: $(OBJDIR)apx_instructions_tool$(PINTOOL_SUFFIX) $(OBJDIR)apx_instructions_app$(EXE_SUFFIX)
+	- $(PIN) -xyzzy -mesgon log_fetch -mesgon log_signal -logfile $(OBJDIR)apx_disabled_log_pin.log -t $(OBJDIR)apx_instructions_tool$(PINTOOL_SUFFIX) -- \
+	  $(OBJDIR)apx_instructions_app$(EXE_SUFFIX) > $(OBJDIR)apx_disabled_app.log 2>&1
+	$(QGREP) "ILLEGAL_INS" $(OBJDIR)apx_disabled_log_pin.log 
+	$(RM) $(OBJDIR)apx_disabled_log_pin.log  $(OBJDIR)apx_disabled_app.log
+
+# invoke the test application with pin alone, pin will replace the invalid instruction with REX2 prefix
+# to a non REX2 prefix which will make it valid on legacy CPUs.
+check_rex2.test: $(OBJDIR)rex2_app$(EXE_SUFFIX) $(OBJDIR)check_rex2_tool$(PINTOOL_SUFFIX)
+	$(PIN) -t $(OBJDIR)check_rex2_tool$(PINTOOL_SUFFIX) -- $(OBJDIR)rex2_app$(EXE_SUFFIX) > $(OBJDIR)rex2_app.out
+	$(RM) $(OBJDIR)rex2_app.out
+##############################################################
+#
+# Build rules
+#
+##############################################################
+
+# This section contains the build rules for all binaries that have special build rules.
+# See makefile.default.rules for the default build rules.
+
+###### Special tools' build rules ######
+
+
+###### Special applications' build rules ######
+
+ifeq ($(TARGET),intel64)
+
+ifeq ($(TARGET_OS),windows)
+APX_INSTRUCTIONS_ASM := $(OBJDIR)apx_instructions$(OBJ_SUFFIX)
+else
+APX_INSTRUCTIONS_ASM := $(OBJDIR)apx_instructions_asm$(OBJ_SUFFIX)
+endif
+
+$(OBJDIR)apx_instructions_app$(EXE_SUFFIX): apx_instructions_app.cpp $(APX_INSTRUCTIONS_ASM)
+	$(APP_CXX) $(APP_CXXFLAGS_NOOPT) $(DBG_INFO_CXX_ALWAYS) $(COMP_EXE)$@ $^ $(APP_LDFLAGS_NOOPT) \
+	  $(DBG_INFO_LD_ALWAYS) $(APP_LIBS)
+endif
+
+$(OBJDIR)rex2_app$(EXE_SUFFIX): rex2_app.c
+	$(APP_CXX) $(APP_CXXFLAGS_NOOPT) $(COMP_EXE)$@ $^ $(APP_LDFLAGS_NOOPT)
+	
+###### Special objects' build rules ######
+
+# This object is part of an application, however it needs to be be built with the static MT library so we
+# use TOOL_CXXFLAGS_NOOPT instead of APP_CXXFLAGS_NOOPT.
+
+# This object is part of an application. However, it uses some Xed and Pin interfaces, so it should be
+# compiled with all the flags of a tool.
+
+###### Special dlls' build rules ######
+

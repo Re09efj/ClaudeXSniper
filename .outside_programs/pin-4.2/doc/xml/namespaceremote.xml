@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceremote" kind="namespace" language="C++">
+    <compoundname>remote</compoundname>
+    <innerclass refid="structremote_1_1Rpc__buffer__wrapper" prot="public">remote::Rpc_buffer_wrapper</innerclass>
+    <innernamespace refid="namespaceremote_1_1details">remote::details</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__REMOTE_1gaf1da75a117dec80c291b8914f668653d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref></type>
+        <definition>Rpc_buffer_wrapper remote::rpc_buffer</definition>
+        <argsstring>(void *mem, size_t size, E_rpc_arg_flags flags=RpcArgFlagsNone) noexcept</argsstring>
+        <name>rpc_buffer</name>
+        <param>
+          <type>void *</type>
+          <declname>mem</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REMOTE_1gac97805fdcf8d38f8707f7a477426073b" kindref="member">E_rpc_arg_flags</ref></type>
+          <declname>flags</declname>
+          <defval><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref></defval>
+        </param>
+        <briefdescription>
+<para>Wrap a buffer to be used as an argument to an RPC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">mem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The buffer memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the buffer in bytes. If size is 0 then no data will be copied into the RPC request. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags modifying the behaviour of the argument encoding. If this is set to <ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073ba13a6ffb2661fb912c392beff113bf0e4" kindref="member">E_rpc_arg_flags::RpcArgFlagsDataEmpty</ref> then no data will be sent to the RPC, however the RPC can fill the buffer on return. This behaviour is just a performance optimization so if the buffer is intended to be filled by the RPC and the contents are not valid until the RPC returns, then there is no point in copying the initial content to the RPC request.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref> structure wrapping the buffer</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="178" column="27" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1ga40e34b38d510108512e1599d47cf22e0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref></type>
+        <definition>Rpc_buffer_wrapper remote::rpc_buffer</definition>
+        <argsstring>(const void *mem, size_t size) noexcept</argsstring>
+        <name>rpc_buffer</name>
+        <param>
+          <type>const void *</type>
+          <declname>mem</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Wrap a buffer to be used as an argument to an RPC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The buffer memory </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the buffer in bytes. If the size is 0 then no data is copied to the RPC request. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref> structure wrapping the buffer</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="197" column="27" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="197" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1ga271363a1745733bda9c98f92cea90517" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref> const &amp;</type>
+            <declname>SCHEMA</declname>
+            <defname>SCHEMA</defname>
+          </param>
+          <param>
+            <type>typename RetType</type>
+          </param>
+          <param>
+            <type><ref refid="group__REMOTE_1ga0fe3cd523928aeaf36c41aa85d459312" kindref="member">E_pin_rpc_flags</ref></type>
+            <declname>Flags</declname>
+            <defname>Flags</defname>
+            <defval>PinRpcFlagsNone</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>pinrt::std::enable_if_t&lt; <ref refid="structremote_1_1details_1_1Rpc__arg__type__traits" kindref="compound">details::Rpc_arg_type_traits</ref>&lt; RetType &gt;::is_void, bool &gt;</type>
+        <definition>pinrt::std::enable_if_t&lt; details::Rpc_arg_type_traits&lt; RetType &gt;::is_void, bool &gt; remote::do_rpc</definition>
+        <argsstring>(Args &amp;&amp;... args) noexcept</argsstring>
+        <name>do_rpc</name>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Execute an RPC (Remote Procedure Call). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is a convenience wrapper around <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref>. See <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref> for details.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>SCHEMA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The schema of the RPC to use. Since this is a template argument the schema must be fully initialized at compile time. Current implementation does not check the arguments against the schema at compile time. This may change in the future. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>RetType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the return value of the RPC - The type must be void for this overload. When using this overload the type is not automatically deduced and <ref refid="group__REMOTE_1ga271363a1745733bda9c98f92cea90517" kindref="member">do_rpc()</ref> should be called as <computeroutput>do_rpc&lt;SCHEMA, void&gt;(...)</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags modifying the behavior of the RPC. If the value is set to PinRpcFlagsNoResponseRequired then no response is expected from the server. If the value is set to PinRpcFlagsCanBlockIndefinitely then the RPC can block indefinitely waiting for a response. If the value is set to PinRpcFlagsNone then the RPC will wait for a response with some &quot;reasonable&quot; internal timeout. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of arguments - pack automatically deduced </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RPC arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool True if the RPC request was sent, the server accepted &amp; processed it and output arguments were successfully filled. If <emphasis>Flags</emphasis> is set to PinRpcFlagsNoResponseRequired then the return value is always true if the message was sent.</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="527" column="33" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="527" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REMOTE_1ga6d2e7f0f1ced6261f7f2163bb265ee70" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref> const &amp;</type>
+            <declname>SCHEMA</declname>
+            <defname>SCHEMA</defname>
+          </param>
+          <param>
+            <type>typename RetType</type>
+          </param>
+          <param>
+            <type><ref refid="group__REMOTE_1ga0fe3cd523928aeaf36c41aa85d459312" kindref="member">E_pin_rpc_flags</ref></type>
+            <declname>Flags</declname>
+            <defname>Flags</defname>
+            <defval>PinRpcFlagsNone</defval>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>pinrt::std::enable_if_t&lt; !<ref refid="structremote_1_1details_1_1Rpc__arg__type__traits" kindref="compound">details::Rpc_arg_type_traits</ref>&lt; RetType &gt;::is_void, bool &gt;</type>
+        <definition>pinrt::std::enable_if_t&lt; !details::Rpc_arg_type_traits&lt; RetType &gt;::is_void, bool &gt; remote::do_rpc</definition>
+        <argsstring>(RetType &amp;retValue, Args &amp;&amp;... args) noexcept</argsstring>
+        <name>do_rpc</name>
+        <param>
+          <type>RetType &amp;</type>
+          <declname>retValue</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Execute an RPC (Remote Procedure Call). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is a convenience wrapper around <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref>. See <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC()</ref> for details.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>SCHEMA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The schema of the RPC to use. Since this is a template argument the schema must be fully initialized at compile time. Current implementation does not check the arguments against the schema at compile time. This may change in the future. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>RetType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the return value of the RPC - automatically deduced If RetType is <ref refid="structremote_1_1Rpc__buffer__wrapper" kindref="compound">Rpc_buffer_wrapper</ref> then the size member must be 0 or big enough to hold the return value. Please not that if size is 0 then we assume the buffer contains enough space for the return value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags modifying the behavior of the RPC. If the value is set to PinRpcFlagsCanBlockIndefinitely then the RPC can block indefinitely waiting for a response. If the value is set to PinRpcFlagsNone then the RPC will wait for a response with some &quot;reasonable&quot; internal timeout. PinRpcFlagsNoResponseRequired cannot be used with non-void return types RPCs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of arguments - pack automatically deduced </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">retValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An argument receiving the return value of the RPC </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RPC arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the RPC request was sent, the server accepted &amp; processed it and output arguments and return value were successfully filled.</para>
+</simplesect>
+<simplesect kind="note"><para>This API is under active development and may change or be removed without notice.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="582" column="33" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="582" bodyend="601"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Namespca grouping for C++ convenient wrappers around <ref refid="group__REMOTE_1ga65b8291e5d3418d15439fefd8b015987" kindref="member">PIN_DoRPC</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/pin_rpc_client.PH" line="141" column="1"/>
+  </compounddef>
+</doxygen>

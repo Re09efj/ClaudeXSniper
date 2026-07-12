@@ -50,6 +50,7 @@ OUTPUTS_DIRS = [
 ]
 ML_DIR = Path(__file__).parent
 OUT_SUFFIX = "ALLTH_SW"
+ALLTH_THREAD_NUMS = sorted(set(THREAD_NUMS) | {4, 9, 15, 16})
 
 
 def build_allth_perf(label_by: str, outputs_dirs: list[Path]) -> pd.DataFrame:
@@ -57,7 +58,7 @@ def build_allth_perf(label_by: str, outputs_dirs: list[Path]) -> pd.DataFrame:
     rows_perf, names = [], []
     for outputs_dir in outputs_dirs:
         bench_class = outputs_dir.name.replace("size", "")
-        for n in THREAD_NUMS:
+        for n in ALLTH_THREAD_NUMS:
             X_n, y_n, perf_n = collect_dataset(outputs_dir, n, label_by)
             if X_n.empty:
                 continue
@@ -334,7 +335,7 @@ def main():
     args = p.parse_args()
 
     print(f"=== 結合訓練: sizeS + sizeW  label={args.label} ===")
-    X, y = build_allth_data(args.label, OUTPUTS_DIRS)
+    X, y = build_allth_data(args.label, OUTPUTS_DIRS, thread_nums=ALLTH_THREAD_NUMS)
     if X.empty:
         print("データが取得できませんでした。Outputs/sizeS と sizeW を確認してください。")
         sys.exit(1)

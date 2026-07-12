@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structremote_1_1Rpc__buffer__wrapper" kind="struct" language="C++" prot="public">
+    <compoundname>remote::Rpc_buffer_wrapper</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structremote_1_1Rpc__buffer__wrapper_1a11d4f8d0432b5f7237855faf704dbe67" prot="public" static="no" mutable="no">
+        <type>uintptr_t</type>
+        <definition>uintptr_t remote::Rpc_buffer_wrapper::memory</definition>
+        <argsstring></argsstring>
+        <name>memory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The address of the buffer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="150" column="15" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structremote_1_1Rpc__buffer__wrapper_1ab02acbd5d5106527f87b7d1692d741e5" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t remote::Rpc_buffer_wrapper::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="151" column="12" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structremote_1_1Rpc__buffer__wrapper_1a561fba54c815ebd5675e93b07bc11bc0" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1gac97805fdcf8d38f8707f7a477426073b" kindref="member">E_rpc_arg_flags</ref></type>
+        <definition>E_rpc_arg_flags remote::Rpc_buffer_wrapper::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flags modifying the behavior of the argument encoder or the interpretation of the result. If the value is set to RpcArgFlagsDataEmpty before calling the RPC then no data will be copied to the RPC message. In effect setting this flag to RpcArgFlagsDataEmpty indicates this is an out argument. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="152" column="21" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Wrap a buffer to be sent or filled over RPC. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Users are encouraged to use the <ref refid="group__REMOTE_1gaf1da75a117dec80c291b8914f668653d" kindref="member">rpc_buffer()</ref> function to properly initialize this structure rather than doing so directly </para>
+    </detaileddescription>
+    <location file="Source/pin/base/pin_rpc_client.PH" line="148" column="1" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="149" bodyend="156"/>
+    <listofallmembers>
+      <member refid="structremote_1_1Rpc__buffer__wrapper_1a561fba54c815ebd5675e93b07bc11bc0" prot="public" virt="non-virtual"><scope>remote::Rpc_buffer_wrapper</scope><name>flags</name></member>
+      <member refid="structremote_1_1Rpc__buffer__wrapper_1a11d4f8d0432b5f7237855faf704dbe67" prot="public" virt="non-virtual"><scope>remote::Rpc_buffer_wrapper</scope><name>memory</name></member>
+      <member refid="structremote_1_1Rpc__buffer__wrapper_1ab02acbd5d5106527f87b7d1692d741e5" prot="public" virt="non-virtual"><scope>remote::Rpc_buffer_wrapper</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

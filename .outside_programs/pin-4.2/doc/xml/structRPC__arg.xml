@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structRPC__arg" kind="struct" language="C++" prot="public">
+    <compoundname>RPC_arg</compoundname>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01BoolType_00_01pinrt_1_1std_1_1enable__if__t_3_0eec90abb83a5631cb9816550757e266a" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; BoolType, pinrt::std::enable_if_t&lt; pinrt::std::is_same&lt; t_value&lt; BoolType &gt;, bool &gt;::value, bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01BufferType_00_01pinrt_1_1std_1_1enable__if__t_324579c1530bfe9dc67cd2e3760285af9" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; BufferType, pinrt::std::enable_if_t&lt; Rpc_arg_type_traits&lt; t_value&lt; BufferType &gt; &gt;::is_buffer, bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01ContainerType_3_01ValueType_00_01ExtraTypes_8_8_8_01_4_01_6_00_01bool_01_4" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; ContainerType&lt; ValueType, ExtraTypes... &gt; &amp;, bool &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01ContainerType_3_01ValueType_00_01ExtraTypes_8_8_8_01_4_00_01bool_01_4" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; ContainerType&lt; ValueType, ExtraTypes... &gt;, bool &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01FloatType_00_01pinrt_1_1std_1_1enable__if__t_3_b06877376ef2e1a1eb2f21b35784d623" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; FloatType, pinrt::std::enable_if_t&lt; pinrt::std::is_floating_point&lt; t_value&lt; FloatType &gt; &gt;::value, bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01IntType_00_01pinrt_1_1std_1_1enable__if__t_3_01eb618d49640ede5efff87c25180b9cf4" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; IntType, pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; t_value&lt; IntType &gt; &gt;::value &amp;&amp;(t_value&lt; IntType &gt;(-1)&lt; t_value&lt; IntType &gt;(0)), bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01UintType_00_01pinrt_1_1std_1_1enable__if__t_3_01292160e5c4df4329cbd4a47a3dd988c" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; UintType, pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; t_value&lt; UintType &gt; &gt;::value &amp;&amp;(t_value&lt; UintType &gt;(-1) &gt; t_value&lt; UintType &gt;(0)) &amp;&amp;!pinrt::std::is_same&lt; t_value&lt; UintType &gt;, bool &gt;::value, bool &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01ContainerType_3_01ValueType_00_01ExtraT0abd7f6fecf06a8e241df8fb7461d376" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; const ContainerType&lt; ValueType, ExtraTypes... &gt; &amp;, bool &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01std_1_1string_01_6_00_01bool_01_4" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; const std::string &amp;, bool &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01std_1_1string_01_6_00_01bool_01_4" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; std::string &amp;, bool &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01std_1_1string_00_01bool_01_4" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; std::string, bool &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01void_00_01bool_01_4" prot="public" virt="non-virtual">remote::details::Rpc_arg_wrapper&lt; void, bool &gt;</derivedcompoundref>
+    <includes local="no">rscprotomsgtypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t RPC_arg::argData</definition>
+        <argsstring></argsstring>
+        <name>argData</name>
+        <briefdescription>
+<para>The actual data of the argument. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The interpretation of this field varies.</para>
+<para>If argDataSize &lt;= sizeof(uint64_t) then the actual data is stored inside the argData variable If argDataSize &gt; sizeof(uint64_t) then argData holds the value of a pointer to the memory actually holding the data. For RpcBuffer, argData always holds the value of a pointer to the memory holding the buffer. For RpcRecord and RpcArray, argData holds the value of a pointer to an array of t_rpc_arg, an arg for each record member/array element, and argDataSize holds the number of array elements / number of record members. For how to encode and decode records and arrays, see a section at the bottom of the file. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="156" column="14" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RPC_arg::argDataSize</definition>
+        <argsstring></argsstring>
+        <name>argDataSize</name>
+        <briefdescription>
+<para>The size of data in/pointed to by argData. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="161" column="12" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structRPC__arg_1aa77481a5b464dbfe5c9658e7313d11a4" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* RPC_arg::deleter) (void *)</definition>
+        <argsstring>)(void *)</argsstring>
+        <name>deleter</name>
+        <briefdescription>
+<para>Deleter function pointer to be used to release argument data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If this value is NULL then the free function defined in the rsc state will be used. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="167" column="5" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref></type>
+        <definition>t_rpc_arg_schema RPC_arg::argSchema</definition>
+        <argsstring></argsstring>
+        <name>argSchema</name>
+        <briefdescription>
+<para>A schema describing the argument. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="172" column="22" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1gac97805fdcf8d38f8707f7a477426073b" kindref="member">E_rpc_arg_flags</ref></type>
+        <definition>E_rpc_arg_flags RPC_arg::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+<para>Encode/Decode flags for the argument. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="177" column="21" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TStructure to hold the actual data to encode or the actual data of a decoded argument. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7">
+        <label>remote::details::Rpc_arg_wrapper&lt; FloatType, pinrt::std::enable_if_t&lt; pinrt::std::is_floating_point&lt; t_value&lt; FloatType &gt; &gt;::value, bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01FloatType_00_01pinrt_1_1std_1_1enable__if__t_3_b06877376ef2e1a1eb2f21b35784d623"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>remote::details::Rpc_arg_wrapper&lt; BufferType, pinrt::std::enable_if_t&lt; Rpc_arg_type_traits&lt; t_value&lt; BufferType &gt; &gt;::is_buffer, bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01BufferType_00_01pinrt_1_1std_1_1enable__if__t_324579c1530bfe9dc67cd2e3760285af9"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>remote::details::Rpc_arg_wrapper&lt; IntType, pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; t_value&lt; IntType &gt; &gt;::value &amp;&amp;(t_value&lt; IntType &gt;(-1)&lt; t_value&lt; IntType &gt;(0)), bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01IntType_00_01pinrt_1_1std_1_1enable__if__t_3_01eb618d49640ede5efff87c25180b9cf4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>remote::details::Rpc_arg_wrapper&lt; BoolType, pinrt::std::enable_if_t&lt; pinrt::std::is_same&lt; t_value&lt; BoolType &gt;, bool &gt;::value, bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01BoolType_00_01pinrt_1_1std_1_1enable__if__t_3_0eec90abb83a5631cb9816550757e266a"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>remote::details::Rpc_arg_wrapper&lt; std::string &amp;, bool &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01std_1_1string_01_6_00_01bool_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>remote::details::Rpc_arg_wrapper&lt; std::string, bool &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01std_1_1string_00_01bool_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>remote::details::Rpc_arg_wrapper&lt; const ContainerType&lt; ValueType, ExtraTypes... &gt; &amp;, bool &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01ContainerType_3_01ValueType_00_01ExtraT0abd7f6fecf06a8e241df8fb7461d376"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>remote::details::Rpc_arg_wrapper&lt; UintType, pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; t_value&lt; UintType &gt; &gt;::value &amp;&amp;(t_value&lt; UintType &gt;(-1) &gt; t_value&lt; UintType &gt;(0)) &amp;&amp;!pinrt::std::is_same&lt; t_value&lt; UintType &gt;, bool &gt;::value, bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01UintType_00_01pinrt_1_1std_1_1enable__if__t_3_01292160e5c4df4329cbd4a47a3dd988c"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>remote::details::Rpc_arg_wrapper&lt; ContainerType&lt; ValueType, ExtraTypes... &gt; &amp;, bool &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01ContainerType_3_01ValueType_00_01ExtraTypes_8_8_8_01_4_01_6_00_01bool_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>remote::details::Rpc_arg_wrapper&lt; const std::string &amp;, bool &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01std_1_1string_01_6_00_01bool_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>remote::details::Rpc_arg_wrapper&lt; void, bool &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01void_00_01bool_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>remote::details::Rpc_arg_wrapper&lt; ContainerType&lt; ValueType, ExtraTypes... &gt;, bool &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01ContainerType_3_01ValueType_00_01ExtraTypes_8_8_8_01_4_00_01bool_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>RPC_arg</label>
+        <link refid="structRPC__arg"/>
+      </node>
+      <node id="4">
+        <label>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="140" column="1" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="141" bodyend="178"/>
+    <listofallmembers>
+      <member refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" prot="public" virt="non-virtual"><scope>RPC_arg</scope><name>argData</name></member>
+      <member refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" prot="public" virt="non-virtual"><scope>RPC_arg</scope><name>argDataSize</name></member>
+      <member refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" prot="public" virt="non-virtual"><scope>RPC_arg</scope><name>argSchema</name></member>
+      <member refid="structRPC__arg_1aa77481a5b464dbfe5c9658e7313d11a4" prot="public" virt="non-virtual"><scope>RPC_arg</scope><name>deleter</name></member>
+      <member refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" prot="public" virt="non-virtual"><scope>RPC_arg</scope><name>flags</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

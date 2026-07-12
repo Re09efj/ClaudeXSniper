@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structpinrt_1_1rscschema_1_1Is__char__type" kind="struct" language="C++" prot="public">
+    <compoundname>pinrt::rscschema::Is_char_type</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">pinrt::std::false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>pinrt::std::false_type</label>
+      </node>
+      <node id="1">
+        <label>pinrt::rscschema::Is_char_type&lt; T &gt;</label>
+        <link refid="structpinrt_1_1rscschema_1_1Is__char__type"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>pinrt::std::false_type</label>
+      </node>
+      <node id="1">
+        <label>pinrt::rscschema::Is_char_type&lt; T &gt;</label>
+        <link refid="structpinrt_1_1rscschema_1_1Is__char__type"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pinrt/rscschema/include/rscschema.h" line="52" column="13" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="53" bodyend="54"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

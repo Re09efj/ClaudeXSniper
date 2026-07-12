@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_99fb29b3d528f0a424c499982961f786" kind="dir">
+    <compoundname>include</compoundname>
+    <innerfile refid="rscschema_8h">rscschema.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pinrt/rscschema/include/"/>
+  </compounddef>
+</doxygen>

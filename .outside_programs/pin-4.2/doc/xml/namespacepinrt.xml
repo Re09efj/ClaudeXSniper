@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepinrt" kind="namespace" language="C++">
+    <compoundname>pinrt</compoundname>
+    <innernamespace refid="namespacepinrt_1_1rscschema">pinrt::rscschema</innernamespace>
+    <innernamespace refid="namespacepinrt_1_1std">pinrt::std</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>C++ helper templates for creating RPC mesage and argument schemas</para>
+<para>See <ref refid="index_1REMOTE" kindref="member">Executing Remote Procedures</ref> section in Pin User Manual</para>
+<para><simplesect kind="note"><para>APIs declared in this file are under active development and are subject to change or removal without notice </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="Source/pinrt/rscschema/include/rscschema.h" line="30" column="1"/>
+  </compounddef>
+</doxygen>

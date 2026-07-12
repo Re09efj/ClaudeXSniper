@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__PINRT__UTILS" kind="group">
+    <compoundname>PINRT_UTILS</compoundname>
+    <title>PinRT Support Functions</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PINRT__UTILS_1gaaab27ee9f55ec2ccecc907e33aa98fc0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>t_syscall_ret</type>
+        <definition>t_syscall_ret OS_Syscall_unsafe</definition>
+        <argsstring>(t_syscall_id syscall_id, Args... args)</argsstring>
+        <name>OS_Syscall_unsafe</name>
+        <param>
+          <type>t_syscall_id</type>
+          <declname>syscall_id</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Call a native syscall bypassing isolation mechanisms using the PINOS SYS_native_syscall_unsafe generic system call. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>syscall_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Native Syscall ID (Not PINOS Syscall ID !!!!!!!!! - Use __NR_xxx macros rather than SYS_xxx macros) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Native system call arguments</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The return value of ths PINOS syscall. Return values follow the linux convention. Values in the range [-4095,-1] Are errors. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/adaptor/pinrt_adaptor_utils.PH" line="42" column="35" bodyfile="Source/pinrt/adaptor/pinrt_adaptor_utils.PH" bodystart="42" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PINRT__UTILS_1ga6493d28bafbcf3f4bb00d34cfb2c2f19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>t_syscall_ret</type>
+        <definition>t_syscall_ret OS_Syscall_safe</definition>
+        <argsstring>(enum PINOS_SYSCALL_OP opType, t_syscall_id syscall_id, Args... args)</argsstring>
+        <name>OS_Syscall_safe</name>
+        <param>
+          <type>enum PINOS_SYSCALL_OP</type>
+          <declname>opType</declname>
+        </param>
+        <param>
+          <type>t_syscall_id</type>
+          <declname>syscall_id</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Call a native syscall while trying to to maintain isolation mechanisms using PINOS SYS_native_syscall_safe generic system call. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>opType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PINOS_SOP_NOP_SUCCESS - return SYSRET(SUCCESS) without doing anything PINOS_SOP_NOP_FAILURE - return SYSRET(EPERM) without doing anything PINOS_SOP_DO_UNSAFE - Execute the specified system call bypassing isolation mechanisms using homemade SYS_native_syscall_unsafe system call (executed locally) Return system call return code. This is the same as calling OS_Syscall_unsafe PINOS_SOP_ISOLATION - Execute the specified system call trying to maintain isolation mechanisms using homemade SYS_native_syscall_safe system call (executed locally) Return system call return code. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>syscall_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Native Syscall ID (Not PINOS Syscall ID !!!!!!!!! - Use __NR_xxx macros rather than SYS_xxx macros) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Native system call arguments</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The return value of ths PINOS syscall. Return values follow the linux convention. Values in the range [-4095,-1] Are errors. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/adaptor/pinrt_adaptor_utils.PH" line="74" column="22" bodyfile="Source/pinrt/adaptor/pinrt_adaptor_utils.PH" bodystart="74" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structremote_1_1details_1_1Rpc__arg__wrapper_3_01volatile_01T_01_5_00_01bool_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>remote::details::Rpc_arg_wrapper&lt; volatile T *, bool &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/pin_rpc_client.PH" line="237" column="13" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="238" bodyend="240"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

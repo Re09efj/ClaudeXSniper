@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__DEPRECATED" kind="group">
+    <compoundname>DEPRECATED</compoundname>
+    <title>Pin Deprecated API</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__DEPRECATED_1ga7ab8e8cbb95e48a9d602974165d32da6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API VOID</type>
+        <definition>PIN_DEPRECATED_API VOID CALLBACK_SetExecutionPriority</definition>
+        <argsstring>(PIN_CALLBACK callback, INT32 priority)</argsstring>
+        <name>CALLBACK_SetExecutionPriority</name>
+        <param>
+          <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>INT32</type>
+          <declname>priority</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deprecated Pin client functions.</para>
+<para>Sets the execution priority of a registered callback function The lower the execution priority, the sooner it will be called relative to other similar callbacks <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registered Callback function returned from *_Add*Function() </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New priority to assign to the callback</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+ </para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: See CALLBACK_SetExecutionOrder. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/deprecated_client.PH" line="32" column="32" declfile="Source/pin/pin/deprecated_client.PH" declline="32" declcolumn="32"/>
+      </memberdef>
+      <memberdef kind="function" id="group__DEPRECATED_1gac01d835c4dbd743e36527aa5912c2697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API INT32</type>
+        <definition>PIN_DEPRECATED_API INT32 CALLBACK_GetExecutionPriority</definition>
+        <argsstring>(PIN_CALLBACK callback)</argsstring>
+        <name>CALLBACK_GetExecutionPriority</name>
+        <param>
+          <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the execution priority of a registered callback function The lower the execution priority, the sooner it will be called relative to other similar callbacks <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registered Callback function returned from *_Add*Function()</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>INT32 The current priority value of the callback</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+ </para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: See CALLBACK_GetExecutionOrder. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/deprecated_client.PH" line="51" column="33" declfile="Source/pin/pin/deprecated_client.PH" declline="51" declcolumn="33"/>
+      </memberdef>
+      <memberdef kind="function" id="group__DEPRECATED_1ga96eef889e1a1d4925cee55139f64fc06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API ADDRINT</type>
+        <definition>PIN_DEPRECATED_API ADDRINT IMG_Entry</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Entry</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+<para>Returns the address of first instruction executed when image is loaded. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin image handle</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Address of first instruction executed when image is loaded</para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: API returned wrong value in case of position independent code. Use <ref refid="group__IMG_1gab35f17d40de6a4ecc51db591354d7841" kindref="member">IMG_EntryAddress()</ref> instead.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="228" column="35" declfile="Source/pin/pin/image.PH" declline="228" declcolumn="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>APIs from older versions of Pin that have been replaced by more powerful, or simpler, interfaces in the current version of Pin. The newer APIs should be used instead of these interfaces. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

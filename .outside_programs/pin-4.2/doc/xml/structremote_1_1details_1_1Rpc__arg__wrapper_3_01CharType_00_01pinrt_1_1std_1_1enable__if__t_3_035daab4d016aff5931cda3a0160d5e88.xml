@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88" kind="struct" language="C++" prot="public">
+    <compoundname>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</compoundname>
+    <basecompoundref refid="structRPC__arg" prot="public" virt="non-virtual">RPC_arg</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename CharType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88_1ab47326b0b6db317686d6cf687673e1df" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+            <defval>CharType</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;::Rpc_arg_wrapper</definition>
+        <argsstring>(T &amp;&amp;value) noexcept</argsstring>
+        <name>Rpc_arg_wrapper</name>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="263" column="29" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="263" bodyend="270"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>t_rpc_arg</label>
+        <link refid="structRPC__arg"/>
+      </node>
+      <node id="1">
+        <label>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>t_rpc_arg</label>
+        <link refid="structRPC__arg"/>
+      </node>
+      <node id="1">
+        <label>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</label>
+        <link refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/pin_rpc_client.PH" line="260" column="1" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="262" bodyend="271"/>
+    <listofallmembers>
+      <member refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</scope><name>argData</name></member>
+      <member refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</scope><name>argDataSize</name></member>
+      <member refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</scope><name>argSchema</name></member>
+      <member refid="structRPC__arg_1aa77481a5b464dbfe5c9658e7313d11a4" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</scope><name>deleter</name></member>
+      <member refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</scope><name>flags</name></member>
+      <member refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88_1ab47326b0b6db317686d6cf687673e1df" prot="public" virt="non-virtual"><scope>remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</scope><name>Rpc_arg_wrapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

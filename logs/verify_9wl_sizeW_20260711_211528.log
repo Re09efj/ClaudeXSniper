@@ -107,3 +107,53 @@
 [config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/LU_W_AKARIN_2TH_20260711_211528/affinity_config.txt
 [config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_Packed_16TH_20260711_211528/affinity_config.txt
 [config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_Scatter_16TH_20260711_211528/affinity_config.txt
+[profile] BT_W_2: simTime=1.344s, instructions=18,431,133,786, wallTime=5920s (avg 10287s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_Scatter_2TH_20260711_211528/metrics.csv
+[1/216] Job(BT/Scatter/W/2TH@sid, w=2.66, d=11047s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_Packed_16TH_20260711_211528/affinity_config.txt
+[profile] BT_W_2: simTime=1.344s, instructions=18,427,686,749, wallTime=5928s (avg 9522s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_MPO_2TH_20260711_211528/metrics.csv
+[2/216] Job(BT/MPO/W/2TH@sid, w=2.66, d=11047s) -> OK
+[profile] BT_W_2: simTime=1.349s, instructions=18,431,570,981, wallTime=6049s (avg 8772s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_HPO_2TH_20260711_211528/metrics.csv
+[3/216] Job(BT/HPO/W/2TH@sid, w=2.66, d=11047s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_Scatter_16TH_20260711_211528/affinity_config.txt
+[profile] BT_W_2: simTime=1.349s, instructions=18,428,700,917, wallTime=6067s (avg 8026s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_Packed_2TH_20260711_211528/metrics.csv
+[4/216] Job(BT/Packed/W/2TH@sid, w=2.66, d=11047s) -> OK
+[profile] BT_W_2: simTime=1.349s, instructions=18,427,751,144, wallTime=6100s (avg 7187s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_AKARIN_2TH_20260711_211528/metrics.csv
+[5/216] Job(BT/AKARIN/W/2TH@sid, w=2.66, d=11047s) -> OK
+[profile] BT_W_2: simTime=1.572s, instructions=18,451,102,235, wallTime=6227s (avg 6049s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/2TH/BT_W_EPO_2TH_20260711_211528/metrics.csv
+[6/216] Job(BT/EPO/W/2TH@sid, w=2.66, d=11047s) -> OK
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/BT_W_HPO_16TH_20260711_211528/affinity_config.txt
+[ERROR] Job(LU/Packed/W/16TH@purple, w=16.00, d=6936s) 失敗 ret=255
+[7/216] Job(LU/Packed/W/16TH@purple, w=16.00, d=6936s) -> FAILED
+[ERROR] Job(LU/Scatter/W/16TH@purple, w=16.00, d=6936s) 失敗 ret=255
+[8/216] Job(LU/Scatter/W/16TH@purple, w=16.00, d=6936s) -> FAILED
+[ERROR] Job(LU/Scatter/W/2TH@purple, w=2.00, d=8946s) 失敗 ret=255
+[9/216] Job(LU/Scatter/W/2TH@purple, w=2.00, d=8946s) -> FAILED
+[ERROR] Job(LU/MPO/W/2TH@purple, w=2.00, d=8946s) 失敗 ret=255
+[10/216] Job(LU/MPO/W/2TH@purple, w=2.00, d=8946s) -> FAILED
+[ERROR] Job(LU/Packed/W/2TH@purple, w=2.00, d=8946s) 失敗 ret=255
+[11/216] Job(LU/Packed/W/2TH@purple, w=2.00, d=8946s) -> FAILED
+[ERROR] Job(LU/EPO/W/2TH@purple, w=2.00, d=8946s) 失敗 ret=255
+[12/216] Job(LU/EPO/W/2TH@purple, w=2.00, d=8946s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_HPO_16TH_20260711_211528/affinity_config.txt
+[ERROR] Job(LU/HPO/W/16TH@purple, w=16.00, d=6936s) 失敗 ret=255
+[13/216] Job(LU/HPO/W/16TH@purple, w=16.00, d=6936s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_EPO_16TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_MPO_16TH_20260711_211528/affinity_config.txt
+[ERROR] Job(LU/AKARIN/W/2TH@purple, w=2.00, d=8946s) 失敗 ret=255
+[14/216] Job(LU/AKARIN/W/2TH@purple, w=2.00, d=8946s) -> FAILED
+[ERROR] Job(LU/HPO/W/2TH@purple, w=2.00, d=8946s) 失敗 ret=255
+[15/216] Job(LU/HPO/W/2TH@purple, w=2.00, d=8946s) -> FAILED
+[ERROR] Job(LU/EPO/W/16TH@purple, w=16.00, d=6936s) 失敗 ret=255
+[16/216] Job(LU/EPO/W/16TH@purple, w=16.00, d=6936s) -> FAILED
+[ERROR] Job(LU/MPO/W/16TH@purple, w=16.00, d=6936s) 失敗 ret=255
+[17/216] Job(LU/MPO/W/16TH@purple, w=16.00, d=6936s) -> FAILED
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/16TH/LU_W_AKARIN_16TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/LU_W_Packed_8TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/12TH/LU_W_Packed_12TH_20260711_211528/affinity_config.txt
+[config] 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/LU_W_Scatter_8TH_20260711_211528/affinity_config.txt

@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__PLUGIN" kind="group">
+    <compoundname>PLUGIN</compoundname>
+    <title>PLUGIN</title>
+    <innerclass refid="structIPindPlugin" prot="public">IPindPlugin</innerclass>
+    <innerclass refid="structIRPCPlugin" prot="public">IRPCPlugin</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__PLUGIN_1ga0a6f6f461ade393b128acafadbfc16ea" prot="public" static="no" strong="no">
+        <type></type>
+        <name>E_plugin_type</name>
+        <enumvalue id="group__PLUGIN_1gga0a6f6f461ade393b128acafadbfc16eaa7f7e32ed10aea1dd73b80e96c70e8abf" prot="public">
+          <name>RPC</name>
+          <briefdescription>
+<para>Indicates a pind RPC plugin. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The plugin type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains declarations of pind plugin interfaces.</para>
+<para>For usage examples please refer to the <ref refid="index_1REMOTE" kindref="member">Executing Remote Procedures</ref> section in Pin User Manual.</para>
+<para><simplesect kind="note"><para>APIs declared in this file are under active development and are subject to change or removal without notice</para>
+</simplesect>
+For user developed plugins only RPC is supported. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="35" column="1" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="36" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PLUGIN_1ga841f2257a22717c7c4a016ff138dbee3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+        <definition>IPindPlugin* load_plugin</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>load_plugin</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Allocate a structure object that can be safely casted to <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>. Set its pointers to the correct functions in the plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Plugin may allocate any structure that contain <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> structure as its first member. This enabled every plugin to expend the set of functions pointers and state. <ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref> is normally used.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A plugin library may support more than a single plugin. This argument is use to identify the requested plugin. This can be achieved through the plugin JSON configuration file like this: &quot;ExtraRPCPlugins&quot;: [ { &quot;lib&quot;: &quot;my_plugin.so&quot;, &quot;name&quot;: &quot;plugin 1&quot; }, { &quot;lib&quot;: &quot;my_plugin.so&quot;, &quot;name&quot;: &quot;plugin 2&quot; } ]</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pointer to <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> upon successful initialization. Caller can then convert the return pointer to the actual structure created ((See comments above)). NULL upon any failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="298" column="15" declfile="Source/pinrt/pind/include/ipind_plugin.h" declline="298" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PLUGIN_1ga4e5ffb12ab1ad4c24b65edcfbaef2d3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void unload_plugin</definition>
+        <argsstring>(IPindPlugin *plugin)</argsstring>
+        <name>unload_plugin</name>
+        <param>
+          <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> *</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+<para>Release resources allocated allocated by <ref refid="group__PLUGIN_1ga841f2257a22717c7c4a016ff138dbee3" kindref="member">load_plugin()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by pind before unloading the plugin library. Resources allocated by the plugin itself either on call to <ref refid="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" kindref="member">IPindPlugin::init</ref>, or during plugin operations, should be released by <ref refid="structIPindPlugin_1a036601ad3630cf483571107c2c9c44ce" kindref="member">IPindPlugin::uninit</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The plugin to unload. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="311" column="8" declfile="Source/pinrt/pind/include/ipind_plugin.h" declline="311" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>pind is Pin&apos;s server. Each instrumented process has an accompanying pind server that allows amongst other things to load user written plugins that implement functions that can be called remotely by Pintools. These plugins are implemented in DLLs (shared objects) that are linked against system libraries and so are not limited as Pintools are to use Pin runtime libraries.</para>
+<para><programlisting filename="buffer_offload_plugin.cpp"><codeline><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2024-2025<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__has_include(&lt;filesystem&gt;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_WINDOWS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;process.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>getpid()<sp/>_getpid()</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ipind_plugin.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer_offload.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Buffer_offload_plugin</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>MAX_TOP_RANGES<sp/>=<sp/>3;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref><sp/>rpcPlugin;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Buffer_offload_plugin_state</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ofstream<sp/>outfile;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::set&lt;<sp/>std::pair&lt;<sp/>uint8_t*,<sp/>uint8_t*<sp/>&gt;<sp/>&gt;<sp/>accesses;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>add_access(uint8_t*<sp/>low,<sp/>uint8_t*<sp/>high)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::mutex<sp/>mtx;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>need<sp/>to<sp/>use<sp/>a<sp/>lock<sp/>to<sp/>protect<sp/>writes<sp/>to<sp/>&apos;accesses&apos;<sp/>since<sp/>do_rpc()<sp/>may<sp/>be<sp/>called<sp/>from</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>multiple<sp/>threads<sp/>and<sp/>isn&apos;t<sp/>thread<sp/>safe.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mtx.lock();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>range<sp/>=<sp/>std::make_pair(low,<sp/>high);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it_ge<sp/>=<sp/>accesses.lower_bound(range);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it_lt<sp/>=<sp/>(accesses.begin()<sp/>!=<sp/>it_ge)<sp/>?<sp/>std::prev(it_ge)<sp/>:<sp/>accesses.end();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((accesses.end()<sp/>!=<sp/>it_ge)<sp/>&amp;&amp;<sp/>(range.second<sp/>+<sp/>1<sp/>&gt;=<sp/>it_ge-&gt;first))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/>std::make_pair(range.first,<sp/>it_ge-&gt;second);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>accesses.erase(it_ge);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((accesses.end()<sp/>!=<sp/>it_lt)<sp/>&amp;&amp;<sp/>(it_lt-&gt;second<sp/>+<sp/>1<sp/>&gt;=<sp/>range.first))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/>std::make_pair(it_lt-&gt;first,<sp/>range.second);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>accesses.erase(it_lt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>accesses.insert(range);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mtx.unlock();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Buffer_offload_plugin_state*<sp/>state_;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>do_open_outfile(<ref refid="group__REMOTE_1ga9ae75f4632bad6aa35442f52fa451060" kindref="member">t_arg_count</ref><sp/>argCount,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_arg</ref>*<sp/>rpcArgs,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_ret</ref>*<sp/>retRpcArg)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>outfilePath<sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)rpcArgs[0].argData;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_-&gt;outfile.open(outfilePath);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>Open<sp/>Requested<sp/>for:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>outfilePath<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[0].<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073ba13a6ffb2661fb912c392beff113bf0e4" kindref="member">RpcArgFlagsDataEmpty</ref>;<sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>an<sp/>IN<sp/>argument.<sp/>Mark<sp/>no<sp/>data<sp/>when<sp/>returning</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>the<sp/>return<sp/>value<sp/>of<sp/>this<sp/>operation,<sp/>in<sp/>this<sp/>case<sp/>a<sp/>boolean</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>is<sp/>set<sp/>to<sp/>true<sp/>if<sp/>the<sp/>file<sp/>opened<sp/>successfully,<sp/>false<sp/>otherwise.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" kindref="member">argSchema</ref><sp/><sp/><sp/>=<sp/>OPEN_OUT_FILE_SCHEMA.returnValueSchema;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" kindref="member">argDataSize</ref><sp/>=<sp/><ref refid="group__REMOTE_1gace96cc5a16e34807dc6ec02140ff2046" kindref="member">ARG_SCHEMA_SIZE</ref>(OPEN_OUT_FILE_SCHEMA.returnValueSchema);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>(uint64_t)(state_-&gt;outfile.is_open()<sp/>&amp;&amp;<sp/>state_-&gt;outfile.good());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>do_analyze_mem_access(<ref refid="group__REMOTE_1ga9ae75f4632bad6aa35442f52fa451060" kindref="member">t_arg_count</ref><sp/>argCount,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_arg</ref>*<sp/>rpcArgs,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_ret</ref>*<sp/>retRpcArg)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MEMREF*<sp/>refs<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><sp/>MEMREF*<sp/></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(rpcArgs[0].<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>count<sp/><sp/><sp/>=<sp/>rpcArgs[0].<ref refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" kindref="member">argDataSize</ref><sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(MEMREF);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>count;<sp/>i++)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>low<sp/><sp/>=<sp/>refs[i].ea;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>high<sp/>=<sp/>refs[i].ea<sp/>+<sp/>refs[i].size<sp/>-<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_-&gt;add_access(low,<sp/>high);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[0].<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073ba13a6ffb2661fb912c392beff113bf0e4" kindref="member">RpcArgFlagsDataEmpty</ref>;<sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>an<sp/>IN<sp/>argument.<sp/>Mark<sp/>no<sp/>data<sp/>when<sp/>returning</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>the<sp/>return<sp/>value<sp/>of<sp/>this<sp/>operation,<sp/>in<sp/>this<sp/>case<sp/>it<sp/>is<sp/>a<sp/>Nil</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>means<sp/>there<sp/>is<sp/>no<sp/>return<sp/>value.<sp/>We<sp/>should<sp/>still<sp/>fill<sp/>in<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>struct<sp/>so<sp/>that<sp/>the<sp/>server<sp/>will<sp/>know<sp/>what<sp/>kind<sp/>of<sp/>return<sp/>value<sp/>to<sp/>encode</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" kindref="member">argSchema</ref><sp/><sp/><sp/>=<sp/>MEM_ANALYZE_SCHEMA.returnValueSchema;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" kindref="member">argDataSize</ref><sp/>=<sp/><ref refid="group__REMOTE_1gace96cc5a16e34807dc6ec02140ff2046" kindref="member">ARG_SCHEMA_SIZE</ref>(MEM_ANALYZE_SCHEMA.returnValueSchema);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>do_get_mem_access_info(<ref refid="group__REMOTE_1ga9ae75f4632bad6aa35442f52fa451060" kindref="member">t_arg_count</ref><sp/>argCount,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_arg</ref>*<sp/>rpcArgs,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_ret</ref>*<sp/>retRpcArg)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>the<sp/>[out]<sp/>args</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Start<sp/>with<sp/>setting<sp/>the<sp/>ret<sp/>to<sp/>false<sp/>(failure)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state_-&gt;accesses.empty())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>get<sp/>the<sp/>maximum<sp/>ranges<sp/>we<sp/>can<sp/>place<sp/>in<sp/>the<sp/>out<sp/>buffer<sp/>from<sp/>the<sp/>client</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>maxClientTopRangeCount<sp/>=<sp/>(int)rpcArgs[2].argData;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>this<sp/>RPC<sp/>we<sp/>treat<sp/><sp/>arguments<sp/>as<sp/>OUT<sp/>arguments<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>explicitely<sp/>make<sp/>sure<sp/>all<sp/>fields<sp/>schemas<sp/>and<sp/>size<sp/>fields<sp/>are<sp/>properly</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialized.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[0].<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>uintptr_t(state_-&gt;accesses.begin()-&gt;first);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[0].<ref refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" kindref="member">argSchema</ref><sp/><sp/><sp/>=<sp/>GET_MEM_ACCESS_INFO_SCHEMA.argSchemaArray[0];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[0].<ref refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" kindref="member">argDataSize</ref><sp/>=<sp/><ref refid="group__REMOTE_1gace96cc5a16e34807dc6ec02140ff2046" kindref="member">ARG_SCHEMA_SIZE</ref>(GET_MEM_ACCESS_INFO_SCHEMA.argSchemaArray[0]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[0].<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[1].<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>uintptr_t(state_-&gt;accesses.rbegin()-&gt;second);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[1].<ref refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" kindref="member">argSchema</ref><sp/><sp/><sp/>=<sp/>GET_MEM_ACCESS_INFO_SCHEMA.argSchemaArray[1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[1].<ref refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" kindref="member">argDataSize</ref><sp/>=<sp/><ref refid="group__REMOTE_1gace96cc5a16e34807dc6ec02140ff2046" kindref="member">ARG_SCHEMA_SIZE</ref>(GET_MEM_ACCESS_INFO_SCHEMA.argSchemaArray[1]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[1].<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>maxTopRangesCount<sp/>=<sp/>maxClientTopRangeCount<sp/>&lt;<sp/>MAX_TOP_RANGES<sp/>?<sp/>maxClientTopRangeCount<sp/>:<sp/>MAX_TOP_RANGES;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[2].<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>maxTopRangesCount;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allocate<sp/>memory<sp/>for<sp/>the<sp/>top<sp/>ranges</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bufferSize<sp/>=<sp/>maxTopRangesCount<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(MEMREF);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MEMREF*<sp/>topRanges<sp/>=<sp/>(MEMREF*)malloc(bufferSize);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>!=<sp/>topRanges)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(topRanges,<sp/>0,<sp/>bufferSize);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>the<sp/>maxTopRangesCount<sp/>largest<sp/>ranges</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>range<sp/>:<sp/>state_-&gt;accesses)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rangeSize<sp/>=<sp/>range.second<sp/>-<sp/>range.first<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>maxTopRangesCount;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rangeSize<sp/>&gt;<sp/>topRanges[i].size)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>maxTopRangesCount<sp/>-<sp/>1;<sp/>j<sp/>&gt;<sp/>i;<sp/>--j)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>topRanges[j]<sp/>=<sp/>topRanges[j<sp/>-<sp/>1];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>topRanges[i].ea<sp/><sp/><sp/>=<sp/>range.first;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>topRanges[i].size<sp/>=<sp/>rangeSize;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rpcArgs[3].deleter)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Free<sp/>data<sp/>currently<sp/>in<sp/>arg<sp/>if<sp/>argData<sp/>was<sp/>allocated<sp/>for<sp/>us<sp/>by<sp/>pind</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[3].<ref refid="structRPC__arg_1aa77481a5b464dbfe5c9658e7313d11a4" kindref="member">deleter</ref>(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(rpcArgs[3].argData));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[3].<ref refid="structRPC__arg_1aa77481a5b464dbfe5c9658e7313d11a4" kindref="member">deleter</ref><sp/>=<sp/>free;<sp/></highlight><highlight class="comment">//<sp/>Our<sp/>deleter<sp/>for<sp/>memory<sp/>we<sp/>allocate<sp/>-<sp/>pind<sp/>will<sp/>call<sp/>this<sp/>to<sp/>free<sp/>our<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>after<sp/>the<sp/>response<sp/>to<sp/>the<sp/>client<sp/>is<sp/>encoded</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[3].<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(topRanges);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[3].<ref refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" kindref="member">argDataSize</ref><sp/>=<sp/>bufferSize;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[3].<ref refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" kindref="member">argSchema</ref><sp/><sp/><sp/>=<sp/>GET_MEM_ACCESS_INFO_SCHEMA.argSchemaArray[3];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcArgs[3].<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">argData</ref><sp/>=<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>Mark<sp/>success</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>NO<sp/>NEED<sp/>FOR<sp/>ELSE</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>the<sp/>return<sp/>value<sp/>of<sp/>this<sp/>operation,<sp/>in<sp/>this<sp/>case<sp/>it<sp/>is<sp/>a<sp/>Nil</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>means<sp/>there<sp/>is<sp/>no<sp/>return<sp/>value.<sp/>We<sp/>should<sp/>still<sp/>fill<sp/>in<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>struct<sp/>so<sp/>that<sp/>the<sp/>server<sp/>will<sp/>know<sp/>what<sp/>kind<sp/>of<sp/>return<sp/>value<sp/>to<sp/>encode</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a7cadc8f21fa1c9751711164b6199d027" kindref="member">argSchema</ref><sp/><sp/><sp/>=<sp/>GET_MEM_ACCESS_INFO_SCHEMA.returnValueSchema;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a71a343adb602c752c3bb7bfa237ab5a7" kindref="member">argDataSize</ref><sp/>=<sp/><ref refid="group__REMOTE_1gace96cc5a16e34807dc6ec02140ff2046" kindref="member">ARG_SCHEMA_SIZE</ref>(GET_MEM_ACCESS_INFO_SCHEMA.returnValueSchema);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retRpcArg-&gt;<ref refid="structRPC__arg_1a20596594c4f51cc866edcc7ae8321329" kindref="member">flags</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__REMOTE_1ggac97805fdcf8d38f8707f7a477426073bacd25a78e519f27aecd1a9473b56d0731" kindref="member">RpcArgFlagsNone</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write_report()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state_-&gt;accesses.size()<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>want<sp/>to<sp/>create<sp/>a<sp/>map<sp/>of<sp/>(key=block<sp/>size)<sp/>and<sp/>(value=number<sp/>of<sp/>blocks<sp/>of<sp/>that<sp/>size).</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Go<sp/>over<sp/>the<sp/>map<sp/>of<sp/>accesses.<sp/>For<sp/>each<sp/>access<sp/>calculate<sp/>its<sp/>size.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Then<sp/>increment<sp/>the<sp/>appropriate<sp/>entry<sp/>in<sp/>the<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::map&lt;<sp/>size_t,<sp/>uint32_t<sp/>&gt;<sp/>blocks;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>pair<sp/>:<sp/>state_-&gt;accesses)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>accessSize<sp/>=<sp/>(pair.second<sp/>-<sp/>pair.first<sp/>+<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blocks[accessSize]++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_-&gt;outfile<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Overall<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::dec<sp/>&lt;&lt;<sp/>state_-&gt;accesses.size()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>accesses<sp/>to<sp/>contiguous<sp/>memory<sp/>ranges.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_-&gt;outfile<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Breakdown<sp/>by<sp/>contiguous<sp/>range<sp/>size:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_-&gt;outfile<sp/>&lt;&lt;<sp/>std::left<sp/>&lt;&lt;<sp/>std::setw(10)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;block<sp/>size&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>|<sp/>#<sp/>blocks&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_-&gt;outfile<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;----------<sp/>|<sp/>----------&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>block<sp/>:<sp/>blocks)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_-&gt;outfile<sp/>&lt;&lt;<sp/>std::left<sp/>&lt;&lt;<sp/>std::setw(10)<sp/>&lt;&lt;<sp/>std::dec<sp/>&lt;&lt;<sp/>block.first<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>|<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>block.second<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>is<sp/>called<sp/>by<sp/>the<sp/>server<sp/>to<sp/>query<sp/>whether<sp/>this<sp/>plugin<sp/>supports<sp/>the<sp/>input<sp/>rpcId.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>If<sp/>it<sp/>does<sp/>then<sp/>the<sp/>function<sp/>should<sp/>return<sp/>a<sp/>pointer<sp/>to<sp/>the<sp/>appropriate<sp/>message<sp/>schema.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>If<sp/>it<sp/>doesn&apos;t<sp/>then<sp/>the<sp/>function<sp/>should<sp/>return<sp/>nullptr;</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structRPC__message__schema" kindref="compound">t_rpc_message_schema</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/>get_rpc_schema(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/><ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref><sp/>rpcId)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rpcId<sp/>==<sp/>OPEN_OUT_FILE_SCHEMA.rpcId)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;OPEN_OUT_FILE_SCHEMA;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rpcId<sp/>==<sp/>MEM_ANALYZE_SCHEMA.rpcId)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;MEM_ANALYZE_SCHEMA;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rpcId<sp/>==<sp/>GET_MEM_ACCESS_INFO_SCHEMA.rpcId)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;GET_MEM_ACCESS_INFO_SCHEMA;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>is<sp/>called<sp/>by<sp/>the<sp/>server<sp/>only<sp/>if<sp/>get_rpc_schema(rpcId)<sp/>returned<sp/>a<sp/>non-null<sp/>schema.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__REMOTE_1ga271363a1745733bda9c98f92cea90517" kindref="member">do_rpc</ref>(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/><ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref><sp/>rpcId,<sp/><ref refid="group__REMOTE_1ga9ae75f4632bad6aa35442f52fa451060" kindref="member">t_arg_count</ref><sp/>argCount,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_arg</ref>*<sp/>rpcArgs,<sp/><ref refid="structRPC__arg" kindref="compound">t_rpc_ret</ref>*<sp/>retRpcArg)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>this_<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><sp/>Buffer_offload_plugin*<sp/></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rpcId<sp/>==<sp/>OPEN_OUT_FILE_SCHEMA.rpcId)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this_-&gt;do_open_outfile(argCount,<sp/>rpcArgs,<sp/>retRpcArg);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rpcId<sp/>==<sp/>MEM_ANALYZE_SCHEMA.rpcId)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this_-&gt;do_analyze_mem_access(argCount,<sp/>rpcArgs,<sp/>retRpcArg);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rpcId<sp/>==<sp/>GET_MEM_ACCESS_INFO_SCHEMA.rpcId)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this_-&gt;do_get_mem_access_info(argCount,<sp/>rpcArgs,<sp/>retRpcArg);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>should<sp/>always<sp/>return<sp/>RPC.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__PLUGIN_1ga0a6f6f461ade393b128acafadbfc16ea" kindref="member">E_plugin_type</ref><sp/>get_plugin_type(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__PLUGIN_1gga0a6f6f461ade393b128acafadbfc16eaa7f7e32ed10aea1dd73b80e96c70e8abf" kindref="member">RPC</ref>;<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>init(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>argv[])</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(2<sp/>==<sp/>argc);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(std::string(argv[0])<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;-dummy-knob&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(std::string(argv[1])<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>this_<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><sp/>Buffer_offload_plugin*<sp/></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>this_-&gt;state_<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Buffer_offload_plugin::Buffer_offload_plugin_state;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>uninit(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>plugin_log_verbose(</highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;buffer<sp/>offload<sp/>plugin<sp/>is<sp/>being<sp/>unloaded\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__has_include(&lt;filesystem&gt;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>that<sp/>plugin<sp/>log<sp/>file<sp/>was<sp/>created</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>filename<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;buffer_offload_plugin.log.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>filename<sp/>+=<sp/>std::to_string(getpid());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!std::filesystem::exists(filename))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>filename<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>plugin<sp/>log<sp/>filename<sp/>does<sp/>not<sp/>exists&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Doing<sp/>exit(-1)<sp/>from<sp/>the<sp/>plugin<sp/>doesn&apos;t<sp/>make<sp/>the<sp/>application<sp/>crash<sp/>since<sp/>it&apos;s<sp/>being<sp/>done<sp/>from<sp/>the<sp/>pind<sp/>process.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Checking<sp/>it<sp/>from<sp/>the<sp/>makefile.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exit(-1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>this_<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><sp/>Buffer_offload_plugin*<sp/></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>this_-&gt;write_report();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>this_-&gt;state_;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Load<sp/>the<sp/>plugin.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>The<sp/>plugin<sp/>must<sp/>fill<sp/>in<sp/>all<sp/>the<sp/>entries<sp/>of<sp/>the<sp/>struct<sp/>with<sp/>valid<sp/>function<sp/>pointers.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>The<sp/>implementation<sp/>can<sp/>be<sp/>empty<sp/>but<sp/>it<sp/>must<sp/>be<sp/>a<sp/>valid<sp/>function.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">PLUGIN_EXTERNC<sp/>PLUGIN__DLLVIS<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/><ref refid="group__PLUGIN_1ga841f2257a22717c7c4a016ff138dbee3" kindref="member">load_plugin</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>OFFLOAD_PLUGIN_NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;buffer<sp/>offload<sp/>plugin&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>==<sp/>strncmp(OFFLOAD_PLUGIN_NAME,<sp/>name,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(OFFLOAD_PLUGIN_NAME)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Buffer_offload_plugin*<sp/>plugin<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>(std::nothrow)<sp/>Buffer_offload_plugin;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>!=<sp/>plugin)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref>*<sp/>rpcPlugin<sp/>=<sp/>&amp;plugin-&gt;rpcPlugin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(rpcPlugin,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref>));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcPlugin-&gt;<ref refid="structIRPCPlugin_1a6eaee8416c4dba9cc7cad1cdb79a01f5" kindref="member">base_</ref>.<ref refid="structIPindPlugin_1a8dbb34e1b575bd3b2ff337196be2bf08" kindref="member">get_plugin_type</ref><sp/>=<sp/><ref refid="structIPindPlugin_1a8dbb34e1b575bd3b2ff337196be2bf08" kindref="member">get_plugin_type</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcPlugin-&gt;<ref refid="structIRPCPlugin_1a6eaee8416c4dba9cc7cad1cdb79a01f5" kindref="member">base_</ref>.<ref refid="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" kindref="member">init</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" kindref="member">init</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcPlugin-&gt;<ref refid="structIRPCPlugin_1a6eaee8416c4dba9cc7cad1cdb79a01f5" kindref="member">base_</ref>.<ref refid="structIPindPlugin_1a036601ad3630cf483571107c2c9c44ce" kindref="member">uninit</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="structIPindPlugin_1a036601ad3630cf483571107c2c9c44ce" kindref="member">uninit</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcPlugin-&gt;<ref refid="structIRPCPlugin_1a4ded3a27fdb638c1617b495fe147624b" kindref="member">get_rpc_schema</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>get_rpc_schema;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rpcPlugin-&gt;<ref refid="structIRPCPlugin_1ae70a0781ed4917e63675652509fbfe1d" kindref="member">do_rpc</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__REMOTE_1ga271363a1745733bda9c98f92cea90517" kindref="member">do_rpc</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*)rpcPlugin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>We<sp/>don&apos;t<sp/>know<sp/>the<sp/>requested<sp/>plugin<sp/>or<sp/>couldn&apos;t<sp/>allocate<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Unload<sp/>the<sp/>plugin<sp/>-<sp/>create<sp/>the<sp/>report<sp/>and<sp/>write<sp/>it<sp/>to<sp/>a<sp/>file.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">PLUGIN_EXTERNC<sp/>PLUGIN__DLLVIS<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PLUGIN_1ga4e5ffb12ab1ad4c24b65edcfbaef2d3c" kindref="member">unload_plugin</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref>*<sp/>plugin)<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>plugin;<sp/>}</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

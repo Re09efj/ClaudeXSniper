@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structremote_1_1details_1_1Out__rpc__arg" kind="struct" language="C++" prot="public">
+    <compoundname>remote::details::Out_rpc_arg</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structremote_1_1details_1_1Out__rpc__arg_1a47b159d9ab2b7ba4d9fe58f879cb94ea" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>static bool remote::details::Out_rpc_arg::copy</definition>
+        <argsstring>(const t_rpc_arg &amp;rpcArg, T &amp;&amp;outArg) noexcept</argsstring>
+        <name>copy</name>
+        <param>
+          <type>const <ref refid="group__REMOTE_1ga80df60c6741df3da64d880ae3bde8788" kindref="member">t_rpc_arg</ref> &amp;</type>
+          <declname>rpcArg</declname>
+        </param>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>outArg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="424" column="30" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="424" bodyend="459"/>
+      </memberdef>
+      <memberdef kind="function" id="structremote_1_1details_1_1Out__rpc__arg_1a357788ecc471911d7e4bcb32f508cb75" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>static bool remote::details::Out_rpc_arg::copy</definition>
+        <argsstring>(const t_rpc_arg &amp;rpcArg, const T &amp;outArg) noexcept</argsstring>
+        <name>copy</name>
+        <param>
+          <type>const <ref refid="group__REMOTE_1ga80df60c6741df3da64d880ae3bde8788" kindref="member">t_rpc_arg</ref> &amp;</type>
+          <declname>rpcArg</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>outArg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="461" column="30" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="461" bodyend="465"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/pin_rpc_client.PH" line="422" column="1" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="423" bodyend="466"/>
+    <listofallmembers>
+      <member refid="structremote_1_1details_1_1Out__rpc__arg_1a47b159d9ab2b7ba4d9fe58f879cb94ea" prot="public" virt="non-virtual"><scope>remote::details::Out_rpc_arg</scope><name>copy</name></member>
+      <member refid="structremote_1_1details_1_1Out__rpc__arg_1a357788ecc471911d7e4bcb32f508cb75" prot="public" virt="non-virtual"><scope>remote::details::Out_rpc_arg</scope><name>copy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

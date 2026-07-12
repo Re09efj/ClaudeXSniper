@@ -1,0 +1,116 @@
+[SNIPER] Warning: Unable to use physical addresses for shared memory simulation.
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /home/gp.sc.cc.tohoku.ac.jp/yuri/claudex_akarin/cfg/arrow_lake_HPO_12TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[DeTLoc] Pause tracing -> 0
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[DeTLoc] Pause tracing -> 0
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - CG Benchmark
+
+ Size:        7000
+ Iterations:                     15
+ Number of available threads:    12
+
+[DeTLoc] map thread-1 to core-1
+[DeTLoc] map thread-2 to core-2
+[DeTLoc] map thread-3 to core-3
+[DeTLoc] map thread-4 to core-8
+[DeTLoc] map thread-5 to core-9
+[DeTLoc] map thread-6 to core-10
+[DeTLoc] map thread-7 to core-11
+[DeTLoc] map thread-8 to core-4
+[DeTLoc] map thread-9 to core-5
+[DeTLoc] map thread-10 to core-6
+[DeTLoc] map thread-11 to core-7
+ Initialization time =           0.017 seconds
+[HOOKS] Entering ROI
+
+   iteration           ||r||                 zeta
+        1       0.17533145928657E-12    11.9997003727381
+        2       0.22521057965940E-14    10.3457275664058
+        3       0.22064605071643E-14    10.3617880137963
+        4       0.22694338236726E-14    10.3625416284965
+        5       0.22313926370060E-14    10.3625905854467
+        6       0.22131664771724E-14    10.3625946467087
+        7       0.21888555524693E-14    10.3625950398342
+        8       0.21058030578584E-14    10.3625950817269
+        9       0.21122574861132E-14    10.3625950864815
+       10       0.21373931943966E-14    10.3625950870452
+       11       0.20624843726982E-14    10.3625950871141
+       12       0.20854226830091E-14    10.3625950871227
+       13       0.20841267140790E-14    10.3625950871238
+       14       0.20051908987568E-14    10.3625950871240
+       15       0.19587284007485E-14    10.3625950871240
+[HOOKS] Leaving ROI
+ Benchmark completed 
+ VERIFICATION SUCCESSFUL 
+ Zeta is     0.1036259508712E+02
+ Error is    0.5142602285814E-15
+
+
+ CG Benchmark Completed.
+ Class           =                        W
+ Size            =                     7000
+ Iterations      =                       15
+ Time in seconds =                     0.04
+ Total threads   =                       12
+ Avail threads   =                       12
+ Mop/s total     =                  9486.95
+ Mop/s/thread    =                   790.58
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = randi8
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:10] -- STOP --
+[TRACE:3] -- STOP --
+[TRACE:11] -- STOP --
+[TRACE:9] -- STOP --
+[TRACE:1] -- STOP --
+[TRACE:2] -- STOP --
+[TRACE:0] -- DONE --
+[TRACE:8] -- STOP --
+[TRACE:7] -- STOP --
+[TRACE:4] -- STOP --
+[TRACE:6] -- STOP --
+[TRACE:5] -- STOP --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 1608.22 seconds
+[DeTLoc] Pause tracing -> 1
+[SNIPER] Simulated 2381.3M instructions, 137.1M cycles, 17.37 IPC
+[SNIPER] Simulation speed 1480.7 KIPS (92.5 KIPS / target core - 10805.8ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 1609.71 seconds

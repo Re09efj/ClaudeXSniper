@@ -1,0 +1,465 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__PINCRTDEV" kind="group">
+    <compoundname>PINCRTDEV</compoundname>
+    <title>Pin C Runtime Deviations From Standard Documentation</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This section lists changes in behavior of Pin CRT APIs from the standard API documentation as listed in the Linux man pages.</para>
+<para><itemizedlist>
+<listitem><para><ref refid="group__PINCRTDEV_1PINCRT_GENERAL" kindref="member">Pin CRT General Changes</ref></para>
+</listitem><listitem><para><ref refid="group__PINCRTDEV_1PINCRT_CHANGES" kindref="member">Pin CRT API Behavior Changes</ref></para>
+</listitem><listitem><para><ref refid="group__PINCRTDEV_1PINCRT_FUNCTIONS" kindref="member">Pin CRT Specific API Changes</ref></para>
+</listitem><listitem><para><ref refid="group__PINCRTDEV_1PINCRT_WINDOWS" kindref="member">Pin CRT Windows Specific Changes</ref></para>
+</listitem><listitem><para><ref refid="group__PINCRTDEV_1PINRT_SYSCALL" kindref="member">Pin Runtime Direct Syscall Interface</ref></para>
+</listitem></itemizedlist>
+</para>
+<sect2 id="group__PINCRTDEV_1PINCRT_GENERAL">
+<title>Pin CRT General Changes</title>
+<para>Pin CRT is based on Musl and is ISO C and POSIX compliant, it provides standard POSIX API on both Linux &amp; Windows. However, certain modification were required to make the CRT cross platform and to preserve some isolation requirements of Pin.</para>
+<para>Pin CRT implements all the functionality required to support C++17 STL as well as some system level APIs, however it does not implement all the APIs provided by Musl. In deciding which APIs to support we followed these guidelines:<orderedlist>
+<listitem><para>Support all APIs needed by Pin</para>
+</listitem><listitem><para>Support all APIs needed by C++17 STL</para>
+</listitem><listitem><para>Support other APIs deemed useful by Pin&apos;s design team</para>
+</listitem><listitem><para>If an API cannot be implemented in a cross platform way do not implement it but allow calling the underlying O/S system call directly.</para>
+</listitem></orderedlist>
+</para>
+<para>In Musl <computeroutput>off_t</computeroutput> is always 64-bit even on 32-bit. By default explicit 64-bit function names are disabled and the regular names can be used. If however, code uses explicit 64-bit names, then the following preprocessor macro should be defined <computeroutput>_LARGEFILE64_SOURCE</computeroutput>. Using this macro will enable names like <computeroutput>mmap64</computeroutput>, <computeroutput>stat64</computeroutput> etc. These new names are just macro definitions. In practice <computeroutput>mmap64</computeroutput> is the same as <computeroutput>mmap</computeroutput>, <computeroutput>stat64</computeroutput> is the same as <computeroutput>stat</computeroutput> and so forth for all 64-bit special names. <linebreak/>
+</para>
+</sect2>
+<sect2 id="group__PINCRTDEV_1PINCRT_CHANGES">
+<title>Pin CRT API Behavior Changes</title>
+<para><ref refid="index_1PinRT" kindref="member">Pin Runtime Library (PinRT)</ref> tries to maintain resource isolation between Pin/Pintools and the instrumented application. This is done at the PINOS level, however it affects the CRT behavior. The following general rules apply to all CRT APIs:</para>
+<sect3 id="group__PINCRTDEV_1data_types">
+<title>Data Types</title>
+<para><itemizedlist>
+<listitem><para>In Pin CRT all <computeroutput>long</computeroutput> data type structure members, function arguments and return values are replaced with <computeroutput>_arch_long</computeroutput> which is defined to be 32-bit long when compiling 32-bit Pintools and 64-bit long when compiling 64-bit Pintools on both Linux and Windows.</para>
+</listitem><listitem><para>Limits defined for <computeroutput>long</computeroutput> and <computeroutput>unsigned long</computeroutput> in <computeroutput>limits.h</computeroutput> (e.g <computeroutput>LONG_MIN</computeroutput>, <computeroutput>LONG_MAX</computeroutput>, <computeroutput>ULONG_MAX</computeroutput>) are changed to to match the limits for <computeroutput>_arch_long</computeroutput>.</para>
+</listitem><listitem><para>Size of wchar_t is different on Linux and Windows. On Linux it is 32-bits while on Windows it is 16-bits.</para>
+</listitem><listitem><para>Size of time_t is 64-bit when compiling 64-bit Pintools and 32-bit when compiling 32-bit Pintools.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1file_descriptors">
+<title>File Descriptors</title>
+<para>Pin CRT file creation and manipulation functions use a separate set of descriptors than the instrumented application. Trying to manipulate a file descriptor opened by the instrumented application will either fail or manipulate some other Pin or Pintool file, but not the one intended. Instrumented applications may be able to manipulate files opened by Pin or Pintools, this caveat shall be addressed in a future release.</para>
+<para>Pin CRT has an underlying assumption that file descriptors <computeroutput>0</computeroutput>, <computeroutput>1</computeroutput> and <computeroutput>2</computeroutput> of the instrumented application always belong to <computeroutput>STDIN</computeroutput>, <computeroutput>STDOUT</computeroutput> and <computeroutput>STDERR</computeroutput> when the application starts. This may not be true under follow execv scenarios where the parent closes those file descriptors before calling execv. In such cases results of running Pin may be undefined. Pin may either assert or it may end-up reading or writing from the wrong files when trying to read or write to <computeroutput>STDIN</computeroutput>, <computeroutput>STDOUT</computeroutput> or <computeroutput>STDERR</computeroutput>. An application closing <computeroutput>STDIN</computeroutput>, <computeroutput>STDOUT</computeroutput> or <computeroutput>STDERR</computeroutput> after Pin is attached and running will not affect Pin or the Pintool as PINOS duplicates the handles to <computeroutput>STDIN</computeroutput>, <computeroutput>STDOUT</computeroutput> and <computeroutput>STDERR</computeroutput> for Pin usage.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1CWD">
+<title>Current Working Directory (CWD)</title>
+<para>PINOS maintans CWD isolation: Any changes the instrumented application makes to the CWD do not affect Pin and Pintools. Any changes to CWD made by Pin or the Pintool also do not affect the instrumented application. All APIs that use relative paths are affected by this behavior.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1thread">
+<title>Threads</title>
+<para>Pin CRT thread Ids are not the same as the system thread Id. Trying to use a system thread Id with Pin CRT may fail and is not guranteed to work. The instrumented application is able to enumerate Pin and Pintool internal threads and is able to affect them. <ref refid="index_1PinRT" kindref="member">Pin Runtime Library (PinRT)</ref> maintains a TLS for each thread. Accessing the TLS by Pin CRT APIs does not modify the instrumented application TLS for that same thread. The application cannot modify Pin RT TLS.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1time">
+<title>Time Related APIs</title>
+<para>Unmodified Musl uses 64-bit time functions also for 32-bit applications. Pin CRT modifies this behavior and uses 64-bit time functions for 64-bit Pintools and 32-bit time functions for 32-bit Pintools. This change affects all interfaces and all time related types and data structures. This means that current Pin CRT implementation is susceptible to the 2038 bug (EPOCH wraparound) for 32-bit Pintools because <computeroutput>time_t</computeroutput> is 32-bit. Using standard CRT types should allow writing cross-architecture code without worrying about this (at least fro the near future).</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1user_and_group_ids">
+<title>User and Group Ids</title>
+<para>Pin CRT does not support setting any of the different user or group ids. All APIs that try to set any user or group id will fail, return <computeroutput>-1</computeroutput> and set <computeroutput>errno</computeroutput> to <computeroutput>ENOSYS</computeroutput>. APIs that try to get user or group ids are supported only for Linux.</para>
+</sect3>
+</sect2>
+<sect2 id="group__PINCRTDEV_1PINCRT_FUNCTIONS">
+<title>Pin CRT Specific API Changes</title>
+<sect3 id="group__PINCRTDEV_1chdir">
+<title>chdir() / fchdir() / getcwd() / get_current_dir_name()</title>
+<para><emphasis>chdir()</emphasis> and <emphasis>fchdir()</emphasis> only change the current workign directory for Pin and Pintools and does not affect the instrumented application. <emphasis>getcwd()</emphasis> and <emphasis>get_current_dir_name()</emphasis> return Pin&apos;s CWD and not the instrumented application CWD.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1clone">
+<title>clone()</title>
+<para><emphasis>clone()</emphasis> is not supported and if called will return -1 and set <emphasis>errno</emphasis> to <computeroutput>ENOSYS</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1exec">
+<title>execve() / execveat() / exec() / fexecve()</title>
+<para>All file descriptors opened by Pin or the Pintools will be closed on execve family of functions. This behavior affects all CRT functions that use execve for their implementation like <emphasis>system()</emphasis>, popen and <ref refid="group__PINCRTDEV_1posix_spawn" kindref="member">posix_spawn()</ref>. For a file descriptor to survive execve the O_HONOR_CLOEXEC flag should be used. This flag is supported for <emphasis>dup3</emphasis>, <emphasis>pipe2</emphasis>, <emphasis>open</emphasis> and <emphasis>openat</emphasis>.</para>
+<para><simplesect kind="note"><para>On Windows this flag will only affect the STDIO handles (0,1,2).</para>
+</simplesect>
+</para>
+</sect3>
+<sect3 id="">
+<title></title>
+<para>Passing <computeroutput>AT_EACCESS</computeroutput> in flags will result in an error and <emphasis>errno</emphasis> will be set to EBUSY.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1getpriority">
+<title>getpriority() / setpriority()</title>
+<para><emphasis>getpriority</emphasis> and <emphasis>setpriority</emphasis> only support the mode <computeroutput>PRIO_PROCESS</computeroutput> with argument <computeroutput>0</computeroutput> which is the calling thread.</para>
+<para>Trying to set the priority of an application thread will fail and errno will be set to <computeroutput>EACCESS</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1getrlimit">
+<title>getrlimit()</title>
+<para><emphasis>getrlimit()</emphasis> behavior is not modified by Pin CRT. It will return values for the instrumented process regardless of any limitations Pin may have as a result of KNOBs or API calls.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1gettid">
+<title>gettid()</title>
+<para>The thread Id returned by <emphasis>gettid()</emphasis> is not the same as the native O/S thread Id. This thread Id is the thread Id used by PINOS to keep track of threads.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1mmap">
+<title>mmap() / munmap()</title>
+<para>Pin shares memory with the instrumented application but maintains isolation at the memory management level. This means that Pin and Pintools cannot unmap nor change protection of instrumented application memory and the same is true for the instrumented application. Trying to use <emphasis>munmap()</emphasis> to unmap a memory range that contains memory regions that are marked as application memory will silently skip these memory regions and unmap just the memory regions that are marked as Pin regions.</para>
+<para>By default <emphasis>mmap()</emphasis> will fail if trying to modify a memory region that is marked as an application region by using the <computeroutput>MAP_FIXED</computeroutput> flag. This protection can be disabled by passing the Pin CRT specific <computeroutput>PROT_DIS_APP_ISOL</computeroutput> protection flag.</para>
+<para><emphasis>mmap()</emphasis> does not support the <computeroutput>MAP_FIXED</computeroutput> flag for Pin regions unless the memory region is marked with the Pin CRT specific protection flag <computeroutput>PROT_ALLOW_REMAP</computeroutput>. It is possible to force <computeroutput>MAP_FIXED</computeroutput> on a memory region not marked with <computeroutput>PROT_ALLOW_REMAP</computeroutput> by passing <computeroutput>PROT_ALLOW_REMAP</computeroutput> as part of the protection flags when calling <emphasis>mmap()</emphasis>. Please note that when using <computeroutput>MAP_FIXED</computeroutput> on a memory region that is not mapped, <emphasis>mmap()</emphasis> will fail.</para>
+<para>Pin CRT&apos;s <emphasis>mmap()</emphasis> implementation cannot properly isolate memory regions allocated with <computeroutput>MAP_GROWSDOWN</computeroutput> or <computeroutput>MAP_GROWSUP</computeroutput>. The usage of these flags is strongly discouraged.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1mprotect">
+<title>mprotect()</title>
+<para>Pin shares memory with the instrumented application but maintains isolation at the memory management level. This means that Pin and Pintools cannot change protection of instrumented application memory and the same is true for the instrumented application. Trying to use <emphasis>mprotect()</emphasis> to change the protection of a range that contains memory regions that are marked as application memory will fail and <emphasis>errno</emphasis> will be set to <computeroutput>ENOMEM</computeroutput>. This check can be disabled by passing the Pin CRT specific <computeroutput>PROT_DIS_APP_ISOL</computeroutput> protection flag. Passing the flag will allow <emphasis>mprotect()</emphasis> to change the protection of application memory regions. This flag affects only the specific <emphasis>mprotect()</emphasis> call and does not change the overall behavior of Pin&apos;s memory isolation.</para>
+<para>Marking a memory region with one of the protection flags <computeroutput>PROT_GROWSDOWN</computeroutput> or <computeroutput>PROT_GROWSUP</computeroutput> may break Pin&apos;s memory isolation. The usage of these flags is strongly discouraged.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1open">
+<title>open() / openat() / dup() / dup2() / pipe() / pipe2() / socket()</title>
+<para>All file handles created by Pin CRT will be created with the O_CLOEXEC flag set regardless of whether the flag can actually be specified for the API. This is true for all file creation APIs including but not limited to, <emphasis>open()</emphasis>, <emphasis>openat()</emphasis>, <emphasis>dup()</emphasis>, <emphasis>dup2()</emphasis>, <emphasis>dup3</emphasis>, <emphasis>pipe()</emphasis>, <emphasis>pipe2()</emphasis> and <emphasis>socket()</emphasis>. The above is true for all CRT functions supported by Pin CRT that return a file descriptor even if not listed here. This behavior affects process creation APIs see PINCRT_PROC section below. The O_HONOR_CLOEXEC flag is supported for <emphasis>dup3</emphasis>, <emphasis>pipe2</emphasis>, <emphasis>open</emphasis> and <emphasis>openat</emphasis>. Passing this flag will change the behavior of these functions such that the presence (or absence) of O_CLOEXEC will be honored.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1posix_spawn">
+<title>posix_spawn()</title>
+<para><emphasis>posix_spawn()</emphasis> is partially supported: Some <computeroutput>file_actions</computeroutput> FDOP_CHDIR and FDOP_FCHDIR are not supported. On Windows only the STDIO files may be duplicated or opened.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1pthread_attr_setinheritsched">
+<title>pthread_attr_setinheritsched()</title>
+<para><emphasis>pthread_attr_setinheritsched()</emphasis> will return an error if called with inherit value other than <computeroutput>0</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1pthread_cancel">
+<title>pthread_cancel()</title>
+<para>Calling <emphasis>pthread_cancel()</emphasis> will mark the thread for cancelation but will always behave as if the cancelation type is <computeroutput>PTHREAD_CANCEL_DEFERRED</computeroutput>. See <ref refid="group__PINCRTDEV_1pthread_setcanceltype" kindref="member">pthread_setcanceltype()</ref>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1pthread_create">
+<title>pthread_create()</title>
+<para><emphasis>pthread_create()</emphasis> will fail if the scheduling inherit value in the thread creation attributes is not <computeroutput>0</computeroutput>. See <ref refid="group__PINCRTDEV_1pthread_attr_setinheritsched" kindref="member">pthread_attr_setinheritsched()</ref>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1pthread_mutexattr_setprotocol">
+<title>pthread_mutexattr_setprotocol()</title>
+<para><emphasis>pthread_mutexattr_setprotocol()</emphasis> will return <computeroutput>ENOTSUP</computeroutput> if called with protocol <computeroutput>PTHREAD_PRIO_INHERIT</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1pthread_setcanceltype">
+<title>pthread_setcanceltype()</title>
+<para><computeroutput>PTHREAD_CANCEL_ASYNCHRONOUS</computeroutput> is not supported. When passing <computeroutput>PTHREAD_CANCEL_ASYNCHRONOUS</computeroutput> if cancel was already requested using <emphasis>pthread_cancel()</emphasis> for the current thread then the thread will terminate, however, future calls to <emphasis>pthread_cancel()</emphasis> will not cause an asynchronous cancelation of the thread.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1pthread_setschedprio">
+<title>pthread_setschedprio()</title>
+<para><emphasis>pthread_setschedprio()</emphasis> will fail with <computeroutput>EPERM</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1setrlimit">
+<title>setrlimit()</title>
+<para><emphasis>setrlimit()</emphasis> behavior is not modified by Pin CRT. Using it will affect the instrumented application and may change its behavior in unexpected ways. Pintool writers are discouraged from using this API.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1syscall">
+<title>syscall()</title>
+<para>The <emphasis>syscall()</emphasis> API cannot be used to call native O/S syscalls. All syscalls issued through the <emphasis>syscall()</emphasis> API will result in accessing the underlying O/S abstraction layer and may not behave as expected. For more information see <ref refid="group__PINCRTDEV_1PINRT_SYSCALL" kindref="member">Pin Runtime Direct Syscall Interface</ref>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1umask">
+<title>umask()</title>
+<para>Pin and Pintools changes to the umask do not affect the instrumented application. The opposite is not correct. Instrumented application changes to umask <bold>will</bold> affect Pin and Pintools. Changing the umask for Pin/Pintools will survive fork but will not survive execve. This means that after execve the umask for Pin and Pintools will be the same as for the instrumented application after execve.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1vfork">
+<title>vfork()</title>
+<para><emphasis>vfork()</emphasis> is implemented using <emphasis>fork()</emphasis>. This is allowed according to the standard but it means that the child cannot assume that it shares the stack with the parent, and the parent is blocked by <emphasis>vfork()</emphasis> until the child either exits or calls execv.</para>
+</sect3>
+</sect2>
+<sect2 id="group__PINCRTDEV_1PINCRT_WINDOWS">
+<title>Pin CRT Windows Specific Changes</title>
+<para><ref refid="index_1PinRT" kindref="member">Pin Runtime Library (PinRT)</ref> tries to provide the exact same functionality on both Linux and Windows, using PINOS, Pin&apos;s O/S abstraction layer. However, not all CRT APIs implemented on Linux can be implemented to provide the exact same functionality on Windows.</para>
+<para>The following API changes are applicable to Windows:</para>
+<para><simplesect kind="note"><para>We constantly aim to improve Windows to Linux compatibility. The limitations listed below are subject to change. and will be updated when new functionality is added or existing functionality is changed.</para>
+</simplesect>
+</para>
+<sect3 id="group__PINCRTDEV_1win_user_and_group_ids">
+<title>User and Group APIs.</title>
+<para>Pin CRT on Windows does not support user and group Ids on Windows. Any API that uses user or group Ids will return <computeroutput></computeroutput>-1 and set errno to <computeroutput>ENOSYS</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_signals">
+<title>Signals</title>
+<para>Pin CRT on Windows does not support signals. Any API that uses signals will return <computeroutput></computeroutput>-1 and set errno to <computeroutput>ENOSYS</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_chmod">
+<title>chmod() / fchmod() / fchmodat()</title>
+<para><emphasis>chmod()</emphasis> is not supported on Windows. The function will return <emphasis>-1</emphasis> and errno will be set to <computeroutput>ENOSYS</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_chown">
+<title>chown() / fchown() / fchownat() / lchown()</title>
+<para><emphasis>chown()</emphasis> is not supported on Windows. The function will return <emphasis>-1</emphasis> and errno will be set to <computeroutput>ENOSYS</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_accept">
+<title>accept()</title>
+<para>The only value supported for <emphasis>flags</emphasis> by <emphasis>accept()</emphasis> is <computeroutput>0</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_clock_getres">
+<title>clock_getres() / clock_gettime()</title>
+<para>The following clocks are fully supported: <verbatim>   CLOCK_REALTIME
+   CLOCK_MONOTONIC
+   CLOCK_PROCESS_CPUTIME_ID
+   CLOCK_THREAD_CPUTIME_ID 
+   CLOCK_REALTIME_COARSE
+   CLOCK_MONOTONIC_COARSE</verbatim></para>
+<para>The following clock is supported with reduced semantics: <verbatim>   CLOCK_BOOTTIME - Does not take into account suspend time and is equivalent to CLOCK_MONOTONIC_COARSE</verbatim></para>
+<para>The following clocks are not supported: <verbatim>   CLOCK_MONOTONIC_RAW
+   CLOCK_REALTIME_ALARM
+   CLOCK_BOOTTIME_ALARM
+   CLOCK_SGI_CYCLE
+   CLOCK_TAI</verbatim></para>
+<para>Dynamic clocks are not supported.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_clock_nanosleep">
+<title>clock_nanosleep()</title>
+<para>The following clocks are fully supported: <verbatim>   CLOCK_REALTIME
+   CLOCK_MONOTONIC
+   CLOCK_BOOTIME
+   CLOCK_PROCESS_CPUTIME_ID</verbatim></para>
+<para><computeroutput>CLOCK_TAI</computeroutput> is not supported.</para>
+<para>Absolute time sleeping is only supported for <computeroutput>CLOCK_REALTIME</computeroutput> and <computeroutput>CLOCK_PROCESS_CPUTIME_ID</computeroutput>.</para>
+<para>The current implementation is non-alertable so it will never exit with <emphasis>errno</emphasis> set to <computeroutput>EINTR</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_clock_settime">
+<title>clock_settime()</title>
+<para>Only <computeroutput>CLOCK_REALTIME</computeroutput> is supported.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_exec">
+<title>execve() / execveat() / exec() / fexecve()</title>
+<para>On Windows calling any of the exec familly of functions will not exit the calling process. It will however exit the calling thread. Processes created using exec familly of functions must be waited upon using <ref refid="group__PINCRTDEV_1win_waitpid" kindref="member">wait() / waitpid() / wait4()</ref>. Since on Windows the thread Id form which exec was called is not the same as the process Id for the new process, it is not possible to properly wait on a process that was created directly using the exec familly of functions. So on Windows the only way to properly create a process and get a process Id that can be used to wait for it using <ref refid="group__PINCRTDEV_1win_waitpid" kindref="member">wait() / waitpid() / wait4()</ref> is by creating the process using <ref refid="group__PINCRTDEV_1posix_spawn" kindref="member">posix_spawn()</ref>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_faccessat">
+<title>faccessat()</title>
+<para>On Windows the result of calling <emphasis>faccessat</emphasis> will be for the effective access rights as if <computeroutput>AT_EACCESS</computeroutput> flag was specified. (Passing the <computeroutput>AT_EACCESS</computeroutput> flag is not supported. See <ref refid="group__PINCRTDEV_1faccessat" kindref="member">()</ref>)</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_fallocate">
+<title>fallocate()</title>
+<para><itemizedlist>
+<listitem><para><emphasis>fallocate</emphasis> only supports <emphasis>mode</emphasis> <computeroutput>0</computeroutput> (the default) and only growing a file.</para>
+</listitem><listitem><para>If the file descriptor is not opened for writing <emphasis>errno</emphasis> will be set to <computeroutput>EACCESS</computeroutput> instead of <computeroutput>EBADF</computeroutput>.</para>
+</listitem><listitem><para>If the file descriptor is not opened for writing but the file itself is opened for writing using a different file descriptor the call will nevertheless succeed.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_fork">
+<title>fork()</title>
+<para><emphasis>fork()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_getdents">
+<title>getdents()</title>
+<para>Current Windows implementation has the following limitations:<itemizedlist>
+<listitem><para>All reparse points are marked as DT_LNK.</para>
+</listitem><listitem><para>Attributes for regular files will differ from the way <emphasis>stat()</emphasis> would have reported the attributes for the same file.</para>
+</listitem><listitem><para>Implementation assumes that length of file name in returned dirent structures doesn&apos;t exceed max POSIX file name size (255 characters). If this is not the case the function will fail and <emphasis>errno</emphasis> will be set to <computeroutput>EINVAL</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+<para>These behavior changes also affect readdir</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_getpeername">
+<title>getpeername()</title>
+<para><emphasis>getpeername()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_getppid">
+<title>getppid()</title>
+<para>This function always return the pid of the process that created the calling process even if this parent process has already exited.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_getrlimit">
+<title>getrlimit()</title>
+<para><emphasis>getrlimit()</emphasis> is not supported on Windows. The function will return -1 and errno will be set to ENOSYS.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_getsockopt">
+<title>getsockopt()</title>
+<para><emphasis>getsockopt()</emphasis> is currently not supported on Windows. The function will return -1 and errno will be set to ENOSYS.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_link">
+<title>link() / linkat()</title>
+<para>Trying to create a hard link to a directory symbolic link will fail because a directory symbolic link is actually also a directory.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_kill">
+<title>kill()</title>
+<para><emphasis>kill()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_lseek">
+<title>lseek()</title>
+<para><emphasis>lseek()</emphasis> on Windows does not support <computeroutput>SEEK_DATA</computeroutput> and <computeroutput>SEEK_HOLE</computeroutput> values for <emphasis>whence</emphasis>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_mkfifo">
+<title>mkfifo()</title>
+<para><emphasis>mkfifo()</emphasis> is supported on Windows. However both sides should use PinCRT to be able to communicate over the named FIFO.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_mknod">
+<title>mknod()</title>
+<para><emphasis>mknod()</emphasis> is supported on Windows. However only nodes of type S_IFIFO or S_IFREG may be created using this function. FIFOs can only be used for communicating with another program using PinCRT. See <ref refid="group__PINCRTDEV_1win_mkfifo" kindref="member">mkfifo()</ref>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_mmap">
+<title>mmap() / munmap()</title>
+<para>If the address passed to <emphasis>munmap()</emphasis> is the allocation base of a region and the size is <computeroutput>0</computeroutput>, then the entire allocated region will be released. Pintool developers are discouraged from using this behavior but rather pass to <emphasis>munmap</emphasis> the address that was returned from <emphasis>mmap()</emphasis> and the size used for the allocation when calling <emphasis>mmap()</emphasis>.</para>
+<para><emphasis>mmap()</emphasis> supports the following Pin CRT Windows specific protection flags which can be used when mapping memory:<itemizedlist>
+<listitem><para><computeroutput>WIN_PROT_RESERVE:</computeroutput> Reserves memory without commiting it. The returned address will be aligned to Windows allocation granularity (Usually 64 KB).</para>
+</listitem><listitem><para><computeroutput>WIN_PROT_COMMIT:</computeroutput> Commit a memory region (or part of it) that was previously allocated using <computeroutput>WIN_PROT_RESERVE</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+<para>If using mmap to map a file then the offset argument must be a multiplication of the allocation granularity (Usually 64 KB).</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_open">
+<title>open()</title>
+<para>The <computeroutput>mode</computeroutput> argument is ignored and the file is created with the permissions of the calling user on the target directory. If a file is opened for write then PINOS will also add the <computeroutput>DELETE</computeroutput> Windows permission to match POSIX semantics.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_poll">
+<title>poll()</title>
+<para><emphasis>poll()</emphasis> is supported only for sockets. Only POLLIN, POLLOUT &amp; POLLPRI are supported. POLLPRI works only for OOB data.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_ppoll">
+<title>poll()</title>
+<para><emphasis>ppoll()</emphasis> is supported work only for sockets. Only POLLIN, POLLOUT &amp; POLLPRI are supported. POLLPRI works only for OOB data. <emphasis>sigmask</emphasis> is ignored.</para>
+</sect3>
+<sect3 id="">
+<title></title>
+<para><emphasis>pthread_kill()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="">
+<title></title>
+<para><emphasis>raise()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_read">
+<title>read()</title>
+<para><emphasis>read()</emphasis> is not supported for sockets.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_readdir">
+<title>readdir()</title>
+<para>See <ref refid="group__PINCRTDEV_1win_getdents" kindref="member">getdents()</ref>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_recv">
+<title>recv()</title>
+<para>Although the buffer size is passed in <computeroutput>size_t</computeroutput>, the underlying implementation will convert it to <computeroutput>int</computeroutput>. <simplesect kind="note"><para>Actual transfer size for <emphasis>recv()</emphasis> may be less than the requested size even if there is more data to read. The caller should not assume there is no more data just because the return value is less than the requested size.</para>
+</simplesect>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_recvmsg">
+<title>recvmsg()</title>
+<para><emphasis>recvmsg()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_recvfrom">
+<title>recvfrom()</title>
+<para>Although the buffer size is passed in <computeroutput>size_t</computeroutput>, the underlying implementation will convert it to <computeroutput>int</computeroutput>. <simplesect kind="note"><para>Actual transfer size for <emphasis>recvfrom()</emphasis> may be less than the requested size even if there is more data to read. The caller should not assume there is no more data just because the return value is less than the requested size.</para>
+</simplesect>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_rename">
+<title>rename() / renameat()</title>
+<para>These functions will fail if a file with the same name exists and is either a directory, a readonly file, or a currently executing file.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_setpriority">
+<title>setpriority()</title>
+<para>Setting a priority that is less that <computeroutput>0</computeroutput> may fail if the calling process does not have enough privilleges.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_setsockopt">
+<title>setsockopt()</title>
+<para><emphasis>setsockopt()</emphasis> supports options supported by winsock2 for INET TCP Stream sockets.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_send">
+<title>send()</title>
+<para>Although the buffer size is passed in <computeroutput>size_t</computeroutput>, the underlying implementation will convert it to <computeroutput>int</computeroutput>. <simplesect kind="note"><para>Several calls may be needed to send a buffer of a given size. The caller should always check the return value and not assume the entire buffer was sent.</para>
+</simplesect>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_sendmesg">
+<title>sendmesg()</title>
+<para><emphasis>sendmesg()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_sendto">
+<title>sendto()</title>
+<para>Although the buffer size is passed in <computeroutput>size_t</computeroutput>, the underlying implementation will convert it to <computeroutput>int</computeroutput>. <simplesect kind="note"><para>Several calls may be needed to send a buffer of a given size. The caller should always check the return value and not assume the entire buffer was sent.</para>
+</simplesect>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_setrlimit">
+<title>setrlimit()</title>
+<para><emphasis>setrlimit()</emphasis> is not supported on Windows. The function will return <emphasis>-1</emphasis> and errno will be set to <computeroutput>ENOSYS</computeroutput>.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_sockatmark">
+<title>sockatmark()</title>
+<para><emphasis>sockatmark()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_socket">
+<title>socket()</title>
+<para>Creating and using sockets is supported on Windows. However the following limitations apply:<itemizedlist>
+<listitem><para>Sockets can never be inherited by child processes.</para>
+</listitem><listitem><para>Only AF_INET is supported for domain</para>
+</listitem><listitem><para>Only SOCK_STREAM is supported for type</para>
+</listitem><listitem><para>Only IPPROTO_TCP is supported for protocol</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_socketpair">
+<title>socketpair()</title>
+<para><emphasis>socketpair()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_stat">
+<title>stat() / fstat() / fstatat()</title>
+<para>These functions only support directories, regular files and symlinks ( <computeroutput>S_IFDIR</computeroutput>, <computeroutput>S_IFREG</computeroutput>, <computeroutput>S_IFLINK</computeroutput> ). If called on other file types the functions will fail and <emphasis>errno</emphasis> will be set to <computeroutput>EBADF</computeroutput>. The fields <computeroutput>st_uid</computeroutput> and <computeroutput>st_gid</computeroutput> of the <computeroutput>stat</computeroutput> structure are always set to <computeroutput>0</computeroutput>. The <computeroutput>st_dev</computeroutput> field represents the drive letter with value of <computeroutput>0</computeroutput> corresponding to <computeroutput>A:</computeroutput>, <computeroutput>1</computeroutput> to <computeroutput>B:</computeroutput> etc. Unfortunately there is no good way to reconcile Windows file permissions with Linux file permissions, for that reason the mode field of the <computeroutput>stat</computeroutput> structure is filled using the same convention used in Microsoft UCRT implementation:<itemizedlist>
+<listitem><para>If the file attributes contain <computeroutput>FILE_ATTRIBUTE_READONLY</computeroutput> the mode will be readonly for all UGO. If it doesn&apos;t it will be RW for ALL UGO. The permission refereed in the file attributes pertain to the permissions that the calling user has on the file - they don&apos;t reflect the actual permissions of owner, groups or others.</para>
+</listitem><listitem><para>Directories always have the executable bit set.</para>
+</listitem><listitem><para>If a file has extension in {exe,bat,cmd,com} it will be marked executable.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_symlink">
+<title>symlink() / symlinkat()</title>
+<para>Pin&apos;s implementation supports creating NTFS symbolic links using reparse points. On Windows users must have the <computeroutput>Create symbolic link</computeroutput> permission to successfully create a symbolic link. If the symbolic link target is a directory then the directory must exist. If the directory does not exist then the symbolic link will be created as a regular file symbolic link. This is because on Windows directory symbolic links are actually directories themselves.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_sync">
+<title>sync()</title>
+<para>This function has no effect on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_syncfs">
+<title>syncfs()</title>
+<para><itemizedlist>
+<listitem><para>This function requires Administrator privileges to run on Windows.</para>
+</listitem><listitem><para>This currently supports only single letter drives.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_truncate">
+<title>truncate() / ftruncate()</title>
+<para>Modification time and status change time as reflected by the <emphasis>st_mtim</emphasis> and <emphasis>st_ctim</emphasis> members ot the <computeroutput>stat</computeroutput> structure are not updated by this call.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_umask">
+<title>umask()</title>
+<para><emphasis>umask()</emphasis> on Windows will have no effect on the actual permission with which a file or a directory are created.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_vfork">
+<title>vfork()</title>
+<para><emphasis>vfork()</emphasis> is not supported on Windows.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_waitpid">
+<title>wait() / waitpid() / wait4()</title>
+<para>Any process created using any of the exec familly of functions (see <ref refid="group__PINCRTDEV_1win_exec" kindref="member">execve() / execveat() / exec() / fexecve()</ref>) must be waited upon using either <emphasis>wait()</emphasis>, <emphasis>waitpid()</emphasis> or <emphasis>wait4()</emphasis> functions. On Linux unwaited processes will become zombies. In Windows Pin CRT&apos;s implementation the processes will not become zombies but certain resources used for tracking these processes will not be released.</para>
+<para>For <emphasis>waitpid()</emphasis> and <emphasis>wait4()</emphasis> the following changes and restrictions apply:<itemizedlist>
+<listitem><para>For the <emphasis>pid</emphasis> argument:<itemizedlist>
+<listitem><para><computeroutput>&lt; -1</computeroutput>: The only accepted value is the negative value of the current process Id.</para>
+</listitem><listitem><para><computeroutput>-1 or 0</computeroutput>: Wait for any child process created using the exec familly of functions.</para>
+</listitem><listitem><para><computeroutput>&gt; 0</computeroutput>: Wait for the process given with <emphasis>pid</emphasis> <bold>iff</bold> it was created using the exec familly of functions.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>For the <emphasis>options</emphasis> argument:<itemizedlist>
+<listitem><para>Only <computeroutput>0</computeroutput> and <computeroutput>WNOHANG</computeroutput> are supported</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>For <emphasis>wait4()</emphasis> the <emphasis>rusage</emphasis> argument may not be NULL.</para>
+<para>All these wait APIs will only wait for process termination. They will not wake-up for any other status changes.</para>
+</sect3>
+<sect3 id="group__PINCRTDEV_1win_write">
+<title>write()</title>
+<para><emphasis>write()</emphasis> is not supported for sockets.</para>
+</sect3>
+</sect2>
+<sect2 id="group__PINCRTDEV_1PINRT_SYSCALL">
+<title>Pin Runtime Direct Syscall Interface</title>
+<para>In <ref refid="index_1PinRT" kindref="member">Pin Runtime Library (PinRT)</ref> all system calls issued by the CRT are routed through PINOS. Pin&apos;s O/S abstraction layer. When calling the <emphasis>syscall()</emphasis> interface, the request is handled by PINOS, preventing direct access to the underlying system. However, sometimes it is essential to call a native O/S syscall. This should be done only if no other option is available because it will break isolation with the instrumented application and may have adverse effect on both the Pin/Pintool and the instrumented application. If such a system call is required, Pin provides an API <ref refid="group__PINRT__UTILS_1gaaab27ee9f55ec2ccecc907e33aa98fc0" kindref="member">OS_Syscall_unsafe</ref> for that purpose. Using this API it is possible to call directly a native O/S syscall. When calling native O/S APIs make sure to follow these guidelines:<itemizedlist>
+<listitem><para>Ask yourself - will I break the application if I use a system-call directly? If it&apos;s possible, how do I mitigate this?</para>
+</listitem><listitem><para>Do not use SYS_xxx macros but rather use __NR_xxx macros. SYS_xxx is a CRT macro and with <ref refid="index_1PinRT" kindref="member">Pin Runtime Library (PinRT)</ref> these macros are cross platform system call values. __NR_xxx macros are Linux specific and are defined by the Linux kernel (For windows Pin provides a set of predefined system calls that can be called using __NR_xxx macros).</para>
+</listitem><listitem><para>Do not pass IDs (such as file descriptors and thread ids) or pointers returned from Pin CRT functions to <ref refid="group__PINRT__UTILS_1gaaab27ee9f55ec2ccecc907e33aa98fc0" kindref="member">OS_Syscall_unsafe</ref></para>
+</listitem><listitem><para>Do not pass IDs or pointers returned from <ref refid="group__PINRT__UTILS_1gaaab27ee9f55ec2ccecc907e33aa98fc0" kindref="member">OS_Syscall_unsafe</ref> to Pin CRT functions</para>
+</listitem><listitem><para>Do not use system calls that may modify <computeroutput>FS</computeroutput> or <computeroutput>GS</computeroutput> registers (Doing this <bold>will</bold> break both Pin and the application)</para>
+</listitem><listitem><para>Do not bypass thread and process creation routines. In other words don&apos;t use __NR_clone, __NR_clone3, __NR_fork, __NR_vfork, __NR_execve etc. (Doing this may break both Pin and the application)</para>
+</listitem><listitem><para>Do not use memory mapping system calls directly (Doing this may break both Pin and the application) </para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

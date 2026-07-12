@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structpinrt_1_1rscschema_1_1RPC__message__schema__wrapper" kind="struct" language="C++" prot="public">
+    <compoundname>pinrt::rscschema::RPC_message_schema_wrapper</compoundname>
+    <templateparamlist>
+      <param>
+        <type><ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref></type>
+        <declname>RPC_ID</declname>
+        <defname>RPC_ID</defname>
+      </param>
+      <param>
+        <type><ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref> const &amp;</type>
+        <declname>SCHEMA_RET</declname>
+        <defname>SCHEMA_RET</defname>
+      </param>
+      <param>
+        <type><ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref> const &amp;...</type>
+        <declname>SCHEMA_ARGS</declname>
+        <defname>SCHEMA_ARGS</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structpinrt_1_1rscschema_1_1RPC__message__schema__wrapper_1a14f754fe25275f57385234d8c1570e60" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref></type>
+        <definition>constexpr t_rpc_arg_schema pinrt::rscschema::RPC_message_schema_wrapper&lt; RPC_ID, SCHEMA_RET, SCHEMA_ARGS &gt;::arr_[sizeof...(SCHEMA_ARGS)]</definition>
+        <argsstring>[sizeof...(SCHEMA_ARGS)]</argsstring>
+        <name>arr_</name>
+        <initializer>= {SCHEMA_ARGS...}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="48" column="39" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpinrt_1_1rscschema_1_1RPC__message__schema__wrapper_1a38b948a3fe47998f23e709ee8457b797" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref></type>
+        <definition>constexpr t_rpc_message_schema pinrt::rscschema::RPC_message_schema_wrapper&lt; RPC_ID, SCHEMA_RET, SCHEMA_ARGS &gt;::schema</definition>
+        <argsstring></argsstring>
+        <name>schema</name>
+        <initializer>= {RPC_ID, sizeof...(SCHEMA_ARGS), (<ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref>*)arr_, SCHEMA_RET}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="49" column="43" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>pinrt::rscschema::RPC_message_schema_wrapper&lt; RPC_ID, SCHEMA_RET, SCHEMA_ARGS &gt;</label>
+        <link refid="structpinrt_1_1rscschema_1_1RPC__message__schema__wrapper"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>schema</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>RPC_message_schema</label>
+        <link refid="structRPC__message__schema"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pinrt/rscschema/include/rscschema.h" line="46" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="47" bodyend="50"/>
+    <listofallmembers>
+      <member refid="structpinrt_1_1rscschema_1_1RPC__message__schema__wrapper_1a14f754fe25275f57385234d8c1570e60" prot="public" virt="non-virtual"><scope>pinrt::rscschema::RPC_message_schema_wrapper</scope><name>arr_</name></member>
+      <member refid="structpinrt_1_1rscschema_1_1RPC__message__schema__wrapper_1a38b948a3fe47998f23e709ee8457b797" prot="public" virt="non-virtual"><scope>pinrt::rscschema::RPC_message_schema_wrapper</scope><name>schema</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structRPC__message__schema" kind="struct" language="C++" prot="public">
+    <compoundname>RPC_message_schema</compoundname>
+    <includes local="no">rscprotomsgtypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structRPC__message__schema_1aa890a1676c541c65be7628f4c51c3601" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1gae941608347fc1d2b35de4664da247393" kindref="member">t_rpc_id</ref></type>
+        <definition>t_rpc_id RPC_message_schema::rpcId</definition>
+        <argsstring></argsstring>
+        <name>rpcId</name>
+        <briefdescription>
+<para>The RPC Id of the message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="116" column="14" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structRPC__message__schema_1aaf5b995d1880211019dd0c6673f6c36c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1ga9ae75f4632bad6aa35442f52fa451060" kindref="member">t_arg_count</ref></type>
+        <definition>t_arg_count RPC_message_schema::argCount</definition>
+        <argsstring></argsstring>
+        <name>argCount</name>
+        <briefdescription>
+<para>The number of arguments in the RPC request message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="121" column="17" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structRPC__message__schema_1a56c71a67408c20f3c9e9fb7b358005b8" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref> *</type>
+        <definition>t_rpc_arg_schema* RPC_message_schema::argSchemaArray</definition>
+        <argsstring></argsstring>
+        <name>argSchemaArray</name>
+        <briefdescription>
+<para>An array of RPC_arg_schema of length argCount. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="126" column="22" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structRPC__message__schema_1ab6ec17ebad24db1e1fdc4b9b9f359002" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1ga2f23993ff42c6fb016eef135a62b9bfe" kindref="member">t_rpc_arg_schema</ref></type>
+        <definition>t_rpc_arg_schema RPC_message_schema::returnValueSchema</definition>
+        <argsstring></argsstring>
+        <name>returnValueSchema</name>
+        <briefdescription>
+<para>An RPC_arg_schema describing the RPC return value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="131" column="22" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A collection of RPC_arg_schema structures together describing an RPC message. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pinrt/librscproto/include/rscprotomsgtypes.h" line="110" column="1" bodyfile="Source/pinrt/librscproto/include/rscprotomsgtypes.h" bodystart="111" bodyend="132"/>
+    <listofallmembers>
+      <member refid="structRPC__message__schema_1aaf5b995d1880211019dd0c6673f6c36c" prot="public" virt="non-virtual"><scope>RPC_message_schema</scope><name>argCount</name></member>
+      <member refid="structRPC__message__schema_1a56c71a67408c20f3c9e9fb7b358005b8" prot="public" virt="non-virtual"><scope>RPC_message_schema</scope><name>argSchemaArray</name></member>
+      <member refid="structRPC__message__schema_1ab6ec17ebad24db1e1fdc4b9b9f359002" prot="public" virt="non-virtual"><scope>RPC_message_schema</scope><name>returnValueSchema</name></member>
+      <member refid="structRPC__message__schema_1aa890a1676c541c65be7628f4c51c3601" prot="public" virt="non-virtual"><scope>RPC_message_schema</scope><name>rpcId</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

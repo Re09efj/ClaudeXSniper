@@ -29,6 +29,7 @@ BT/SPのような重いジョブが同じバッチ内の軽いジョブの完了
 
 import argparse
 import os
+import shutil
 import sys
 import threading
 import time
@@ -144,12 +145,17 @@ class Job:
         self.duration    = job_duration_sec(workload, bench_class, num_threads, backend)
 
         if backend == "purple":
-            # Purpleは実消費コア%の重み付けモデルを持たないため、生スレッド数を
-            # そのままcapacity単位として使う (実使用スレッド数=num_threadsは不変)。
-            self.width = float(num_threads)
+            # 2026-07-12: width_profile(SSH経由のCPU%収束検知プローブ、Purple対応済み)
+            # に実測があればそれを使う。無ければ生スレッド数ではなくSID側の値を代用する
+            # (purple_width_pct参照。width%はシングルスレッド性能差より並列度・輻輳特性に
+            # 依存するという仮定、かつdedup_W_15の実例のように生スレッド数だと実態の
+            # 3倍近い過大評価になり並列度を不必要に絞ってしまうと判明したため)。
+            from utility.capacity_model import purple_width_pct
+            self.width = purple_width_pct(workload, bench_class, num_threads) / 100.0
         else:
             # width はコア等価数 (capacity と同じ単位)。host_width_pct は%を返すので /100 する。
-            self.width = host_width_pct(workload, num_threads) / 100.0
+            self.width = host_width_pct(workload, num_threads,
+                                         bench_class=bench_class, machine=backend) / 100.0
 
     def __repr__(self):
         return (f"Job({self.workload}/{self.strategy}/{self.bench_class}/"
@@ -228,7 +234,7 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False,
            timeout_multiplier: float = 2.0) -> tuple[str | None, str | None]:
     """
     戻り値: (out_dir, failure_reason)。成功時は(out_dir, None)、失敗時は
-    (None, "timeout"/"error"/"deadlock")。failure_reasonは2026-07-11に
+    (None, "timeout"/"error"/"deadlock"/"crash")。failure_reasonは2026-07-11に
     「本バッチ完走後にタイムアウト由来の失敗だけを1回だけ自動リトライする」
     機構(schedule_and_run参照)のために追加した。crash/デッドロックは同じ
     理由で再送しても再現するだけなので、リトライ対象からは意図的に除外する。
@@ -295,7 +301,7 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False,
             strategy=job.strategy, output_dir=out_dir,
             config_path=cfg_path, log_file=log_file,
             workload=job.workload, proc_holder=proc_holder,
-            stdin_path=stdin_path,
+            stdin_path=stdin_path, bench_class=job.bench_class,
         )
         done_flag[0] = True
 
@@ -332,9 +338,18 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False,
     # project_sniper_futex_deadlockメモリ参照)。ret_codeだけでは検知できないため、
     # ログの当該エラー文字列を明示的にチェックする。
     with open(log_path) as f:
-        if "Application has deadlocked" in f.read():
+        log_text = f.read()
+        if "Application has deadlocked" in log_text:
             print(f"[DEADLOCK] {job} Sniperが内部デッドロックを検出(ret=0だが実質失敗)", flush=True)
             return None, "deadlock"
+        # 2026-07-12: lavaMDでPin本体がSIGSEGV等でクラッシュした場合も、Sniperは
+        # パイプ切断を検出して"[SNIPER] Internal exception: Broken pipe"を出しつつ
+        # ret_code=0のまま終了することが判明(Purpleバックエンド経由でも再現、
+        # project_sniper_futex_deadlockメモリのPin/カーネル非互換問題と同根)。
+        # デッドロックと同じ「ret=0だが実質失敗」の別パターンとして検出する。
+        if "Pin app terminated abnormally" in log_text or "Internal exception" in log_text:
+            print(f"[PINCRASH] {job} Pin本体がクラッシュ(ret=0だが実質失敗)", flush=True)
+            return None, "crash"
 
     power = estimate_power(out_dir, cpu_map, job.num_threads)
     update_from_run(job.workload, job.bench_class, job.num_threads, out_dir, elapsed, job.backend)
@@ -390,7 +405,7 @@ def _run_pool(jobs: list[Job], capacity: float, run_id: str, use_exact: bool,
     # シミュレーション(utility.scheduling.estimate_makespan)なので、実測ゲート
     # (live_load_fn/loadavg_fn)による遅延は含まない静的な見積もり。
     makespan_sec = estimate_makespan(ordered, capacity)
-    print(f"[SCHED] {jobs[0].backend}: 見積完了時間 = {makespan_sec:.0f}s "
+    print(f"[SCHED] {jobs[0].backend}: 見積完了時間 = {makespan_sec:.0f}s \n"
           f"({makespan_sec/3600:.1f}時間、{len(ordered)}件、実測ゲートの遅延は含まず)")
 
     pool = _CapacityPool(capacity, hard_limit=hard_limit, live_load_fn=live_load_fn,
@@ -582,9 +597,31 @@ def main():
               f"(更新後の見積もり×4でタイムアウトを再計算、初回の×2より余裕を広げる)")
         notify(f"[ultra_orchestrator] タイムアウト失敗{len(retry_jobs)}件を自動リトライ中")
         retry_run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-        schedule_and_run(retry_jobs, capacity, retry_run_id, use_exact=args.exact,
-                         no_timeout=args.no_timeout, purple_capacity=purple_capacity,
-                         timeout_multiplier=4.0)
+        retry_still_failed = schedule_and_run(retry_jobs, capacity, retry_run_id, use_exact=args.exact,
+                                              no_timeout=args.no_timeout, purple_capacity=purple_capacity,
+                                              timeout_multiplier=4.0)
+
+        # 2026-07-11: リトライ成功分について、初回タイムアウト時に残った未完走
+        # ゴミフォルダ(metrics.csv無し、run_id違いで別ディレクトリ扱いになる
+        # ため自動上書きされない)を削除する。手動で16件分を後から見つけて
+        # 削除する羽目になった反省を踏まえ、リトライ機構自体に統合した
+        # (ユーザー提案)。metrics.csvが存在する場合は万一に備え削除しない
+        # (本来タイムアウト時はここに来ないはずだが、念のための安全弁)。
+        retry_key = lambda j: (j.workload, j.strategy, j.bench_class, j.num_threads)
+        still_failed_keys = {retry_key(j) for j in retry_still_failed}
+        cleaned = 0
+        for job in timeout_failures:
+            if retry_key(job) in still_failed_keys:
+                continue  # リトライも失敗 → 元のゴミフォルダは診断用に残す
+            old_out_dir = os.path.join(
+                OUTPUT_BASE_TMPL.format(cls=job.bench_class), f"{job.num_threads}TH",
+                f"{job.workload}_{job.bench_class}_{job.strategy}_{job.num_threads}TH_{run_id}",
+            )
+            if os.path.isdir(old_out_dir) and not os.path.exists(os.path.join(old_out_dir, "metrics.csv")):
+                shutil.rmtree(old_out_dir)
+                cleaned += 1
+        if cleaned:
+            print(f"[CLEANUP] リトライ成功に伴い、タイムアウト時の未完走フォルダ{cleaned}件を削除しました")
 
     notify(f"[ultra_orchestrator] 完了  class={class_list}  threads={thread_list}")
 

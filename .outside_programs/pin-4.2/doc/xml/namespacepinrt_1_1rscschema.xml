@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacepinrt_1_1rscschema" kind="namespace" language="C++">
+    <compoundname>pinrt::rscschema</compoundname>
+    <innerclass refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" prot="public">pinrt::rscschema::RPC_arg_schema_wrapper</innerclass>
+    <innerclass refid="structpinrt_1_1rscschema_1_1RPC__message__schema__wrapper" prot="public">pinrt::rscschema::RPC_message_schema_wrapper</innerclass>
+    <innerclass refid="structpinrt_1_1rscschema_1_1Is__char__type" prot="public">pinrt::rscschema::Is_char_type</innerclass>
+    <innerclass refid="structpinrt_1_1rscschema_1_1Is__char__type_3_01char_01_4" prot="public">pinrt::rscschema::Is_char_type&lt; char &gt;</innerclass>
+    <innerclass refid="structpinrt_1_1rscschema_1_1Is__char__type_3_01wchar__t_01_4" prot="public">pinrt::rscschema::Is_char_type&lt; wchar_t &gt;</innerclass>
+    <innerclass refid="structpinrt_1_1rscschema_1_1Is__char__type_3_01char16__t_01_4" prot="public">pinrt::rscschema::Is_char_type&lt; char16_t &gt;</innerclass>
+    <innerclass refid="structpinrt_1_1rscschema_1_1Is__char__type_3_01char32__t_01_4" prot="public">pinrt::rscschema::Is_char_type&lt; char32_t &gt;</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1a4afdb647e388adc61eb71f5da495ce40" prot="public" static="no">
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a519a222350ee903e6e48816eb522d290" kindref="member">RpcBoolean</ref>, 1 &gt;</type>
+        <definition>using pinrt::rscschema::Bool_schema = typedef RPC_arg_schema_wrapper&lt; RpcBoolean, 1 &gt;</definition>
+        <argsstring></argsstring>
+        <name>Bool_schema</name>
+        <briefdescription>
+<para>RPC arg description for boolean parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="70" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1a831dc8c960991491b36fea182ac11604" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename INT_TYPE</type>
+          </param>
+          <param>
+            <type>typename U</type>
+            <defval>pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; INT_TYPE &gt;::value, INT_TYPE &gt;</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a6ad644070e9f982164e7f6e3808b1da0" kindref="member">RpcInt</ref>, sizeof(INT_TYPE) &gt;</type>
+        <definition>using pinrt::rscschema::Int_schema = typedef RPC_arg_schema_wrapper&lt; RpcInt, sizeof(INT_TYPE) &gt;</definition>
+        <argsstring></argsstring>
+        <name>Int_schema</name>
+        <briefdescription>
+<para>RPC arg description for integer parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="76" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1a37f23a7e2bae2619c91468454b1ee285" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename UINT_TYPE</type>
+          </param>
+          <param>
+            <type>typename U</type>
+            <defval>pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; UINT_TYPE &gt;::value, UINT_TYPE &gt;</defval>
+          </param>
+          <param>
+            <type>typename V</type>
+            <defval>pinrt::std::enable_if_t&lt; (UINT_TYPE(-1) &gt; UINT_TYPE(0)), UINT_TYPE &gt;</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405ab803de1bcf4a7ad63d095a2d9c896784" kindref="member">RpcUInt</ref>, sizeof(UINT_TYPE) &gt;</type>
+        <definition>using pinrt::rscschema::Uint_schema = typedef RPC_arg_schema_wrapper&lt; RpcUInt, sizeof(UINT_TYPE) &gt;</definition>
+        <argsstring></argsstring>
+        <name>Uint_schema</name>
+        <briefdescription>
+<para>RPC arg description for unsigned integer type parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="83" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1ace186afd72a0371998b8d680df4a2397" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename CHAR_TYPE</type>
+          </param>
+          <param>
+            <type>typename U</type>
+            <defval>pinrt::std::enable_if_t&lt; Is_char_type&lt; CHAR_TYPE &gt;::value, CHAR_TYPE &gt;</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a5384f53be9cb71eb02ae59d511c1baea" kindref="member">RpcChar</ref>, sizeof(CHAR_TYPE) &gt;</type>
+        <definition>using pinrt::rscschema::Char_schema = typedef RPC_arg_schema_wrapper&lt; RpcChar, sizeof(CHAR_TYPE) &gt;</definition>
+        <argsstring></argsstring>
+        <name>Char_schema</name>
+        <briefdescription>
+<para>RPC arg description for char type parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="89" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1aa47510838daea40e476086669c929167" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename FLOAT_TYPE</type>
+          </param>
+          <param>
+            <type>typename U</type>
+            <defval>pinrt::std::enable_if_t&lt; pinrt::std::is_floating_point&lt; FLOAT_TYPE &gt;::value, FLOAT_TYPE &gt;</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a15a075a36202c97bce1447635a27249d" kindref="member">RpcFloat</ref>, sizeof(FLOAT_TYPE) &gt;</type>
+        <definition>using pinrt::rscschema::Float_schema = typedef RPC_arg_schema_wrapper&lt; RpcFloat, sizeof(FLOAT_TYPE) &gt;</definition>
+        <argsstring></argsstring>
+        <name>Float_schema</name>
+        <briefdescription>
+<para>RPC arg description for float type parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="96" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1ac1f4cba29908b9495178eb27a14fc120" prot="public" static="no">
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a2c96c0255ddcf13bc7b977f082526bb3" kindref="member">RpcBuffer</ref>, sizeof(uint32_t) &gt;</type>
+        <definition>using pinrt::rscschema::Buffer_schema = typedef RPC_arg_schema_wrapper&lt; RpcBuffer, sizeof(uint32_t) &gt;</definition>
+        <argsstring></argsstring>
+        <name>Buffer_schema</name>
+        <briefdescription>
+<para>RPC arg description for buffer parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="101" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1ae3df6e0437dbec76c5df0cf856d6211c" prot="public" static="no">
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a340b66299109d54cc5b3c8fcf03a11c2" kindref="member">RpcNil</ref>, 0 &gt;</type>
+        <definition>using pinrt::rscschema::Void_schema = typedef RPC_arg_schema_wrapper&lt; RpcNil, 0 &gt;</definition>
+        <argsstring></argsstring>
+        <name>Void_schema</name>
+        <briefdescription>
+<para>RPC arg description void parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="106" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepinrt_1_1rscschema_1a01916909cde68ff11eafdb6704034ccf" prot="public" static="no">
+        <type><ref refid="structpinrt_1_1rscschema_1_1RPC__arg__schema__wrapper" kindref="compound">RPC_arg_schema_wrapper</ref>&lt; <ref refid="group__REMOTE_1gga6fbb5fc9f6072e19c0e7fd41979a8405a340b66299109d54cc5b3c8fcf03a11c2" kindref="member">RpcNil</ref>, 0 &gt;</type>
+        <definition>using pinrt::rscschema::Nil_schema = typedef RPC_arg_schema_wrapper&lt; RpcNil, 0 &gt;</definition>
+        <argsstring></argsstring>
+        <name>Nil_schema</name>
+        <briefdescription>
+<para>RPC arg description nil parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="111" column="1" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1add32768e24db3f983e89791acf8858ab" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Bool_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Bool_schema_v</name>
+        <initializer>= Bool_schema::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="71" column="23" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1abcd83d0cc7d6ab472ce96496ea1b9966" prot="public" static="no" constexpr="yes" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename INT_TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Int_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Int_schema_v</name>
+        <initializer>= <ref refid="namespacepinrt_1_1rscschema_1a831dc8c960991491b36fea182ac11604" kindref="member">Int_schema</ref>&lt; INT_TYPE &gt;::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="77" column="36" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1a3925af8e1153be86c4f3d6aa14272214" prot="public" static="no" constexpr="yes" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename UINT_TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Uint_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Uint_schema_v</name>
+        <initializer>= <ref refid="namespacepinrt_1_1rscschema_1a37f23a7e2bae2619c91468454b1ee285" kindref="member">Uint_schema</ref>&lt; UINT_TYPE &gt;::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="84" column="36" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1a4a47fe27616381360e147da5ef7b0c64" prot="public" static="no" constexpr="yes" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename CHAR_TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Char_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Char_schema_v</name>
+        <initializer>= <ref refid="namespacepinrt_1_1rscschema_1ace186afd72a0371998b8d680df4a2397" kindref="member">Char_schema</ref>&lt; CHAR_TYPE &gt;::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="90" column="36" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1a307073b6899a77bd7048ed4e78f7451c" prot="public" static="no" constexpr="yes" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename FLOAT_TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Float_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Float_schema_v</name>
+        <initializer>= <ref refid="namespacepinrt_1_1rscschema_1aa47510838daea40e476086669c929167" kindref="member">Float_schema</ref>&lt; FLOAT_TYPE &gt;::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="97" column="36" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1a396ddfd2ef1102758ca4f38241874ea0" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Buffer_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Buffer_schema_v</name>
+        <initializer>= Buffer_schema::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="102" column="23" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1ad45035baf219f49e6dc01b37e806b9b5" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Void_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Void_schema_v</name>
+        <initializer>= Void_schema::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="107" column="23" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacepinrt_1_1rscschema_1a9daf0620d1110f68ba85ef2614028038" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto pinrt::rscschema::Nil_schema_v</definition>
+        <argsstring></argsstring>
+        <name>Nil_schema_v</name>
+        <initializer>= Nil_schema::v</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/rscschema/include/rscschema.h" line="112" column="23" bodyfile="Source/pinrt/rscschema/include/rscschema.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>C++ templated helpers for creating RPC argument and message schemas. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pinrt/rscschema/include/rscschema.h" line="36" column="1"/>
+  </compounddef>
+</doxygen>

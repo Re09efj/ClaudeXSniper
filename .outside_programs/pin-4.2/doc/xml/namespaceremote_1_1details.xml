@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceremote_1_1details" kind="namespace" language="C++">
+    <compoundname>remote::details</compoundname>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__type__traits" prot="public">remote::details::Rpc_arg_type_traits</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__type__traits_3_01void_01_4" prot="public">remote::details::Rpc_arg_type_traits&lt; void &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__type__traits_3_01Rpc__buffer__wrapper_01_4" prot="public">remote::details::Rpc_arg_type_traits&lt; Rpc_buffer_wrapper &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper" prot="public">remote::details::Rpc_arg_wrapper</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01T_01_5_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; T *, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01T_01_5_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; const T *, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01volatile_01T_01_5_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; volatile T *, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01volatile_01T_01_5_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; const volatile T *, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01BoolType_00_01pinrt_1_1std_1_1enable__if__t_3_0eec90abb83a5631cb9816550757e266a" prot="public">remote::details::Rpc_arg_wrapper&lt; BoolType, pinrt::std::enable_if_t&lt; pinrt::std::is_same&lt; t_value&lt; BoolType &gt;, bool &gt;::value, bool &gt; &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01CharType_00_01pinrt_1_1std_1_1enable__if__t_3_035daab4d016aff5931cda3a0160d5e88" prot="public">remote::details::Rpc_arg_wrapper&lt; CharType, pinrt::std::enable_if_t&lt; pinrt::rscschema::Is_char_type&lt; t_value&lt; CharType &gt; &gt;::value, bool &gt; &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01IntType_00_01pinrt_1_1std_1_1enable__if__t_3_01eb618d49640ede5efff87c25180b9cf4" prot="public">remote::details::Rpc_arg_wrapper&lt; IntType, pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; t_value&lt; IntType &gt; &gt;::value &amp;&amp;(t_value&lt; IntType &gt;(-1)&lt; t_value&lt; IntType &gt;(0)), bool &gt; &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01UintType_00_01pinrt_1_1std_1_1enable__if__t_3_01292160e5c4df4329cbd4a47a3dd988c" prot="public">remote::details::Rpc_arg_wrapper&lt; UintType, pinrt::std::enable_if_t&lt; pinrt::std::is_integral&lt; t_value&lt; UintType &gt; &gt;::value &amp;&amp;(t_value&lt; UintType &gt;(-1) &gt; t_value&lt; UintType &gt;(0)) &amp;&amp;!pinrt::std::is_same&lt; t_value&lt; UintType &gt;, bool &gt;::value, bool &gt; &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01FloatType_00_01pinrt_1_1std_1_1enable__if__t_3_b06877376ef2e1a1eb2f21b35784d623" prot="public">remote::details::Rpc_arg_wrapper&lt; FloatType, pinrt::std::enable_if_t&lt; pinrt::std::is_floating_point&lt; t_value&lt; FloatType &gt; &gt;::value, bool &gt; &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01BufferType_00_01pinrt_1_1std_1_1enable__if__t_324579c1530bfe9dc67cd2e3760285af9" prot="public">remote::details::Rpc_arg_wrapper&lt; BufferType, pinrt::std::enable_if_t&lt; Rpc_arg_type_traits&lt; t_value&lt; BufferType &gt; &gt;::is_buffer, bool &gt; &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01ContainerType_3_01ValueType_00_01ExtraTypes_8_8_8_01_4_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; ContainerType&lt; ValueType, ExtraTypes... &gt;, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01ContainerType_3_01ValueType_00_01ExtraTypes_8_8_8_01_4_01_6_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; ContainerType&lt; ValueType, ExtraTypes... &gt; &amp;, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01ContainerType_3_01ValueType_00_01ExtraT0abd7f6fecf06a8e241df8fb7461d376" prot="public">remote::details::Rpc_arg_wrapper&lt; const ContainerType&lt; ValueType, ExtraTypes... &gt; &amp;, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01std_1_1string_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; std::string, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01std_1_1string_01_6_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; std::string &amp;, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01const_01std_1_1string_01_6_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; const std::string &amp;, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Rpc__arg__wrapper_3_01void_00_01bool_01_4" prot="public">remote::details::Rpc_arg_wrapper&lt; void, bool &gt;</innerclass>
+    <innerclass refid="structremote_1_1details_1_1Out__rpc__arg" prot="public">remote::details::Out_rpc_arg</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="pin__rpc__client_8PH_1a6f2c6b408d72c579880ce69684ce7aee" prot="public" static="no">
+        <type>decltype(<ref refid="structRPC__arg_1ac30d919bb6ed3e2a2661e3eb4a2bb181" kindref="member">t_rpc_arg::argData</ref>)</type>
+        <definition>using remote::details::t_arg_data = typedef decltype(t_rpc_arg::argData)</definition>
+        <argsstring></argsstring>
+        <name>t_arg_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="224" column="1" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="pin__rpc__client_8PH_1ada66126c8a08701ff00fb57a18548f39" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>pinrt::std::simple_decay_t&lt; T &gt;</type>
+        <definition>using remote::details::t_value = typedef pinrt::std::simple_decay_t&lt; T &gt;</definition>
+        <argsstring></argsstring>
+        <name>t_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="225" column="14" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="pin__rpc__client_8PH_1a083b9c12767c987fbecafe38375eb47f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>IDX</declname>
+            <defname>IDX</defname>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool remote::details::copy_out_rpc_args_recursive</definition>
+        <argsstring>(const t_rpc_arg(&amp;)[N]) noexcept</argsstring>
+        <name>copy_out_rpc_args_recursive</name>
+        <param>
+          <type>const </type>
+          <declname>t_rpc_arg</declname>
+          <array>(&amp;)[N]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="468" column="28" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="468" bodyend="468"/>
+      </memberdef>
+      <memberdef kind="function" id="pin__rpc__client_8PH_1a95c8473a7ef8554762b451c7d121a7f7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>IDX</declname>
+            <defname>IDX</defname>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+          <param>
+            <type>typename ARG_TYPE</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool remote::details::copy_out_rpc_args_recursive</definition>
+        <argsstring>(const t_rpc_arg(&amp;rpcArgs)[N], ARG_TYPE &amp;&amp;arg, Args &amp;&amp;... args) noexcept</argsstring>
+        <name>copy_out_rpc_args_recursive</name>
+        <param>
+          <type>const <ref refid="group__REMOTE_1ga80df60c6741df3da64d880ae3bde8788" kindref="member">t_rpc_arg</ref>(&amp;)</type>
+          <declname>rpcArgs</declname>
+          <array>[N]</array>
+        </param>
+        <param>
+          <type>ARG_TYPE &amp;&amp;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="472" column="13" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="472" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="pin__rpc__client_8PH_1a5c87f16f2c0e9c6a002e40c527d54fcc" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool remote::details::copy_out_rpc_args</definition>
+        <argsstring>(const t_rpc_arg(&amp;rpcArgs)[N], Args &amp;&amp;... args) noexcept</argsstring>
+        <name>copy_out_rpc_args</name>
+        <param>
+          <type>const <ref refid="group__REMOTE_1ga80df60c6741df3da64d880ae3bde8788" kindref="member">t_rpc_arg</ref>(&amp;)</type>
+          <declname>rpcArgs</declname>
+          <array>[N]</array>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/pin_rpc_client.PH" line="478" column="28" bodyfile="Source/pin/base/pin_rpc_client.PH" bodystart="478" bodyend="492"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/pin_rpc_client.PH" line="203" column="1"/>
+  </compounddef>
+</doxygen>

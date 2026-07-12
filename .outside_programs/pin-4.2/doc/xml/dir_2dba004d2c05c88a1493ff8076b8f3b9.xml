@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_2dba004d2c05c88a1493ff8076b8f3b9" kind="dir">
+    <compoundname>pinrt</compoundname>
+    <innerdir refid="dir_fec966c8292b1f8b9a8d60cca0a19018">adaptor</innerdir>
+    <innerdir refid="dir_1b276e7f659adf569f90355928cea29a">librscproto</innerdir>
+    <innerdir refid="dir_946464e581fae91525e5bda1f22c6e54">pincrt</innerdir>
+    <innerdir refid="dir_8ca40cf1883b1e945757a8d1fbc54568">pind</innerdir>
+    <innerdir refid="dir_60c9125ba77dba84f00000446cd0cc36">rscschema</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pinrt/"/>
+  </compounddef>
+</doxygen>

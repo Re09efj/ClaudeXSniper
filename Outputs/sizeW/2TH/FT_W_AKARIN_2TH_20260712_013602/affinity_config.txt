@@ -1,0 +1,14 @@
+BENCHMARK=FT.W (NPB3.3 OpenMP)
+PRESET=AKARIN
+NUM_THREADS=2
+NUM_NODES=2
+BIG_CORES_PER_NODE=4
+SMALL_CORES_PER_NODE=4
+cpu_map=[8, 9]
+
+# Thread -> CPU -> Node mapping
+  thread00 -> CPU08 (Node1 P-core)
+  thread01 -> CPU09 (Node1 P-core)
+
+# AKARIN候補由来: AKARIN
+# backend=purple

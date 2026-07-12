@@ -1,0 +1,363 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Packed_2TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+==================
+WARNING: ThreadSanitizer: data race (pid=22)
+  Write of size 4 at 0x7b3400000360 by thread T18:
+    #0 TraceManager::signalStarted() /root/sniper/common/trace_frontend/trace_manager.cc:156 (sniper+0x42ccf2)
+    #1 TraceThread::handleInstructionCountFunc(unsigned int) /root/sniper/common/trace_frontend/trace_thread.cc:424 (sniper+0x4fb19b)
+    #2 TraceThread::__handleInstructionCountFunc(void*, unsigned int) /root/sniper/common/trace_frontend/trace_thread.h:76 (sniper+0x4ff844)
+    #3 Sift::Reader::Read(Sift::Instruction&) /root/sniper/sift/sift_reader.cc:372 (sniper+0x552620)
+    #4 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #5 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #6 <null> <null> (libtsan.so.0+0x2b286)
+
+  Previous read of size 4 at 0x7b3400000360 by thread T17:
+    #0 TraceManager::Monitor::run() /root/sniper/common/trace_frontend/trace_manager.cc:387 (sniper+0x42d6cb)
+    #1 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #2 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #3 <null> <null> (libtsan.so.0+0x2b286)
+
+  Location is heap block of size 208 at 0x7b3400000340 allocated by main thread:
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 Simulator::start() /root/sniper/common/system/simulator.cc:155 (sniper+0x42680f)
+    #2 main /root/sniper/standalone/../standalone/standalone.cc:40 (sniper+0x40acce)
+
+  Thread T18 (tid=42, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x491b44)
+    #2 TraceThread::spawn() /root/sniper/common/trace_frontend/trace_thread.cc:865 (sniper+0x4fb481)
+    #3 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:282 (sniper+0x42d28e)
+    #4 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x42d2b7)
+    #5 main /root/sniper/standalone/../standalone/standalone.cc:50 (sniper+0x40ad15)
+
+  Thread T17 (tid=41, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x2d73e)
+    #1 PthreadThread::run() /root/sniper/common/misc/pthread_thread.cc:29 (sniper+0x491b44)
+    #2 TraceManager::Monitor::spawn() /root/sniper/common/trace_frontend/trace_manager.cc:408 (sniper+0x42d1fb)
+    #3 TraceManager::start() /root/sniper/common/trace_frontend/trace_manager.cc:280 (sniper+0x42d243)
+    #4 TraceManager::run() /root/sniper/common/trace_frontend/trace_manager.cc:315 (sniper+0x42d2b7)
+    #5 main /root/sniper/standalone/../standalone/standalone.cc:50 (sniper+0x40ad15)
+
+SUMMARY: ThreadSanitizer: data race /root/sniper/common/trace_frontend/trace_manager.cc:156 in TraceManager::signalStarted()
+==================
+
+[SNIPER] Internal exception: Segmentation fault. Access Address = 0x1f
+
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:114 (sniper+0x40cfcc)
+    #2 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:331 (sniper+0x40cfcc)
+    #3 __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base> __gnu_cxx::operator+<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base> const&, char const*) <null> (sniper+0x40d551)
+    #4 TraceManager::mark_done() /root/sniper/common/trace_frontend/trace_manager.cc:304 (sniper+0x42d813)
+    #5 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:29 (sniper+0x40a6a7)
+    #6 <null> <null> (libtsan.so.0+0x2a1ad)
+    #7 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #8 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #9 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #10 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #11 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #12 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #13 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #14 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #15 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #16 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #17 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #18 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #19 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #20 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x733ea) in operator new(unsigned long)
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 malloc <null> (libtsan.so.0+0x2c952)
+    #1 __fopen_internal <null> (libc.so.6+0x66daa)
+    #2 TraceManager::mark_done() /root/sniper/common/trace_frontend/trace_manager.cc:304 (sniper+0x42d82b)
+    #3 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:29 (sniper+0x40a6a7)
+    #4 <null> <null> (libtsan.so.0+0x2a1ad)
+    #5 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #6 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #7 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #8 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #9 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #10 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #11 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #12 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #13 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #14 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #15 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #16 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #17 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #18 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2c952) in malloc
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 operator delete(void*) <null> (libtsan.so.0+0x72c52)
+    #1 __gnu_cxx::new_allocator<char>::deallocate(char*, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:128 (sniper+0x42d849)
+    #2 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_destroy(unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:92 (sniper+0x42d849)
+    #3 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_dispose() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:87 (sniper+0x42d849)
+    #4 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::~__sso_string_base() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:196 (sniper+0x42d849)
+    #5 __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>::~__versa_string() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/vstring.h:249 (sniper+0x42d849)
+    #6 TraceManager::mark_done() /root/sniper/common/trace_frontend/trace_manager.cc:304 (sniper+0x42d849)
+    #7 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:29 (sniper+0x40a6a7)
+    #8 <null> <null> (libtsan.so.0+0x2a1ad)
+    #9 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #10 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #11 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #12 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #13 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #14 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #15 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #16 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #17 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #18 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #19 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #20 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #21 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #22 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x72c52) in operator delete(void*)
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 free <null> (libtsan.so.0+0x2cc37)
+    #1 fclose@@GLIBC_2.2.5 <null> (libc.so.6+0x663ac)
+    #2 TraceManager::mark_done() /root/sniper/common/trace_frontend/trace_manager.cc:305 (sniper+0x42d851)
+    #3 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:29 (sniper+0x40a6a7)
+    #4 <null> <null> (libtsan.so.0+0x2a1ad)
+    #5 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #6 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #7 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #8 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #9 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #10 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #11 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #12 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #13 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #14 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #15 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #16 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #17 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #18 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2cc37) in __interceptor_free
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 malloc <null> (libtsan.so.0+0x2c952)
+    #1 _dl_map_object_deps <null> (ld-linux-x86-64.so.2+0xcfdc)
+    #2 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:34 (sniper+0x40a6b6)
+    #3 <null> <null> (libtsan.so.0+0x2a1ad)
+    #4 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #5 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #6 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #7 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #8 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #9 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #10 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #11 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #12 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #13 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #14 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #15 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #16 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #17 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2c952) in malloc
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:114 (sniper+0x40ab16)
+    #2 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:331 (sniper+0x40ab16)
+    #3 void __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:447 (sniper+0x40ab16)
+    #4 void __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_construct_aux<char const*>(char const*, char const*, std::__false_type) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:102 (sniper+0x40ab16)
+    #5 void __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:121 (sniper+0x40ab16)
+    #6 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::__sso_string_base<char const*>(char const*, char const*, std::allocator<char> const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:382 (sniper+0x40ab16)
+    #7 exceptionHandler /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/vstring.h:219 (sniper+0x40a6e8)
+    #8 <null> <null> (libtsan.so.0+0x2a1ad)
+    #9 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #10 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #11 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #12 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #13 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #14 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #15 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #16 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #17 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #18 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #19 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #20 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #21 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #22 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x733ea) in operator new(unsigned long)
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 operator new(unsigned long) <null> (libtsan.so.0+0x733ea)
+    #1 __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:114 (sniper+0x40cfcc)
+    #2 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:331 (sniper+0x40cfcc)
+    #3 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:545 (sniper+0x40d20b)
+    #4 __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>::_M_append(char const*, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/vstring.tcc:73 (sniper+0x40d42b)
+    #5 __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>::append(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base> const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/vstring.h:693 (sniper+0x40caa4)
+    #6 __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base> __gnu_cxx::operator+<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>&&, __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base> const&) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/vstring.h:2276 (sniper+0x40caa4)
+    #7 Config::formatOutputFileName(__gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>) const /root/sniper/common/misc/config.cc:175 (sniper+0x40caa4)
+    #8 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:36 (sniper+0x40a6fa)
+    #9 <null> <null> (libtsan.so.0+0x2a1ad)
+    #10 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #11 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #12 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #13 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #14 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #15 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #16 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #17 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #18 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #19 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #20 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #21 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #22 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #23 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x733ea) in operator new(unsigned long)
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 malloc <null> (libtsan.so.0+0x2c952)
+    #1 __fopen_internal <null> (libc.so.6+0x66daa)
+    #2 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:36 (sniper+0x40a715)
+    #3 <null> <null> (libtsan.so.0+0x2a1ad)
+    #4 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #5 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #6 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #7 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #8 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #9 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #10 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #11 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #12 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #13 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #14 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #15 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #16 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #17 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2c952) in malloc
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 operator delete(void*) <null> (libtsan.so.0+0x72c52)
+    #1 __gnu_cxx::new_allocator<char>::deallocate(char*, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:128 (sniper+0x40a736)
+    #2 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_destroy(unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:92 (sniper+0x40a736)
+    #3 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_dispose() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:87 (sniper+0x40a736)
+    #4 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::~__sso_string_base() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:196 (sniper+0x40a736)
+    #5 __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>::~__versa_string() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/vstring.h:249 (sniper+0x40a736)
+    #6 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:36 (sniper+0x40a736)
+    #7 <null> <null> (libtsan.so.0+0x2a1ad)
+    #8 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #9 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #10 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #11 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #12 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #13 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #14 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #15 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #16 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #17 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #18 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #19 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #20 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #21 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x72c52) in operator delete(void*)
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 operator delete(void*) <null> (libtsan.so.0+0x72c52)
+    #1 __gnu_cxx::new_allocator<char>::deallocate(char*, unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/new_allocator.h:128 (sniper+0x40a754)
+    #2 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_destroy(unsigned long) /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:92 (sniper+0x40a754)
+    #3 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::_M_dispose() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:87 (sniper+0x40a754)
+    #4 __gnu_cxx::__sso_string_base<char, std::char_traits<char>, std::allocator<char> >::~__sso_string_base() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/sso_string_base.h:196 (sniper+0x40a754)
+    #5 __gnu_cxx::__versa_string<char, std::char_traits<char>, std::allocator<char>, __gnu_cxx::__sso_string_base>::~__versa_string() /opt/rh/devtoolset-9/root/usr/include/c++/9/ext/vstring.h:249 (sniper+0x40a754)
+    #6 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:36 (sniper+0x40a754)
+    #7 <null> <null> (libtsan.so.0+0x2a1ad)
+    #8 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #9 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #10 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #11 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #12 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #13 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #14 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #15 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #16 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #17 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #18 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #19 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #20 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #21 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x72c52) in operator delete(void*)
+==================
+==================
+WARNING: ThreadSanitizer: signal-unsafe call inside of a signal (pid=22)
+    #0 free <null> (libtsan.so.0+0x2cc37)
+    #1 fclose@@GLIBC_2.2.5 <null> (libc.so.6+0x663ac)
+    #2 exceptionHandler /root/sniper/standalone/../standalone/exceptions.cc:47 (sniper+0x40a812)
+    #3 <null> <null> (libtsan.so.0+0x2a1ad)
+    #4 _SetLock::PersetLock::acquire() /root/sniper/common/misc/setlock.h:40 (sniper+0x492006)
+    #5 _SetLock::acquire_shared(unsigned int) /root/sniper/common/misc/setlock.cc:43 (sniper+0x492006)
+    #6 ParametricDramDirectoryMSI::CacheCntlr::acquireLock(unsigned long) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2241 (sniper+0x470c21)
+    #7 ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore(Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, bool, bool) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:366 (sniper+0x47978b)
+    #8 ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned int, unsigned char*, unsigned int, Core::MemModeled) /root/sniper/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:434 (sniper+0x461373)
+    #9 Core::initiateMemoryAccess(MemComponent::component_t, Core::lock_signal_t, Core::mem_op_t, unsigned long, unsigned char*, unsigned int, Core::MemModeled, unsigned long, SubsecondTime) /root/sniper/common/core/core.cc:365 (sniper+0x456ac8)
+    #10 Core::readInstructionMemory(unsigned long, unsigned int) /root/sniper/common/core/core.cc:260 (sniper+0x4575fe)
+    #11 MicroOpPerformanceModel::handleInstruction(DynamicInstruction*) /root/sniper/common/performance_model/performance_models/micro_op_performance_model.cc:210 (sniper+0x51fc08)
+    #12 PerformanceModel::iterate() /root/sniper/common/performance_model/performance_model.cc:309 (sniper+0x49f573)
+    #13 TraceThread::handleInstructionDetailed(Sift::Instruction&, Sift::Instruction&, PerformanceModel*) /root/sniper/common/trace_frontend/trace_thread.cc:677 (sniper+0x4fe707)
+    #14 TraceThread::run() /root/sniper/common/trace_frontend/trace_thread.cc:829 (sniper+0x4fee36)
+    #15 Runnable::threadFunc(void*) /root/sniper/common/misc/_thread.h:12 (sniper+0x42fdde)
+    #16 PthreadThread::spawnedThreadFunc(void*) /root/sniper/common/misc/pthread_thread.cc:19 (sniper+0x491a92)
+    #17 <null> <null> (libtsan.so.0+0x2b286)
+
+SUMMARY: ThreadSanitizer: signal-unsafe call inside of a signal (/usr/lib64/libtsan.so.0+0x2cc37) in __interceptor_free
+==================
+------------------------------------------------------------
+Segmentation fault. Access Address = 0x1f
+
+Backtrace:
+    ??:??:0
+    ??:??:0
+    ??:??:0
+    lock.h:TLock<LockCreator_Default>::acquire:69
+    setlock.h:_SetLock::PersetLock::acquire:40
+    cache_cntlr.cc:ParametricDramDirectoryMSI::CacheCntlr::acquireLock:2241 (discriminator 1)
+    cache_cntlr.cc:ParametricDramDirectoryMSI::CacheCntlr::processMemOpFromCore:366
+    memory_manager.cc:ParametricDramDirectoryMSI::MemoryManager::coreInitiateMemoryAccess:434
+    core.cc:Core::initiateMemoryAccess:365 (discriminator 4)
+    core.cc:Core::readInstructionMemory:260 (discriminator 3)
+    micro_op_performance_model.cc:MicroOpPerformanceModel::handleInstruction:210
+    performance_model.cc:PerformanceModel::iterate:309
+    trace_thread.cc:TraceThread::handleInstructionDetailed:677
+    trace_thread.cc:TraceThread::run:829
+------------------------------------------------------------
+[SNIPER] End
+[SNIPER] Elapsed time: 1.19 seconds

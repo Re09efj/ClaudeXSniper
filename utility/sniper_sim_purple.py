@@ -25,10 +25,13 @@ SSH切断への耐性:
     「そのジョブが失敗扱いになる」以上の副作用を持たない)。
 """
 
+import hashlib
 import os
 import subprocess
+import threading
 
 from config.generate_config import TOTAL_SIM_CORES
+from utility.width_profile import probe_and_record_remote
 
 SSH_HOST    = "yuri@172.20.2.220"
 REMOTE_HOME = "/home/gp.sc.cc.tohoku.ac.jp/yuri"
@@ -55,7 +58,25 @@ SSH_OPTS = [
     "-o", "ServerAliveInterval=15",
     "-o", "ServerAliveCountMax=3",
 ]
-_SSH_OPTS_STR = " ".join(SSH_OPTS)
+
+# 2026-07-12: SSH多重化(ControlMaster)でMaxStartupsバースト拒否(ret=255)を回避する。
+# 1ジョブにつきssh/scpを最大6回張っていたのを、少数の既認証接続の使い回しに変える。
+# 1本のControlMasterはMaxSessions(既定10)で頭打ちになるため、PURPLE_CAPACITY_DEFAULT=45
+# (width単位)を最小ジョブ幅(2TH)で埋め尽くした場合の最大同時ジョブ数(約22)に、
+# 起動/回収時の瞬間的な重複分の余裕を持たせて6本(合計60チャンネル)に分散する。
+SSH_CONTROL_SHARDS = 6
+
+
+def ssh_opts_for(shard_key: str) -> list[str]:
+    """ジョブ固有のキー(output_dir等)から決定論的にControlMasterのシャードを選び、
+    多重化オプション付きのSSHオプション列を返す。同じジョブは常に同じシャードを使う。"""
+    shard = int(hashlib.md5(shard_key.encode()).hexdigest(), 16) % SSH_CONTROL_SHARDS
+    return [
+        *SSH_OPTS,
+        "-o", "ControlMaster=auto",
+        "-o", f"ControlPath=~/.ssh/cm-purple-{shard}",
+        "-o", "ControlPersist=600",
+    ]
 
 
 def _remote_binary_path(local_binary_path: str) -> str:
@@ -80,10 +101,11 @@ class _RemoteJobProc:
     プロセスグループ単位で明示的にkillする。
     """
 
-    def __init__(self, local_proc: subprocess.Popen, remote_pgid_file: str):
+    def __init__(self, local_proc: subprocess.Popen, remote_pgid_file: str, ssh_opts: list[str]):
         self._local = local_proc
         self._remote_pgid_file = remote_pgid_file
         self._remote_killed = False
+        self._ssh_opts = ssh_opts
 
     def wait(self) -> int:
         return self._local.wait()
@@ -95,7 +117,7 @@ class _RemoteJobProc:
         self._remote_killed = True
         try:
             subprocess.run(
-                ["ssh", *SSH_OPTS, SSH_HOST,
+                ["ssh", *self._ssh_opts, SSH_HOST,
                  f"[ -f {self._remote_pgid_file} ] && "
                  f"kill -9 -$(cat {self._remote_pgid_file}) 2>/dev/null; true"],
                 timeout=15, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
@@ -117,17 +139,27 @@ def run_sniper(
     omp_num_threads: int | None = None,
     proc_holder:    list | None = None,
     stdin_path:     str | None = None,
+    bench_class:    str = "",
 ) -> int:
     """
     SSH経由でPurple上のJin本人ビルドSniperを実行し、結果をoutput_dirへ回収する。
 
-    Parameters は sniper_sim_sid.run_sniper と同一。binary_path/config_path は
+    Parameters は sniper_sim_sid.run_sniper と同一。bench_class : width_profile
+    (utility.width_profile)の収束検知プローブに使う(2026-07-12、SID側に続き実装)。
+    podmanコンテナが無いため、.remote_pgidファイルに記録済みのプロセスグループを
+    SSH経由でpsして代用する(probe_and_record_remote/_sample_cpu_pct_remote参照)。
+    binary_path/config_path は
     ホスト(hiragahama)上の絶対パスを渡すこと(config_pathは実行前にPurpleへ転送、
     binary_pathはミラー済みPurple側パスへ変換して参照する)。
     stdin_path : 標準入力から読むワークロード(water_nsquared等)用の入力ファイル
                 (ホスト上の絶対パス)。指定時はPurpleへ転送しリダイレクトする。
     """
     os.makedirs(output_dir, exist_ok=True)
+
+    # ジョブごとに一意なoutput_dirをキーにControlMasterのシャードを固定する
+    # (このジョブに関する全ssh/scp/rsync呼び出しが同じ多重化接続を使い回す)。
+    opts = ssh_opts_for(output_dir)
+    opts_str = " ".join(opts)
 
     n_omp = omp_num_threads if omp_num_threads is not None else num_threads
     gomp_affinity = " ".join(str(cpu_map[i]) for i in range(n_omp))
@@ -140,7 +172,7 @@ def run_sniper(
     # cfgをPurpleへ転送(ジョブごとに一意なファイル名なので並列実行でも衝突しない)
     try:
         scp_ret = subprocess.run(
-            ["scp", "-q", *SSH_OPTS, config_path, f"{SSH_HOST}:{remote_cfg_path}"],
+            ["scp", "-q", *opts, config_path, f"{SSH_HOST}:{remote_cfg_path}"],
             stdout=log_file, stderr=log_file,
         )
     except OSError as e:
@@ -158,7 +190,7 @@ def run_sniper(
         remote_map_path = f"{REMOTE_CFG_ROOT}/{os.path.basename(map_path)}"
         try:
             scp_ret = subprocess.run(
-                ["scp", "-q", *SSH_OPTS, map_path, f"{SSH_HOST}:{remote_map_path}"],
+                ["scp", "-q", *opts, map_path, f"{SSH_HOST}:{remote_map_path}"],
                 stdout=log_file, stderr=log_file,
             )
         except OSError as e:
@@ -173,7 +205,7 @@ def run_sniper(
         remote_stdin_path = f"{REMOTE_CFG_ROOT}/{os.path.basename(stdin_path)}"
         try:
             scp_ret = subprocess.run(
-                ["scp", "-q", *SSH_OPTS, stdin_path, f"{SSH_HOST}:{remote_stdin_path}"],
+                ["scp", "-q", *opts, stdin_path, f"{SSH_HOST}:{remote_stdin_path}"],
                 stdout=log_file, stderr=log_file,
             )
         except OSError as e:
@@ -213,14 +245,27 @@ def run_sniper(
 
     try:
         proc = subprocess.Popen(
-            ["ssh", *SSH_OPTS, SSH_HOST, remote_cmd],
+            ["ssh", *opts, SSH_HOST, remote_cmd],
             stdout=log_file, stderr=log_file,
         )
     except OSError as e:
         log_file.write(f"[sniper_sim_purple] SSH起動失敗: {e}\n")
         return 255
     if proc_holder is not None:
-        proc_holder.append(_RemoteJobProc(proc, remote_pgid_file))
+        proc_holder.append(_RemoteJobProc(proc, remote_pgid_file, opts))
+
+    # 2026-07-12: width_profileの収束検知プローブ(SID側と対になる実装)。
+    # podmanコンテナが無いため、.remote_pgidファイルに記録されたプロセスグループ
+    # 内のsniper本体プロセスをSSH経由でpsして代用する(_sample_cpu_pct_remote参照)。
+    if bench_class:
+        probe_thread = threading.Thread(
+            target=probe_and_record_remote,
+            args=(remote_pgid_file, SSH_HOST, opts,
+                  workload, bench_class, num_threads, "purple"),
+            daemon=True,
+        )
+        probe_thread.start()
+
     ret = proc.wait()
 
     if ret != 0:
@@ -230,7 +275,7 @@ def run_sniper(
     # 結果をhiragahama側のoutput_dirへ回収 (SSH接続が実行後に切れた場合はここで失敗として検出)
     try:
         rsync_ret = subprocess.run(
-            ["rsync", "-az", "-e", f"ssh {_SSH_OPTS_STR}",
+            ["rsync", "-az", "-e", f"ssh {opts_str}",
              f"{SSH_HOST}:{remote_out_dir}/", f"{output_dir}/"],
             stdout=log_file, stderr=log_file,
         )

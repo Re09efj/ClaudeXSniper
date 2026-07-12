@@ -1,0 +1,128 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Packed_2TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+[DeTLoc] map thread-1 to core-1
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=20000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=25000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=30000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=35000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=40000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=45000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=50000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=55000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=60000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=65000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=70000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=75000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=80000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=85000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=90000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=95000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=100000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=105000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=110000 cpn=8 sender=0 requester=0 same=1
+[HOOKS] Entering ROI
+[LOG] Wrote 1048576 out of 20103466 events to sim.clog
+[HOOKS] Leaving ROI
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - LU Benchmark
+
+ Size:   33x  33x  33
+ Iterations:                    300
+ Number of available threads:     2
+
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+
+ Verification being performed for class W
+ Accuracy setting for epsilon =  0.1000000000000E-07
+ Comparison of RMS-norms of residual
+           1   0.1236511638192E+02 0.1236511638192E+02 0.1475375093704E-12
+           2   0.1317228477799E+01 0.1317228477799E+01 0.3792814758425E-12
+           3   0.2550120713095E+01 0.2550120713095E+01 0.9386382490838E-13
+           4   0.2326187750252E+01 0.2326187750252E+01 0.1840358751133E-12
+           5   0.2826799444189E+02 0.2826799444189E+02 0.1532035809389E-12
+ Comparison of RMS-norms of solution error
+           1   0.4867877144216E+00 0.4867877144216E+00 0.4880725627024E-13
+           2   0.5064652880982E-01 0.5064652880982E-01 0.9412333330651E-13
+           3   0.9281818101960E-01 0.9281818101960E-01 0.1794190016055E-13
+           4   0.8570126542733E-01 0.8570126542733E-01 0.8582402490169E-14
+           5   0.1084277417792E+01 0.1084277417792E+01 0.2557774486497E-12
+ Comparison of surface integral
+               0.1161399311023E+02 0.1161399311023E+02 0.3074289103934E-13
+ Verification Successful
+
+
+ LU Benchmark Completed.
+ Class           =                        W
+ Size            =             33x  33x  33
+ Iterations      =                      300
+ Time in seconds =                     3.07
+ Total threads   =                        2
+ Avail threads   =                        2
+ Mop/s total     =                  5875.02
+ Mop/s/thread    =                  2937.51
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = (none)
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:1] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 12594.16 seconds
+[SNIPER] Simulated 31181.9M instructions, 6816.7M cycles, 4.57 IPC
+[SNIPER] Simulation speed 2475.9 KIPS (154.7 KIPS / target core - 6462.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[LOG] Wrote 1048576 out of 185919012 events to sim.clog
+[SNIPER] End
+[SNIPER] Elapsed time: 12585.31 seconds

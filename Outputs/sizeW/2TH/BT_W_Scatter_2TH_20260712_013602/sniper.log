@@ -1,0 +1,107 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Scatter_2TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[DeTLoc] map thread-1 to core-8
+[GDBG] n=15000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=20000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=25000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=30000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=35000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=40000 cpn=8 sender=8 requester=8 same=1
+[GDBG] n=45000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=50000 cpn=8 sender=0 requester=0 same=1
+[HOOKS] Entering ROI
+[HOOKS] Leaving ROI
+
+
+ NAS Parallel Benchmarks (NPB3.3-OMP) - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:   24x  24x  24
+ Iterations:  200       dt:   0.0008000
+ Number of available threads:     2
+
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Verification being performed for class W
+ accuracy setting for epsilon =  0.1000000000000E-07
+ Comparison of RMS-norms of residual
+           1 0.1125590409344E+03 0.1125590409344E+03 0.3181561746176E-13
+           2 0.1180007595731E+02 0.1180007595731E+02 0.2089463917018E-12
+           3 0.2710329767846E+02 0.2710329767846E+02 0.1023738666807E-12
+           4 0.2469174937669E+02 0.2469174937669E+02 0.2561110698068E-13
+           5 0.2638427874317E+03 0.2638427874317E+03 0.8703948833815E-13
+ Comparison of RMS-norms of solution error
+           1 0.4419655736008E+01 0.4419655736008E+01 0.1044997180394E-13
+           2 0.4638531260002E+00 0.4638531260002E+00 0.6127307942383E-13
+           3 0.1011551749967E+01 0.1011551749967E+01 0.1284127024499E-12
+           4 0.9235878729944E+00 0.9235878729944E+00 0.1550678331368E-13
+           5 0.1018045837718E+02 0.1018045837718E+02 0.4573302206612E-12
+ Verification Successful
+
+
+ BT Benchmark Completed.
+ Class           =                        W
+ Size            =             24x  24x  24
+ Iterations      =                      200
+ Time in seconds =                     1.33
+ Total threads   =                        2
+ Avail threads   =                        2
+ Mop/s total     =                  5795.54
+ Mop/s/thread    =                  2897.77
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.3.1
+ Compile date    =              10 Feb 2024
+
+ Compile options:
+    F77          = $(HOOKS_FC)
+    FLINK        = $(F77)
+    F_LIB        = ${HOOKS_LDFLAGS_DYN}
+    F_INC        = (none)
+    FFLAGS       = $(GLOBAL_CFLAGS)
+    FLINKFLAGS   = $(GLOBAL_LDFLAGS)
+    RAND         = (none)
+
+
+ Please send all errors/feedbacks to:
+
+ NPB Development Team
+ npb@nas.nasa.gov
+
+
+[TRACE:1] -- STOP --
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 6170.62 seconds
+[SNIPER] Simulated 18429.6M instructions, 2956.3M cycles, 6.23 IPC
+[SNIPER] Simulation speed 2986.7 KIPS (186.7 KIPS / target core - 5357.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 6166.40 seconds

@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structSymbolDebugInfo" kind="struct" language="C++" prot="public">
+    <compoundname>SymbolDebugInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structSymbolDebugInfo_1afb1aad47715935d9937437418fb3de05" prot="public" static="no" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const SymbolDebugInfo::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>Symbol name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1393" column="22" bodyfile="Source/pin/pin/image.PH" bodystart="1393" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSymbolDebugInfo_1a4cee757c7900af0888e21f0923b156a7" prot="public" static="no" mutable="no">
+        <type><ref refid="classSymbolAddressRange" kindref="compound">SymbolAddressRange</ref></type>
+        <definition>SymbolAddressRange SymbolDebugInfo::range</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <briefdescription>
+<para>Address range of the symbol. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1394" column="24" bodyfile="Source/pin/pin/image.PH" bodystart="1394" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSymbolDebugInfo_1a721a4c600525cf5c9885b6c62935dcb2" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SymbolDebugInfo::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <briefdescription>
+<para>The index of the symbol in the order it was extracted from the debug info. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1395" column="14" bodyfile="Source/pin/pin/image.PH" bodystart="1395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSymbolDebugInfo_1a4c6179336b60f970b387bf407f58d49e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SymbolDebugInfo::inlined</definition>
+        <argsstring></argsstring>
+        <name>inlined</name>
+        <briefdescription>
+<para>True if the symbol represents an inlined function from debug info. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1396" column="10" bodyfile="Source/pin/pin/image.PH" bodystart="1396" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structSymbolDebugInfo_1a32d3a0ef1b19adbcd935158514c2facd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SymbolDebugInfo::SymbolDebugInfo</definition>
+        <argsstring>(const char *sym_name, ADDRINT sym_base, size_t sym_size, uint32_t sym_index, bool is_inlined)</argsstring>
+        <name>SymbolDebugInfo</name>
+        <param>
+          <type>const char *</type>
+          <declname>sym_name</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>sym_base</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>sym_size</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>sym_index</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_inlined</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1389" column="5" bodyfile="Source/pin/pin/image.PH" bodystart="1389" bodyend="1391"/>
+      </memberdef>
+      <memberdef kind="function" id="structSymbolDebugInfo_1a06b90ee847abd117b8b6c41f127c958b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SymbolDebugInfo::operator&lt;</definition>
+        <argsstring>(const SymbolDebugInfo &amp;info) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="structSymbolDebugInfo" kindref="compound">SymbolDebugInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1398" column="5" bodyfile="Source/pin/pin/image.PH" bodystart="1398" bodyend="1398"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents debug info for a symbol: symbol name and address range </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>SymbolDebugInfo</label>
+        <link refid="structSymbolDebugInfo"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>range</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SymbolAddressRange</label>
+        <link refid="classSymbolAddressRange"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/pin/image.PH" line="1387" column="1" bodyfile="Source/pin/pin/image.PH" bodystart="1388" bodyend="1399"/>
+    <listofallmembers>
+      <member refid="structSymbolDebugInfo_1a721a4c600525cf5c9885b6c62935dcb2" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>index</name></member>
+      <member refid="structSymbolDebugInfo_1a4c6179336b60f970b387bf407f58d49e" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>inlined</name></member>
+      <member refid="structSymbolDebugInfo_1afb1aad47715935d9937437418fb3de05" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>name</name></member>
+      <member refid="structSymbolDebugInfo_1a06b90ee847abd117b8b6c41f127c958b" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>operator&lt;</name></member>
+      <member refid="structSymbolDebugInfo_1a4cee757c7900af0888e21f0923b156a7" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>range</name></member>
+      <member refid="structSymbolDebugInfo_1a32d3a0ef1b19adbcd935158514c2facd" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>SymbolDebugInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

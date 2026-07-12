@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="time__emulation_8PH" kind="file" language="C++">
+    <compoundname>time_emulation.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="time__emulation_8PH_1a0f6cb5add53816409ab45fdc441ddc78" prot="public" static="no">
+        <name>PIN_G_TIME_EMULATION_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/time_emulation.PH" line="6" column="9" bodyfile="Source/pin/pin/time_emulation.PH" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2025-2025<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>PIN_G_TIME_EMULATION_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_TIME_EMULATION_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//Time<sp/>Emulation<sp/>API</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/>TE_GetTime(TE_CLOCK_ID<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="structTE__timespec" kindref="compound">TE_timespec</ref>*<sp/>ts,<sp/><ref refid="group__THREADS_1gab0be56ec5de7d57d369411d078175186" kindref="member">THREADID</ref><sp/>tid<sp/>=<sp/><ref refid="group__THREADS_1ga6f1b19d7792c8c6f4547fd9d3dabb427" kindref="member">INVALID_THREADID</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UINT64<sp/>TE_GetEmulatedTSC();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>FLT32<sp/>TE_GetIPC();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UINT64<sp/>TE_GetTscFreq();</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>PIN_G_TIME_EMULATION_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/time_emulation.PH"/>
+  </compounddef>
+</doxygen>

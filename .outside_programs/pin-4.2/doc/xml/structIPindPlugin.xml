@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structIPindPlugin" kind="struct" language="C++" prot="public">
+    <compoundname>IPindPlugin</compoundname>
+    <includes local="no">ipind_plugin.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structIPindPlugin_1a21520cc7843b073a61254bdd01658527" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool IPindPlugin::verbose_</definition>
+        <argsstring></argsstring>
+        <name>verbose_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When true, plugin_log_verbose() will emit logs into the plugin log file This member is set (internally) to true when the plugin JSON configuration file &quot;ExtraRPCPlugins/i/log&quot; or &quot;/RSCServer/RPCPlugins/i/log&quot; is true. When false or not specified at all this member will be set to true. <simplesect kind="note"><para>Plugin should not set this flag on it&apos;s own. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="63" column="10" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIPindPlugin_1a03f7436d97008ccb22dac8629386c8e2" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* IPindPlugin::logName_</definition>
+        <argsstring></argsstring>
+        <name>logName_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Plugin log filename based (but not the same) on this plugin JSON configuration file field &quot;ExtraRPCPlugins/i/logfilename&quot; or &quot;/RSCServer/RPCPlugins/i/logfilename&quot; (which can be relative or absolute). (if doesn&apos;t exist, a default name will be given from the plugin &quot;/name&quot; field in the configuration file (name +.log + .&lt;PID&gt;) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="71" column="16" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* IPindPlugin::plugin_log) (IPindPlugin *self, const char *message, size_t length)</definition>
+        <argsstring>)(IPindPlugin *self, const char *message, size_t length)</argsstring>
+        <name>plugin_log</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Plugin print callback. It can be used to emit plugin logs into a dedicated plugin log file. The plugin file name will be the &lt;name from plugin JSON configuration file&gt; + .log + .&lt;PID&gt; Plugin log file is created based on plugin JSON configuration file (.../logfilename field). <simplesect kind="note"><para>If the path is relative it will be relative compared to the location of pin.log.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the plugin </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A C style string to be emitted into the plugin log file <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of message string</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Plugin can use this directly or use these auxiliary functions (recommended): <ref refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" kindref="member">plugin_log()</ref> / plugin_log_verbose(). </para>
+</simplesect>
+<simplesect kind="note"><para>This is not mandatory. Plugins can open files and emits logs into them using their own custom implementation. </para>
+</simplesect>
+<simplesect kind="note"><para>This callback can be called only after (*init)(...) function was called. Calling it earlier will will emit an error message to the standard error but will not crash. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="89" column="5" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIPindPlugin_1a8dbb34e1b575bd3b2ff337196be2bf08" prot="public" static="no" mutable="no">
+        <type><ref refid="group__PLUGIN_1ga0a6f6f461ade393b128acafadbfc16ea" kindref="member">E_plugin_type</ref>(*</type>
+        <definition>E_plugin_type(* IPindPlugin::get_plugin_type) (IPindPlugin *self)</definition>
+        <argsstring>)(IPindPlugin *self)</argsstring>
+        <name>get_plugin_type</name>
+        <briefdescription>
+<para>Return plugin type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the plugin</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+This method must be set and may not be NULL.</para>
+<para><simplesect kind="return"><para>E_plugin_type The plugin type. For 3rd party plugins the only acceptable return value is E_plugin_type::RPC. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="101" column="5" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" prot="public" static="no" mutable="no">
+        <type>bool(*</type>
+        <definition>bool(* IPindPlugin::init) (IPindPlugin *self, int argc, const char *const argv[])</definition>
+        <argsstring>)(IPindPlugin *self, int argc, const char *const argv[])</argsstring>
+        <name>init</name>
+        <briefdescription>
+<para>Called to initialize a plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If this method is set, it will be called after the plugin is loaded. This method may be NULL.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the plugin </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of arguments (see below) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of arguments as set in the plugin JSON configuration file trough the arguments field (&quot;ExtraRPCPlugins/i/arguments&quot; or &quot;/RSCServer/RPCPlugins/i/arguments&quot;).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>If this function returns false, the plugin is not initialized and pind will not use it </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="115" column="5" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIPindPlugin_1a036601ad3630cf483571107c2c9c44ce" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* IPindPlugin::uninit) (IPindPlugin *self)</definition>
+        <argsstring>)(IPindPlugin *self)</argsstring>
+        <name>uninit</name>
+        <briefdescription>
+<para>Perform any cleanup of resources allocated by <ref refid="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" kindref="member">init()</ref> or during the lifetime of the plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If this method is set, it will be called before the plugin is destroyed. This method may be NULL.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the plugin </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="124" column="5" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Holds function pointers to basic common pind plugin functionality. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure should not be allocated directly. It should be filled and returned as part of <ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref>.</para>
+<para>This is also the first member of <ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref>. So casting an <ref refid="structIRPCPlugin" kindref="compound">IRPCPlugin</ref> to <ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref> should work, providing a C style &quot;object oriented&quot; way of implementing plugins. </para>
+    </detaileddescription>
+    <location file="Source/pinrt/pind/include/ipind_plugin.h" line="54" column="1" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="55" bodyend="125"/>
+    <listofallmembers>
+      <member refid="structIPindPlugin_1a8dbb34e1b575bd3b2ff337196be2bf08" prot="public" virt="non-virtual"><scope>IPindPlugin</scope><name>get_plugin_type</name></member>
+      <member refid="structIPindPlugin_1affbc68373c264c50a64f0b9b063a7d47" prot="public" virt="non-virtual"><scope>IPindPlugin</scope><name>init</name></member>
+      <member refid="structIPindPlugin_1a03f7436d97008ccb22dac8629386c8e2" prot="public" virt="non-virtual"><scope>IPindPlugin</scope><name>logName_</name></member>
+      <member refid="structIPindPlugin_1afb9c69de21928c511b7025c077af5485" prot="public" virt="non-virtual"><scope>IPindPlugin</scope><name>plugin_log</name></member>
+      <member refid="structIPindPlugin_1a036601ad3630cf483571107c2c9c44ce" prot="public" virt="non-virtual"><scope>IPindPlugin</scope><name>uninit</name></member>
+      <member refid="structIPindPlugin_1a21520cc7843b073a61254bdd01658527" prot="public" virt="non-virtual"><scope>IPindPlugin</scope><name>verbose_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

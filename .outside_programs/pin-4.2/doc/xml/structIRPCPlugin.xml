@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structIRPCPlugin" kind="struct" language="C++" prot="public">
+    <compoundname>IRPCPlugin</compoundname>
+    <includes local="no">ipind_plugin.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structIRPCPlugin_1a6eaee8416c4dba9cc7cad1cdb79a01f5" prot="public" static="no" mutable="no">
+        <type><ref refid="structIPindPlugin" kindref="compound">IPindPlugin</ref></type>
+        <definition>IPindPlugin IRPCPlugin::base_</definition>
+        <argsstring></argsstring>
+        <name>base_</name>
+        <briefdescription>
+<para>Common pind plugin functionality (base class) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="144" column="17" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIRPCPlugin_1a8a8ebf74cc46bd403d655dbf4e632856" prot="public" static="no" mutable="no">
+        <type>const char *(*</type>
+        <definition>const char*(* IRPCPlugin::get_injection_data) (IPindPlugin *self)</definition>
+        <argsstring>)(IPindPlugin *self)</argsstring>
+        <name>get_injection_data</name>
+        <briefdescription>
+<para>Get the injection data of the plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The values returned from this method will be injected to Pin as environment variables. This method may be NULL.</para>
+<para><simplesect kind="note"><para>In Pin 4.0 beta, if <ref refid="structIRPCPlugin_1a8a8ebf74cc46bd403d655dbf4e632856" kindref="member">IRPCPlugin::get_injection_data</ref> is not NULL, it will be called but the returned data will not be injected to Pin.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the plugin</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string of KEY=VALUE pairs with semicolon delimiter </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="159" column="11" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIRPCPlugin_1a4ded3a27fdb638c1617b495fe147624b" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REMOTE_1ga1e9057590f0ff365f837e97d771e0b6b" kindref="member">t_rpc_message_schema</ref> const  *(*</type>
+        <definition>t_rpc_message_schema const*(* IRPCPlugin::get_rpc_schema) (IPindPlugin *self, t_rpc_id rpcId)</definition>
+        <argsstring>)(IPindPlugin *self, t_rpc_id rpcId)</argsstring>
+        <name>get_rpc_schema</name>
+        <briefdescription>
+<para>Get the schema for the given id if supported by the plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method is called to retrieve an RPC schema when pind considers the plugin for processing an RPC request. This method must be set and may not be NULL.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the plugin </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rpcId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RPC request ID</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>RPC message schema for the specified RPC request identified by <emphasis>rpcId</emphasis> if and only if the plugin supports this <emphasis>rpcId</emphasis>, NULL otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="174" column="26" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structIRPCPlugin_1ae70a0781ed4917e63675652509fbfe1d" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* IRPCPlugin::do_rpc) (IPindPlugin *self, t_rpc_id rpcId, t_arg_count argCount, t_rpc_arg *rpcArgs, t_rpc_ret *retRpcArg)</definition>
+        <argsstring>)(IPindPlugin *self, t_rpc_id rpcId, t_arg_count argCount, t_rpc_arg *rpcArgs, t_rpc_ret *retRpcArg)</argsstring>
+        <name>do_rpc</name>
+        <briefdescription>
+<para>Execute the RPC request. Store result in the specified <emphasis>retRpcArg</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method is called by pind to actually process an RPC request. This method must be set and may not be NULL.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the plugin </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rpcId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RPC request ID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of RPC arguments </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rpcArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of RPC arguments </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">retRpcArg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to RPC return value arg. Will be filled with RPC execution result. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pinrt/pind/include/ipind_plugin.h" line="188" column="5" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Holds function pointers to pind RPC plugin functionality. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure should be allocated and returned by a plugin library in response to a call to <ref refid="group__PLUGIN_1ga841f2257a22717c7c4a016ff138dbee3" kindref="member">load_plugin</ref>.</para>
+<para>This structure can be placed as the first member of a user declared structure to provide plugin specific additional state. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>IPindPlugin</label>
+        <link refid="structIPindPlugin"/>
+      </node>
+      <node id="3">
+        <label>RPC_message_schema</label>
+        <link refid="structRPC__message__schema"/>
+      </node>
+      <node id="1">
+        <label>IRPCPlugin</label>
+        <link refid="structIRPCPlugin"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>base_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>get_rpc_schema</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pinrt/pind/include/ipind_plugin.h" line="138" column="1" bodyfile="Source/pinrt/pind/include/ipind_plugin.h" bodystart="139" bodyend="189"/>
+    <listofallmembers>
+      <member refid="structIRPCPlugin_1a6eaee8416c4dba9cc7cad1cdb79a01f5" prot="public" virt="non-virtual"><scope>IRPCPlugin</scope><name>base_</name></member>
+      <member refid="structIRPCPlugin_1ae70a0781ed4917e63675652509fbfe1d" prot="public" virt="non-virtual"><scope>IRPCPlugin</scope><name>do_rpc</name></member>
+      <member refid="structIRPCPlugin_1a8a8ebf74cc46bd403d655dbf4e632856" prot="public" virt="non-virtual"><scope>IRPCPlugin</scope><name>get_injection_data</name></member>
+      <member refid="structIRPCPlugin_1a4ded3a27fdb638c1617b495fe147624b" prot="public" virt="non-virtual"><scope>IRPCPlugin</scope><name>get_rpc_schema</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

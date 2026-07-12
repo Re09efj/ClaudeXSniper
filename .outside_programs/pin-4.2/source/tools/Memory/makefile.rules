@@ -1,0 +1,455 @@
+#
+# Copyright (C) 2012-2026 Intel Corporation.
+# SPDX-License-Identifier: MIT
+#
+
+##############################################################
+#
+# This file includes all the test targets as well as all the
+# non-default build rules and test recipes.
+#
+##############################################################
+
+
+##############################################################
+#
+# Test targets
+#
+##############################################################
+
+###### Place all generic definitions here ######
+
+# This defines tests which run tools of the same name.  This is simply for convenience to avoid
+# defining the test name twice (once in TOOL_ROOTS and again in TEST_ROOTS).
+# Tests defined here should not be defined in TOOL_ROOTS and TEST_ROOTS.
+TEST_TOOL_ROOTS := icache dcache allcache dcache_xscale_config footprint memalign address_mapping address_mapping_probe \
+                   memory_limit malloc_stress pin_stack_overflow access_protection
+
+# This defines the tests to be run that were not already defined in TEST_TOOL_ROOTS.
+TEST_ROOTS := address_mapping_oom address_mapping_zero address_mapping_multi_range \
+              mid_trace_start_non_exec_page mid_trace_cross_exec_non_exec_pages start_trace_start_non_exec_page \
+              start_trace_mid_non_exec_page start_trace_cross_non_exec_exec_pages start_trace_cross_exec_non_exec_pages \
+              non_executable_code_with_tool pin_stack_overflow_precommit
+
+# This defines the tools which will be run during the the tests, and were not already defined in
+# TEST_TOOL_ROOTS.
+TOOL_ROOTS := protection_test_tool
+
+# This defines all the applications that will be run during the tests.
+APP_ROOTS := access_protection_app mmap_reader_app protection_test_app 
+
+# This defines any additional object files that need to be compiled.
+OBJECT_ROOTS :=
+
+# This defines any additional dlls (shared objects), other than the pintools, that need to be compiled.
+DLL_ROOTS :=
+
+# This defines any static libraries (archives), that need to be built.
+LIB_ROOTS :=
+
+###### Place architecture-specific definitions here ######
+
+ifeq ($(TARGET),intel64)
+    TEST_TOOL_ROOTS += big_malloc
+	TEST_TOOL_ROOTS += pin_stack_fill
+	APP_ROOTS += thread_app
+endif
+
+###### Place OS-specific definitions here ######
+
+# Linux
+ifeq ($(TARGET_OS),linux)
+    TEST_TOOL_ROOTS += memalloc memalloc2 restrict_memory_vdso
+    TEST_ROOTS += restrict_memory restrict_memory_stack
+    APP_ROOTS +=  print_stack attach_app_restrict_memory
+endif
+
+# Windows
+ifeq ($(TARGET_OS),windows)
+    TEST_TOOL_ROOTS += memalloc memalloc2
+    TEST_ROOTS += windows_mitigation_policy virtual_alloc
+    APP_ROOTS += mitigation_policy_app virtual_alloc
+endif
+
+###### Handle exceptions here (OS/arch related) ######
+
+# Filtered out from SLES_11 since the application print_stack buggy on this kernel version.
+# it causes segmentation fault after changing protection of some kernel segment instead of 
+# just returning failure as expected.
+ifeq ($(TARGET_OS),linux)
+	ifeq ($(TARGET),ia32)
+		ifeq ($(DIST_NAME_SLES),1)
+			DIST_VER_LT_12 := $(shell $(TOOLS_ROOT)/Utils/testLinuxDistVersion lt 12)
+			ifeq ($(DIST_VER_LT_12),1)
+				TEST_ROOTS := $(filter-out restrict_memory_stack, $(TEST_ROOTS))
+				APP_ROOTS := $(filter-out print_stack, $(APP_ROOTS))
+			endif
+		endif
+	endif
+endif
+
+# pin_stack_fill test fails on this machine specifically, make finishes with error even
+# though Pin exists with status 0.
+# The app fails to create 8K threads running native (without Pin) and its supposed to
+# exit with status 0 since its not an error of the test.
+ifeq ($(TARGET_OS),linux)
+	ifeq ($(TARGET),intel64)
+		ifeq ($(DIST_NAME_SLES),1)
+			DIST_VER_LT_12 := $(shell $(TOOLS_ROOT)/Utils/testLinuxDistVersion lt 12)
+			ifeq ($(DIST_VER_LT_12),1)
+				TEST_TOOL_ROOTS := $(filter-out pin_stack_fill, $(TEST_TOOL_ROOTS))
+            	APP_ROOTS := $(filter-out thread_app, $(APP_ROOTS))
+			endif
+		endif
+	endif
+endif
+
+# Old GCC versions don't support c++ syntax
+ifeq ($(TARGET_OS),linux)
+    GCC_VERSION_LE_4_8_5 := $(shell $(TOOLS_ROOT)/Utils/testToolVersion $(APP_CXXPATH) le 4.8.5)
+    ifeq ($(GCC_VERSION_LE_4_8_5),1)
+        TEST_TOOL_ROOTS := $(filter-out access_protection, $(TEST_TOOL_ROOTS))
+        APP_ROOTS := $(filter-out access_protection_app, $(APP_ROOTS))
+    endif
+endif
+
+RUNNABLE_TESTS := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
+
+###### Handle exceptions here (bugs related) ######
+
+# see mantis 4497
+ifeq ($(TARGET_DOCKER),1)
+    TEST_TOOL_ROOTS := $(filter-out restrict_memory_vdso, $(TEST_TOOL_ROOTS))
+    TEST_ROOTS := $(filter-out restrict_memory_stack, $(TEST_ROOTS))
+endif
+
+ifeq ($(TARGET_OS),linux)
+    # See PINT-5902
+    TEST_TOOL_ROOTS := $(filter-out restrict_memory_vdso, $(TEST_TOOL_ROOTS))
+endif
+
+# TODO: Disabling those tests for Windows until we implement weak ranges. See PINT-6031.
+ifeq ($(TARGET_OS),windows)
+    TEST_TOOL_ROOTS := $(filter-out address_mapping  address_mapping_probe, $(TEST_TOOL_ROOTS))
+    TEST_ROOTS := $(filter-out address_mapping_oom address_mapping_zero address_mapping_multi_range, $(TEST_ROOTS))
+endif
+
+###### Define the serial subset ######
+
+# Defines which tests need to be run serially as may cause issues when running in parallel 
+# Note: Becuase SERIAL_SUBSET is an independent set, removed memory_limit test from it (because of PINT-6077)
+#		Need to ensure it is returned once -pin_memory_size knob implemented.
+ifeq ($(TARGET_OS),windows)
+    SERIAL_SUBSET :=  memalloc allcache icache malloc_stress memalloc2 access_protection
+endif
+
+ifeq ($(TARGET_OS),linux)
+	ifeq ($(TARGET),intel64)
+		ifeq ($(DIST_NAME_SLES),1)
+			DIST_VER_LT_12 := $(shell $(TOOLS_ROOT)/Utils/testLinuxDistVersion lt 12)
+			ifeq ($(DIST_VER_LT_12),0)
+				SERIAL_SUBSET := pin_stack_fill
+			endif
+		endif
+	endif
+endif
+
+
+###### Define the sanity subset ######
+
+# This defines the list of tests that should run in sanity. It should include all the tests listed in
+# TEST_TOOL_ROOTS and TEST_ROOTS excluding only unstable tests.
+SANITY_SUBSET := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
+
+ifeq ($(TARGET_OS),windows)
+    # mantis 4914
+    SANITY_SUBSET := $(filter-out malloc_stress, $(SANITY_SUBSET))
+endif
+
+
+
+##############################################################
+#
+# Test recipes
+#
+##############################################################
+
+# This section contains recipes for tests other than the default.
+# See makefile.default.rules for the default test rules.
+# All tests in this section should adhere to the naming convention: <testname>.test
+
+#Test execution prevention of non-executable code:
+#Instruction in the middle of a trace is not executable - Instruction in the beginning of the page 
+mid_trace_start_non_exec_page.test: $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 1 > $(OBJDIR)mid_trace_start_non_exec_page.out 
+	$(QGREP) "Segmentation fault" $(OBJDIR)mid_trace_start_non_exec_page.out
+	$(RM) $(OBJDIR)mid_trace_start_non_exec_page.out
+
+#Test execution prevention of non-executable code:
+#Instruction in the middle of a trace is not executable - Instruction is in the middle of a cross page 
+# (first executable, second not executable)
+mid_trace_cross_exec_non_exec_pages.test: $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 2 > $(OBJDIR)mid_trace_cross_exec_non_exec_pages.out 
+	$(QGREP) "Segmentation fault" $(OBJDIR)mid_trace_cross_exec_non_exec_pages.out
+	$(RM) $(OBJDIR)mid_trace_cross_exec_non_exec_pages.out	
+
+#Test execution prevention of non-executable code:	
+#First instruction of trace is not executable - Instruction in the beginning of the page.
+start_trace_start_non_exec_page.test: $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 3 > $(OBJDIR)start_trace_start_non_exec_page.out 
+	$(QGREP) "Segmentation fault" $(OBJDIR)start_trace_start_non_exec_page.out
+	$(RM) $(OBJDIR)start_trace_start_non_exec_page.out	
+
+#Test execution prevention of non-executable code:
+#First instruction of trace is not executable - Instruction in the middle of the page.	
+start_trace_mid_non_exec_page.test: $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 4 > $(OBJDIR)start_trace_mid_non_exec_page.out 
+	$(QGREP) "Segmentation fault" $(OBJDIR)start_trace_mid_non_exec_page.out
+	$(RM) $(OBJDIR)start_trace_mid_non_exec_page.out	
+	
+#Test execution prevention of non-executable code:	
+#First instruction of trace is not executable - Instruction in the middle of a cross page 
+# first page not executable, second page executable
+start_trace_cross_non_exec_exec_pages.test: $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 5 > $(OBJDIR)start_trace_cross_non_exec_exec_pages.out 
+	$(QGREP) "Segmentation fault" $(OBJDIR)start_trace_cross_non_exec_exec_pages.out
+	$(RM) $(OBJDIR)start_trace_cross_non_exec_exec_pages.out	
+
+#Test execution prevention of non-executable code:
+#First instruction of trace is not executable - Instruction in the middle of a cross page 
+# first page executable, second page not executable
+start_trace_cross_exec_non_exec_pages.test: $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 6 > $(OBJDIR)start_trace_cross_exec_non_exec_pages.out 
+	$(QGREP) "Segmentation fault" $(OBJDIR)start_trace_cross_exec_non_exec_pages.out
+	$(RM) $(OBJDIR)start_trace_cross_exec_non_exec_pages.out	
+	
+#Test if the tool catch the exception when execution a non-executable code:
+#Instruction in the middle of a trace is not executable - Instruction in the beginning of the page 		
+non_executable_code_with_tool.test: $(OBJDIR)protection_test_tool$(PINTOOL_SUFFIX) $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	$(PIN) -t $(OBJDIR)protection_test_tool$(PINTOOL_SUFFIX) -o $(OBJDIR)non_executable_code_with_tool.log \
+	-- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 1 > $(OBJDIR)non_executable_code_with_tool.out 
+	$(QGREP) "Segmentation fault" $(OBJDIR)non_executable_code_with_tool.out
+	$(QGREP) "Tool: Start handling exception" $(OBJDIR)non_executable_code_with_tool.log
+	$(RM) $(OBJDIR)non_executable_code_with_tool.log $(OBJDIR)non_executable_code_with_tool.out
+
+# Test if Pin skips executable page permissions check when fetching code to execute when using PIN_AddFetchFunction() API.
+non_executable_code_with_tool_disable_check.test: $(OBJDIR)protection_test_tool$(PINTOOL_SUFFIX) $(OBJDIR)protection_test_app$(EXE_SUFFIX)
+	- $(PIN) -t $(OBJDIR)protection_test_tool$(PINTOOL_SUFFIX) -fetch_cb -o $(OBJDIR)non_executable_code_with_tool_disable_check_tool.log \
+	-- $(OBJDIR)protection_test_app$(EXE_SUFFIX) 1 > $(OBJDIR)non_executable_code_with_tool_disable_check.out 
+	$(CGREP) "Tool: Start handling exception" $(OBJDIR)non_executable_code_with_tool_disable_check_tool.log | $(QGREP) 0
+	$(QGREP) "App ended" $(OBJDIR)non_executable_code_with_tool_disable_check.out
+	$(RM) $(OBJDIR)non_executable_code_with_tool_disable_check_tool.log $(OBJDIR)non_executable_code_with_tool_disable_check.out
+
+# Checks the correctness of the APIs: PIN_CheckReadAccess and PIN_CheckWriteAccess.
+access_protection.test: $(OBJDIR)access_protection$(PINTOOL_SUFFIX) $(OBJDIR)access_protection_app$(EXE_SUFFIX)
+	$(PIN) -t $(OBJDIR)access_protection$(PINTOOL_SUFFIX) -- $(OBJDIR)access_protection_app$(EXE_SUFFIX) > $(OBJDIR)$(@:%.test=%.out) 2>&1
+	$(RM) $(OBJDIR)$(@:%.test=%.out)
+
+# In this test the tool does repeated mallocs in it's Fini function until it gets a NULL return value
+# It tests that PIN's malloc supplied to the tool correctly returns NULL when out of memory
+# A separate test is still needed to get PIN to internally exhaust memory and see that PIN
+# outputs the "Out of memory" message to the pin logfile before exiting.
+memalloc.test: $(OBJDIR)memalloc$(PINTOOL_SUFFIX) $(TESTAPP)
+	$(RM) -f $(OBJDIR)memalloc.out
+	$(PIN) -t $(OBJDIR)memalloc$(PINTOOL_SUFFIX) -o $(OBJDIR)memalloc.out -- $(TESTAPP) makefile $(OBJDIR)memalloc.makefile.copy
+	$(QGREP) NULL $(OBJDIR)memalloc.out
+	$(RM) $(OBJDIR)memalloc.out $(OBJDIR)memalloc.makefile.copy
+
+memalloc2.test: $(OBJDIR)memalloc2$(PINTOOL_SUFFIX) $(TESTAPP)
+	$(RM) -f $(OBJDIR)memalloc2.out
+	$(PIN) -t $(OBJDIR)memalloc2$(PINTOOL_SUFFIX) -o $(OBJDIR)memalloc2.out -- $(TESTAPP) makefile $(OBJDIR)memalloc2.makefile.copy
+	$(QGREP) OutOfMem $(OBJDIR)memalloc2.out
+	$(RM) $(OBJDIR)memalloc2.out $(OBJDIR)memalloc2.makefile.copy
+
+memalign.test: $(OBJDIR)memalign$(PINTOOL_SUFFIX) $(TESTAPP)
+	$(RM) -f $(OBJDIR)memalign.out
+	$(PIN) -t $(OBJDIR)memalign$(PINTOOL_SUFFIX) -o $(OBJDIR)memalign.out \
+	  -- $(TESTAPP) makefile $(OBJDIR)memalign.makefile.copy
+	$(RM) $(OBJDIR)memalign.out $(OBJDIR)memalign.makefile.copy
+
+# The following variables are used when testing the various memory range knobs (see tests below).
+ZERO_BASED_REGION := 0:0x80000000
+
+ifeq ($(TARGET),ia32)
+    MEMORY_BOUNDARY_TO_CHECK := 0xBadB000:0x1BadB000
+    MEMORY_BOUNDARY_TO_CHECK_2 := 0x2BadB000:0x3BadB000
+    MEMORY_BOUNDARY_TO_CHECK_QUOTA := 0x20000000
+    CC_BOUNDARY_TO_CHECK := 0x1BadBeef:0x3BadBeef
+    PIN_RESTRICT_RANGE_PARAM := -restrict_memory 0x1048000:0x1058000
+endif
+ifeq ($(TARGET),intel64)
+    MEMORY_BOUNDARY_TO_CHECK := 0x20BadB000:0x21BadB000
+    MEMORY_BOUNDARY_TO_CHECK_2 := 0x30BadB000:0x31BadB000
+    MEMORY_BOUNDARY_TO_CHECK_QUOTA := 0x20000000
+    CC_BOUNDARY_TO_CHECK := 0x30BadBeef:0x32BadBeef
+    PIN_RESTRICT_RANGE_PARAM := -restrict_memory 0x304000000:0x304010000
+endif
+
+ifeq ($(TARGET_OS),windows)
+    PIN_IMAGE_RANGE := 0:0
+endif
+
+
+# The following tests check the memory range knobs.
+address_mapping.test: $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) $(OBJDIR)mmap_reader_app$(EXE_SUFFIX)
+	$(RM) -f $(OBJDIR)address_mapping.out $(OBJDIR)mmap_reader_app.out
+	$(PIN) -xyzzy -cc_memory_range $(CC_BOUNDARY_TO_CHECK) -pin_memory_range $(MEMORY_BOUNDARY_TO_CHECK) \
+	    -t $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) -o $(OBJDIR)address_mapping.out \
+	      -b $(MEMORY_BOUNDARY_TO_CHECK) -- $(OBJDIR)mmap_reader_app$(EXE_SUFFIX) > $(OBJDIR)mmap_reader_app.out
+	$(QGREP) "Test successful" $(OBJDIR)address_mapping.out
+	$(PYTHON) check_pin_memory_range.py $(OBJDIR)mmap_reader_app.out "$(MEMORY_BOUNDARY_TO_CHECK)"
+	$(RM) $(OBJDIR)address_mapping.out $(OBJDIR)mmap_reader_app.out
+
+# The following tests check the memory range knobs.
+address_mapping_zero.test: $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) $(OBJDIR)mmap_reader_app$(EXE_SUFFIX)
+	$(RM) -f $(OBJDIR)address_mapping_zero.out $(OBJDIR)mmap_reader_app_zero.out
+	$(PIN) -xyzzy -pin_memory_range $(ZERO_BASED_REGION) \
+	    -t $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) -o $(OBJDIR)address_mapping_zero.out \
+	      -b $(ZERO_BASED_REGION) -- $(OBJDIR)mmap_reader_app$(EXE_SUFFIX) > $(OBJDIR)mmap_reader_app_zero.out
+	$(QGREP) "Test successful" $(OBJDIR)address_mapping_zero.out
+	$(PYTHON) check_pin_memory_range.py $(OBJDIR)mmap_reader_app_zero.out "$(ZERO_BASED_REGION)"
+	$(RM) $(OBJDIR)address_mapping_zero.out $(OBJDIR)mmap_reader_app_zero.out
+
+# Need to pass quota for this test to work 
+address_mapping_oom.test: $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) $(TESTAPP)
+	$(RM) -f $(OBJDIR)address_mapping_oom.out
+	! ( $(PIN) -xyzzy -pin_memory_range $(MEMORY_BOUNDARY_TO_CHECK) -pin_memory_size $(MEMORY_BOUNDARY_TO_CHECK_QUOTA) -cc_memory_range 0:0 \
+	  -t $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) -o $(OBJDIR)address_mapping_oom.out -m 1 -b $(MEMORY_BOUNDARY_TO_CHECK) \
+	    -- $(TESTAPP) makefile $(OBJDIR)address_mapping_oom.makefile.copy )
+	$(QGREP) "Failed to allocate dynamic memory" $(OBJDIR)address_mapping_oom.out
+	$(RM) -rf $(OBJDIR)address_mapping_oom.out $(OBJDIR)address_mapping_oom.makefile.copy
+
+# Test using multiple -pin_memory_range knobs to verify Pin handles multiple ranges correctly.
+# we currently don't really check that we allocated memory in the second memory range.
+address_mapping_multi_range.test: $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) $(TESTAPP)
+	$(RM) -f $(OBJDIR)address_mapping_multi_range.out
+	$(PIN) -xyzzy -pin_memory_range $(MEMORY_BOUNDARY_TO_CHECK) -pin_memory_range $(MEMORY_BOUNDARY_TO_CHECK_2) \
+	  -t $(OBJDIR)address_mapping$(PINTOOL_SUFFIX) -o $(OBJDIR)address_mapping_multi_range.out \
+	    -b $(MEMORY_BOUNDARY_TO_CHECK) -- $(TESTAPP) makefile $(OBJDIR)address_mapping_multi_range.makefile.copy
+	$(QGREP) "Test successful" $(OBJDIR)address_mapping_multi_range.out
+	$(RM) $(OBJDIR)address_mapping_multi_range.out $(OBJDIR)address_mapping_multi_range.makefile.copy
+
+address_mapping_probe.test: $(OBJDIR)address_mapping_probe$(PINTOOL_SUFFIX) $(TESTAPP)
+	$(RM) -f $(OBJDIR)address_mapping_probe.out
+	$(PIN) -xyzzy -probe -pin_memory_range $(MEMORY_BOUNDARY_TO_CHECK) -cc_memory_range 0:0 \
+	  -t $(OBJDIR)address_mapping_probe$(PINTOOL_SUFFIX) -o $(OBJDIR)address_mapping_probe.out \
+	    -b $(MEMORY_BOUNDARY_TO_CHECK) -- $(TESTAPP) makefile $(OBJDIR)address_mapping_probe.makefile.copy
+	$(QGREP) "Test successful" $(OBJDIR)address_mapping_probe.out
+	$(RM) $(OBJDIR)address_mapping_probe.out $(OBJDIR)address_mapping_probe.makefile.copy
+
+NUMBEROFTHREADS := 8
+
+malloc_stress.test: $(OBJDIR)malloc_stress$(PINTOOL_SUFFIX) $(HELLO_APP)
+	$(PIN) -t $(OBJDIR)malloc_stress$(PINTOOL_SUFFIX) -o $(OBJDIR)malloc_stress.log -n $(NUMBEROFTHREADS) -- $(HELLO_APP) > $(OBJDIR)malloc_stress.out 2>&1
+	$(QGREP) "All Threads Created" $(OBJDIR)malloc_stress.log
+	$(QGREP) "All threads joined" $(OBJDIR)malloc_stress.log
+	$(BASHTEST) `$(CGREP) "Creating thread" $(OBJDIR)malloc_stress.log` -eq $(NUMBEROFTHREADS)
+	$(RM) $(OBJDIR)malloc_stress.log $(OBJDIR)malloc_stress.out
+
+# The test works on 1MB / 2MB Pin thread stack size, regargdless of future changes in the default thread_stack_size
+# knob value. So we need this variable to set the thread_stack_size for the test in case of such changes.
+ifeq ($(TARGET),ia32)
+  PIN_STACK_SIZE := 1012
+else
+  PIN_STACK_SIZE := 2036
+endif
+
+# The following test checks that Pin runs successfully on highly multithreaded application with a tool that utilizes
+# most of the Pin thread stack for each thread (2MB for 64bit systems)
+pin_stack_fill.test: $(OBJDIR)pin_stack_fill$(PINTOOL_SUFFIX) $(OBJDIR)thread_app$(EXE_SUFFIX)
+	$(PIN) -xyzzy -thread_stack_size $(PIN_STACK_SIZE) -t $(OBJDIR)pin_stack_fill$(PINTOOL_SUFFIX) -stack_size $(PIN_STACK_SIZE) \
+		-- $(OBJDIR)thread_app$(EXE_SUFFIX) > $(OBJDIR)pin_stack_fill.out 2> $(OBJDIR)pin_stack_fill.err 
+	$(RM) $(OBJDIR)pin_stack_fill.err $(OBJDIR)pin_stack_fill.out
+
+pin_stack_overflow.test: $(OBJDIR)pin_stack_overflow$(PINTOOL_SUFFIX) $(HELLO_APP)
+	! ( $(PIN) -xyzzy -logfile $(OBJDIR)pin_stack_overflow.log -thread_stack_size $(PIN_STACK_SIZE) \
+	    -t $(OBJDIR)pin_stack_overflow$(PINTOOL_SUFFIX) -stack_size $(PIN_STACK_SIZE) -- $(HELLO_APP) > $(OBJDIR)pin_stack_overflow.out 2>&1 )
+	$(QGREP) "Pin stack overflow" $(OBJDIR)$(@:.test=.log)
+	$(RM) $(OBJDIR)pin_stack_overflow.log $(OBJDIR)pin_stack_overflow.out
+
+pin_stack_overflow_precommit.test: $(OBJDIR)pin_stack_overflow$(PINTOOL_SUFFIX) $(HELLO_APP)
+	! ( $(PIN) -xyzzy -precommit_thread_stack -logfile $(OBJDIR)pin_stack_overflow_precommit.log -thread_stack_size $(PIN_STACK_SIZE) \
+	    -t $(OBJDIR)pin_stack_overflow$(PINTOOL_SUFFIX) -stack_size $(PIN_STACK_SIZE) -- $(HELLO_APP) > $(OBJDIR)pin_stack_overflow_precommit.out 2>&1 )
+	$(QGREP) "Pin stack overflow" $(OBJDIR)$(@:.test=.log)
+	$(RM) $(OBJDIR)pin_stack_overflow_precommit.log $(OBJDIR)pin_stack_overflow_precommit.out
+
+restrict_memory.test: $(OBJDIR)mmap_reader_app$(EXE_SUFFIX)
+	$(RM) -f $(OBJDIR)restrict_memory.out
+	$(PIN) $(PIN_RESTRICT_RANGE_PARAM) -- $(OBJDIR)mmap_reader_app$(EXE_SUFFIX) > $(OBJDIR)restrict_memory.out
+	! ( $(GREP) "/pin\>"  $(OBJDIR)restrict_memory.out |  $(QGREP) \
+	  "\<0*$(word 3, $(subst x, , $(subst :, ,$(PIN_RESTRICT_RANGE_PARAM))))-" )
+	$(RM) $(OBJDIR)restrict_memory.out
+
+# This test checks that the user cannot restrict memory on the vdso and the vvar address ranges
+# The stages of this test are as follows:
+# 1. Run Pin with the -restrict_memory knob on VDSO addresses with the expectation of failure.
+# 2. Run Pin with the -restrict_memory knob on VVAR addresses with the expectation of failure.
+# 3. Run Pin with the -restrict_memory knob on some arbitrary range of addresses with the expectation of success.
+# 4. Run Pin without the -restrict_memory knob and expect success.
+restrict_memory_vdso.test: $(OBJDIR)restrict_memory_vdso$(PINTOOL_SUFFIX) $(OBJDIR)attach_app_restrict_memory$(EXE_SUFFIX)  $(HELLO_APP)
+	$(OBJDIR)attach_app_restrict_memory$(EXE_SUFFIX) -pin $(PIN) -vdso -pinarg -t $(OBJDIR)restrict_memory_vdso$(PINTOOL_SUFFIX) \
+	> $(OBJDIR)restrict_memory_vdso.out
+	$(RM) $(OBJDIR)restrict_memory_vdso.out
+	$(OBJDIR)attach_app_restrict_memory$(EXE_SUFFIX) -pin $(PIN) -vvar -pinarg -t $(OBJDIR)restrict_memory_vdso$(PINTOOL_SUFFIX) \
+	> $(OBJDIR)restrict_memory_vdso.out
+	$(RM) $(OBJDIR)restrict_memory_vdso.out
+	$(OBJDIR)attach_app_restrict_memory$(EXE_SUFFIX) -pin $(PIN) -none -pinarg -t $(OBJDIR)restrict_memory_vdso$(PINTOOL_SUFFIX) \
+	-success > $(OBJDIR)restrict_memory_vdso.out
+	$(RM) $(OBJDIR)restrict_memory_vdso.out
+	$(PIN) -t $(OBJDIR)restrict_memory_vdso$(PINTOOL_SUFFIX) -success \
+	  -- $(HELLO_APP) > $(OBJDIR)restrict_memory_vdso.out
+	$(RM) $(OBJDIR)restrict_memory_vdso.out
+
+restrict_memory_stack.test: $(OBJDIR)print_stack$(EXE_SUFFIX) $(DISABLE_ASLR)
+	$(RM) -f $(OBJDIR)restrict_memory_stack.out $(OBJDIR)the_stack.txt
+	$(DISABLE_ASLR) $(PIN) -- $(OBJDIR)print_stack$(EXE_SUFFIX) > $(OBJDIR)the_stack.txt
+	# The program below will crash if area adjacent to the stack is not maped correctly
+	$(DISABLE_ASLR) $(PIN) -xyzzy -reserve_memory $(OBJDIR)the_stack.txt \
+	  -- $(OBJDIR)print_stack$(EXE_SUFFIX) > $(OBJDIR)restrict_memory_stack.out
+	$(RM) $(OBJDIR)restrict_memory_stack.out $(OBJDIR)the_stack.txt
+
+memory_limit.test: $(OBJDIR)memory_limit$(PINTOOL_SUFFIX) $(TESTAPP)
+	$(RM) -f $(OBJDIR)$(@:.test=.out)
+	! ( $(PIN) -pin_memory_size 0x10000000 -t $(OBJDIR)$(@:.test=)$(PINTOOL_SUFFIX) -b 0x10000000 -o $(OBJDIR)$(@:.test=.out) \
+	  -- $(TESTAPP) makefile $(OBJDIR)$(@:.test=.makefile.copy) )
+	$(QGREP) "Failed to allocate dynamic memory" $(OBJDIR)$(@:.test=.out)
+	$(RM) -f $(OBJDIR)$(@:.test=.out) $(OBJDIR)$(@:.test=.makefile.copy)
+
+
+windows_mitigation_policy.test: $(OBJDIR)mitigation_policy_app$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)mitigation_policy_app$(EXE_SUFFIX) > $(OBJDIR)mitigation_policy_app.out
+	$(RM) $(OBJDIR)mitigation_policy_app.out
+
+# This test checks that we do not have a bug emulating NtAllocateVirtualMemory.
+# It verifies that NtAllocateVirtualMemory rejects overlapping allocations and 
+# returns the correct base address.
+virtual_alloc.test: $(OBJDIR)virtual_alloc$(EXE_SUFFIX)
+	$(PIN) -- $(OBJDIR)virtual_alloc$(EXE_SUFFIX) > $(OBJDIR)virtual_alloc.out
+	$(RM) $(OBJDIR)virtual_alloc.out
+
+##############################################################
+#
+# Build rules
+#
+##############################################################
+
+# This section contains the build rules for all binaries that have special build rules.
+# See makefile.default.rules for the default build rules.
+
+ifeq ($(TARGET_OS),windows)
+    ACCESS_PROTECTION_APP_EXPORTS := /EXPORT:NotifyPinAfterMmap
+endif
+
+###### Special applications' build rules ######
+
+$(OBJDIR)access_protection_app$(EXE_SUFFIX): access_protection_app.cpp
+	$(APP_CXX) $(APP_CXXFLAGS_NOOPT) $(COMP_EXE)$@ $< $(APP_LDFLAGS_NOOPT) $(ACCESS_PROTECTION_APP_EXPORTS) $(APP_LIBS)
+
+$(OBJDIR)mitigation_policy_app$(EXE_SUFFIX): mitigation_policy_app.cpp
+	$(APP_CC) $(APP_CFLAGS) $(COMP_EXE)$@ $^ $(APP_LDFLAGS) $(APP_LIBS)
+
+$(OBJDIR)thread_app$(EXE_SUFFIX): thread_create_app_$(TARGET_OS).cpp
+		$(APP_CXX) $(APP_CXXFLAGS) $(COMP_EXE)$@ $^ $(APP_LDFLAGS) $(APP_LIBS)
+
+$(OBJDIR)attach_app_restrict_memory$(EXE_SUFFIX): attach_app_restrict_memory.cpp
+	$(APP_CXX) $(APP_CXXFLAGS_NOOPT) $(COMP_EXE)$@ $< $(APP_LDFLAGS_NOOPT) $(APP_LIBS)
