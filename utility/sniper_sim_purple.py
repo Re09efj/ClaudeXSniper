@@ -9,8 +9,12 @@ ultra_orchestrator から差し替え可能(podman不可のPurpleを実行資源
 
 前提:
   - Purple上に ~/claudex_akarin/{binary,cfg,out} が用意済み
-  - binary/ 配下は ClaudeXSniper/binary/{NPB3.3-OMP/bin, GAPBS,
-    Rodinia/openmp/lavaMD} とパス構造をミラー(rsyncで同期済み)
+  - binary/ 配下はClaudeXSniperのbinary/とパス構造をミラー(rsyncで同期済み)。
+    2026-07-14、binary/直下をGCC15版がデフォルトを占める構成に再編した
+    (NPB3.4-OMP/bin、GAPBS、Rodinia/openmp/lavaMD、PARSEC/*、
+    PARSEC/splash2/ext/splash2/apps/*等。旧GCC7.3.1版はbinary/GCC7/へ
+    退避)。Purple側のミラーは本更新時点でまだ再同期していないため、
+    Purple経由でジョブを投げる前にrsyncでの再同期が必要。
   - GRAPHITE_ROOT=/home/jin/sniper-detloc-backup, PIN_ROOT=agungmのPin 3.7
 
 SSH切断への耐性:

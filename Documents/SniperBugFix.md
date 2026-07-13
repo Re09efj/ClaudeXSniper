@@ -711,4 +711,158 @@ trace_manager.h + shmem_perf_model.cc)は確定的に解決済みと結論する
 
 ---
 
+## LU/Scatter/16THの残存ハング: TraceManager::stop()の防御漏れ(2026-07-13)
+
+`utility/sniper_sim_sid.py`の`CONTAINER_IMAGE`を`v12-dedupfix`へ切り替え、
+今日の元バッチ(`sizeW_resend_20260712_013602.log`)でタイムアウトした42件
+(LU 24件@sid + dedup 18件@purple、全件sidへ強制再送)を`resend_42_all_sid.py`
+で再実行した。**41/42が成功**したが、`LU/Scatter/16TH`が15時間以上CPU完全
+凍結(`/proc/PID/stat`のutime/stimeが複数回サンプリングで不変)というハングに
+遭遇し、手動でkillした。
+
+### 調査
+
+`sniper.log`を確認すると、16スレッド中14本が`-- STOP --`を出力済み(アプリ
+全体が終了しようとした痕跡)なのに、thread 0と11だけ無反応のまま残っていた。
+`.bind`に`common/trace_frontend/trace_thread.cc`のCLOG計装(`m_trace.Read()`
+呼び出し前後に`[tracethread]`カテゴリで記録)を追加し、`detloc-firsttouch-
+v13-stopdebug`イメージをビルドして同条件(LU/Scatter/16TH)を再現・観測した。
+
+**再現結果: 今回はハングしなかった**(全16スレッドが`STOP`/`DONE`で正常
+終了、`[SNIPER] End`まで到達、約99分・397億命令)。ただし终了パターンは
+元の障害と同型(thread 0が`exit_group`経由の`DONE`、残り15本が
+`endApplication()`経由の`STOP`)で、`endApplication()`の「無条件で全
+siblingにresumeThreadを呼ぶ」処理が今回は15本全部で正しく機能したことが
+確認できた。元の障害はこの機構がまれに(恐らくlost wakeup的なタイミング
+競合で)一部のスレッドに対して失敗するケースと推測される。決定的な再現は
+できなかった(1回の試行では再現せず、確率的なレースコンディションと判断)。
+
+進捗の追跡には、完走済みの他戦略(LU/16TH Packed/HPO/EPO、総命令数
+38.2〜40.0億×10億)の実測値と、SIGUSR1で覗いたcircular_logの`prior events`
+カウンタ(`[tracethread]`が1命令につき2件のログを出す設計を利用し÷2)を
+比較する方法が有効だった。
+
+### 対応: TraceManager::stop()にも同じ防御ロジックを追加
+
+`TraceManager::signalDone()`には既に「アプリ内残り全員がstall中なら強制
+resume」という一般化修正(dedup対応時に追加)があるが、`TraceManager::
+stop()`(全アプリ完了時に一度だけ呼ばれる、`m_stop`フラグを立てるだけで
+無条件にresumeThreadを呼ばない設計)には同等の処理が無かった。stall中の
+スレッドは`m_stop`フラグを見に行くチャンス自体が来ないため、フラグを
+立てるだけでは気づけずに永遠に残る。
+
+`stop()`内、`(*it)->stop()`でフラグを立てた直後に、`Core::STALLED`かつ
+未`m_stopped`のスレッドを全て`resumeThread()`で強制的に起こす処理を追加
+(`.SniperChange/common/trace_frontend/trace_manager.cc`に反映済み)。
+`stop()`は常に`signalDone()`内から(`m_lock`保持済みの状態で)呼ばれる
+ため、`m_lock`の再取得はせず、`ThreadManager`のロックのみ新たに取得する
+設計にした。
+
+`detloc-firsttouch-v14-stopfix`としてビルド・コンパイルエラー無しを確認。
+確率的なレースが根本原因のため、この修正で確実に直ったことをピンポイント
+で検証するのは困難(再現待ちに時間がかかりすぎる)。ロジックとしては
+`signalDone()`側で既に実績のある同じパターンの適用であり、安全性の理屈は
+共通(全員がstall中なら誰も本物のwakeを送れない状態=強制resumeしても
+安全)。本番反映は要ユーザー判断。
+
+---
+
+## Pin 3.22統合(2026-07-13)
+
+### 背景
+`Documents/2026年7月13日.md`参照。教授からGCCの世代差(gem5=GCC14/15 vs
+Sniper=GCC4.8/7.3.1)を指摘され、全9ワークロードをGCC15.2.1+NPB3.4で
+再ビルド(`binary/GCC15/`)。その過程で、現行`.bind/pin_kit`のPin 3.11が
+**clone3システムコール非対応**(GCC15/glibc 2.41のpthread_createが使用)で
+あることが判明し、スレッド2本目生成の瞬間に確実にSIGSEGVすることが確認
+された。素のPin単体テストではPin 3.22(Sniper公式、`USE_PIN=1`で取得)・
+Pin 3.31両方で問題が再現しないことを確認済みだったが、**Sniper自前の
+Pintool(`sift/recorder`)をPin 3.22のヘッダ/ABIで実際にビルド・動作させる
+検証は同日時点で未実施**だった。この節はその続き。
+
+### 手順と遭遇した問題
+
+1. **Pin 3.22取得**: `.bind/pin_kit`(旧Pin 3.11、`.autodownloaded`マーカー
+   無しの非標準構成)を`pin_kit_pin311_backup`へ退避。Sniper公式Makefile
+   (189-200行目、`USE_PIN=1`)が参照するURL
+   (`https://snipersim.org/packages/pin-3.22-98547-g7a303a835-gcc-linux.tar.gz`)
+   から取得(ユーザー承認済み)。`podman run`のbind mount越しに`tar`の
+   `--same-owner`(root権限でのUID保持)が失敗する問題があり、
+   `--no-same-owner`で手動展開。
+
+2. **1回目のビルド「成功」は実は偽陽性だった**: `find ... -name "*.o" -o
+   -name "*.d" -delete`という`find`コマンドの演算子優先順位バグ(`-delete`
+   が最後の`-name`条件にしか掛からず、`.o`は消えずに`.d`だけ消えていた)
+   により、Pin切り替え後の初回リビルドは実際には**古いPin 3.11+PinPlay版
+   の`.o`をそのまま再リンクしていただけ**だった。`\( -name "*.o" -o -name
+   "*.d" \) -delete`と括弧で正しくグループ化して再実行し、本当の
+   フルリビルドを確認(全`.cc`のCXX行が出力されることで判別)。
+
+3. **PinPlayシンボル不足**: `sift_recorder`は`#ifdef PINPLAY`で
+   `PINPLAY_ENGINE::Activate`を参照するようビルドされていたが、Pin 3.22
+   (`USE_PIN=1`)にはPinPlayエンジンが同梱されない(Sniperの`Makefile`では
+   PinPlayはPin 3.11専用の別ダウンロード経路)。`sift/recorder/
+   makefile.pin.rules`の`PINPLAY_HOME/include/pinplay.H`存在チェックで
+   自動的にPINPLAY未定義になるため実質的には問題ないはずだが、実際の
+   pinball再生機能は元から使っていないため、この分岐で問題なし。
+
+4. **zlibのGNU_HASH非互換**: PINPLAY未定義になったことで、PinPlayが提供
+   していた静的`libzlib.a`(`sift/zfstream.cc`が使う`inflate`等のzlib
+   関数の提供元)も失われた。動的リンク(`-lz`、システムの`libz.so.1`)を
+   試したが、**Pinツール自体をロードする簡易ELFローダーはGNU_HASH形式の
+   共有オブジェクトを読めない**(`DT_HASH`が無いとdlopen失敗)ことが判明。
+   ホスト(Fedora)・コンテナ(CentOS 6.10)いずれの`libz.so.1`も
+   `--hash-style=gnu`でビルドされておりNG。
+
+5. **静的libzのglibc ABI不整合**: ホストの`/usr/lib64/libz.a`
+   (zlib-develパッケージ由来)を静的リンクしたところ、今度は`aligned_alloc`
+   (C11、比較的新しいglibc関数)が見つからずロード失敗。ホストのFedora
+   (新しいglibc)でビルドされた静的ライブラリを、コンテナの古いCentOS 6.10
+   glibcで実行しようとしたことによるクロス環境ABI不整合と判明。
+
+6. **解決**: zlib 1.2.13を**コンテナ自身の中で**(devtoolset-7、`-fPIC`
+   付き)ソースからビルドし、`pin_kit/intel64/lib-ext/libz.a`として配置
+   (ユーザー承認済み、zlib.net公式配布元から取得)。`sift/recorder/
+   makefile.pin.rules`の`PINPLAY_LIBS`(PinPlay無効時の分岐)に
+   `$(PIN_ROOT)/intel64/lib-ext/libz.a`を直接指定(`LINK_LIBS`はMakeの
+   前提条件=実ファイルパスとして使われるため、`-lz`のようなリンカフラグは
+   ここには書けず、`TOOL_LIBS`経由でも動的リンクの問題が再発するため、
+   静的ライブラリのパスを直接与える方式にした)。`-fPIC`も必須
+   (`sift_recorder`は`-shared`でリンクされるPinツールのため)。
+
+### 検証結果
+
+`detloc-firsttouch-v15-pin322`(v14-stopfixベース、pin_kitをPin 3.22に
+全面差し替え)としてビルド。
+
+- **単体テスト**(`pin_kit/pin -t sift_recorder -- /bin/echo hello`):
+  成功。SIFT出力ファイル生成、exit=0。
+- **LU/2TH/Packed(旧GCC7.3.1バイナリ)**: `run-sniper`本番パイプライン
+  経由で実行、マルチスレッド生成(`[DeTLoc] map thread-1 to core-1`)・
+  ROI突入まで正常確認(完走は長時間のため裏で継続確認中)。
+- **IS.S/2TH/Packed(GCC15版バイナリ、NPB3.4、clone3使用)**: **完走
+  成功**。`Verification SUCCESSFUL`・`[SNIPER] End`まで到達
+  (elapsed 16.68秒)。**旧Pin 3.11では確実にSIGSEGVしていたパターンが、
+  Pin 3.22切り替えで解消したことを実証**。これにより教授指摘への対応
+  (GCC15版バイナリへの移行)が技術的に可能になった。
+- **BFS/8TH/Packed**: 想定通り、Pin 3.22でも同じ箇所でクラッシュ
+  (`Tool (or Pin) caused signal 11`)。以前の調査結論(バージョン/カーネル
+  非依存の別バグ、GAPBSワークロード固有のPinエンジン限界)通り、Pin更新
+  では直らないことを再確認。ただしクラッシュ後にハングせず`[SNIPER] End`
+  まで正常終了する点は、`signalDone()`/`stop()`の防御的修正が効いている
+  ことの副次的な確認になった。
+- **lavaMD**: ワークロード検証の詳細は`Documents/2026年7月13日.md`参照。
+
+### 今後のアクション(要ユーザー判断)
+- `detloc-firsttouch-v15-pin322`を正式イメージへ昇格するか
+  (`utility/sniper_sim_sid.py`の`CONTAINER_IMAGE`更新)。
+- GCC15版バイナリ(`binary/GCC15/`)を実際のバッチ実行対象に切り替えるか
+  (現行9ワークロードの`binary_path()`参照先変更が必要)。
+- lavaMDをワークロード除外リストから復帰させるか(GCC15版バイナリでの
+  clone3問題も合わせてPin 3.22で解消する可能性が高い)。
+- `sift/recorder/makefile.pin.rules`への変更は`.SniperChange/sift/
+  recorder/`配下に反映済み(2026-07-13)。
+
+---
+
 ## (このセクション以降に今後の修正を追記していく)

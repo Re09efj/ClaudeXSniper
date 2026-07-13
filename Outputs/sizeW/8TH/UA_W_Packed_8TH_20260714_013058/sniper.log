@@ -1,0 +1,78 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Packed_8TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+
+
+ NAS Parallel Benchmarks (NPB3.4-OMP) - UA Benchmark
+
+ No input file inputua.data. Using compiled defaults
+ Levels of refinement:               5
+ Adaptation frequency:               5
+ Time steps:                       100    dt:    0.125000E-02
+ CG iterations:                     10
+ Heat source radius:            0.0600
+ Number of available threads:        8
+
+[DeTLoc] map thread-1 to core-1
+[DeTLoc] map thread-2 to core-2
+[DeTLoc] map thread-3 to core-3
+[DeTLoc] map thread-4 to core-4
+[DeTLoc] map thread-5 to core-5
+[DeTLoc] map thread-6 to core-6
+[DeTLoc] map thread-7 to core-7
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=20000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=25000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=30000 cpn=8 sender=0 requester=0 same=1
+Step    0: elements refined, merged, total:      80       0     561
+[GDBG] n=35000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=40000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=45000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=50000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=55000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=60000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=65000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=70000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=75000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=80000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=85000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=90000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=95000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=100000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=105000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=110000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=115000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=120000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=125000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=130000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=135000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=140000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=145000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=150000 cpn=8 sender=0 requester=0 same=1
+Step    5: elements refined, merged, total:       6      40     568
+[GDBG] n=155000 cpn=8 sender=0 requester=0 same=1
+Step   10: elements refined, merged, total:       7     104     526
+Step   15: elements refined, merged, total:       6       8     561
+Step   20: elements refined, merged, total:       9     168     477
+Step   25: elements refined, merged, total:      16     128     477
+Step   30: elements refined, merged, total:      16       0     589
+Step   35: elements refined, merged, total:       0      40     554
+Step   40: elements refined, merged, total:       5     120     484
+Step   45: elements refined, merged, total:      15       0     589
+Step   50: elements refined, merged, total:       2      72     540

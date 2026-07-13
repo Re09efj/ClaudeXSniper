@@ -29,6 +29,7 @@ BT/SPのような重いジョブが同じバッチ内の軽いジョブの完了
 
 import argparse
 import os
+import random
 import shutil
 import sys
 import threading
@@ -62,7 +63,14 @@ from utility.scheduling      import lpt_order, cpsat_order, _CapacityPool, estim
 # 2026年7月7日.md・2026年7月10日.md参照(いずれもSniper本体のfutexデッドロックや
 # Pin計装との非互換)。CG/LUの追加経緯はDocuments/2026年7月8日.md参照。
 WORKLOADS = ["BT", "FT", "IS", "MG", "CG", "LU",
-             "canneal", "dedup", "GUPS"]
+             "canneal", "dedup", "GUPS",
+             # 2026-07-14: SizeW/8TH実地試験用に再追加。cannealは
+             # binary/PARSEC/canneal/bin/inputs欠落(symlinkで解消)、nwは
+             # sift_recorderのnum_dyn_addressesアサーション失敗(Pin計装層側の
+             # 原因不明のバグ、切り分け未完)と判明したため、nwのみ除外して
+             # cpu_affinity.py側の統合コードだけ残す(Documents/2026年7月14日.md
+             # 参照)。BTMZ/barnes/PR/UAの4種を改めて投入する。
+             "BTMZ", "barnes", "PR", "UA"]
 
 STRATEGIES_TO_RUN = ["Packed", "Scatter", "HPO", "EPO", "MPO"]
 THREAD_COUNTS     = [2, 8, 12, 16]
@@ -92,6 +100,12 @@ RUN_SNIPER_BACKENDS = {
 }
 
 TIMEOUT_LOG = os.path.join(CLAUDEXSNIPER_DIR, "logs", "timeoutwl.log")
+# 2026-07-14: timeoutwl.logはタイムアウトしか拾わない。error/deadlock/crash
+# (PINCRASH等)はnohupログ全文やOutputs配下のsniper.logを掘らないと分からず
+# デバッグが手間だったため、同じ1行フォーマットでこれらも記録する専用ログを
+# 追加(ユーザー提案)。timeoutwl.logの用途は変えず、こちらは非タイムアウト系
+# 失敗専用。
+FAILURE_LOG = os.path.join(CLAUDEXSNIPER_DIR, "logs", "failwl.log")
 
 
 def _log_timeout(workload: str, strategy: str, bench_class: str, num_threads: int,
@@ -103,6 +117,19 @@ def _log_timeout(workload: str, strategy: str, bench_class: str, num_threads: in
     )
     os.makedirs(os.path.dirname(TIMEOUT_LOG), exist_ok=True)
     with open(TIMEOUT_LOG, "a") as f:
+        f.write(line)
+
+
+def _log_failure(workload: str, strategy: str, bench_class: str, num_threads: int,
+                 elapsed: float, reason: str) -> None:
+    """error/deadlock/crash(PINCRASH)をtimeoutwl.log同様の1行フォーマットで記録する。"""
+    line = (
+        f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  "
+        f"{workload:<8} {strategy:<8} Class={bench_class}  {num_threads}TH  "
+        f"elapsed={elapsed:.0f}s  reason={reason}  FAILED  [ultra]\n"
+    )
+    os.makedirs(os.path.dirname(FAILURE_LOG), exist_ok=True)
+    with open(FAILURE_LOG, "a") as f:
         f.write(line)
 
 
@@ -331,6 +358,8 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False,
         # (起動直後のバーストでのみ発生、数秒後には自然に収まる一過性の事象)。
         # 2026-07-07: リトライは実効性が確認できなかったため廃止(タイムアウトのみ残す)。
         print(f"[ERROR] {job} 失敗 ret={ret_code[0]}", flush=True)
+        _log_failure(job.workload, job.strategy, job.bench_class, job.num_threads,
+                    elapsed, f"error(ret={ret_code[0]})")
         return None, "error"
 
     # 2026-07-10: Sniper本体がbarrier_sync_server.ccで内部デッドロックを検出した場合、
@@ -341,6 +370,8 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False,
         log_text = f.read()
         if "Application has deadlocked" in log_text:
             print(f"[DEADLOCK] {job} Sniperが内部デッドロックを検出(ret=0だが実質失敗)", flush=True)
+            _log_failure(job.workload, job.strategy, job.bench_class, job.num_threads,
+                        elapsed, "deadlock")
             return None, "deadlock"
         # 2026-07-12: lavaMDでPin本体がSIGSEGV等でクラッシュした場合も、Sniperは
         # パイプ切断を検出して"[SNIPER] Internal exception: Broken pipe"を出しつつ
@@ -349,6 +380,8 @@ def run_job(job: Job, run_id: str, no_timeout: bool = False,
         # デッドロックと同じ「ret=0だが実質失敗」の別パターンとして検出する。
         if "Pin app terminated abnormally" in log_text or "Internal exception" in log_text:
             print(f"[PINCRASH] {job} Pin本体がクラッシュ(ret=0だが実質失敗)", flush=True)
+            _log_failure(job.workload, job.strategy, job.bench_class, job.num_threads,
+                        elapsed, "pincrash")
             return None, "crash"
 
     power = estimate_power(out_dir, cpu_map, job.num_threads)
@@ -560,6 +593,11 @@ def main():
     by_machine = group_pairs_by_machine(pairs)
 
     run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # 2026-07-14: 並列で複数のultra_orchestrator.pyを走らせると、完了通知だけを
+    # 見てもどのバッチのものか分からない(実験条件を毎回書くのは冗長)ため、
+    # 開始時に3桁の通知IDを発行し、開始/リトライ/完了の全通知に付ける
+    # (ユーザー提案。IDから開始通知の実験条件を遡れる)。
+    notify_id = random.randint(100, 999)
 
     jobs: list[Job] = []
     for machine, wl_list in by_machine.items():
@@ -569,9 +607,8 @@ def main():
               f"strategies={strategy_tokens}, bench_class={class_list}, threads={thread_list})")
 
     notify(
-        f"[ultra_orchestrator] 実行開始  class={class_list}  threads={thread_list}  "
-        f"workloads/machine={pairs}  strategies={strategy_tokens}  capacity={capacity}  "
-        f"purple_capacity={purple_capacity}  no_timeout={args.no_timeout}"
+        f"[ultra_orchestrator] ID={notify_id} 実行開始  class={class_list}  threads={thread_list}  "
+        f"workloads/machine={pairs}  strategies={strategy_tokens}  no_timeout={args.no_timeout}"
     )
 
     timeout_failures = schedule_and_run(jobs, capacity, run_id, use_exact=args.exact,
@@ -595,7 +632,7 @@ def main():
         ]
         print(f"\n[RETRY] タイムアウト由来の失敗{len(retry_jobs)}件を1回だけ再送します"
               f"(更新後の見積もり×4でタイムアウトを再計算、初回の×2より余裕を広げる)")
-        notify(f"[ultra_orchestrator] タイムアウト失敗{len(retry_jobs)}件を自動リトライ中")
+        notify(f"[ultra_orchestrator] ID={notify_id} タイムアウト失敗{len(retry_jobs)}件を自動リトライ中")
         retry_run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
         retry_still_failed = schedule_and_run(retry_jobs, capacity, retry_run_id, use_exact=args.exact,
                                               no_timeout=args.no_timeout, purple_capacity=purple_capacity,
@@ -623,7 +660,7 @@ def main():
         if cleaned:
             print(f"[CLEANUP] リトライ成功に伴い、タイムアウト時の未完走フォルダ{cleaned}件を削除しました")
 
-    notify(f"[ultra_orchestrator] 完了  class={class_list}  threads={thread_list}")
+    notify(f"[ultra_orchestrator] ID={notify_id} 完了")
 
 
 if __name__ == "__main__":

@@ -148,7 +148,17 @@ _WIDTH_MEASURED = {
 #    知られるため予防的に含める(未較正のまま同日にスケジューリング事故の一因と
 #    なったworkloadなので、実測が揃うまでは安全側に倒す)。LUはブロック化された
 #    構造的アクセス(BT/SPに近い波面並列)のため対象外のまま。
-MEMORY_BOUND_WORKLOADS = {"GUPS", "canneal", "FT", "IS", "CG"}
+#  - barnes, UA, PR: 2026-07-14追加。8THの実測width_pct(Data/width_profile.json)は
+#    BT 478.6%・LU 400.4%(計算律速クラスタ)とGUPS 268.0%・canneal 99.1%
+#    (メモリ律速クラスタ)の中間で、この1点だけでは断定できなかったが、
+#    アルゴリズム的にFT/IS/CGと同種の不規則メモリアクセスパターンを持つため
+#    予防的に含める: barnesは八分木を辿るポインタチェイシング(Barnes-Hut)、
+#    UAは非構造適応メッシュの間接アドレッシング(CGに近い疎アクセス)、
+#    PRはグラフCSR構造を辿るgather/scatter(GAPBS系、BFS/SSSPと同族だが
+#    futexデッドロックで早期除外され較正機会が無かった)。BTMZは同じNPB系の
+#    新規追加でも密なブロック計算(BT/MGに近い構造化グリッド)のため対象外。
+#    2/16THの実測が揃うまでは安全側に倒す判断(CG追加時と同じ方針)。
+MEMORY_BOUND_WORKLOADS = {"GUPS", "canneal", "FT", "IS", "CG", "barnes", "UA", "PR"}
 # 2026-07-09: SizeS本番実行でcanneal(memory-bound)のAKARINジョブが並列輻輳で
 # 6件タイムアウトしたため、2.0→3.0に引き上げ(同時実行数をさらに絞る)。
 MEMORY_BOUND_WIDTH_MULTIPLIER = 3.0

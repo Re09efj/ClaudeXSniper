@@ -1,0 +1,5 @@
+make CC=gcc CFLAGS="-I. -O3 -Wall -fno-strict-aliasing -D_XOPEN_SOURCE=600 -DENABLE_GZIP_COMPRESSION -DENABLE_PTHREADS -pthread -static" LDFLAGS="-static" version=pthreads
+
+# -I. が必要な理由: sha_locl.h が <openssl/sha.h> を山括弧includeしているため、
+# 何もしないとシステムのopenssl-develヘッダ(型定義が食い違う)を拾ってしまい
+# コンパイルエラーになる。-I. でバンドル版openssl/を優先させる。

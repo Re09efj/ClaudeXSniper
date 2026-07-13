@@ -1,0 +1,60 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Packed_8TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+[DeTLoc] map thread-1 to core-1
+[DeTLoc] map thread-2 to core-2
+[DeTLoc] map thread-3 to core-3
+[DeTLoc] map thread-4 to core-4
+[DeTLoc] map thread-5 to core-5
+[DeTLoc] map thread-6 to core-6
+[DeTLoc] map thread-7 to core-7
+[GDBG] n=20000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=25000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=30000 cpn=8 sender=0 requester=0 same=1
+[TRACE:7] -- DONE --
+[TRACE:3] -- DONE --
+[TRACE:5] -- DONE --
+[TRACE:6] -- DONE --
+[TRACE:2] -- DONE --
+[TRACE:1] -- DONE --
+[TRACE:4] -- DONE --
+
+		Hack code: Plummer model
+
+     nbody     dtime       eps       tol     dtout     tstop    fcells     NPROC
+      8192   0.02500    0.0500      1.00     0.250     0.075      2.00         8
+
+COMPUTESTART  = 1337000000035796
+COMPUTEEND    = 1337000000035797
+COMPUTETIME   =            1
+TRACKTIME     =        16617
+PARTITIONTIME =           32	 0.00
+TREEBUILDTIME =          619	 0.04
+FORCECALCTIME =        14384	 0.87
+RESTTIME      =         1582	 0.10
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 182.15 seconds
+[SNIPER] Simulated 721.9M instructions, 78.8M cycles, 9.16 IPC
+[SNIPER] Simulation speed 3963.1 KIPS (247.7 KIPS / target core - 4037.3ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 182.52 seconds

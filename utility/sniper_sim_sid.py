@@ -46,7 +46,7 @@ import uuid
 from config.generate_config import TOTAL_SIM_CORES
 from utility.width_profile import probe_and_record
 
-CONTAINER_IMAGE = "localhost/snipersim/snipersim:detloc-firsttouch-v12-dedupfix"
+CONTAINER_IMAGE = "localhost/snipersim/snipersim:detloc-firsttouch-v15-pin322"
 SNIPER_BIN      = "/root/sniper/run-sniper"
 CONTAINER_CFG   = "/cfg/arrow_lake.cfg"
 CONTAINER_BIN   = "/binary"

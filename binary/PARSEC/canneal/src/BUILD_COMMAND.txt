@@ -1,0 +1,1 @@
+make CXX=g++ CXXFLAGS="-O3 -DENABLE_THREADS -pthread -static" LDFLAGS="-O3 -DENABLE_THREADS -pthread -static" version=pthreads

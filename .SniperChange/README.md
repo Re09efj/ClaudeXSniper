@@ -76,6 +76,25 @@ lib/sniper(コンパイル済みバイナリ)と`tools/*.pyc`(バイトコード
   `ShmemPerfModel::setElapsedTime`/`getElapsedTime`/`updateElapsedTime`を、
   上記のatomicヘルパー経由に書き換え。
 
+- `common/trace_frontend/trace_manager.cc`(2026-07-13追記分)
+  `TraceManager::stop()`にも、`signalDone()`と同じ「アプリ内残り全員が
+  Core::STALLEDなら強制resume」の防御ロジックを追加。LU/Scatter/16THで
+  観測された、`endApplication()`の無条件resumeThreadだけでは救済しきれ
+  なかった(恐らくlost wakeup的な)レースコンディションへの保険。
+
+### Pin本体側の変更(`common/`配下ではないため上記ツリーとは別枠)
+
+- `sift/recorder/makefile.pin.rules`
+  Pin 3.22(Sniper公式配布、`USE_PIN=1`)への切り替えに伴う修正。PinPlay
+  無効時(PinPlayはPin 3.11専用でPin 3.22には同梱されない)に`sift/
+  zfstream.cc`が必要とするzlibの`inflate`等を、コンテナ内で`-fPIC`付き
+  ソースビルドした静的`libz.a`(`pin_kit/intel64/lib-ext/libz.a`、これ自体は
+  ビルド成果物のためgit管理対象外)にリンクするよう変更。詳しい経緯は
+  `Documents/SniperBugFix.md`の「Pin 3.22統合(2026-07-13)」節を参照。
+  この変更はvanilla Sniperの`pin_kit`(バンドルされるPinのバージョン自体)
+  には依存しないため、上記の「vanilla→v12-dedupfix全差分」比較には
+  現れない(pin_kitはビルド成果物としてdiff対象外にしているため)。
+
 ## 対応関係
 
 | 修正 | 対象バグ/機能 | 検証 |
@@ -84,6 +103,8 @@ lib/sniper(コンパイル済みバイナリ)と`tools/*.pyc`(バイトコード
 | scheduler.cc(.orig), scheduler_pinned_map.*, split_string.* | GOMP_CPU_AFFINITY非対応への対応(pinned_mapスケジューラ) | Sniper移行初期に導入、以後全実験の基盤 |
 | setlock.h, cache_block_info.h, barrier_sync_server.*, trace_manager.h, subsecond_time.h, shmem_perf_model.cc | LU/2TH/Wの silent hang | v9で確認済み(60分超の継続的健全進行、Documents/SniperBugFix.md参照) |
 | trace_manager.cc の signalDone一般化 | dedupのTRACE段階での複数スレッド同時ハング | v12-dedupfixでDEDUP/W/9TH/Packed完走を確認済み(1413.55秒) |
+| trace_manager.cc の stop()防御修正 | LU/Scatter/16THの残存ハング(レースコンディション) | v14-stopfixとしてビルド確認済み、決定的再現待ちのため未確定 |
+| sift/recorder/makefile.pin.rules | Pin 3.22統合(GCC15/clone3対応バイナリの実行を可能にする) | v15-pin322でIS.S(GCC15版、clone3使用)完走を確認済み |
 
 ## 差分の再現方法(今後の更新時)
 

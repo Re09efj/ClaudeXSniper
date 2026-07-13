@@ -16,18 +16,32 @@ import subprocess
 import sys
 
 BINARY_BASE  = "/home/hiragahama/ClaudeXSniper/binary"
-NPB_OMP_DIR  = f"{BINARY_BASE}/NPB3.3-OMP"
+# 2026-07-14: binary/直下をGCC15版(NPB3.4、教授指摘のコンパイラ世代差対応)が
+# デフォルトを占める構成に再編し、旧GCC7.3.1版はbinary/GCC7/配下へ退避した
+# (Documents/2026年7月13日.md参照)。GAPBS/lavaMD/fluidanimate/x264/
+# bodytrack/water_nsquared/radiosityも同日中にGCC15で再ビルド済み
+# (GCC7は「よっぽどの限り使わないObsolete」というユーザー方針のため、
+# 全ワークロードGCC15版をデフォルト参照に統一)。GCC7_BASEは万一の
+# 切り戻し用に残すのみで、通常は参照しない。
+GCC7_BASE    = f"{BINARY_BASE}/GCC7"
+NPB_OMP_DIR  = f"{BINARY_BASE}/NPB3.4-OMP"
 NPB_BIN_DIR  = os.path.join(NPB_OMP_DIR, "bin")
+CANNEAL_DIR  = f"{BINARY_BASE}/PARSEC/canneal/bin"
+DEDUP_DIR    = f"{BINARY_BASE}/PARSEC/dedup/bin"
+GUPS_DIR     = f"{BINARY_BASE}/GUPS/bin"
 LAVAMD_DIR   = f"{BINARY_BASE}/Rodinia/openmp/lavaMD"
 GAPBS_DIR    = f"{BINARY_BASE}/GAPBS"
-FLUIDANIMATE_DIR = f"{BINARY_BASE}/PARSEC/pkgs/apps/fluidanimate/src"
-CANNEAL_DIR  = f"{BINARY_BASE}/PARSEC/pkgs/kernels/canneal/src"
-DEDUP_DIR    = f"{BINARY_BASE}/PARSEC/pkgs/kernels/dedup/src"
-X264_DIR     = f"{BINARY_BASE}/PARSEC/pkgs/apps/x264/src"
-BODYTRACK_DIR = f"{BINARY_BASE}/PARSEC/pkgs/apps/bodytrack/src"
-WATER_NSQUARED_DIR = f"{BINARY_BASE}/PARSEC/ext/splash2/apps/water_nsquared/src"
-RADIOSITY_DIR       = f"{BINARY_BASE}/PARSEC/ext/splash2/apps/radiosity/src"
-GUPS_DIR     = f"{BINARY_BASE}/GUPS"
+FLUIDANIMATE_DIR = f"{BINARY_BASE}/PARSEC/fluidanimate/src"
+X264_DIR     = f"{BINARY_BASE}/PARSEC/x264/src"
+BODYTRACK_DIR = f"{BINARY_BASE}/PARSEC/bodytrack/src/TrackingBenchmark"
+WATER_NSQUARED_DIR = f"{BINARY_BASE}/SPLASH2/apps/water_nsquared/src"
+RADIOSITY_DIR       = f"{BINARY_BASE}/SPLASH2/apps/radiosity/src"
+BARNES_DIR          = f"{BINARY_BASE}/SPLASH2/apps/barnes/src"
+# 2026-07-13、教授指摘対応(GCC15統一)の一環として追加。UAは既存NPB3.4-OMP/binの
+# デフォルトパターン(f"{NPB_BIN_DIR}/{workload.lower()}.{bench_class}.x")に
+# そのまま合致するため専用定数は不要。
+NPB_MZ_BIN_DIR = f"{BINARY_BASE}/NPB3.4-MZ-OMP/bin"
+NW_DIR         = f"{BINARY_BASE}/Rodinia/openmp/nw"
 
 GAPBS_WORKLOADS  = {"BFS", "PR", "BC", "CC", "SSSP", "TC"}
 # GUPS(HPCC RandomAccess): テーブルサイズがシミュレート対象L3(4MB、config/
@@ -41,9 +55,9 @@ PARSEC_WORKLOADS = {"FLUIDANIMATE", "CANNEAL", "DEDUP", "X264", "BODYTRACK"}
 # WATER_NSQUARED = lavaMDの代替(分子動力学N体、別実装のためlavaMD特有のクラッシュを
 # 引き継がない想定)。RADIOSITY = タスクキュー型(work-stealing)並列、fork-join
 # (NPB/GAPBS)・パイプライン(dedup/x264)とは違う第3の並列化パターン。
-SPLASH2_WORKLOADS = {"WATER_NSQUARED", "RADIOSITY"}
+SPLASH2_WORKLOADS = {"WATER_NSQUARED", "RADIOSITY", "BARNES"}
 # 標準入力からパラメータを読むワークロード(コマンドライン引数を持たない)
-STDIN_WORKLOADS = {"WATER_NSQUARED"}
+STDIN_WORKLOADS = {"WATER_NSQUARED", "BARNES"}
 
 # PARSECワークロード名 → (バイナリを置いているディレクトリ, バイナリファイル名)
 # fluidanimate以外(canneal/dedup/x264)は2026-07-06にPARSEC-3.0フレームワーク内の
@@ -129,6 +143,14 @@ FLUIDANIMATE_FRAMES = 5
 # BENCH_CLASS → water_nsquared分子数(NMOLは完全立方数である必要がある)
 WATER_NSQUARED_NMOL = {"S": 64, "W": 125, "A": 216, "B": 343, "C": 512, "D": 1000}
 
+# BENCH_CLASS → barnes粒子数(nbody)。SPLASH2公式デフォルトは16384(Aクラス相当)、
+# S/Wはそれより小さいスケールを割り当てる。
+BARNES_NBODY = {"S": 4096, "W": 8192, "A": 16384, "B": 32768, "C": 65536, "D": 131072}
+
+# BENCH_CLASS → Rodinia nw(needle)の行列サイズ(max_rows/max_cols、pad込み)。
+# 2026-07-13の動作確認では512(ペナルティ10、2TH)で正常完了を確認済み。
+NW_SIZE = {"S": 512, "W": 1024, "A": 2048, "B": 4096, "C": 8192, "D": 16384}
+
 # BENCH_CLASS → GUPSテーブルサイズ指数(2^n個のuint64エントリ)。実行時argv[1]で
 # コンパイル時デフォルト(LOG2_TABLESIZE=22)を上書きできる。Sクラス=22(32MB、
 # シミュレートL3=4MBの8倍)を基準に1クラスごとに2倍ずつ増やす。
@@ -155,6 +177,34 @@ def write_stdin_file(workload: str, bench_class: str, num_threads: int, out_dir:
         with open(path, "w") as f:
             f.write(content)
         return path
+    if wl_upper == "BARNES":
+        # SPLASH2 barnes/code.C startrun()内のgetparam呼び出し順(defv[]の宣言順とは
+        # 異なり、outがnbody/seedより後に呼ばれる)に対応する位置指定の標準入力形式:
+        # in, nbody, seed, out, dtime, eps, tol, fcells, fleaves, tstop, dtout, NPROC。
+        # 2026-07-13の動作確認で、defv[]宣言順(in,out,nbody,...)のまま渡すと
+        # outの空行がnbodyの値として読まれてnbodyが常にデフォルト16384になる
+        # ズレを発見、getparam.c/code.Cのコール順を直接確認してこの並びに修正した。
+        # in/outは空行(バイナリ自身のデフォルトを使わせる)。fleavesはデフォルト0.5だと
+        # 「4096リーフを超えた」旨のリソース上限クラッシュを起こすため2.0に固定。
+        nbody = BARNES_NBODY.get(bench_class, 16384)
+        content = (
+            "\n"
+            f"{nbody}\n"
+            "123\n"
+            "\n"
+            "0.025\n"
+            "0.05\n"
+            "1.0\n"
+            "2.0\n"
+            "2.0\n"
+            "0.075\n"
+            "0.25\n"
+            f"{num_threads}\n"
+        )
+        path = os.path.join(out_dir, "barnes_input.txt")
+        with open(path, "w") as f:
+            f.write(content)
+        return path
     raise ValueError(f"stdin不要のワークロード: {workload}")
 
 
@@ -172,8 +222,16 @@ def binary_path(workload: str, bench_class: str) -> str:
         return f"{WATER_NSQUARED_DIR}/water_nsquared"
     if wl_upper == "RADIOSITY":
         return f"{RADIOSITY_DIR}/radiosity"
+    if wl_upper == "BARNES":
+        return f"{BARNES_DIR}/barnes"
     if wl_upper in GUPS_WORKLOADS:
         return f"{GUPS_DIR}/gups"
+    if wl_upper == "BTMZ":
+        # NPB Multi-Zone本体のファイル名は"bt-mz"(ハイフン入り)。ワークロード名は
+        # パース時の事故防止のためユーザー指定で"BTMZ"(ハイフン無し)に統一している。
+        return f"{NPB_MZ_BIN_DIR}/bt-mz.{bench_class}.x"
+    if workload.lower() == "nw":
+        return f"{NW_DIR}/needle"
     return f"{NPB_BIN_DIR}/{workload.lower()}.{bench_class}.x"
 
 
@@ -280,9 +338,14 @@ def get_binary_args(workload: str, bench_class: str, num_threads: int) -> str:
         # argv[1]はテーブルサイズ指数(2^n)のみ。
         log2_size = GUPS_LOG2_SIZE.get(bench_class, 22)
         return f"{log2_size}"
-    if wl_upper == "WATER_NSQUARED":
+    if wl_upper == "WATER_NSQUARED" or wl_upper == "BARNES":
         # 引数はコマンドラインではなく標準入力から渡す(write_stdin_file参照)
         return ""
+    if workload.lower() == "nw":
+        # Usage: needle <max_rows/max_cols> <penalty> <num_threads>
+        # (2026-07-13の動作確認: 512 10 2で正常完了)
+        size = NW_SIZE.get(bench_class, 512)
+        return f"{size} 10 {num_threads}"
     return ""
 
 # NUMA レイアウト
@@ -460,7 +523,7 @@ def save_affinity_config(
     import os
     path = os.path.join(output_dir, "affinity_config.txt")
     lines = [
-        f"BENCHMARK={workload.upper()}.{bench_class} (NPB3.3 OpenMP)",
+        f"BENCHMARK={workload.upper()}.{bench_class} (NPB3.4 OpenMP)",
         f"PRESET={preset_name}",
         f"NUM_THREADS={num_threads}",
         f"NUM_NODES={num_nodes}",

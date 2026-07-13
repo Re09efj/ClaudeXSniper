@@ -1,0 +1,59 @@
+[SNIPER] Start
+Core 4 at 2.20 GHz (global clock 2.90 GHz)
+Core 5 at 2.20 GHz (global clock 2.90 GHz)
+Core 6 at 2.20 GHz (global clock 2.90 GHz)
+Core 7 at 2.20 GHz (global clock 2.90 GHz)
+Core 12 at 2.20 GHz (global clock 2.90 GHz)
+Core 13 at 2.20 GHz (global clock 2.90 GHz)
+Core 14 at 2.20 GHz (global clock 2.90 GHz)
+Core 15 at 2.20 GHz (global clock 2.90 GHz)
+[DeTLoc] Loading mapping file: /cfg/arrow_lake_Packed_2TH.map
+[DeTLoc] map thread-0 to core-0
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running full application in DETAILED mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[GDBG] n=5000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=10000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=15000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=20000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=25000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=30000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=35000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=40000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=45000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=50000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=55000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=60000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=65000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=70000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=75000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=80000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=85000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=90000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=95000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=100000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=105000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=110000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=115000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=120000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=125000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=130000 cpn=8 sender=0 requester=0 same=1
+[GDBG] n=135000 cpn=8 sender=0 requester=0 same=1
+[DeTLoc] map thread-1 to core-1
+[SIFT_RECORDER] recorder_base.cc:105: VOID sendInstruction(LEVEL_VM::THREADID, ADDRINT, UINT32, UINT32, LEVEL_BASE::BOOL, LEVEL_BASE::BOOL, LEVEL_BASE::BOOL, LEVEL_BASE::BOOL, LEVEL_BASE::BOOL, LEVEL_BASE::BOOL): Assertion `thread_data[threadid].num_dyn_addresses == num_addresses' failed.
+[TRACE:0] -- DONE --
+[TRACE:1] -- DONE --
+[SIFT:0] Error: Resource temporarily unavailable
+Pin app terminated abnormally due to signal 6.
+[SIFT:1] Error: Broken pipe
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 107.92 seconds
+[SNIPER] Simulated 228.5M instructions, 68.1M cycles, 3.36 IPC
+[SNIPER] Simulation speed 2117.6 KIPS (132.4 KIPS / target core - 7555.7ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[SNIPER] End
+[SNIPER] Elapsed time: 108.03 seconds

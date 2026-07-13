@@ -1,0 +1,3 @@
+# Sniper本体のソース作業コピー(SIDでのbind mount開発用、663MB超なので追跡しない)。
+# 実体の取得・使い方は shell/sniper_dev_shell.sh 参照。
+.bind/

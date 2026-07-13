@@ -310,6 +310,30 @@ void TraceManager::stop()
    // Signal threads to stop.
    for(std::vector<TraceThread *>::iterator it = m_threads.begin(); it != m_threads.end(); ++it)
       (*it)->stop();
+
+   // Defensive: a thread that is currently stalled (e.g. blocked on a futex wake that will
+   // never arrive) never gets a chance to notice the m_stop flag set above, since it isn't
+   // back in its own trace-reading loop to check it. Force-resume any such thread so it wakes
+   // up, notices m_stop, and exits cleanly instead of leaving the process hung forever.
+   // 2026-07-13: added as a defensive mirror of signalDone()'s generalized "all remaining
+   // stalled -> force resume" fix, after observing LU/Scatter/16TH hang with 2 threads stuck
+   // despite endApplication()'s unconditional resumeThread() call on every sibling (which was
+   // separately confirmed to usually succeed -- this looks like a rare timing-dependent lost
+   // wakeup, not a deterministic bug, so this net is here to catch it regardless of the exact
+   // race). stop() is only ever called from within signalDone() (m_stop_with_first_app / all
+   // apps done paths), so m_lock is already held by the caller here -- do not re-acquire it.
+   {
+      ScopedLock sl2(Sim()->getThreadManager()->getLock());
+      for (std::vector<TraceThread *>::iterator it = m_threads.begin(); it != m_threads.end(); ++it)
+      {
+         if (!(*it)->m_stopped &&
+             Sim()->getThreadManager()->getThreadState((*it)->getThread()->getId()) == Core::STALLED)
+         {
+            Sim()->getThreadManager()->resumeThread((*it)->getThread()->getId(), INVALID_THREAD_ID, SubsecondTime::Zero());
+         }
+      }
+   }
+
    // Give threads some time to end.
    sleep(1);
    // Some threads may be blocked (SIFT reader, syscall, etc.). Don't wait for them or we'll deadlock.

@@ -1,0 +1,21 @@
+[JOBS] 13件 (machine=sid, workloads=['BT', 'FT', 'IS', 'MG', 'CG', 'LU', 'canneal', 'dedup', 'GUPS', 'BTMZ', 'barnes', 'PR', 'UA'], strategies=['Packed'], bench_class=['W'], threads=[8])
+
+================================================================
+  ULTRA ORCHESTRATOR — 資源制約付きスケジューリング実行
+  ジョブ数=13  (sid=13, purple=0)
+  実効容量: sid=21.0コア  purple=45.0スレッド
+================================================================
+
+[SCHED] sid: 見積完了時間 = 10625s 
+(3.0時間、13件、実測ゲートの遅延は含まず)
+[PINCRASH] Job(canneal/Packed/W/8TH@sid, w=3.13, d=3976s) Pin本体がクラッシュ(ret=0だが実質失敗)
+[1/13] Job(canneal/Packed/W/8TH@sid, w=3.13, d=3976s) -> FAILED
+[profile] barnes_W_8: simTime=0.036s, instructions=721,891,328, wallTime=184s (avg 184s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/barnes_W_Packed_8TH_20260714_013058/metrics.csv
+[2/13] Job(barnes/Packed/W/8TH@sid, w=3.00, d=3600s) -> OK
+[profile] dedup_W_9: simTime=0.514s, instructions=4,258,847,925, wallTime=1849s (avg 1604s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/9TH/dedup_W_Packed_9TH_20260714_013058/metrics.csv
+[3/13] Job(dedup/Packed/W/9TH@sid, w=2.23, d=1584s) -> OK
+[profile] BT_W_8: simTime=0.395s, instructions=16,787,460,959, wallTime=3272s (avg 3786s)
+[csv] metrics.csv 保存: /home/hiragahama/ClaudeXSniper/Outputs/sizeW/8TH/BT_W_Packed_8TH_20260714_013058/metrics.csv
+[4/13] Job(BT/Packed/W/8TH@sid, w=8.88, d=3902s) -> OK
